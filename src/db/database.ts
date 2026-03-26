@@ -274,6 +274,74 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-caseys-bk-biscuit-gravy',     "Biscuit & Gravy",                         "Casey's", '1 order',               450,  9, 40, 26, 12, 30, 1140, 1, 5),
   rf('seed-caseys-hashbrown',            "Hashbrown",                               "Casey's", '1 order',               140,  2, 17,  7,  2,  0,  200, 1, 0),
 
+  // ── Pepsi Products ──────────────────────────────────────────────
+  rf('seed-pepsi-12oz',                    "Pepsi",                         "Pepsi",        '1 can (12 fl oz)',    150, 0, 41, 0, 0, 0,  30, 0, 41, 38),
+  rf('seed-pepsi-20oz',                    "Pepsi",                         "Pepsi",        '1 bottle (20 fl oz)', 250, 0, 69, 0, 0, 0,  55, 0, 69, 63),
+  rf('seed-pepsi-zero-12oz',               "Pepsi Zero Sugar",              "Pepsi",        '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  40, 0,  0, 38),
+  rf('seed-pepsi-zero-20oz',               "Pepsi Zero Sugar",              "Pepsi",        '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,  66, 0,  0, 63),
+  rf('seed-diet-pepsi-12oz',               "Diet Pepsi",                    "Pepsi",        '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  36, 0,  0, 35),
+  rf('seed-diet-pepsi-20oz',               "Diet Pepsi",                    "Pepsi",        '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,  60, 0,  0, 58),
+  rf('seed-pepsi-wild-cherry-12oz',        "Pepsi Wild Cherry",             "Pepsi",        '1 can (12 fl oz)',    160, 0, 42, 0, 0, 0,  30, 0, 42, 38),
+  rf('seed-pepsi-wild-cherry-20oz',        "Pepsi Wild Cherry",             "Pepsi",        '1 bottle (20 fl oz)', 264, 0, 71, 0, 0, 0,  54, 0, 71, 63),
+  rf('seed-pepsi-wild-cherry-zero-12oz',   "Pepsi Wild Cherry Zero Sugar",  "Pepsi",        '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  35, 0,  0, 38),
+  rf('seed-pepsi-wild-cherry-zero-20oz',   "Pepsi Wild Cherry Zero Sugar",  "Pepsi",        '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,  58, 0,  0, 63),
+  rf('seed-pepsi-cream-soda-12oz',         "Pepsi Cream Soda",              "Pepsi",        '1 can (12 fl oz)',    150, 0, 39, 0, 0, 0,  35, 0, 39, 38),
+  rf('seed-pepsi-cream-soda-20oz',         "Pepsi Cream Soda",              "Pepsi",        '1 bottle (20 fl oz)', 250, 0, 65, 0, 0, 0,  55, 0, 65, 63),
+  rf('seed-pepsi-cream-soda-zero-12oz',    "Pepsi Cream Soda Zero Sugar",   "Pepsi",        '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  35, 0,  0, 38),
+  rf('seed-pepsi-cream-soda-zero-20oz',    "Pepsi Cream Soda Zero Sugar",   "Pepsi",        '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,  58, 0,  0, 63),
+
+  // ── Mountain Dew ─────────────────────────────────────────────────
+  rf('seed-mtn-dew-12oz',                  "Mountain Dew",                  "Mountain Dew", '1 can (12 fl oz)',    170, 0, 46, 0, 0, 0,  65, 0, 46, 54),
+  rf('seed-mtn-dew-20oz',                  "Mountain Dew",                  "Mountain Dew", '1 bottle (20 fl oz)', 290, 0, 77, 0, 0, 0,  85, 0, 77, 90),
+  rf('seed-mtn-dew-zero-12oz',             "Mountain Dew Zero Sugar",       "Mountain Dew", '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  40, 0,  0, 54),
+  rf('seed-mtn-dew-zero-20oz',             "Mountain Dew Zero Sugar",       "Mountain Dew", '1 bottle (20 fl oz)',   5, 0,  0, 0, 0, 0,  85, 0,  0, 90),
+  rf('seed-mtn-dew-code-red-12oz',         "Mountain Dew Code Red",         "Mountain Dew", '1 can (12 fl oz)',    170, 0, 46, 0, 0, 0, 105, 0, 46, 54),
+  rf('seed-mtn-dew-code-red-20oz',         "Mountain Dew Code Red",         "Mountain Dew", '1 bottle (20 fl oz)', 280, 0, 76, 0, 0, 0,  95, 0, 76, 90),
+  rf('seed-mtn-dew-baja-12oz',             "Mountain Dew Baja Blast",       "Mountain Dew", '1 can (12 fl oz)',    170, 0, 44, 0, 0, 0,  55, 0, 44, 54),
+  rf('seed-mtn-dew-baja-20oz',             "Mountain Dew Baja Blast",       "Mountain Dew", '1 bottle (20 fl oz)', 280, 0, 74, 0, 0, 0,  95, 0, 73, 90),
+  rf('seed-mtn-dew-baja-zero-12oz',        "Mountain Dew Baja Blast Zero",  "Mountain Dew", '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  50, 0,  0, 54),
+  rf('seed-mtn-dew-baja-zero-20oz',        "Mountain Dew Baja Blast Zero",  "Mountain Dew", '1 bottle (20 fl oz)',  10, 0,  0, 0, 0, 0,  83, 0,  0, 90),
+
+  // ── Coca-Cola Products ───────────────────────────────────────────
+  rf('seed-coca-cola-12oz',                "Coca-Cola",                     "Coca-Cola",    '1 can (12 fl oz)',    140, 0, 39, 0, 0, 0,  45, 0, 39, 34),
+  rf('seed-coca-cola-20oz',                "Coca-Cola",                     "Coca-Cola",    '1 bottle (20 fl oz)', 240, 0, 65, 0, 0, 0,  72, 0, 65, 57),
+  rf('seed-diet-coke-12oz',                "Diet Coke",                     "Coca-Cola",    '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  40, 0,  0, 46),
+  rf('seed-diet-coke-20oz',                "Diet Coke",                     "Coca-Cola",    '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,  70, 0,  0, 77),
+  rf('seed-coke-zero-12oz',                "Coca-Cola Zero Sugar",          "Coca-Cola",    '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  40, 0,  0, 34),
+  rf('seed-coke-zero-20oz',                "Coca-Cola Zero Sugar",          "Coca-Cola",    '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,  70, 0,  0, 57),
+  rf('seed-sprite-12oz',                   "Sprite",                        "Sprite",       '1 can (12 fl oz)',    140, 0, 38, 0, 0, 0,  65, 0, 38,  0),
+  rf('seed-sprite-20oz',                   "Sprite",                        "Sprite",       '1 bottle (20 fl oz)', 240, 0, 64, 0, 0, 0, 110, 0, 64,  0),
+  rf('seed-sprite-zero-12oz',              "Sprite Zero Sugar",             "Sprite",       '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  35, 0,  0,  0),
+  rf('seed-sprite-zero-20oz',              "Sprite Zero Sugar",             "Sprite",       '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,  58, 0,  0,  0),
+  rf('seed-fanta-orange-12oz',             "Fanta Orange",                  "Fanta",        '1 can (12 fl oz)',    160, 0, 44, 0, 0, 0,  55, 0, 44,  0),
+  rf('seed-fanta-orange-20oz',             "Fanta Orange",                  "Fanta",        '1 bottle (20 fl oz)', 270, 0, 75, 0, 0, 0,  96, 0, 73,  0),
+  rf('seed-barqs-12oz',                    "Barq's Root Beer",              "Barq's",       '1 can (12 fl oz)',    160, 0, 44, 0, 0, 0,  65, 0, 44, 22),
+  rf('seed-barqs-20oz',                    "Barq's Root Beer",              "Barq's",       '1 bottle (20 fl oz)', 270, 0, 74, 0, 0, 0, 108, 0, 74, 37),
+
+  // ── Dr Pepper ────────────────────────────────────────────────────
+  rf('seed-dr-pepper-12oz',                "Dr Pepper",                     "Dr Pepper",    '1 can (12 fl oz)',    150, 0, 40, 0, 0, 0,  45, 0, 39, 41),
+  rf('seed-dr-pepper-20oz',                "Dr Pepper",                     "Dr Pepper",    '1 bottle (20 fl oz)', 240, 0, 66, 0, 0, 0,  95, 0, 65, 68),
+  rf('seed-dr-pepper-zero-12oz',           "Dr Pepper Zero Sugar",          "Dr Pepper",    '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  60, 0,  0, 41),
+  rf('seed-dr-pepper-zero-20oz',           "Dr Pepper Zero Sugar",          "Dr Pepper",    '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0, 100, 0,  0, 68),
+
+  // ── A&W Root Beer ────────────────────────────────────────────────
+  rf('seed-aw-12oz',                       "A&W Root Beer",                 "A&W",          '1 can (12 fl oz)',    150, 0, 41, 0, 0, 0,  40, 0, 41,  0),
+  rf('seed-aw-20oz',                       "A&W Root Beer",                 "A&W",          '1 bottle (20 fl oz)', 274, 0, 74, 0, 0, 0,  67, 0, 74,  0),
+  rf('seed-aw-zero-12oz',                  "A&W Root Beer Zero Sugar",      "A&W",          '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0, 115, 0,  0,  0),
+  rf('seed-aw-zero-20oz',                  "A&W Root Beer Zero Sugar",      "A&W",          '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0, 190, 0,  0,  0),
+
+  // ── 7UP ──────────────────────────────────────────────────────────
+  rf('seed-7up-12oz',                      "7UP",                           "7UP",          '1 can (12 fl oz)',    140, 0, 39, 0, 0, 0,  40, 0, 38,  0),
+  rf('seed-7up-20oz',                      "7UP",                           "7UP",          '1 bottle (20 fl oz)', 240, 0, 64, 0, 0, 0,  70, 0, 63,  0),
+  rf('seed-7up-zero-12oz',                 "7UP Zero Sugar",                "7UP",          '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  45, 0,  0,  0),
+  rf('seed-7up-zero-20oz',                 "7UP Zero Sugar",                "7UP",          '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,  75, 0,  0,  0),
+
+  // ── Starry ───────────────────────────────────────────────────────
+  rf('seed-starry-12oz',                   "Starry",                        "Starry",       '1 can (12 fl oz)',    150, 0, 40, 0, 0, 0,  35, 0, 39,  0),
+  rf('seed-starry-20oz',                   "Starry",                        "Starry",       '1 bottle (20 fl oz)', 240, 0, 65, 0, 0, 0,  55, 0, 65,  0),
+  rf('seed-starry-zero-12oz',              "Starry Zero Sugar",             "Starry",       '1 can (12 fl oz)',      0, 0,  0, 0, 0, 0,  35, 0,  0,  0),
+  rf('seed-starry-zero-20oz',              "Starry Zero Sugar",             "Starry",       '1 bottle (20 fl oz)',  10, 0,  0, 0, 0, 0,  60, 0,  0,  0),
+
   // ── Vitamin Water (20 fl oz bottle = 2.5 servings) ─────────────
   rf('seed-vw-xxx',               "Vitamin Water XXX (Açaí-Blueberry-Pomegranate)", "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
   rf('seed-vw-focus',             "Vitamin Water Focus (Kiwi-Strawberry)",          "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
