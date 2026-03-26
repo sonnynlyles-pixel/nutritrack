@@ -64,13 +64,6 @@ function MacroBar({ label, consumed, goal, color }: { label: string; consumed: n
 export default function Dashboard() {
   const { profile, selectedDate } = useStore();
   const { log, loading, addEntry, updateWater } = useDailyLog(selectedDate);
-
-  const remaining = {
-    calories: profile.calorieGoal          - totals.calories,
-    protein:  profile.macroTargets.protein - totals.protein,
-    carbs:    profile.macroTargets.carbs   - totals.carbs,
-    fat:      profile.macroTargets.fat     - totals.fat,
-  };
   const streak = useStreak();
   const navigate = useNavigate();
   const [addingMeal] = useState<MealCategory | null>(null);
@@ -80,6 +73,13 @@ export default function Dashboard() {
 
   const allEntries = log ? Object.values(log.meals).flat() : [];
   const totals = sumNutrition(allEntries);
+
+  const remaining = {
+    calories: profile.calorieGoal          - totals.calories,
+    protein:  profile.macroTargets.protein - totals.protein,
+    carbs:    profile.macroTargets.carbs   - totals.carbs,
+    fat:      profile.macroTargets.fat     - totals.fat,
+  };
 
   const dateLabel = format(new Date(selectedDate + 'T12:00:00'), 'EEEE, MMMM d');
 
