@@ -107,6 +107,7 @@ export default function Dashboard() {
   const streak = useStreak();
   const navigate = useNavigate();
   const [_addingMeal] = useState<MealCategory | null>(null);
+  const [microExpanded, setMicroExpanded] = useState(false);
 
   const hour = new Date().getHours();
   const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
@@ -252,27 +253,35 @@ export default function Dashboard() {
       </div>
 
       {/* Micronutrients */}
-      <div className="card p-4">
-        <p className="section-label mb-4">Micronutrients (% DV)</p>
-        <div className="grid grid-cols-2 gap-2">
-          {microItems.map(item => {
-            const pct = Math.round((item.value / item.dv) * 100);
-            const filled = Math.min(pct, 100);
-            return (
-              <div key={item.label} className="bg-surface-raised rounded-xl p-3">
-                <div className="text-xs text-gray-500 mb-1">{item.label}</div>
-                <div className="text-white font-bold text-sm">{pct}%</div>
-                <div className="text-xs text-gray-600">{Math.round(item.value * 10) / 10}{item.unit}</div>
-                <div className="mt-2 bg-surface-high rounded-full h-1">
-                  <div
-                    className="h-1 rounded-full bg-gradient-to-r from-brand-500 to-violet-400"
-                    style={{ width: `${filled}%` }}
-                  />
+      <div className="card overflow-hidden">
+        <button
+          onClick={() => setMicroExpanded(p => !p)}
+          className="w-full flex items-center justify-between p-4"
+        >
+          <p className="section-label">Micronutrients (% DV)</p>
+          <span className="text-gray-600 text-xs">{microExpanded ? '▲' : '▼'}</span>
+        </button>
+        {microExpanded && (
+          <div className="grid grid-cols-2 gap-2 px-4 pb-4">
+            {microItems.map(item => {
+              const pct    = Math.round((item.value / item.dv) * 100);
+              const filled = Math.min(pct, 100);
+              return (
+                <div key={item.label} className="bg-surface-raised rounded-xl p-3">
+                  <div className="text-xs text-gray-500 mb-1">{item.label}</div>
+                  <div className="text-white font-bold text-sm">{pct}%</div>
+                  <div className="text-xs text-gray-600">{Math.round(item.value * 10) / 10}{item.unit}</div>
+                  <div className="mt-2 bg-surface-high rounded-full h-1">
+                    <div
+                      className="h-1 rounded-full bg-gradient-to-r from-brand-500 to-violet-400"
+                      style={{ width: `${filled}%` }}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
     </div>
