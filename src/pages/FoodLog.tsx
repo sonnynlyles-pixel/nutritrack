@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { format, addDays, subDays, parseISO } from 'date-fns';
-import { ChevronLeftIcon, ChevronRightIcon, TrashIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { format, addDays, parseISO } from 'date-fns';
+import { ChevronLeftIcon, ChevronRightIcon, TrashIcon, PlusIcon, XMarkIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
 import { useStore } from '../store/useStore';
 import { useDailyLog } from '../hooks/useDailyLog';
 import { sumNutrition } from '../utils/nutrition';
 import FoodSearchModal from '../components/FoodSearch/FoodSearchModal';
+import FoodInsightsPanel from '../components/FoodInsights/FoodInsightsPanel';
 import type { MealCategory, MealEntry } from '../types';
 
 const MEALS: { key: MealCategory; label: string; emoji: string }[] = [
@@ -29,6 +30,7 @@ export default function FoodLog() {
   const { log, loading, addEntry, removeEntry, updateWater, updateNotes } = useDailyLog(currentDate);
   const [openMeal, setOpenMeal] = useState<MealCategory | null>(mealParam || null);
   const [modalMeal, setModalMeal] = useState<MealCategory | null>(null);
+  const [selectedEntry, setSelectedEntry] = useState<MealEntry | null>(null);
   const [expandedMeals, setExpandedMeals] = useState<Set<MealCategory>>(
     new Set(mealParam ? [mealParam] : ['breakfast', 'lunch', 'dinner', 'snacks'])
   );
@@ -119,9 +121,15 @@ export default function FoodLog() {
               {isExpanded && (
                 <div className="border-t border-gray-700">
                   {entries.map(entry => (
-                    <div key={entry.id} className="flex items-center gap-3 px-4 py-3 border-b border-gray-700/50">
-                      <div className="flex-1 min-w-0">
-                        <div className="text-sm text-white font-medium truncate">{entry.food.name}</div>
+                    <div key={entry.id} className="flex items-center gap-2 px-4 py-3 border-b border-gray-700/50">
+                      <button
+                        onClick={() => setSelectedEntry(entry)}
+                        className="flex-1 min-w-0 text-left hover:opacity-80 transition-opacity"
+                      >
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-sm text-white font-medium truncate">{entry.food.name}</span>
+                          <InformationCircleIcon className="w-3.5 h-3.5 text-gray-600 shrink-0" />
+                        </div>
                         {entry.food.brand && (
                           <div className="text-xs text-gray-500 truncate">{entry.food.brand}</div>
                         )}
@@ -132,10 +140,10 @@ export default function FoodLog() {
                           C:{Math.round(entry.food.nutrition.carbs * entry.servings)}g
                           F:{Math.round(entry.food.nutrition.fat * entry.servings)}g
                         </div>
-                      </div>
+                      </button>
                       <button
                         onClick={() => removeEntry(key, entry.id)}
-                        className="p-2 text-gray-600 hover:text-red-400 transition-colors"
+                        className="p-2 text-gray-600 hover:text-red-400 transition-colors shrink-0"
                       >
                         <TrashIcon className="w-4 h-4" />
                       </button>
@@ -215,6 +223,80 @@ export default function FoodLog() {
           </div>
         </div>
       </div>
+
+      {/* Food Detail Panel */}
+      {selectedEntry && (
+        <div className="fixed inset-0 z-50 flex flex-col justify-end">
+          <div className="absolute inset-0 bg-black/60" onClick={() => setSelectedEntry(null)} />
+          <div className="relative bg-gray-900 rounded-t-2xl max-h-[85vh] overflow-y-auto">
+            {/* Handle */}
+            <div className="flex justify-center pt-3 pb-1">
+              <div className="w-10 h-1 bg-gray-700 rounded-full" />
+            </div>
+            {/* Header */}
+            <div className="flex items-start justify-between px-4 pt-2 pb-3 border-b border-gray-800">
+              <div className="flex-1 min-w-0 pr-3">
+                <h2 className="text-base font-semibold text-white leading-snug">{selectedEntry.food.name}</h2>
+                {selectedEntry.food.brand && (
+                  <p className="text-xs text-gray-500 mt-0.5">{selectedEntry.food.brand}</p>
+                )}
+                <p className="text-xs text-gray-500 mt-0.5">
+                  {selectedEntry.servings}x {selectedEntry.food.servingLabel}
+                </p>
+              </div>
+              <button onClick={() => setSelectedEntry(null)} className="p-1.5 rounded-full hover:bg-gray-800 shrink-0">
+                <XMarkIcon className="w-5 h-5 text-gray-400" />
+              </button>
+            </div>
+
+            <div className="px-4 py-4 space-y-4">
+              {/* Macro grid */}
+              <div className="grid grid-cols-4 gap-2 text-center">
+                {([
+                  { label: 'Calories', value: Math.round(selectedEntry.food.nutrition.calories * selectedEntry.servings), unit: '', color: 'text-white' },
+                  { label: 'Protein', value: Math.round(selectedEntry.food.nutrition.protein * selectedEntry.servings), unit: 'g', color: 'text-blue-400' },
+                  { label: 'Carbs', value: Math.round(selectedEntry.food.nutrition.carbs * selectedEntry.servings), unit: 'g', color: 'text-amber-400' },
+                  { label: 'Fat', value: Math.round(selectedEntry.food.nutrition.fat * selectedEntry.servings), unit: 'g', color: 'text-rose-400' },
+                ] as const).map(({ label, value, unit, color }) => (
+                  <div key={label} className="bg-gray-800 rounded-xl p-2">
+                    <div className={`text-base font-bold ${color}`}>{value}{unit}</div>
+                    <div className="text-xs text-gray-500">{label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Micro details */}
+              <div className="bg-gray-800 rounded-xl divide-y divide-gray-700">
+                {([
+                  { label: 'Fiber', value: selectedEntry.food.nutrition.fiber, unit: 'g' },
+                  { label: 'Sugar', value: selectedEntry.food.nutrition.sugar, unit: 'g' },
+                  { label: 'Added Sugar', value: selectedEntry.food.nutrition.addedSugar, unit: 'g' },
+                  { label: 'Saturated Fat', value: selectedEntry.food.nutrition.saturatedFat, unit: 'g' },
+                  { label: 'Trans Fat', value: selectedEntry.food.nutrition.transFat, unit: 'g' },
+                  { label: 'Sodium', value: selectedEntry.food.nutrition.sodium, unit: 'mg' },
+                  { label: 'Cholesterol', value: selectedEntry.food.nutrition.cholesterol, unit: 'mg' },
+                  { label: 'Caffeine', value: selectedEntry.food.nutrition.caffeine, unit: 'mg' },
+                  { label: 'Alcohol', value: selectedEntry.food.nutrition.alcohol, unit: 'g' },
+                  { label: 'Magnesium', value: selectedEntry.food.nutrition.magnesium, unit: 'mg' },
+                  { label: 'Zinc', value: selectedEntry.food.nutrition.zinc, unit: 'mg' },
+                  { label: 'Omega-3', value: selectedEntry.food.nutrition.omega3, unit: 'g' },
+                  { label: 'Folate', value: selectedEntry.food.nutrition.folate, unit: 'mcg' },
+                ] as const).filter(({ value }) => (value ?? 0) > 0).map(({ label, value, unit }) => (
+                  <div key={label} className="flex items-center justify-between px-3 py-2">
+                    <span className="text-xs text-gray-400">{label}</span>
+                    <span className="text-xs text-white font-medium">
+                      {Math.round((value ?? 0) * selectedEntry.servings * 10) / 10}{unit}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Insights */}
+              <FoodInsightsPanel food={selectedEntry.food} servings={selectedEntry.servings} />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Food Search Modal */}
       <FoodSearchModal
