@@ -116,8 +116,26 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-dom-cheese-slice',         "Cheese Pizza (Large, Hand Tossed, 1 slice)", "Domino's", '1 slice',  290,  12, 37, 11,  5,  25,  680, 2,  4),
   rf('seed-dom-pepperoni-slice',      "Pepperoni Pizza (Large, Hand Tossed, 1 slice)", "Domino's", '1 slice', 330, 14, 37, 14,  6,  35,  820, 2,  4),
 
-  // ── Beverages ──────────────────────────────────────────────────
-  rf('seed-stubborn-root-beer',       "Classic Root Beer (12 fl oz can)",    "Stubborn Soda",  '1 can (355ml)', 150, 0, 39,  0,  0,  0,   70, 0, 39),
+  // ── Stubborn Soda ───────────────────────────────────────────────
+  rf('seed-stubborn-root-beer',       "Classic Root Beer",                   "Stubborn Soda",  '1 can (12 fl oz)', 150, 0, 39, 0, 0, 0,  70, 0, 39),
+
+  // ── Bang Energy (16 fl oz can — all flavors: 0 cal, 0 carbs) ───
+  rf('seed-bang-black-cherry',        "Bang Black Cherry Vanilla",           "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-blue-razz',           "Bang Blue Razz",                      "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-candy-apple',         "Bang Candy Apple Crisp",              "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-cherry-blade',        "Bang Cherry Blade Lemonade",          "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-citrus-twist',        "Bang Citrus Twist",                   "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-cotton-candy',        "Bang Cotton Candy",                   "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-lemon-drop',          "Bang Lemon Drop",                     "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-miami-cola',          "Bang Miami Cola",                     "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-peach-mango',         "Bang Peach Mango",                    "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-pina-colada',         "Bang Pina Colada",                    "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-purple-haze',         "Bang Purple Haze",                    "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-rainbow-unicorn',     "Bang Rainbow Unicorn",                "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-root-beer',           "Bang Root Beer",                      "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-star-blast',          "Bang Star Blast",                     "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-strawberry-blast',    "Bang Strawberry Blast",               "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+  rf('seed-bang-watermelon',          "Bang Wyldin Watermelon",              "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
 ];
 
 export async function seedFoods() {
