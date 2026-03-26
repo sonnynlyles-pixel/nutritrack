@@ -242,6 +242,28 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-caseys-pulled-pork',          "Pulled Pork Sandwich",                    "Casey's", '1 sandwich',            399, 19, 39, 17,  5, 60,  900, 1, 8),
   rf('seed-caseys-bbq-beef-sandwich',    "BBQ Beef Sandwich",                       "Casey's", '1 sandwich',            683, 34, 53, 44, 12, 90, 1422, 2, 8),
 
+  // ── Casey's Wings — Plain (per wing) ────────────────────────────
+  rf('seed-caseys-wing-boneless-plain',  "Boneless Wing (Plain)",                   "Casey's", '1 wing',                  80,  6,  5,  5, 1,  15,  300, 0, 0),
+  rf('seed-caseys-wing-bonein-plain',    "Bone-In Wing (Plain)",                    "Casey's", '1 wing',                 120,  5,  5,  9, 2,  25,  490, 0, 0),
+
+  // ── Casey's Wings — Sauced & Dry Rub (per 5 wings) ──────────────
+  rf('seed-caseys-wings-nashville-bl',   "Nashville Hot Boneless Wings",            "Casey's", '5 wings',                430, 28, 24, 25, 5,  70, 1630, 2, 1),
+  rf('seed-caseys-wings-nashville-bi',   "Nashville Hot Bone-In Wings",             "Casey's", '5 wings',                620, 48, 46, 26, 5, 120, 2760, 3, 2),
+  rf('seed-caseys-wings-lemon-bl',       "Lemon Pepper Boneless Wings",             "Casey's", '5 wings',                430, 28, 24, 25, 5,  70, 1570, 2, 1),
+  rf('seed-caseys-wings-lemon-bi',       "Lemon Pepper Bone-In Wings",              "Casey's", '5 wings',                620, 48, 46, 26, 5, 120, 2670, 3, 2),
+  rf('seed-caseys-wings-carolina-bl',    "Carolina Reaper Boneless Wings",          "Casey's", '5 wings',                430, 28, 24, 25, 5,  70, 1560, 2, 1),
+  rf('seed-caseys-wings-carolina-bi',    "Carolina Reaper Bone-In Wings",           "Casey's", '5 wings',                620, 48, 46, 26, 5, 120, 2720, 3, 2),
+  rf('seed-caseys-wings-buffalo-bl',     "Buffalo Boneless Wings",                  "Casey's", '5 wings',                420, 28, 26, 23, 4,  70, 2710, 2, 1),
+  rf('seed-caseys-wings-buffalo-bi',     "Buffalo Bone-In Wings",                   "Casey's", '5 wings',                610, 48, 49, 25, 4, 120, 3840, 3, 2),
+  rf('seed-caseys-wings-garlic-bl',      "Garlic Parmesan Boneless Wings",          "Casey's", '5 wings',                560, 31, 24, 38, 8,  75, 1650, 2, 1),
+  rf('seed-caseys-wings-garlic-bi',      "Garlic Parmesan Bone-In Wings",           "Casey's", '5 wings',                720, 50, 46, 37, 8, 125, 2740, 0, 2),
+  rf('seed-caseys-wings-mango-bl',       "Mango Habanero Boneless Wings",           "Casey's", '5 wings',                480, 28, 44, 21, 4,  70, 1710, 2, 22),
+  rf('seed-caseys-wings-mango-bi',       "Mango Habanero Bone-In Wings",            "Casey's", '5 wings',                650, 48, 62, 23, 4, 120, 2770, 3, 18),
+  rf('seed-caseys-wings-sweetchili-bl',  "Sweet Chili Boneless Wings",              "Casey's", '5 wings',                500, 28, 50, 21, 4,  70, 1930, 2, 25),
+  rf('seed-caseys-wings-sweetchili-bi',  "Sweet Chili Bone-In Wings",               "Casey's", '5 wings',                710, 48, 78, 23, 4, 120, 3170, 3, 31),
+  rf('seed-caseys-wings-bbq-bl',         "BBQ Boneless Wings",                      "Casey's", '5 wings',                510, 28, 54, 21, 4,  70, 1890, 2, 30),
+  rf('seed-caseys-wings-bbq-bi',         "BBQ Bone-In Wings",                       "Casey's", '5 wings',                710, 48, 78, 23, 4, 120, 3040, 3, 32),
+
   // ── Casey's Breakfast ───────────────────────────────────────────
   rf('seed-caseys-bk-bacon-croissant',   "Bacon, Egg & Cheese Croissant",           "Casey's", '1 sandwich',            375, 14, 29, 23,  9, 90,  793, 0, 2),
   rf('seed-caseys-bk-sausage-croissant', "Sausage, Egg & Cheese Croissant",         "Casey's", '1 sandwich',            520, 17, 29, 39, 12, 110,  900, 0, 2),
