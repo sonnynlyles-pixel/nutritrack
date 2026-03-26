@@ -138,6 +138,59 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-bang-watermelon',          "Bang Wyldin Watermelon",              "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
   rf('seed-bang-any-means-orange',    "Bang Any Means Orange",               "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
 
+  // ── Casey's General Store — Pizza (large 16", 1 slice = 1/12 pie) ──
+  rf('seed-caseys-pizza-cheese',         "Cheese Pizza (Large Slice)",              "Casey's", '1 slice (1/12 large)',  244, 10, 32,  9, 5,  22,  385, 1, 3),
+  rf('seed-caseys-pizza-pepperoni',      "Pepperoni Pizza (Large Slice)",           "Casey's", '1 slice (1/12 large)',  266, 11, 32, 11, 5,  27,  475, 1, 3),
+  rf('seed-caseys-pizza-sausage',        "Mild Sausage Pizza (Large Slice)",        "Casey's", '1 slice (1/12 large)',  295, 13, 33, 13, 6,  34,  554, 1, 3),
+  rf('seed-caseys-pizza-beef',           "Beef Pizza (Large Slice)",                "Casey's", '1 slice (1/12 large)',  287, 13, 32, 12, 5,  37,  602, 1, 3),
+  rf('seed-caseys-pizza-bacon',          "Bacon Pizza (Large Slice)",               "Casey's", '1 slice (1/12 large)',  293, 14, 33, 13, 5,  33,  532, 1, 3),
+  rf('seed-caseys-pizza-canadian-bacon', "Canadian Bacon Pizza (Large Slice)",      "Casey's", '1 slice (1/12 large)',  260, 12, 33, 10, 5,  27,  465, 1, 3),
+  rf('seed-caseys-pizza-chicken',        "Chicken Pizza (Large Slice)",             "Casey's", '1 slice (1/12 large)',  280, 15, 33, 11, 5,  36,  547, 1, 3),
+  rf('seed-caseys-pizza-veggie',         "Vegetable Pizza (Large Slice)",           "Casey's", '1 slice (1/12 large)',  248,  9, 29,  9, 5,  20,  368, 1, 3),
+  rf('seed-caseys-pizza-bbq-beef',       "BBQ Beef Pizza (Large Slice)",            "Casey's", '1 slice (1/12 large)',  284, 12, 37, 11, 6,  30,  527, 1, 6),
+  rf('seed-caseys-pizza-buffalo',        "Buffalo Chicken Pizza (Large Slice)",     "Casey's", '1 slice (1/12 large)',  281, 14, 32, 11, 5,  34,  686, 0, 2),
+  rf('seed-caseys-pizza-cbr',            "Chicken Bacon Ranch Pizza (Large Slice)", "Casey's", '1 slice (1/12 large)',  336, 16, 33, 16, 6,  45,  680, 1, 4),
+  rf('seed-caseys-pizza-taco',           "Taco Pizza (Large Slice)",                "Casey's", '1 slice (1/12 large)',  336, 15, 36, 15, 7,  42,  784, 1, 3),
+  rf('seed-caseys-pizza-supreme',        "Supreme Pizza (Large Slice)",             "Casey's", '1 slice (1/12 large)',  313, 15, 34, 14, 8,  47,  839, 2, 4),
+  rf('seed-caseys-pizza-meat-galore',    "Meat Galore Pizza (Large Slice)",         "Casey's", '1 slice (1/12 large)',  310, 16, 33, 14, 8,  49,  831, 1, 4),
+  rf('seed-caseys-pizza-bcb',            "Bacon Cheeseburger Pizza (Large Slice)",  "Casey's", '1 slice (1/12 large)',  360, 17, 35, 17, 8,  48,  794, 0, 5),
+
+  // ── Casey's Breakfast Pizza (large 16", 1 slice = 1/12 pie) ────
+  rf('seed-caseys-bkpizza-bacon',        "Bacon Breakfast Pizza (Large Slice)",     "Casey's", '1 slice (1/12 large)',  270, 14, 23, 14, 7,  85,  630, 1, 2),
+  rf('seed-caseys-bkpizza-sausage',      "Sausage Breakfast Pizza (Large Slice)",   "Casey's", '1 slice (1/12 large)',  328, 15, 33, 16, 7,  68,  624, 1, 2),
+  rf('seed-caseys-bkpizza-ham',          "Ham Breakfast Pizza (Large Slice)",       "Casey's", '1 slice (1/12 large)',  304, 15, 33, 13, 6,  65,  641, 0, 3),
+
+  // ── Casey's Breakfast Pizza — Warmer Slices (~1/6 large, pre-made) ──
+  rf('seed-caseys-bkpizza-sausage-warm', "Sausage Breakfast Pizza (Warmer Slice)",  "Casey's", '1 warmer slice',        540, 26, 45, 29, 13, 165, 1260, 1, 4),
+  rf('seed-caseys-bkpizza-bacon-warm',   "Bacon Breakfast Pizza (Warmer Slice)",    "Casey's", '1 warmer slice',        550, 28, 45, 28, 13, 150, 1200, 1, 3),
+
+  // ── Casey's Chicken ─────────────────────────────────────────────
+  rf('seed-caseys-chicken-tenders-3',    "Chicken Tenders (3 pc)",                  "Casey's", '3 pieces',              350, 22, 23, 11, 2,  61,  725, 1, 0),
+  rf('seed-caseys-chicken-tenders-4',    "Chicken Tenders (4 pc)",                  "Casey's", '4 pieces',              440, 42, 36, 14, 2, 110, 1380, 2, 2),
+  rf('seed-caseys-popcorn-chicken',      "Popcorn Chicken",                         "Casey's", '1 serving',             450, 28, 40, 24, 5,  75, 1650, 2, 0),
+
+  // ── Casey's Breadsticks ─────────────────────────────────────────
+  rf('seed-caseys-breadsticks',          "Cheese Breadsticks",                      "Casey's", '1 order',               811, 32, 90, 41, 12, 45, 1530, 5, 5),
+
+  // ── Casey's Burgers & Sandwiches ────────────────────────────────
+  rf('seed-caseys-hamburger',            "Hamburger",                               "Casey's", '1 burger',              500, 25, 28, 32, 13, 85,  690, 1, 3),
+  rf('seed-caseys-cheeseburger',         "Cheeseburger",                            "Casey's", '1 burger',              555, 28, 28, 36, 14, 95,  870, 1, 3),
+  rf('seed-caseys-bacon-cheeseburger',   "Bacon Cheeseburger",                      "Casey's", '1 burger',              622, 32, 28, 41, 16, 113, 1223, 1, 3),
+  rf('seed-caseys-chicken-fritter',      "Chicken Fritter Sandwich",                "Casey's", '1 sandwich',            580, 25, 65, 20,  5, 60,  900, 2, 3),
+  rf('seed-caseys-pork-sandwich',        "Breaded Pork Sandwich",                   "Casey's", '1 sandwich',            630, 30, 88, 18,  4, 70, 1100, 3, 5),
+  rf('seed-caseys-pulled-pork',          "Pulled Pork Sandwich",                    "Casey's", '1 sandwich',            399, 19, 39, 17,  5, 60,  900, 1, 8),
+  rf('seed-caseys-bbq-beef-sandwich',    "BBQ Beef Sandwich",                       "Casey's", '1 sandwich',            683, 34, 53, 44, 12, 90, 1422, 2, 8),
+
+  // ── Casey's Breakfast ───────────────────────────────────────────
+  rf('seed-caseys-bk-bacon-croissant',   "Bacon, Egg & Cheese Croissant",           "Casey's", '1 sandwich',            375, 14, 29, 23,  9, 90,  793, 0, 2),
+  rf('seed-caseys-bk-sausage-croissant', "Sausage, Egg & Cheese Croissant",         "Casey's", '1 sandwich',            520, 17, 29, 39, 12, 110,  900, 0, 2),
+  rf('seed-caseys-bk-ham-croissant',     "Ham, Egg & Cheese Croissant",             "Casey's", '1 sandwich',            358, 18, 24, 24,  8, 90,  750, 0, 2),
+  rf('seed-caseys-bk-burrito',           "Breakfast Burrito",                       "Casey's", '1 burrito',             330, 14, 35, 16,  6, 80,  883, 2, 2),
+  rf('seed-caseys-bk-bowl-sausage',      "Breakfast Bowl (Sausage)",                "Casey's", '1 bowl',                749, 35, 25, 45, 15, 150, 1200, 1, 2),
+  rf('seed-caseys-bk-bowl-bacon',        "Breakfast Bowl (Bacon)",                  "Casey's", '1 bowl',                768, 35, 25, 45, 14, 150, 1200, 1, 2),
+  rf('seed-caseys-bk-biscuit-gravy',     "Biscuit & Gravy",                         "Casey's", '1 order',               450,  9, 40, 26, 12, 30, 1140, 1, 5),
+  rf('seed-caseys-hashbrown',            "Hashbrown",                               "Casey's", '1 order',               140,  2, 17,  7,  2,  0,  200, 1, 0),
+
   // ── Vitamin Water (20 fl oz bottle = 2.5 servings) ─────────────
   rf('seed-vw-xxx',               "Vitamin Water XXX (Açaí-Blueberry-Pomegranate)", "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
   rf('seed-vw-focus',             "Vitamin Water Focus (Kiwi-Strawberry)",          "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
