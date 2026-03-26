@@ -138,6 +138,67 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-bang-watermelon',          "Bang Wyldin Watermelon",              "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
   rf('seed-bang-any-means-orange',    "Bang Any Means Orange",               "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
 
+  // ── Kwik Trip / Kwik Star — Fried Chicken ───────────────────────
+  rf('seed-kt-chicken-breast',           "Fried Chicken Breast",                    "Kwik Trip", '1 piece',               240, 26, 10, 11, 2,  85,  390, 0, 1),
+  rf('seed-kt-chicken-2pc',              "Fried Chicken Breast & Wing (2 pc)",      "Kwik Trip", '1 container',           300, 33, 12, 14, 3, 110,  590, 0, 1),
+  rf('seed-kt-chicken-tenders-2pc',      "Chicken Tenders (2 pc)",                  "Kwik Trip", '2 pieces',              380, 27, 27, 18, 3,  55,  900, 2, 0),
+  rf('seed-kt-chicken-tenders-wedges',   "Chicken Tenders & Wedges Combo",          "Kwik Trip", '1 container',           550, 41, 37, 28, 4, 105, 1410, 2, 1),
+
+  // ── Kwik Trip — Boneless Wings ──────────────────────────────────
+  rf('seed-kt-wings-buffalo',            "Buffalo Boneless Wings",                  "Kwik Trip", '1 container',           270, 25, 13, 15, 2,  85, 2250, 0, 1),
+  rf('seed-kt-wings-plain',              "Boneless Chicken Wings (Original)",       "Kwik Trip", '1 container',           480, 19, 28, 34, 16, 75, 1090, 0, 1),
+  rf('seed-kt-wings-garlic-parm',        "Garlic Parmesan Boneless Wings",          "Kwik Trip", '3 pieces',              350, 17, 10, 27, 5,  70, 1140, 0, 2),
+  rf('seed-kt-wings-sweet-spicy',        "Sweet & Spicy Boneless Wings",            "Kwik Trip", '1 container',           620, 24, 93, 18, 4,  95, 2260, 1, 56),
+  rf('seed-kt-wings-bbq',                "BBQ Boneless Wings",                      "Kwik Trip", '1 container',           640, 23, 95, 18, 4,  95, 3180, 0, 57),
+
+  // ── Kwik Trip — Burgers & Sandwiches ────────────────────────────
+  rf('seed-kt-cheeseburger',             "Cheeseburger",                            "Kwik Trip", '1 burger',              350, 16, 28, 20, 8,  55,  810, 1, 3),
+  rf('seed-kt-angus-cheeseburger',       "Angus Cheeseburger (1/4 lb)",             "Kwik Trip", '1 burger',              590, 32, 38, 36, 16, 110, 1230, 2, 1),
+  rf('seed-kt-angus-bacon-cheeseburger', "Angus Bacon Cheeseburger",                "Kwik Trip", '1 burger',              650, 37, 38, 40, 17, 120, 1490, 2, 1),
+  rf('seed-kt-crispy-chicken-sandwich',  "Crispy Fried Chicken Sandwich",           "Kwik Trip", '1 sandwich',            350, 20, 48,  9, 2,  60, 1270, 1, 3),
+  rf('seed-kt-spicy-chicken-sandwich',   "Spicy Chicken Sandwich with Cheese",      "Kwik Trip", '1 sandwich',            490, 25, 46, 23, 7,  75, 1500, 1, 4),
+
+  // ── Kwik Trip — Pizza (Traditional Crust, 1 slice = 1/6 pie) ───
+  rf('seed-kt-pizza-cheese',             "Cheese Pizza (Traditional Slice)",        "Kwik Trip", '1 slice (1/6 pizza)',   330, 16, 38, 13, 7,  35,  790, 2, 4),
+  rf('seed-kt-pizza-pepperoni',          "Pepperoni Pizza (Traditional Slice)",     "Kwik Trip", '1 slice (1/6 pizza)',   370, 17, 37, 17, 9,  40,  910, 2, 3),
+  rf('seed-kt-pizza-supreme',            "Supreme Pizza (Traditional Slice)",       "Kwik Trip", '1 slice (1/6 pizza)',   350, 16, 38, 15, 7,  40,  920, 3, 3),
+  rf('seed-kt-pizza-parmesan',           "Parmesan Pizza (Traditional Slice)",      "Kwik Trip", '1 slice (1/6 pizza)',   330, 17, 38, 13, 6,  40,  800, 3, 3),
+  rf('seed-kt-pizza-tailgater',          "Tailgater Pizza — Sausage & Cheese Curd", "Kwik Trip", '1 slice (1/6 pizza)',   430, 21, 38, 22, 11, 55,  970, 3, 4),
+
+  // ── Kwik Trip — Pizza (Thin Crust, 1/3 pie) ─────────────────────
+  rf('seed-kt-pizza-thin-sausage',       "Thin Crust Sausage Pizza",                "Kwik Trip", '1/3 pizza',             350, 16, 26, 20, 9,  45,  590, 2, 3),
+  rf('seed-kt-pizza-thin-chicken-alfredo',"Thin Crust Chicken Alfredo Pizza",       "Kwik Trip", '1/3 pizza',             290, 15, 22, 16, 7,  40,  570, 1, 1),
+
+  // ── Kwik Trip — Pothole Pizza (deep-dish individual) ────────────
+  rf('seed-kt-pothole-pep-rally',        "Pep Rally Pothole Pizza (Pepperoni)",     "Kwik Trip", '1/3 pizza',             430, 23, 31, 26, 13, 65,  960, 3, 3),
+  rf('seed-kt-pothole-meat-sweats',      "Meat Sweats Pothole Pizza",               "Kwik Trip", '1/5 pizza',             340, 19, 21, 22, 10, 60,  750, 2, 2),
+
+  // ── Kwik Trip — Breakfast Pizza ──────────────────────────────────
+  rf('seed-kt-bkpizza-croissant',        "Croissant Crust Breakfast Pizza (Slice)", "Kwik Trip", '1 slice',               390, 17, 31, 21, 8, 145,  840, 2, 3),
+
+  // ── Kwik Trip — Breakfast Sandwiches & Burritos ──────────────────
+  rf('seed-kt-bk-sausage-croissant',     "Sausage, Egg & Cheese Croissant",         "Kwik Trip", '1 sandwich',            460, 16, 28, 31, 13, 140,  850, 1, 4),
+  rf('seed-kt-bk-bacon-croissant',       "Bacon, Egg & Cheese Croissant",           "Kwik Trip", '1 sandwich',            340, 16, 28, 19,  8, 115,  820, 1, 4),
+  rf('seed-kt-bk-sausage-muffin',        "Sausage, Egg & Cheese English Muffin",    "Kwik Trip", '1 sandwich',            380, 18, 31, 21,  8, 115,  890, 1, 2),
+  rf('seed-kt-bk-bacon-muffin',          "Bacon, Egg & Cheese English Muffin",      "Kwik Trip", '1 sandwich',            260, 14, 27, 11,  4,  80,  740, 2, 4),
+  rf('seed-kt-bk-sausage-biscuit',       "Sausage, Egg & Cheese Biscuit",           "Kwik Trip", '1 sandwich',            500, 18, 32, 33, 17, 115, 1380, 1, 5),
+  rf('seed-kt-bk-burrito',               "Breakfast Burrito",                       "Kwik Trip", '1 burrito',             330, 13, 32, 16,  7, 115,  860, 1, 3),
+  rf('seed-kt-bk-sausage-burrito',       "Sausage Breakfast Burrito",               "Kwik Trip", '1 burrito',             330, 13, 32, 17,  6, 130,  850, 1, 3),
+
+  // ── Kwik Trip — Hot Dogs & Roller Grill ─────────────────────────
+  rf('seed-kt-hot-dog',                  "Hot Dog (Frank Only)",                    "Kwik Trip", '1 frank',               140,  5,  2, 13,  5,  35,  410, 0, 1),
+  rf('seed-kt-angus-frank',              "Angus Beef Frank (Frank Only)",           "Kwik Trip", '1 frank',               340, 14,  5, 29, 13,  65,  980, 0, 1),
+  rf('seed-kt-angus-frank-bun',          "Angus Beef Frank with Coney Bun",         "Kwik Trip", '1 hot dog',             480, 18, 28, 32, 14,  65, 1220, 1, 3),
+  rf('seed-kt-corn-dog',                 "Corn Dog",                                "Kwik Trip", '1 corn dog',            280, 10, 26, 15,  5,  45,  830, 1, 9),
+
+  // ── Kwik Trip — Tornados ─────────────────────────────────────────
+  rf('seed-kt-tornado-french-toast',     "French Toast & Sausage Tornado",          "Kwik Trip", '1 tornado',             190,  6, 22,  9,  2,  30,  290, 0, 1),
+  rf('seed-kt-tornado-sausage-egg',      "Sausage, Egg & Cheese Tornado",           "Kwik Trip", '1 tornado',             190,  6, 22,  9,  2,  30,  290, 0, 1),
+
+  // ── Kwik Trip — Other Kitchen Items ─────────────────────────────
+  rf('seed-kt-egg-roll',                 "Southwest Egg Roll",                      "Kwik Trip", '1 egg roll',            180,  6, 25,  6,  2,   5,  530, 2, 2),
+  rf('seed-kt-mac-cheese',               "Macaroni & Cheese",                       "Kwik Trip", '1 cup',                 240, 10, 17, 15, 10,  40,  600, 0, 2),
+
   // ── Casey's General Store — Pizza (large 16", 1 slice = 1/12 pie) ──
   rf('seed-caseys-pizza-cheese',         "Cheese Pizza (Large Slice)",              "Casey's", '1 slice (1/12 large)',  244, 10, 32,  9, 5,  22,  385, 1, 3),
   rf('seed-caseys-pizza-pepperoni',      "Pepperoni Pizza (Large Slice)",           "Casey's", '1 slice (1/12 large)',  266, 11, 32, 11, 5,  27,  475, 1, 3),
