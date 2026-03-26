@@ -15,31 +15,40 @@ export function emptyNutrition(): NutritionInfo {
 // --- Open Food Facts ---
 function parseOFFProduct(p: Record<string, unknown>): FoodItem {
   const n = (p.nutriments as Record<string, number>) || {};
+  const servingSizeG = parseFloat(p.serving_size as string) || 100;
+  // Scale factor: OFF stores _100g values per 100g/ml. If _serving isn't present,
+  // multiply the _100g value by (servingSize / 100) to get the per-serving amount.
+  const s = servingSizeG / 100;
+  const nv = (servingKey: string, per100Key: string, extraScale = 1): number => {
+    if (n[servingKey] != null) return n[servingKey] * extraScale;
+    if (n[per100Key] != null) return n[per100Key] * s * extraScale;
+    return 0;
+  };
   return {
     id: `off-${p.id || p.code || Math.random()}`,
     name: (p.product_name as string) || (p.product_name_en as string) || 'Unknown',
     brand: (p.brands as string) || undefined,
-    servingSizeG: parseFloat(p.serving_size as string) || 100,
+    servingSizeG,
     servingLabel: (p.serving_size as string) || '100g',
     barcode: p.code as string,
     source: 'off',
     nutrition: {
-      calories: n['energy-kcal_serving'] || n['energy-kcal_100g'] || 0,
-      protein: n.proteins_serving ?? n.proteins_100g ?? 0,
-      carbs: n.carbohydrates_serving ?? n.carbohydrates_100g ?? 0,
-      fat: n.fat_serving ?? n.fat_100g ?? 0,
-      sugar: n.sugars_serving ?? n.sugars_100g ?? 0,
-      fiber: n.fiber_serving ?? n.fiber_100g ?? 0,
-      sodium: (n.sodium_serving ?? n.sodium_100g ?? 0) * 1000,
-      cholesterol: n.cholesterol_serving ?? 0,
-      saturatedFat: n['saturated-fat_serving'] ?? n['saturated-fat_100g'] ?? 0,
-      vitaminA: n['vitamin-a_serving'] ?? 0,
-      vitaminC: n['vitamin-c_serving'] ?? n['vitamin-c_100g'] ?? 0,
-      vitaminD: n['vitamin-d_serving'] ?? 0,
-      vitaminB12: n['vitamin-b12_serving'] ?? 0,
-      iron: n.iron_serving ?? n.iron_100g ?? 0,
-      calcium: n.calcium_serving ?? n.calcium_100g ?? 0,
-      potassium: n.potassium_serving ?? n.potassium_100g ?? 0,
+      calories:     nv('energy-kcal_serving', 'energy-kcal_100g'),
+      protein:      nv('proteins_serving',    'proteins_100g'),
+      carbs:        nv('carbohydrates_serving','carbohydrates_100g'),
+      fat:          nv('fat_serving',          'fat_100g'),
+      sugar:        nv('sugars_serving',       'sugars_100g'),
+      fiber:        nv('fiber_serving',        'fiber_100g'),
+      sodium:       nv('sodium_serving',       'sodium_100g', 1000), // OFF stores sodium in g, convert to mg
+      cholesterol:  nv('cholesterol_serving',  'cholesterol_100g'),
+      saturatedFat: nv('saturated-fat_serving','saturated-fat_100g'),
+      vitaminA:     nv('vitamin-a_serving',    'vitamin-a_100g'),
+      vitaminC:     nv('vitamin-c_serving',    'vitamin-c_100g'),
+      vitaminD:     nv('vitamin-d_serving',    'vitamin-d_100g'),
+      vitaminB12:   nv('vitamin-b12_serving',  'vitamin-b12_100g'),
+      iron:         nv('iron_serving',         'iron_100g'),
+      calcium:      nv('calcium_serving',      'calcium_100g'),
+      potassium:    nv('potassium_serving',     'potassium_100g'),
     }
   };
 }

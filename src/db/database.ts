@@ -115,6 +115,9 @@ const SEEDED_FOODS: FoodItem[] = [
   // ── Domino's (Large, Hand Tossed, 1 slice) ─────────────────────
   rf('seed-dom-cheese-slice',         "Cheese Pizza (Large, Hand Tossed, 1 slice)", "Domino's", '1 slice',  290,  12, 37, 11,  5,  25,  680, 2,  4),
   rf('seed-dom-pepperoni-slice',      "Pepperoni Pizza (Large, Hand Tossed, 1 slice)", "Domino's", '1 slice', 330, 14, 37, 14,  6,  35,  820, 2,  4),
+
+  // ── Beverages ──────────────────────────────────────────────────
+  rf('seed-stubborn-root-beer',       "Classic Root Beer (12 fl oz can)",    "Stubborn Soda",  '1 can (355ml)', 150, 0, 39,  0,  0,  0,   70, 0, 39),
 ];
 
 export async function seedFoods() {
