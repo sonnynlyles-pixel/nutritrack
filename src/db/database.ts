@@ -136,6 +136,17 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-bang-star-blast',          "Bang Star Blast",                     "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
   rf('seed-bang-strawberry-blast',    "Bang Strawberry Blast",               "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
   rf('seed-bang-watermelon',          "Bang Wyldin Watermelon",              "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
+
+  // ── Jolly Rancher ──────────────────────────────────────────────
+  rf('seed-jr-hard-candy',            "Hard Candy (Original)",               "Jolly Rancher",  '3 pieces (18g)',    70, 0, 17, 0, 0, 0,  10, 0, 11),
+  rf('seed-jr-hard-candy-sf',         "Hard Candy Sugar Free",               "Jolly Rancher",  '4 pieces (16g)',    35, 0,  9, 0, 0, 0,  10, 0,  0),
+  rf('seed-jr-hard-candy-sour',       "Sour Hard Candy",                     "Jolly Rancher",  '4 pieces (16g)',    60, 0, 15, 0, 0, 0,  10, 0, 10),
+  rf('seed-jr-hard-candy-cinnamon',   "Cinnamon Fire Hard Candy",            "Jolly Rancher",  '3 pieces (18g)',    70, 0, 17, 0, 0, 0,  10, 0, 11),
+  rf('seed-jr-gummies',               "Original Gummies",                    "Jolly Rancher",  '9 pieces (39g)',   120, 2, 28, 0, 0, 0,  25, 0, 19),
+  rf('seed-jr-sour-gummies',          "Sour Gummies",                        "Jolly Rancher",  '9 pieces (32g)',   110, 0, 27, 0, 0, 0,  20, 0, 18),
+  rf('seed-jr-chews',                 "Awesome Twosome Chews",               "Jolly Rancher",  '13 pieces (39g)', 140, 2, 29, 2, 1, 0,  40, 0, 19),
+  rf('seed-jr-lollipop',              "Lollipop",                            "Jolly Rancher",  '1 pop (17g)',       60, 0, 15, 0, 0, 0,   0, 0, 10),
+  rf('seed-jr-jelly-beans',           "Jelly Beans",                         "Jolly Rancher",  '30 pieces (40g)',  100, 0, 26, 0, 0, 0,  10, 0, 18),
 ];
 
 export async function seedFoods() {
