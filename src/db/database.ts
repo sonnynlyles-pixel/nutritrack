@@ -138,7 +138,7 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-bang-watermelon',          "Bang Wyldin Watermelon",              "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0),
 
   // ── Jolly Rancher ──────────────────────────────────────────────
-  rf('seed-jr-hard-candy',            "Hard Candy (Original)",               "Jolly Rancher",  '3 pieces (18g)',    70, 0, 17, 0, 0, 0,  10, 0, 11),
+  rf('seed-jr-hard-candy',            "Hard Candy (Original)",               "Jolly Rancher",  '2 pieces',          45, 0, 11, 0, 0, 0,   0, 0,  8),
   rf('seed-jr-hard-candy-sf',         "Hard Candy Sugar Free",               "Jolly Rancher",  '4 pieces (16g)',    35, 0,  9, 0, 0, 0,  10, 0,  0),
   rf('seed-jr-hard-candy-sour',       "Sour Hard Candy",                     "Jolly Rancher",  '4 pieces (16g)',    60, 0, 15, 0, 0, 0,  10, 0, 10),
   rf('seed-jr-hard-candy-cinnamon',   "Cinnamon Fire Hard Candy",            "Jolly Rancher",  '3 pieces (18g)',    70, 0, 17, 0, 0, 0,  10, 0, 11),
