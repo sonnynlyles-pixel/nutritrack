@@ -5,6 +5,7 @@ import { useStore } from '../store/useStore';
 import { useDailyLog } from '../hooks/useDailyLog';
 import { useStreak } from '../hooks/useStreak';
 import { sumNutrition, DV } from '../utils/nutrition';
+import MealRecommendations from '../components/Recommendations/MealRecommendations';
 import type { MealCategory } from '../types';
 
 const MEAL_ORDER: MealCategory[] = ['breakfast', 'lunch', 'dinner', 'snacks'];
@@ -63,6 +64,13 @@ function MacroBar({ label, consumed, goal, color }: { label: string; consumed: n
 export default function Dashboard() {
   const { profile, selectedDate } = useStore();
   const { log, loading, addEntry, updateWater } = useDailyLog(selectedDate);
+
+  const remaining = {
+    calories: profile.calorieGoal          - totals.calories,
+    protein:  profile.macroTargets.protein - totals.protein,
+    carbs:    profile.macroTargets.carbs   - totals.carbs,
+    fat:      profile.macroTargets.fat     - totals.fat,
+  };
   const streak = useStreak();
   const navigate = useNavigate();
   const [addingMeal] = useState<MealCategory | null>(null);
@@ -121,6 +129,9 @@ export default function Dashboard() {
         <MacroBar label="Carbs" consumed={totals.carbs} goal={profile.macroTargets.carbs} color="bg-amber-400" />
         <MacroBar label="Fat" consumed={totals.fat} goal={profile.macroTargets.fat} color="bg-rose-400" />
       </div>
+
+      {/* Smart Recommendations */}
+      <MealRecommendations remaining={remaining} onAdd={addEntry} />
 
       {/* Water Tracker */}
       <div className="bg-gray-800 rounded-2xl p-4">
