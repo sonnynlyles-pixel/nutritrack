@@ -9,12 +9,12 @@ import CustomFoods from './pages/CustomFoods';
 import OnboardingWizard from './components/Onboarding/OnboardingWizard';
 import { useStore } from './store/useStore';
 import { useEffect } from 'react';
-import { pruneOldData } from './db/database';
+import { pruneOldData, seedFoods } from './db/database';
 
 export default function App() {
   const { profile } = useStore();
 
-  useEffect(() => { pruneOldData(); }, []);
+  useEffect(() => { pruneOldData(); seedFoods(); }, []);
 
   if (!profile.setupComplete) return <OnboardingWizard />;
 

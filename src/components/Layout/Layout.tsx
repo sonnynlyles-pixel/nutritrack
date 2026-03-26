@@ -4,14 +4,16 @@ import {
   CalendarIcon,
   ClipboardDocumentListIcon,
   ChartBarIcon,
-  Cog6ToothIcon
+  Cog6ToothIcon,
+  BookmarkIcon
 } from '@heroicons/react/24/outline';
 import {
   HomeIcon as HomeIconSolid,
   CalendarIcon as CalendarIconSolid,
   ClipboardDocumentListIcon as LogIconSolid,
   ChartBarIcon as ChartSolid,
-  Cog6ToothIcon as CogSolid
+  Cog6ToothIcon as CogSolid,
+  BookmarkIcon as BookmarkSolid
 } from '@heroicons/react/24/solid';
 
 const navItems = [
@@ -19,6 +21,7 @@ const navItems = [
   { to: '/log', label: 'Log', Icon: ClipboardDocumentListIcon, ActiveIcon: LogIconSolid },
   { to: '/calendar', label: 'Calendar', Icon: CalendarIcon, ActiveIcon: CalendarIconSolid },
   { to: '/progress', label: 'Progress', Icon: ChartBarIcon, ActiveIcon: ChartSolid },
+  { to: '/foods', label: 'Foods', Icon: BookmarkIcon, ActiveIcon: BookmarkSolid },
   { to: '/settings', label: 'Settings', Icon: Cog6ToothIcon, ActiveIcon: CogSolid },
 ];
 
