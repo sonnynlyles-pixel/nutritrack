@@ -100,7 +100,7 @@ export default function Progress() {
       <h1 className="text-xl font-bold text-white pt-2">Progress</h1>
 
       {/* Streak */}
-      <div className="bg-gray-800 rounded-2xl p-4 flex items-center gap-4">
+      <div className="card p-4 flex items-center gap-4">
         <div className="text-5xl">🔥</div>
         <div>
           <div className="text-3xl font-bold text-orange-400">{streak}</div>
@@ -109,22 +109,22 @@ export default function Progress() {
       </div>
 
       {/* Weight Stats */}
-      <div className="bg-gray-800 rounded-2xl p-4 grid grid-cols-2 gap-3">
-        <div className="bg-gray-900 rounded-xl p-3">
+      <div className="card p-4 grid grid-cols-2 gap-3">
+        <div className="bg-surface-raised rounded-xl p-3">
           <div className="text-xs text-gray-500">Current</div>
           <div className="text-xl font-bold text-white">{currentWeight} lbs</div>
         </div>
-        <div className="bg-gray-900 rounded-xl p-3">
+        <div className="bg-surface-raised rounded-xl p-3">
           <div className="text-xs text-gray-500">Goal</div>
           <div className="text-xl font-bold text-emerald-400">{profile.goalWeight} lbs</div>
         </div>
-        <div className="bg-gray-900 rounded-xl p-3">
+        <div className="bg-surface-raised rounded-xl p-3">
           <div className="text-xs text-gray-500">Change</div>
           <div className={`text-xl font-bold ${diff < 0 ? 'text-emerald-400' : diff > 0 ? 'text-red-400' : 'text-gray-400'}`}>
             {diff > 0 ? '+' : ''}{diff.toFixed(1)} lbs
           </div>
         </div>
-        <div className="bg-gray-900 rounded-xl p-3">
+        <div className="bg-surface-raised rounded-xl p-3">
           <div className="text-xs text-gray-500">Remaining</div>
           <div className={`text-xl font-bold ${Math.abs(remaining) < 5 ? 'text-emerald-400' : 'text-white'}`}>
             {Math.abs(remaining).toFixed(1)} lbs
@@ -133,41 +133,41 @@ export default function Progress() {
       </div>
 
       {/* Log Weight */}
-      <div className="bg-gray-800 rounded-2xl p-4 space-y-3">
+      <div className="card p-4 space-y-3">
         <h3 className="font-semibold text-white">Log Weight</h3>
         <div className="flex gap-2">
           <input
             type="number"
             step="0.1"
             placeholder="Weight (lbs)"
-            className="flex-1 bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+            className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
             value={newWeight}
             onChange={e => setNewWeight(e.target.value)}
           />
           <input
             type="date"
-            className="flex-1 bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+            className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
             value={newWeightDate}
             onChange={e => setNewWeightDate(e.target.value)}
           />
         </div>
         <input
           placeholder="Notes (optional)"
-          className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+          className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
           value={newWeightNotes}
           onChange={e => setNewWeightNotes(e.target.value)}
         />
         <button
           onClick={handleSaveWeight}
           disabled={!newWeight || saving}
-          className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-gray-700 disabled:text-gray-500 text-white rounded-xl font-semibold transition-colors"
+          className="w-full py-3 bg-brand-gradient disabled:bg-gray-700 disabled:text-gray-500 text-white rounded-xl font-semibold transition-colors"
         >
           {saving ? 'Saving...' : 'Save Weight'}
         </button>
       </div>
 
       {/* Weight Chart */}
-      <div className="bg-gray-800 rounded-2xl p-4">
+      <div className="card p-4">
         <h3 className="font-semibold text-white mb-3">Weight Trend</h3>
         <WeightChart entries={weightEntries} goalWeight={profile.goalWeight} />
         {/* Recent entries */}
@@ -183,7 +183,7 @@ export default function Progress() {
       </div>
 
       {/* 30-day heatmap */}
-      <div className="bg-gray-800 rounded-2xl p-4">
+      <div className="card p-4">
         <h3 className="font-semibold text-white mb-3">30-Day Calorie Compliance</h3>
         <div className="grid grid-cols-10 gap-1">
           {heatmapDays.map(({ dateStr, cal }) => {
@@ -206,19 +206,19 @@ export default function Progress() {
       </div>
 
       {/* Weekly Calorie Chart */}
-      <div className="bg-gray-800 rounded-2xl p-4">
+      <div className="card p-4">
         <h3 className="font-semibold text-white mb-3">This Week's Calories</h3>
         <WeeklyCalorieChart logs={weeklyLogs} calorieGoal={profile.calorieGoal} />
       </div>
 
       {/* Macro Pie */}
-      <div className="bg-gray-800 rounded-2xl p-4">
+      <div className="card p-4">
         <h3 className="font-semibold text-white mb-1">Weekly Macro Avg</h3>
         <MacroPieChart protein={avgMacros.protein} carbs={avgMacros.carbs} fat={avgMacros.fat} />
       </div>
 
       {/* Weekly Table */}
-      <div className="bg-gray-800 rounded-2xl p-4 overflow-x-auto">
+      <div className="card p-4 overflow-x-auto">
         <h3 className="font-semibold text-white mb-3">Daily Breakdown</h3>
         <table className="w-full text-sm">
           <thead>
@@ -232,7 +232,7 @@ export default function Progress() {
           </thead>
           <tbody>
             {weekDays.map((day, i) => (
-              <tr key={i} className="border-t border-gray-700">
+              <tr key={i} className="border-t border-white/[0.07]">
                 <td className="py-2 text-gray-300">{day.label}</td>
                 <td className={`py-2 text-right font-medium ${day.calories > 0 ? 'text-white' : 'text-gray-600'}`}>
                   {day.calories > 0 ? Math.round(day.calories) : '-'}
@@ -247,7 +247,7 @@ export default function Progress() {
       </div>
 
       {/* Body Measurements */}
-      <div className="bg-gray-800 rounded-2xl p-4 space-y-3">
+      <div className="card p-4 space-y-3">
         <h3 className="font-semibold text-white">Body Measurements (inches)</h3>
         {(Object.keys(measurements) as Array<keyof Measurements>).map(key => (
           <div key={key} className="flex items-center gap-3">
@@ -256,7 +256,7 @@ export default function Progress() {
               type="number"
               step="0.1"
               placeholder="—"
-              className="flex-1 bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500 text-sm"
+              className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500 text-sm"
               value={measurements[key]}
               onChange={e => setMeasurements(prev => ({ ...prev, [key]: e.target.value }))}
             />

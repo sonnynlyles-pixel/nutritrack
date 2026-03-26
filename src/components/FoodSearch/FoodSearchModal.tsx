@@ -30,7 +30,7 @@ function ServingAdjuster({
   const scaled = (val: number) => Math.round(val * servings * 10) / 10;
 
   return (
-    <div className="bg-gray-800 rounded-2xl p-4 space-y-4">
+    <div className="card p-4 space-y-4">
       <div>
         <div className="font-semibold text-white">{food.name}</div>
         {food.brand && <div className="text-sm text-gray-400">{food.brand}</div>}
@@ -54,14 +54,14 @@ function ServingAdjuster({
             <button
               key={s}
               onClick={() => setServings(s)}
-              className={`flex-1 py-1 rounded-lg text-xs border transition-colors ${servings === s ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-700 border-gray-600 text-gray-300'}`}
+              className={`flex-1 py-1 rounded-lg text-xs border transition-colors ${servings === s ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-700 border-white/[0.06] text-gray-300'}`}
             >
               {s}x
             </button>
           ))}
         </div>
       </div>
-      <div className="bg-gray-900 rounded-xl p-3 grid grid-cols-4 gap-2 text-center text-sm">
+      <div className="bg-surface-bg rounded-xl p-3 grid grid-cols-4 gap-2 text-center text-sm">
         <div>
           <div className="text-white font-bold">{scaled(n.calories)}</div>
           <div className="text-gray-500 text-xs">cal</div>
@@ -183,7 +183,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   return (
     <div className="fixed inset-0 bg-gray-900 z-50 flex flex-col">
       {/* Header */}
-      <div className="flex items-center gap-3 p-4 border-b border-gray-700">
+      <div className="flex items-center gap-3 p-4 border-b border-white/[0.07]">
         <button onClick={onClose} className="p-2 rounded-full hover:bg-gray-800">
           <XMarkIcon className="w-6 h-6 text-gray-400" />
         </button>
@@ -191,7 +191,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-700">
+      <div className="flex border-b border-white/[0.07]">
         {([['search', 'Search', MagnifyingGlassIcon], ['barcode', 'Barcode', QrCodeIcon], ['myfoods', 'My Foods', BookmarkIcon]] as const).map(([t, label, Icon]) => (
           <button
             key={t}
@@ -211,7 +211,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
             <div className="relative">
               <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
               <input
-                className="w-full bg-gray-800 border border-gray-700 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-emerald-500"
+                className="w-full bg-gray-800 border border-white/[0.07] rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-brand-500"
                 placeholder="Search foods..."
                 value={query}
                 onChange={e => setQuery(e.target.value)}
@@ -278,7 +278,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                 <p className="text-gray-400">Scan a product barcode to quickly find food info</p>
                 <button
                   onClick={() => setScanning(true)}
-                  className="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-semibold"
+                  className="px-6 py-3 bg-brand-gradient text-white rounded-xl font-semibold shadow-glow-brand"
                 >
                   Scan Barcode
                 </button>
@@ -334,7 +334,7 @@ function FoodRow({ food, onSelect }: { food: FoodItem; onSelect: (f: FoodItem) =
   return (
     <button
       onClick={() => onSelect(food)}
-      className="w-full text-left bg-gray-800 hover:bg-gray-750 rounded-xl p-3 flex items-center justify-between gap-3 border border-gray-700 mb-2 transition-colors"
+      className="w-full text-left bg-gray-800 hover:bg-gray-750 rounded-xl p-3 flex items-center justify-between gap-3 border border-white/[0.07] mb-2 transition-colors"
     >
       <div className="flex-1 min-w-0">
         <div className="text-white font-medium truncate">{food.name}</div>

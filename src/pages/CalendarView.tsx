@@ -133,7 +133,7 @@ export default function CalendarView() {
 
       {/* Score sheet for selected day */}
       {showScoreSheet && scoreBreakdown && (
-        <div className="bg-gray-800 rounded-2xl p-4 space-y-4">
+        <div className="card p-4 space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <div className="text-xs text-gray-500 uppercase tracking-wide">
@@ -204,7 +204,7 @@ export default function CalendarView() {
       )}
 
       {/* Weekly summary */}
-      <div className="bg-gray-800 rounded-2xl p-4">
+      <div className="card p-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-semibold text-white">Week Summary</h3>
           {avgCal > 0 && (
@@ -220,7 +220,7 @@ export default function CalendarView() {
             return (
               <div key={dateStr} className="flex flex-col items-center gap-1">
                 <span className="text-xs text-gray-500">{format(d, 'EEE')[0]}</span>
-                <div className="w-full h-12 bg-gray-700 rounded-lg overflow-hidden flex flex-col justify-end">
+                <div className="w-full h-12 bg-surface-raised rounded-lg overflow-hidden flex flex-col justify-end">
                   {cal > 0 && (
                     <div
                       className={`w-full rounded-lg ${score ? scoreBg(score.total) : 'bg-emerald-500'}`}

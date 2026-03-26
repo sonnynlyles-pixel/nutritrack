@@ -60,7 +60,7 @@ export default function OnboardingWizard() {
             <div>
               <label className="block text-sm text-gray-400 mb-2 text-left">What's your name?</label>
               <input
-                className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white text-lg focus:outline-none focus:border-emerald-500"
+                className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white text-lg focus:outline-none focus:border-brand-500"
                 placeholder="Enter your name"
                 value={draft.name}
                 onChange={e => update({ name: e.target.value })}
@@ -78,7 +78,7 @@ export default function OnboardingWizard() {
               <label className="block text-sm text-gray-400 mb-1">Age</label>
               <input
                 type="number"
-                className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500"
+                className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
                 value={draft.age}
                 onChange={e => update({ age: parseInt(e.target.value) || 0 })}
               />
@@ -90,7 +90,7 @@ export default function OnboardingWizard() {
                   <button
                     key={g}
                     onClick={() => update({ gender: g })}
-                    className={`flex-1 py-3 rounded-xl border capitalize font-medium transition-colors ${draft.gender === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-800 border-gray-700 text-gray-300'}`}
+                    className={`flex-1 py-3 rounded-xl border capitalize font-medium transition-colors ${draft.gender === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-800 border-white/[0.07] text-gray-300'}`}
                   >
                     {g}
                   </button>
@@ -103,7 +103,7 @@ export default function OnboardingWizard() {
                 <div className="flex-1">
                   <input
                     type="number"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
                     value={draft.heightFt}
                     onChange={e => update({ heightFt: parseInt(e.target.value) || 0 })}
                   />
@@ -112,7 +112,7 @@ export default function OnboardingWizard() {
                 <div className="flex-1">
                   <input
                     type="number"
-                    className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
                     value={draft.heightIn}
                     onChange={e => update({ heightIn: parseInt(e.target.value) || 0 })}
                   />
@@ -125,7 +125,7 @@ export default function OnboardingWizard() {
                 <label className="block text-sm text-gray-400 mb-1">Current Weight (lbs)</label>
                 <input
                   type="number"
-                  className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
                   value={draft.currentWeight}
                   onChange={e => update({ currentWeight: parseFloat(e.target.value) || 0 })}
                 />
@@ -134,7 +134,7 @@ export default function OnboardingWizard() {
                 <label className="block text-sm text-gray-400 mb-1">Goal Weight (lbs)</label>
                 <input
                   type="number"
-                  className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
                   value={draft.goalWeight}
                   onChange={e => update({ goalWeight: parseFloat(e.target.value) || 0 })}
                 />
@@ -151,7 +151,7 @@ export default function OnboardingWizard() {
               <button
                 key={opt.value}
                 onClick={() => update({ activityLevel: opt.value })}
-                className={`w-full text-left p-4 rounded-xl border transition-colors ${draft.activityLevel === opt.value ? 'bg-emerald-900 border-emerald-500' : 'bg-gray-800 border-gray-700'}`}
+                className={`w-full text-left p-4 rounded-xl border transition-colors ${draft.activityLevel === opt.value ? 'bg-emerald-900 border-emerald-500' : 'bg-gray-800 border-white/[0.07]'}`}
               >
                 <div className="font-medium text-white">{opt.label}</div>
                 <div className="text-sm text-gray-400 mt-0.5">{opt.desc}</div>
@@ -171,7 +171,7 @@ export default function OnboardingWizard() {
                   <button
                     key={g}
                     onClick={() => update({ weightGoal: g })}
-                    className={`flex-1 py-3 rounded-xl border capitalize font-medium transition-colors ${draft.weightGoal === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-800 border-gray-700 text-gray-300'}`}
+                    className={`flex-1 py-3 rounded-xl border capitalize font-medium transition-colors ${draft.weightGoal === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-800 border-white/[0.07] text-gray-300'}`}
                   >
                     {g}
                   </button>
@@ -188,7 +188,7 @@ export default function OnboardingWizard() {
                     <button
                       key={r}
                       onClick={() => update({ goalRateLbs: r })}
-                      className={`flex-1 py-2 rounded-xl border text-sm font-medium transition-colors ${draft.goalRateLbs === r ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-800 border-gray-700 text-gray-300'}`}
+                      className={`flex-1 py-2 rounded-xl border text-sm font-medium transition-colors ${draft.goalRateLbs === r ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-800 border-white/[0.07] text-gray-300'}`}
                     >
                       {r}
                     </button>
@@ -203,7 +203,7 @@ export default function OnboardingWizard() {
               <label className="block text-sm text-gray-400 mb-1">Water Goal (oz/day)</label>
               <input
                 type="number"
-                className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500"
+                className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
                 value={draft.waterGoalOz}
                 onChange={e => update({ waterGoalOz: parseInt(e.target.value) || 64 })}
               />
@@ -216,16 +216,16 @@ export default function OnboardingWizard() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-white mb-2">Your Plan</h2>
             <p className="text-gray-400 text-sm mb-6">Based on your info, here's your personalized plan:</p>
-            <div className="bg-gray-800 rounded-2xl p-5 space-y-4">
+            <div className="card p-5 space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-gray-400">TDEE (maintenance)</span>
                 <span className="text-white font-semibold">{tdee} cal</span>
               </div>
-              <div className="flex justify-between items-center border-t border-gray-700 pt-4">
+              <div className="flex justify-between items-center border-t border-white/[0.07] pt-4">
                 <span className="text-gray-400">Daily Calorie Goal</span>
                 <span className="text-emerald-400 font-bold text-xl">{calorieGoal} cal</span>
               </div>
-              <div className="border-t border-gray-700 pt-4 space-y-3">
+              <div className="border-t border-white/[0.07] pt-4 space-y-3">
                 <div className="text-sm text-gray-400 mb-2">Macro Targets</div>
                 <div className="flex justify-between">
                   <span className="text-blue-400">Protein</span>
@@ -253,7 +253,7 @@ export default function OnboardingWizard() {
             <div className="text-6xl">🎉</div>
             <h2 className="text-2xl font-bold text-white">You're all set, {draft.name}!</h2>
             <p className="text-gray-400">Start logging your meals and tracking your progress toward your goal.</p>
-            <div className="bg-gray-800 rounded-2xl p-4 text-left space-y-2">
+            <div className="card p-4 text-left space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-400">Daily Goal</span>
                 <span className="text-emerald-400 font-semibold">{calorieGoal} cal</span>
@@ -284,14 +284,14 @@ export default function OnboardingWizard() {
             <button
               onClick={() => setStep(s => s + 1)}
               disabled={!canNext()}
-              className={`flex-1 py-4 rounded-2xl font-semibold transition-colors ${canNext() ? 'bg-emerald-600 hover:bg-emerald-500 text-white' : 'bg-gray-700 text-gray-500 cursor-not-allowed'}`}
+              className={`flex-1 py-4 rounded-2xl font-semibold transition-colors ${canNext() ? 'bg-brand-gradient text-white' : 'bg-gray-700 text-gray-500 cursor-not-allowed'}`}
             >
               Continue
             </button>
           ) : (
             <button
               onClick={handleFinish}
-              className="flex-1 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold"
+              className="flex-1 py-4 rounded-2xl bg-brand-gradient text-white font-semibold"
             >
               Start Tracking!
             </button>

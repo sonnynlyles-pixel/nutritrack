@@ -51,12 +51,12 @@ export default function Goals() {
       <h1 className="text-xl font-bold text-white pt-2">Settings & Goals</h1>
 
       {/* Profile */}
-      <section className="bg-gray-800 rounded-2xl p-4 space-y-3">
+      <section className="card p-4 space-y-3">
         <h2 className="font-semibold text-white">Profile</h2>
         <div>
           <label className="text-xs text-gray-400 block mb-1">Name</label>
           <input
-            className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+            className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
             value={draft.name}
             onChange={e => update({ name: e.target.value })}
           />
@@ -66,7 +66,7 @@ export default function Goals() {
             <label className="text-xs text-gray-400 block mb-1">Age</label>
             <input
               type="number"
-              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+              className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
               value={draft.age}
               onChange={e => update({ age: parseInt(e.target.value) || 0 })}
             />
@@ -74,7 +74,7 @@ export default function Goals() {
           <div className="flex-1">
             <label className="text-xs text-gray-400 block mb-1">Gender</label>
             <select
-              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+              className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
               value={draft.gender}
               onChange={e => update({ gender: e.target.value as 'male' | 'female' })}
             >
@@ -89,7 +89,7 @@ export default function Goals() {
             <div className="flex-1 relative">
               <input
                 type="number"
-                className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500 pr-8"
+                className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500 pr-8"
                 value={draft.heightFt}
                 onChange={e => update({ heightFt: parseInt(e.target.value) || 0 })}
               />
@@ -98,7 +98,7 @@ export default function Goals() {
             <div className="flex-1 relative">
               <input
                 type="number"
-                className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500 pr-8"
+                className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500 pr-8"
                 value={draft.heightIn}
                 onChange={e => update({ heightIn: parseInt(e.target.value) || 0 })}
               />
@@ -111,7 +111,7 @@ export default function Goals() {
             <label className="text-xs text-gray-400 block mb-1">Current Weight (lbs)</label>
             <input
               type="number"
-              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+              className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
               value={draft.currentWeight}
               onChange={e => update({ currentWeight: parseFloat(e.target.value) || 0 })}
             />
@@ -120,7 +120,7 @@ export default function Goals() {
             <label className="text-xs text-gray-400 block mb-1">Goal Weight (lbs)</label>
             <input
               type="number"
-              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+              className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
               value={draft.goalWeight}
               onChange={e => update({ goalWeight: parseFloat(e.target.value) || 0 })}
             />
@@ -129,13 +129,13 @@ export default function Goals() {
       </section>
 
       {/* Activity Level */}
-      <section className="bg-gray-800 rounded-2xl p-4 space-y-2">
+      <section className="card p-4 space-y-2">
         <h2 className="font-semibold text-white mb-3">Activity Level</h2>
         {ACTIVITY_OPTIONS.map(opt => (
           <button
             key={opt.value}
             onClick={() => update({ activityLevel: opt.value })}
-            className={`w-full text-left px-4 py-3 rounded-xl border transition-colors ${draft.activityLevel === opt.value ? 'bg-emerald-900 border-emerald-500' : 'bg-gray-700 border-gray-600'}`}
+            className={`w-full text-left px-4 py-3 rounded-xl border transition-colors ${draft.activityLevel === opt.value ? 'bg-emerald-900 border-emerald-500' : 'bg-gray-700 border-white/[0.06]'}`}
           >
             <div className="font-medium text-white text-sm">{opt.label}</div>
             <div className="text-xs text-gray-400">{opt.desc}</div>
@@ -144,14 +144,14 @@ export default function Goals() {
       </section>
 
       {/* Weight Goal */}
-      <section className="bg-gray-800 rounded-2xl p-4 space-y-4">
+      <section className="card p-4 space-y-4">
         <h2 className="font-semibold text-white">Weight Goal</h2>
         <div className="flex gap-2">
           {(['lose', 'maintain', 'gain'] as const).map(g => (
             <button
               key={g}
               onClick={() => update({ weightGoal: g })}
-              className={`flex-1 py-2.5 rounded-xl border capitalize text-sm font-medium transition-colors ${draft.weightGoal === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-700 border-gray-600 text-gray-300'}`}
+              className={`flex-1 py-2.5 rounded-xl border capitalize text-sm font-medium transition-colors ${draft.weightGoal === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-700 border-white/[0.06] text-gray-300'}`}
             >
               {g}
             </button>
@@ -180,9 +180,9 @@ export default function Goals() {
       </section>
 
       {/* Calorie Goal */}
-      <section className="bg-gray-800 rounded-2xl p-4 space-y-3">
+      <section className="card p-4 space-y-3">
         <h2 className="font-semibold text-white">Calorie Goal</h2>
-        <div className="flex items-center justify-between bg-gray-900 rounded-xl p-3">
+        <div className="flex items-center justify-between bg-surface-raised rounded-xl p-3">
           <span className="text-sm text-gray-400">TDEE (maintenance)</span>
           <span className="text-white font-semibold">{tdee} cal</span>
         </div>
@@ -200,7 +200,7 @@ export default function Goals() {
             <label className="text-xs text-gray-400 block mb-1">Custom Calorie Goal</label>
             <input
               type="number"
-              className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+              className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
               value={draft.calorieGoal}
               onChange={e => update({ calorieGoal: parseInt(e.target.value) || 0 })}
             />
@@ -214,7 +214,7 @@ export default function Goals() {
       </section>
 
       {/* Macro Targets */}
-      <section className="bg-gray-800 rounded-2xl p-4 space-y-4">
+      <section className="card p-4 space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="font-semibold text-white">Macro Targets</h2>
           <button
@@ -261,12 +261,12 @@ export default function Goals() {
       </section>
 
       {/* Water Goal */}
-      <section className="bg-gray-800 rounded-2xl p-4 space-y-3">
+      <section className="card p-4 space-y-3">
         <h2 className="font-semibold text-white">Water Goal</h2>
         <div className="flex items-center gap-3">
           <input
             type="number"
-            className="flex-1 bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+            className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
             value={draft.waterGoalOz}
             onChange={e => update({ waterGoalOz: parseInt(e.target.value) || 0 })}
           />
@@ -275,7 +275,7 @@ export default function Goals() {
       </section>
 
       {/* API Keys */}
-      <section className="bg-gray-800 rounded-2xl p-4 space-y-3">
+      <section className="card p-4 space-y-3">
         <h2 className="font-semibold text-white">Food Database API Key</h2>
         <p className="text-xs text-gray-400">
           A free USDA API key gives you unlimited food searches. Without one, searches may be rate-limited.{' '}
@@ -288,7 +288,7 @@ export default function Goals() {
           <input
             type="text"
             placeholder="Paste your API key here..."
-            className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white text-sm font-mono focus:outline-none focus:border-emerald-500"
+            className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white text-sm font-mono focus:outline-none focus:border-brand-500"
             value={draftUsdaKey}
             onChange={e => setDraftUsdaKey(e.target.value)}
           />
@@ -304,7 +304,7 @@ export default function Goals() {
       {/* Save */}
       <button
         onClick={handleSave}
-        className={`w-full py-4 rounded-2xl font-bold text-lg transition-colors ${saved ? 'bg-emerald-700 text-emerald-200' : 'bg-emerald-600 hover:bg-emerald-500 text-white'}`}
+        className={`w-full py-4 rounded-2xl font-bold text-lg transition-colors ${saved ? 'bg-emerald-700 text-emerald-200' : 'bg-brand-gradient text-white'}`}
       >
         {saved ? 'Saved!' : 'Save Changes'}
       </button>

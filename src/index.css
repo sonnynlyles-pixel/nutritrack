@@ -3,7 +3,36 @@
 @tailwind utilities;
 
 * { box-sizing: border-box; }
-body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #111827; color: #f9fafb; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0D0D14;
+  color: #f9fafb;
+  -webkit-font-smoothing: antialiased;
+}
+
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #1f2937; }
-::-webkit-scrollbar-thumb { background: #374151; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #13131C; }
+::-webkit-scrollbar-thumb { background: #6366F1; border-radius: 2px; }
+
+@layer components {
+  .card {
+    @apply bg-surface-card border border-white/[0.07] rounded-2xl shadow-card;
+  }
+  .card-raised {
+    @apply bg-surface-raised border border-white/[0.07] rounded-2xl shadow-card;
+  }
+  .btn-primary {
+    @apply bg-brand-gradient text-white font-semibold rounded-xl transition-all active:scale-95 shadow-glow-brand;
+  }
+  .btn-secondary {
+    @apply bg-surface-raised border border-white/[0.08] text-gray-300 font-medium rounded-xl transition-all active:scale-95;
+  }
+  .glass {
+    @apply bg-black/50 backdrop-blur-2xl border border-white/[0.07];
+  }
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-gray-500;
+  }
+}

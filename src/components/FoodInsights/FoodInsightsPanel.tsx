@@ -11,7 +11,7 @@ const CATEGORY_LABELS: Record<InsightCategory, string> = {
 
 const SEVERITY_STYLES: Record<string, string> = {
   positive: 'border-emerald-700 bg-emerald-900/20',
-  neutral:  'border-gray-600 bg-gray-800',
+  neutral:  'border-white/[0.06] bg-gray-800',
   caution:  'border-yellow-700 bg-yellow-900/20',
   warning:  'border-orange-700 bg-orange-900/20',
 };
@@ -60,7 +60,7 @@ export default function FoodInsightsPanel({ food, servings }: Props) {
   );
 
   return (
-    <div className="rounded-xl border border-gray-700 overflow-hidden">
+    <div className="rounded-xl border border-white/[0.07] overflow-hidden">
       <button
         onClick={() => setExpanded(prev => !prev)}
         className="w-full flex items-center justify-between px-4 py-3 bg-gray-800 hover:bg-gray-700 transition-colors text-left"
