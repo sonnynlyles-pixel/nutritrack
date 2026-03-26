@@ -4,6 +4,7 @@ import { searchFoods, lookupBarcode, emptyNutrition } from '../../utils/foodApi'
 import { db } from '../../db/database';
 import type { FoodItem, MealCategory, MealEntry, NutritionInfo } from '../../types';
 import BarcodeScanner from '../BarcodeScanner/BarcodeScanner';
+import FoodInsightsPanel from '../FoodInsights/FoodInsightsPanel';
 
 interface Props {
   isOpen: boolean;
@@ -78,6 +79,7 @@ function ServingAdjuster({
           <div className="text-gray-500 text-xs">fat</div>
         </div>
       </div>
+      <FoodInsightsPanel food={food} servings={servings} />
       <div className="flex gap-3">
         <button
           onClick={onCancel}
