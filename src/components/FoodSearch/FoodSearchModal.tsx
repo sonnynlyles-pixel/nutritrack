@@ -101,6 +101,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<FoodItem[]>([]);
   const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
   const [selected, setSelected] = useState<FoodItem | null>(null);
   const [scanning, setScanning] = useState(false);
   const [barcodeResult, setBarcodeResult] = useState<FoodItem | null>(null);
@@ -117,16 +118,33 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
 
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
-    if (!query.trim()) { setResults([]); return; }
+    if (!query.trim()) { setResults([]); setApiError(false); return; }
     debounceRef.current = setTimeout(async () => {
       setLoading(true);
+      setApiError(false);
       try {
-        const r = await searchFoods(query);
-        setResults(r);
+        // Always search local custom/seeded foods first (works offline)
+        const q = query.toLowerCase();
+        const allCustom = await db.customFoods.toArray();
+        const localMatches = allCustom.filter(f =>
+          f.name.toLowerCase().includes(q) || f.brand?.toLowerCase().includes(q)
+        );
+
+        // Try remote APIs — silently handle failures
+        let remoteResults: FoodItem[] = [];
+        try {
+          remoteResults = await searchFoods(query);
+        } catch {
+          if (localMatches.length === 0) setApiError(true);
+        }
+
+        // Merge: local first (exact brand matches feel faster), then remote
+        const remoteDeduped = remoteResults.filter(r => !localMatches.find(l => l.id === r.id));
+        setResults([...localMatches, ...remoteDeduped].slice(0, 30));
       } finally {
         setLoading(false);
       }
-    }, 500);
+    }, 400);
     return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
   }, [query]);
 
@@ -226,7 +244,16 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                   <FoodRow key={food.id} food={food} onSelect={setSelected} />
                 ))}
                 {!loading && query && results.length === 0 && (
-                  <div className="text-center text-gray-500 py-8">No results found</div>
+                  <div className="text-center py-8 space-y-2">
+                    {apiError ? (
+                      <>
+                        <div className="text-yellow-400 font-medium">Food databases are temporarily unavailable</div>
+                        <div className="text-gray-500 text-sm">Try the Foods tab to search your saved items, or add a custom food.</div>
+                      </>
+                    ) : (
+                      <div className="text-gray-500">No results found for "{query}"</div>
+                    )}
+                  </div>
                 )}
               </>
             )}
