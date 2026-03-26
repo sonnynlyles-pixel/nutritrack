@@ -138,6 +138,25 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-bang-watermelon',          "Bang Wyldin Watermelon",              "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
   rf('seed-bang-any-means-orange',    "Bang Any Means Orange",               "Bang Energy",    '1 can (16 fl oz)',   0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
 
+  // ── Vitamin Water (20 fl oz bottle = 2.5 servings) ─────────────
+  rf('seed-vw-xxx',               "Vitamin Water XXX (Açaí-Blueberry-Pomegranate)", "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
+  rf('seed-vw-focus',             "Vitamin Water Focus (Kiwi-Strawberry)",          "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
+  rf('seed-vw-power-c',           "Vitamin Water Power-C (Dragonfruit)",            "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
+  rf('seed-vw-revive',            "Vitamin Water Revive (Fruit Punch)",             "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
+  rf('seed-vw-energy',            "Vitamin Water Energy (Tropical Citrus)",         "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33, 50),
+  rf('seed-vw-squeezed',          "Vitamin Water Squeezed (Lemonade)",              "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
+  rf('seed-vw-refresh',           "Vitamin Water Refresh (Tropical Mango)",         "vitaminwater", '1 bottle (20 fl oz)', 125, 0, 33, 0, 0, 0,   0, 0, 33),
+  rf('seed-vw-zero-xxx',          "Vitamin Water Zero XXX",                         "vitaminwater", '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,   0, 0,  0),
+  rf('seed-vw-zero-rise',         "Vitamin Water Zero Rise (Orange)",               "vitaminwater", '1 bottle (20 fl oz)',   0, 0,  0, 0, 0, 0,   0, 0,  0, 80),
+
+  // ── Pedialyte (8 fl oz serving) ────────────────────────────────
+  rf('seed-ped-classic-unflavored',"Pedialyte Classic (Unflavored)",               "Pedialyte",    '8 fl oz',  25, 0, 6, 0, 0, 0, 240, 0, 6),
+  rf('seed-ped-classic-grape',    "Pedialyte Classic (Grape)",                     "Pedialyte",    '8 fl oz',  25, 0, 6, 0, 0, 0, 240, 0, 6),
+  rf('seed-ped-classic-cherry',   "Pedialyte Classic (Cherry)",                    "Pedialyte",    '8 fl oz',  25, 0, 6, 0, 0, 0, 240, 0, 6),
+  rf('seed-ped-classic-strawberry',"Pedialyte Classic (Strawberry)",               "Pedialyte",    '8 fl oz',  25, 0, 6, 0, 0, 0, 240, 0, 6),
+  rf('seed-ped-sport-orange',     "Pedialyte Sport (Orange Burst)",                "Pedialyte",    '8 fl oz',  35, 0, 9, 0, 0, 0, 490, 0, 9),
+  rf('seed-ped-sport-glacier',    "Pedialyte Sport (Glacier Freeze)",              "Pedialyte",    '8 fl oz',  35, 0, 9, 0, 0, 0, 490, 0, 9),
+
   // ── Jolly Rancher ──────────────────────────────────────────────
   rf('seed-jr-hard-candy',            "Hard Candy (Original)",               "Jolly Rancher",  '2 pieces',          45, 0, 11, 0, 0, 0,   0, 0,  8),
   rf('seed-jr-hard-candy-sf',         "Hard Candy Sugar Free",               "Jolly Rancher",  '4 pieces (16g)',    35, 0,  9, 0, 0, 0,  10, 0,  0),
