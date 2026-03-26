@@ -12,8 +12,9 @@ const ACTIVITY_OPTIONS: { value: UserProfile['activityLevel']; label: string; de
 ];
 
 export default function Goals() {
-  const { profile, setProfile } = useStore();
+  const { profile, setProfile, usdaApiKey, setUsdaApiKey } = useStore();
   const [draft, setDraft] = useState<UserProfile>({ ...profile });
+  const [draftUsdaKey, setDraftUsdaKey] = useState(usdaApiKey === 'DEMO_KEY' ? '' : usdaApiKey);
   const [overrideCalories, setOverrideCalories] = useState(false);
   const [manualMacros, setManualMacros] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -40,6 +41,7 @@ export default function Goals() {
 
   const handleSave = () => {
     setProfile(draft);
+    setUsdaApiKey(draftUsdaKey.trim() || 'DEMO_KEY');
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };
@@ -269,6 +271,33 @@ export default function Goals() {
             onChange={e => update({ waterGoalOz: parseInt(e.target.value) || 0 })}
           />
           <span className="text-gray-400">oz/day</span>
+        </div>
+      </section>
+
+      {/* API Keys */}
+      <section className="bg-gray-800 rounded-2xl p-4 space-y-3">
+        <h2 className="font-semibold text-white">Food Database API Key</h2>
+        <p className="text-xs text-gray-400">
+          A free USDA API key gives you unlimited food searches. Without one, searches may be rate-limited.{' '}
+          <a href="https://api.data.gov/signup/" target="_blank" rel="noreferrer" className="text-emerald-400 underline">
+            Get your free key at api.data.gov/signup
+          </a>
+        </p>
+        <div>
+          <label className="text-xs text-gray-400 block mb-1">USDA FoodData Central API Key</label>
+          <input
+            type="text"
+            placeholder="Paste your API key here..."
+            className="w-full bg-gray-700 border border-gray-600 rounded-xl px-3 py-2 text-white text-sm font-mono focus:outline-none focus:border-emerald-500"
+            value={draftUsdaKey}
+            onChange={e => setDraftUsdaKey(e.target.value)}
+          />
+          {usdaApiKey === 'DEMO_KEY' && (
+            <p className="text-xs text-yellow-500 mt-1">⚠ Using shared DEMO_KEY — add your own key to avoid rate limits</p>
+          )}
+          {usdaApiKey !== 'DEMO_KEY' && (
+            <p className="text-xs text-emerald-400 mt-1">✓ Personal API key active</p>
+          )}
         </div>
       </section>
 

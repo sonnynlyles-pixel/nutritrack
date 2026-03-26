@@ -24,6 +24,8 @@ interface AppStore {
   setProfile: (p: Partial<UserProfile>) => void;
   selectedDate: string; // YYYY-MM-DD
   setSelectedDate: (d: string) => void;
+  usdaApiKey: string;
+  setUsdaApiKey: (k: string) => void;
 }
 
 export const useStore = create<AppStore>()(
@@ -33,6 +35,8 @@ export const useStore = create<AppStore>()(
       setProfile: (p) => set((s) => ({ profile: { ...s.profile, ...p } })),
       selectedDate: new Date().toISOString().split('T')[0],
       setSelectedDate: (d) => set({ selectedDate: d }),
+      usdaApiKey: 'DEMO_KEY',
+      setUsdaApiKey: (k) => set({ usdaApiKey: k }),
     }),
     { name: 'nutritrack-store' }
   )

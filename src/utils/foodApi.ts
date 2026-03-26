@@ -1,6 +1,8 @@
 import type { FoodItem, NutritionInfo } from '../types';
 
-const USDA_KEY = 'DEMO_KEY';
+// Key is passed in at call time so the user can set their own via Settings
+let _usdaKey = 'DEMO_KEY';
+export function setUsdaApiKey(key: string) { _usdaKey = key || 'DEMO_KEY'; }
 
 export function emptyNutrition(): NutritionInfo {
   return {
@@ -43,8 +45,11 @@ function parseOFFProduct(p: Record<string, unknown>): FoodItem {
 }
 
 export async function searchOFF(query: string): Promise<FoodItem[]> {
-  const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(query)}&search_simple=1&action=process&json=1&page_size=15&fields=id,code,product_name,product_name_en,brands,serving_size,nutriments`;
-  const res = await fetch(url);
+  const url = `https://world.openfoodfacts.org/api/v2/search?search_terms=${encodeURIComponent(query)}&page_size=15&fields=id,code,product_name,product_name_en,brands,serving_size,nutriments&sort_by=unique_scans_n`;
+  const res = await fetch(url, {
+    headers: { 'User-Agent': 'NutriTrack/1.0 (personal nutrition tracker)' }
+  });
+  if (!res.ok) throw new Error(`OFF ${res.status}`);
   const data = await res.json();
   return ((data.products || []) as Record<string, unknown>[])
     .filter((p) => p.product_name)
@@ -100,8 +105,9 @@ function parseUSDAFood(f: Record<string, unknown>): FoodItem {
 }
 
 export async function searchUSDA(query: string): Promise<FoodItem[]> {
-  const url = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(query)}&pageSize=15&api_key=${USDA_KEY}`;
+  const url = `https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(query)}&pageSize=15&api_key=${_usdaKey}`;
   const res = await fetch(url);
+  if (!res.ok) throw new Error(`USDA ${res.status}`);
   const data = await res.json();
   return ((data.foods || []) as Record<string, unknown>[]).map(parseUSDAFood);
 }

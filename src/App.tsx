@@ -10,11 +10,13 @@ import OnboardingWizard from './components/Onboarding/OnboardingWizard';
 import { useStore } from './store/useStore';
 import { useEffect } from 'react';
 import { pruneOldData, seedFoods } from './db/database';
+import { setUsdaApiKey } from './utils/foodApi';
 
 export default function App() {
-  const { profile } = useStore();
+  const { profile, usdaApiKey } = useStore();
 
   useEffect(() => { pruneOldData(); seedFoods(); }, []);
+  useEffect(() => { setUsdaApiKey(usdaApiKey); }, [usdaApiKey]);
 
   if (!profile.setupComplete) return <OnboardingWizard />;
 
