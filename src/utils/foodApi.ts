@@ -8,7 +8,9 @@ export function emptyNutrition(): NutritionInfo {
   return {
     calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0,
     sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0,
-    vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0
+    vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0,
+    caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0,
+    magnesium: 0, zinc: 0, omega3: 0, folate: 0,
   };
 }
 
@@ -49,6 +51,14 @@ function parseOFFProduct(p: Record<string, unknown>): FoodItem {
       iron:         nv('iron_serving',         'iron_100g'),
       calcium:      nv('calcium_serving',      'calcium_100g'),
       potassium:    nv('potassium_serving',     'potassium_100g'),
+      caffeine:     nv('caffeine_serving',      'caffeine_100g'),
+      alcohol:      nv('alcohol_serving',       'alcohol_100g'),
+      addedSugar:   nv('added-sugars_serving',  'added-sugars_100g'),
+      transFat:     nv('trans-fat_serving',     'trans-fat_100g'),
+      magnesium:    nv('magnesium_serving',     'magnesium_100g'),
+      zinc:         nv('zinc_serving',          'zinc_100g'),
+      omega3:       nv('omega-3-fat_serving',   'omega-3-fat_100g'),
+      folate:       nv('folate_serving',        'folate_100g'),
     }
   };
 }
@@ -109,6 +119,14 @@ function parseUSDAFood(f: Record<string, unknown>): FoodItem {
       iron: usdaNutrientValue(nutrients, 1089),
       calcium: usdaNutrientValue(nutrients, 1087),
       potassium: usdaNutrientValue(nutrients, 1092),
+      caffeine:   usdaNutrientValue(nutrients, 1057),
+      alcohol:    usdaNutrientValue(nutrients, 1018),
+      addedSugar: usdaNutrientValue(nutrients, 1235),
+      transFat:   usdaNutrientValue(nutrients, 1257),
+      magnesium:  usdaNutrientValue(nutrients, 1090),
+      zinc:       usdaNutrientValue(nutrients, 1095),
+      omega3:     usdaNutrientValue(nutrients, 1404),
+      folate:     usdaNutrientValue(nutrients, 1177),
     }
   };
 }

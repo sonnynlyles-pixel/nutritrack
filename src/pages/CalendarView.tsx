@@ -181,6 +181,7 @@ export default function CalendarView() {
               scoreBreakdown.sugar,
               scoreBreakdown.satFat,
               scoreBreakdown.mealBalance,
+              scoreBreakdown.caffeine,
             ] as const).map((item) => (
               <div key={item.label} className="flex items-center gap-3">
                 <div className="w-28 text-xs text-gray-400 shrink-0">{item.label}</div>

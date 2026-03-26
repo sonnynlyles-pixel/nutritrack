@@ -23,6 +23,15 @@ export function getFoodInsights(food: FoodItem, servings: number): FoodInsight[]
   const sodium        = n.sodium        * s;
   const saturatedFat  = n.saturatedFat  * s;
   const cholesterol   = n.cholesterol   * s;
+  const caffeine      = n.caffeine      * s;
+  const alcohol       = n.alcohol       * s;
+  const addedSugar    = n.addedSugar    * s;
+  const transFat      = n.transFat      * s;
+  const magnesium     = n.magnesium     * s;
+  const zinc          = n.zinc          * s;
+  const omega3        = n.omega3        * s;
+  const folate        = n.folate        * s;
+  const netCarbs      = (n.carbs - n.fiber) * s;
 
   const insights: FoodInsight[] = [];
 
@@ -79,6 +88,45 @@ export function getFoodInsights(food: FoodItem, servings: number): FoodInsight[]
     });
   }
 
+  if (caffeine >= 300) {
+    insights.push({
+      category: 'mood',
+      severity: 'warning',
+      title: 'Very high caffeine',
+      body: 'This exceeds the amount in a standard energy drink (300mg). At this level caffeine strongly activates the central nervous system — improving alertness but potentially causing anxiety, jitteriness, or disrupted sleep if consumed after 2pm.',
+    });
+  } else if (caffeine >= 150) {
+    insights.push({
+      category: 'mood',
+      severity: 'caution',
+      title: 'Significant caffeine',
+      body: 'Caffeine blocks adenosine receptors, promoting alertness. This amount is comparable to 1–2 cups of coffee. Effects peak 30–60 min after consumption and can affect sleep quality if consumed within 6 hours of bedtime.',
+    });
+  } else if (caffeine > 0) {
+    insights.push({
+      category: 'mood',
+      severity: 'neutral',
+      title: 'Mild caffeine',
+      body: 'A low-to-moderate caffeine dose. Unlikely to cause significant side effects in most people but worth tracking toward the 400mg/day guideline.',
+    });
+  }
+
+  if (alcohol > 14) {
+    insights.push({
+      category: 'mood',
+      severity: 'warning',
+      title: 'High alcohol content',
+      body: 'This amount of alcohol significantly impacts GABA and glutamate neurotransmitter systems, causing sedation and impairing judgment and motor coordination.',
+    });
+  } else if (alcohol > 0) {
+    insights.push({
+      category: 'mood',
+      severity: 'caution',
+      title: 'Contains alcohol',
+      body: 'Alcohol is a CNS depressant. Even moderate amounts affect sleep quality (reduces REM sleep) and impair coordination and judgment.',
+    });
+  }
+
   // ── Overconsumption insights ───────────────────────────────────────────────
   if (sugar > 20 && fat > 15) {
     insights.push({
@@ -129,6 +177,40 @@ export function getFoodInsights(food: FoodItem, servings: number): FoodInsight[]
       severity: 'caution',
       title: 'Low satiety for calorie count',
       body: 'This meal is calorie-dense but low in the nutrients (fiber, protein) that trigger fullness signals, which can lead to feeling hungry again sooner than expected.',
+    });
+  }
+
+  if (addedSugar > 25) {
+    insights.push({
+      category: 'overconsumption',
+      severity: 'warning',
+      title: 'High added sugar',
+      body: 'Added sugars (unlike natural sugars in whole foods) are rapidly absorbed and provide no fiber, vitamins, or satiety signals. They strongly activate dopamine reward circuits, promoting repeated consumption independent of hunger.',
+    });
+  } else if (addedSugar >= 10) {
+    insights.push({
+      category: 'overconsumption',
+      severity: 'caution',
+      title: 'Moderate added sugar',
+      body: 'This amount of added sugar contributes to daily intake. The AHA recommends no more than 25g/day (women) or 36g/day (men) of added sugar.',
+    });
+  }
+
+  if (transFat > 0) {
+    insights.push({
+      category: 'overconsumption',
+      severity: 'warning',
+      title: 'Contains trans fat',
+      body: 'Artificial trans fats are the only dietary fat with no known safe consumption level. Even small amounts are associated with increased LDL, decreased HDL, and cardiovascular disease risk. The FDA has largely banned them but trace amounts remain in some foods.',
+    });
+  }
+
+  if (omega3 >= 1) {
+    insights.push({
+      category: 'overconsumption',
+      severity: 'positive',
+      title: 'Good omega-3 source',
+      body: 'Omega-3 fatty acids reduce inflammation, support brain function, and are associated with lower cardiovascular risk. Most Americans consume far too little — this item meaningfully contributes to daily needs.',
     });
   }
 
@@ -198,6 +280,69 @@ export function getFoodInsights(food: FoodItem, servings: number): FoodInsight[]
       severity: 'caution',
       title: 'High dietary cholesterol',
       body: 'While dietary cholesterol has less impact than once thought, those with cardiovascular risk factors may want to track their daily intake (limit: 300mg/day).',
+    });
+  }
+
+  if (magnesium >= 100) {
+    insights.push({
+      category: 'health',
+      severity: 'positive',
+      title: 'Good magnesium source',
+      body: 'Magnesium is involved in over 300 enzymatic reactions including energy production, muscle function, and blood pressure regulation. It\'s one of the most common nutritional deficiencies in Western diets.',
+    });
+  }
+
+  if (zinc >= 5) {
+    insights.push({
+      category: 'health',
+      severity: 'positive',
+      title: 'Good zinc source',
+      body: 'Zinc supports immune function, protein synthesis, wound healing, and testosterone production. Animal proteins are the most bioavailable sources.',
+    });
+  }
+
+  if (folate >= 200) {
+    insights.push({
+      category: 'health',
+      severity: 'positive',
+      title: 'High folate',
+      body: 'Folate (B9) is essential for DNA synthesis and cell division. It\'s critical for preventing neural tube defects and supports red blood cell production. Many people are deficient.',
+    });
+  }
+
+  if (transFat > 2) {
+    insights.push({
+      category: 'health',
+      severity: 'warning',
+      title: 'High trans fat',
+      body: 'This item is high in artificial trans fat. Regular consumption is strongly linked to heart disease, stroke, and type 2 diabetes by raising LDL and lowering HDL cholesterol.',
+    });
+  }
+
+  if (caffeine >= 400) {
+    insights.push({
+      category: 'health',
+      severity: 'warning',
+      title: 'Exceeds daily caffeine limit',
+      body: 'This single item meets or exceeds the FDA\'s 400mg/day guideline for healthy adults. Consuming additional caffeine today increases risk of anxiety, insomnia, rapid heart rate, and headaches.',
+    });
+  }
+
+  if (netCarbs > 60) {
+    insights.push({
+      category: 'health',
+      severity: 'caution',
+      title: 'High net carbs',
+      body: 'Net carbs (carbs minus fiber) represent the carbohydrates that directly impact blood glucose. This serving is high in net carbs, which may cause a significant blood sugar response depending on the other foods eaten alongside it.',
+    });
+  }
+
+  if (alcohol > 0) {
+    insights.push({
+      category: 'health',
+      severity: 'caution',
+      title: 'Alcohol affects nutrient absorption',
+      body: 'Alcohol interferes with the absorption of folate, B12, zinc, and magnesium, and impairs liver function needed for vitamin D activation. Regular alcohol consumption can contribute to deficiencies even with an otherwise good diet.',
     });
   }
 

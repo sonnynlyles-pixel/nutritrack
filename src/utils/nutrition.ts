@@ -47,7 +47,9 @@ export function sumNutrition(entries: MealEntry[]): NutritionInfo {
   const zero: NutritionInfo = {
     calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0,
     sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0,
-    vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0
+    vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0,
+    caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0,
+    magnesium: 0, zinc: 0, omega3: 0, folate: 0,
   };
   return entries.reduce((acc, entry) => {
     const n = entry.food.nutrition;
@@ -69,6 +71,14 @@ export function sumNutrition(entries: MealEntry[]): NutritionInfo {
       iron: acc.iron + n.iron * s,
       calcium: acc.calcium + n.calcium * s,
       potassium: acc.potassium + n.potassium * s,
+      caffeine: acc.caffeine + n.caffeine * s,
+      alcohol: acc.alcohol + n.alcohol * s,
+      addedSugar: acc.addedSugar + n.addedSugar * s,
+      transFat: acc.transFat + n.transFat * s,
+      magnesium: acc.magnesium + n.magnesium * s,
+      zinc: acc.zinc + n.zinc * s,
+      omega3: acc.omega3 + n.omega3 * s,
+      folate: acc.folate + n.folate * s,
     };
   }, zero);
 }
@@ -82,7 +92,11 @@ export const DV: Record<string, number> = {
   calcium: 1300,
   potassium: 4700,
   sodium: 2300,
-  fiber: 28
+  fiber: 28,
+  magnesium: 420,
+  zinc: 11,
+  folate: 400,
+  caffeine: 400,
 };
 
 export function getCalorieColor(calories: number, goal: number): string {

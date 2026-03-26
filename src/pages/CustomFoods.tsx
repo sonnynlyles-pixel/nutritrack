@@ -14,6 +14,8 @@ function CreateFoodForm({ onSave, onCancel }: { onSave: (food: FoodItem) => void
     sugar: '', fiber: '', sodium: '', cholesterol: '',
     saturatedFat: '', vitaminA: '', vitaminC: '', vitaminD: '',
     vitaminB12: '', iron: '', calcium: '', potassium: '',
+    caffeine: '', alcohol: '', addedSugar: '', transFat: '',
+    magnesium: '', zinc: '', omega3: '', folate: '',
   });
 
   const n = (v: string) => parseFloat(v) || 0;
@@ -44,6 +46,14 @@ function CreateFoodForm({ onSave, onCancel }: { onSave: (food: FoodItem) => void
         iron: n(form.iron),
         calcium: n(form.calcium),
         potassium: n(form.potassium),
+        caffeine: n(form.caffeine),
+        alcohol: n(form.alcohol),
+        addedSugar: n(form.addedSugar),
+        transFat: n(form.transFat),
+        magnesium: n(form.magnesium),
+        zinc: n(form.zinc),
+        omega3: n(form.omega3),
+        folate: n(form.folate),
       }
     };
     onSave(food);
@@ -91,6 +101,14 @@ function CreateFoodForm({ onSave, onCancel }: { onSave: (food: FoodItem) => void
           {field('vitaminD', 'Vitamin D (mcg)')}
           {field('iron', 'Iron (mg)')}
           {field('calcium', 'Calcium (mg)')}
+          {field('caffeine', 'Caffeine (mg)')}
+          {field('alcohol', 'Alcohol (g)')}
+          {field('addedSugar', 'Added Sugar (g)')}
+          {field('transFat', 'Trans Fat (g)')}
+          {field('magnesium', 'Magnesium (mg)')}
+          {field('zinc', 'Zinc (mg)')}
+          {field('omega3', 'Omega-3 (g)')}
+          {field('folate', 'Folate (mcg)')}
         </div>
       </div>
       <div className="flex gap-3">
@@ -327,6 +345,14 @@ export default function CustomFoods() {
         iron: acc.iron + n.iron * s,
         calcium: acc.calcium + n.calcium * s,
         potassium: acc.potassium + n.potassium * s,
+        caffeine: acc.caffeine + n.caffeine * s,
+        alcohol: acc.alcohol + n.alcohol * s,
+        addedSugar: acc.addedSugar + n.addedSugar * s,
+        transFat: acc.transFat + n.transFat * s,
+        magnesium: acc.magnesium + n.magnesium * s,
+        zinc: acc.zinc + n.zinc * s,
+        omega3: acc.omega3 + n.omega3 * s,
+        folate: acc.folate + n.folate * s,
       };
     }, emptyNutrition());
 
@@ -353,6 +379,14 @@ export default function CustomFoods() {
         iron: Math.round(totalNutrition.iron / servings * 10) / 10,
         calcium: Math.round(totalNutrition.calcium / servings),
         potassium: Math.round(totalNutrition.potassium / servings),
+        caffeine: Math.round(totalNutrition.caffeine / servings * 10) / 10,
+        alcohol: Math.round(totalNutrition.alcohol / servings * 10) / 10,
+        addedSugar: Math.round(totalNutrition.addedSugar / servings * 10) / 10,
+        transFat: Math.round(totalNutrition.transFat / servings * 10) / 10,
+        magnesium: Math.round(totalNutrition.magnesium / servings * 10) / 10,
+        zinc: Math.round(totalNutrition.zinc / servings * 10) / 10,
+        omega3: Math.round(totalNutrition.omega3 / servings * 10) / 10,
+        folate: Math.round(totalNutrition.folate / servings * 10) / 10,
       }
     };
     await db.customFoods.put(foodItem);

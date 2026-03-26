@@ -32,6 +32,14 @@ export interface NutritionInfo {
   iron: number;       // mg
   calcium: number;    // mg
   potassium: number;  // mg
+  caffeine: number;   // mg
+  alcohol: number;    // g
+  addedSugar: number; // g
+  transFat: number;   // g
+  magnesium: number;  // mg
+  zinc: number;       // mg
+  omega3: number;     // g
+  folate: number;     // mcg
 }
 
 export interface FoodItem {

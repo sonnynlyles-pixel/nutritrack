@@ -11,6 +11,7 @@ export interface DayScoreBreakdown {
   sugar:        { points: number; max: number; label: string; detail: string };
   satFat:       { points: number; max: number; label: string; detail: string };
   mealBalance:  { points: number; max: number; label: string; detail: string };
+  caffeine:     { points: number; max: number; label: string; detail: string };
 }
 
 export function getDayScore(log: DailyLog, profile: UserProfile): DayScoreBreakdown | null {
@@ -22,15 +23,15 @@ export function getDayScore(log: DailyLog, profile: UserProfile): DayScoreBreakd
   const goal = profile.calorieGoal;
   const proteinGoal = profile.macroTargets.protein;
 
-  // ── Calorie adherence (30 pts) ────────────────────────────────
-  let calPts = 30;
+  // ── Calorie adherence (25 pts) ────────────────────────────────
+  let calPts = 25;
   const calPct = cal / goal;
   let calDetail = '';
   if (calPct > 1.25) { calPts = 0;  calDetail = `${cal} cal — ${Math.round((calPct - 1) * 100)}% over goal`; }
-  else if (calPct > 1.15) { calPts = 10; calDetail = `${cal} cal — ${Math.round((calPct - 1) * 100)}% over goal`; }
-  else if (calPct > 1.05) { calPts = 20; calDetail = `${cal} cal — slightly over goal`; }
-  else if (calPct < 0.5)  { calPts = 10; calDetail = `${cal} cal — significantly under goal`; }
-  else if (calPct < 0.7)  { calPts = 20; calDetail = `${cal} cal — under goal`; }
+  else if (calPct > 1.15) { calPts = 8;  calDetail = `${cal} cal — ${Math.round((calPct - 1) * 100)}% over goal`; }
+  else if (calPct > 1.05) { calPts = 17; calDetail = `${cal} cal — slightly over goal`; }
+  else if (calPct < 0.5)  { calPts = 8;  calDetail = `${cal} cal — significantly under goal`; }
+  else if (calPct < 0.7)  { calPts = 17; calDetail = `${cal} cal — under goal`; }
   else { calDetail = `${cal} cal — on target`; }
 
   // ── Protein (20 pts) ─────────────────────────────────────────
@@ -82,17 +83,27 @@ export function getDayScore(log: DailyLog, profile: UserProfile): DayScoreBreakd
   else if (mealsLogged === 2) { mealPts = 3; mealDetail = '2 meals logged'; }
   else                        { mealPts = 1; mealDetail = '1 meal logged'; }
 
-  const total = Math.min(100, calPts + protPts + sodPts + fibPts + sugPts + satPts + mealPts);
+  // ── Caffeine (5 pts) ─────────────────────────────────────────
+  const totalCaffeine = n.caffeine;
+  let cafPts = 5;
+  let cafDetail = '';
+  if (totalCaffeine > 600)      { cafPts = 0; cafDetail = `${Math.round(totalCaffeine)}mg — well over limit`; }
+  else if (totalCaffeine > 400) { cafPts = 2; cafDetail = `${Math.round(totalCaffeine)}mg — over daily limit`; }
+  else if (totalCaffeine > 0)   { cafDetail = `${Math.round(totalCaffeine)}mg — within limit`; }
+  else                           { cafDetail = '0mg — no caffeine'; }
+
+  const total = Math.min(100, calPts + protPts + sodPts + fibPts + sugPts + satPts + mealPts + cafPts);
 
   return {
     total,
-    calories:    { points: calPts,  max: 30, label: 'Calorie Goal',    detail: calDetail },
+    calories:    { points: calPts,  max: 25, label: 'Calorie Goal',    detail: calDetail },
     protein:     { points: protPts, max: 20, label: 'Protein',         detail: protDetail },
     sodium:      { points: sodPts,  max: 15, label: 'Sodium',          detail: sodDetail },
     fiber:       { points: fibPts,  max: 15, label: 'Fiber',           detail: fibDetail },
     sugar:       { points: sugPts,  max: 10, label: 'Sugar',           detail: sugDetail },
     satFat:      { points: satPts,  max: 5,  label: 'Saturated Fat',   detail: satDetail },
     mealBalance: { points: mealPts, max: 5,  label: 'Meal Balance',    detail: mealDetail },
+    caffeine:    { points: cafPts,  max: 5,  label: 'Caffeine',        detail: cafDetail },
   };
 }
 
