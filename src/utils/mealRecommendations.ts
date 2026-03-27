@@ -54,6 +54,66 @@ const SNACK_KEYWORDS = [
   'edamame', 'jerky',
 ];
 
+// Foods that are clearly treats/indulgences — deprioritised in suggestions
+// but not fully blocked (user may still log them manually).
+const TREAT_KEYWORDS = [
+  'candy', 'gummies', 'gummy bear', 'skittles', 'starburst', 'jolly rancher',
+  'chocolate bar', 'kit kat', 'snickers', 'twix', 'reeses', 'hershey',
+  'donut', 'doughnut', 'churro', 'funnel cake',
+  'cake', 'cupcake', 'brownie', 'cheesecake',
+  'ice cream', 'gelato', 'soft serve', 'sundae', 'mcflurry',
+  'milkshake', 'milk shake', 'frappe', 'frappé', 'frappuccino',
+  'soda', 'cola', 'pepsi', 'sprite', 'mountain dew', 'dr pepper',
+  'energy drink', 'red bull', 'monster energy',
+  'sweet tea', 'lemonade',
+  'hot chocolate',
+  'caramel latte', 'caramel macchiato', 'mocha',
+  'apple pie', 'baked pie', 'pop tart', 'toaster pastry',
+  'chips ahoy', 'oreo', 'nutter butter',
+  'cool whip', 'whipped cream',
+];
+
+/**
+ * Nutrition-based health score adjustment: –30 to +20 pts.
+ * Rewards protein density, fiber; penalises excess sugar, sat-fat,
+ * trans fat, very high sodium, and treat keywords.
+ */
+function healthBonus(food: FoodItem): number {
+  const n = food.nutrition;
+  const cal = n.calories;
+  if (cal <= 0) return 0;
+
+  let bonus = 0;
+
+  // Reward protein density (up to +15 pts at ≥40% protein calories)
+  const proteinPct = (n.protein * 4) / cal;
+  bonus += Math.min(proteinPct / 0.4, 1) * 15;
+
+  // Reward fiber (up to +5 pts, 1 pt per 2 g)
+  bonus += Math.min((n.fiber ?? 0) / 2, 5);
+
+  // Penalise excess sugar (–1 pt per gram over 10 g, max –15)
+  const sugarOver = Math.max((n.sugar ?? 0) - 10, 0);
+  bonus -= Math.min(sugarOver, 15);
+
+  // Penalise saturated fat (–2 pts per gram over 5 g, max –10)
+  const satOver = Math.max((n.saturatedFat ?? 0) - 5, 0);
+  bonus -= Math.min(satOver * 2, 10);
+
+  // Heavy penalty for any trans fat
+  if ((n.transFat ?? 0) > 0) bonus -= 20;
+
+  // Penalise very high sodium
+  if ((n.sodium ?? 0) > 1500) bonus -= 10;
+  else if ((n.sodium ?? 0) > 1000) bonus -= 5;
+
+  // Keyword-based treat penalty
+  const text = `${food.name} ${food.brand ?? ''}`.toLowerCase();
+  if (TREAT_KEYWORDS.some(k => text.includes(k))) bonus -= 25;
+
+  return bonus;
+}
+
 type MealContext = { label: string; meal: MealCategory };
 
 export function getMealContext(): MealContext {
@@ -165,6 +225,9 @@ export function getRecommendations(
 
     // 4. Meal-category fit bonus / penalty (–60 to +20 pts)
     score += mealFitBonus(food, activeMeal);
+
+    // 5. Health / nutrient-density score (–30 to +20 pts)
+    score += healthBonus(food);
 
     scored.push({ food, servings, score });
   }
