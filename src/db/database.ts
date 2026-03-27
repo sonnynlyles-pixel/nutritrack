@@ -274,6 +274,23 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-caseys-bk-biscuit-gravy',     "Biscuit & Gravy",                         "Casey's", '1 order',               450,  9, 40, 26, 12, 30, 1140, 1, 5),
   rf('seed-caseys-hashbrown',            "Hashbrown",                               "Casey's", '1 order',               140,  2, 17,  7,  2,  0,  200, 1, 0),
 
+  // ── Built Puff Protein Bars ──────────────────────────────────────
+  rf('seed-built-puff-brownie-batter',    "Built Puff Brownie Batter",      "Built Bar", '1 bar (40g)',  140, 17, 14, 2.5, 2,   0,  90, 1, 6),
+  rf('seed-built-puff-churro',            "Built Puff Churro",              "Built Bar", '1 bar (40g)',  140, 17, 14, 2.5, 1.5, 0,  90, 0, 6),
+  rf('seed-built-puff-coconut',           "Built Puff Coconut",             "Built Bar", '1 bar (40g)',  140, 17, 13, 3,   2,   0,  85, 0, 6),
+  rf('seed-built-puff-salted-caramel',    "Built Puff Salted Caramel",      "Built Bar", '1 bar (40g)',  140, 17, 14, 2.5, 2,   0, 160, 0, 6),
+  rf('seed-built-puff-peanut-butter-cup', "Built Puff Peanut Butter Cup",   "Built Bar", '1 bar (40g)',  150, 17, 14, 2.5, 2,   0, 110, 0, 6),
+  rf('seed-built-puff-cookies-n-cream',   "Built Puff Cookies 'N Cream",    "Built Bar", '1 bar (40g)',  150, 17, 14, 3,   2,   0,  95, 0, 7),
+  rf('seed-built-puff-mint-chip',         "Built Puff Mint Chip",           "Built Bar", '1 bar (40g)',  140, 17, 14, 3,   1.5, 0,  95, 0, 6),
+  rf('seed-built-puff-lemon-meringue',    "Built Puff Lemon Meringue Pie",  "Built Bar", '1 bar (40g)',  140, 16, 14, 2.5, 2,   0,  80, 0, 7),
+  rf('seed-built-puff-birthday-cake',     "Built Puff Birthday Cake",       "Built Bar", '1 bar (41g)',  150, 16, 15, 3,   2,   5,  90, 0, 9),
+  rf('seed-built-puff-banana-cream-pie',  "Built Puff Banana Cream Pie",    "Built Bar", '1 bar (40g)',  140, 17, 14, 2,   2,   0,  90, 0, 7),
+  rf('seed-built-puff-strawberries-cream',"Built Puff Strawberries 'N Cream","Built Bar",'1 bar (45g)', 140, 15, 15, 2.5, 2.5, 0,  85, 0, 8),
+  rf('seed-built-puff-rocky-road',        "Built Puff Rocky Road",          "Built Bar", '1 bar (40g)',  140, 15, 15, 3,   2,   0,  90, 1, 7),
+  rf('seed-built-puff-cookie-dough-chunk',"Built Puff Cookie Dough Chunk",  "Built Bar", '1 bar (44g)',  160, 15, 19, 3.5, 2.5, 0,  95, 1, 8),
+  rf('seed-built-puff-smores-chunk',      "Built Puff S'mores Chunk",       "Built Bar", '1 bar (43g)',  160, 15, 18, 3.5, 3,   0, 105, 0, 9),
+  rf('seed-built-puff-mint-brownie-chunk',"Built Puff Mint Brownie Chunk",  "Built Bar", '1 bar (43g)',  160, 15, 18, 3.5, 2.5, 0,  95, 1, 8),
+
   // ── Pepsi Products ──────────────────────────────────────────────
   rf('seed-pepsi-12oz',                    "Pepsi",                         "Pepsi",        '1 can (12 fl oz)',    150, 0, 41, 0, 0, 0,  30, 0, 41, 38),
   rf('seed-pepsi-20oz',                    "Pepsi",                         "Pepsi",        '1 bottle (20 fl oz)', 250, 0, 69, 0, 0, 0,  55, 0, 69, 63),
