@@ -1,5 +1,10 @@
 import type { UserProfile, NutritionInfo, MealEntry } from '../types';
 
+/** Returns today's date as YYYY-MM-DD in the user's local timezone (not UTC). */
+export function localToday(): string {
+  return new Date().toLocaleDateString('en-CA'); // en-CA locale formats as YYYY-MM-DD
+}
+
 // Convert imperial to metric for calculations
 export function lbsToKg(lbs: number) { return lbs / 2.205; }
 export function feetInchesToCm(ft: number, inches: number) { return (ft * 12 + inches) * 2.54; }

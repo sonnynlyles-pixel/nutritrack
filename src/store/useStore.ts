@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { UserProfile } from '../types';
+import { localToday } from '../utils/nutrition';
 
 const defaultProfile: UserProfile = {
   name: '',
@@ -33,7 +34,7 @@ export const useStore = create<AppStore>()(
     (set) => ({
       profile: defaultProfile,
       setProfile: (p) => set((s) => ({ profile: { ...s.profile, ...p } })),
-      selectedDate: new Date().toISOString().split('T')[0],
+      selectedDate: localToday(),
       setSelectedDate: (d) => set({ selectedDate: d }),
       usdaApiKey: 'DEMO_KEY',
       setUsdaApiKey: (k) => set({ usdaApiKey: k }),

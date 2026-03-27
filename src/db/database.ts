@@ -28,7 +28,7 @@ export const db = new NutriTrackDB();
 export async function pruneOldData() {
   const cutoff = new Date();
   cutoff.setFullYear(cutoff.getFullYear() - 1);
-  const cutoffStr = cutoff.toISOString().split('T')[0];
+  const cutoffStr = cutoff.toLocaleDateString('en-CA');
   await db.dailyLogs.where('date').below(cutoffStr).delete();
   await db.weightEntries.where('date').below(cutoffStr).delete();
 }

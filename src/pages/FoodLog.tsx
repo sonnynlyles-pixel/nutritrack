@@ -24,7 +24,7 @@ export default function FoodLog() {
 
   const dateParam  = searchParams.get('date');
   const mealParam  = searchParams.get('meal') as MealCategory | null;
-  const today      = new Date().toISOString().split('T')[0];
+  const today      = new Date().toLocaleDateString('en-CA');
   const [currentDate, setCurrentDate] = useState(dateParam || today);
 
   const { log, loading, addEntry, removeEntry, updateWater, updateNotes } = useDailyLog(currentDate);

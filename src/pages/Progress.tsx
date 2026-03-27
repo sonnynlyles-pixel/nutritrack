@@ -24,7 +24,7 @@ export default function Progress() {
   const [weightEntries, setWeightEntries] = useState<WeightEntry[]>([]);
   const [weeklyLogs, setWeeklyLogs] = useState<DailyLog[]>([]);
   const [newWeight, setNewWeight] = useState('');
-  const [newWeightDate, setNewWeightDate] = useState(new Date().toISOString().split('T')[0]);
+  const [newWeightDate, setNewWeightDate] = useState(new Date().toLocaleDateString('en-CA'));
   const [newWeightNotes, setNewWeightNotes] = useState('');
   const [saving, setSaving] = useState(false);
   const [measurements, setMeasurements] = useState<Measurements>({
