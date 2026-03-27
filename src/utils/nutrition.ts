@@ -93,6 +93,9 @@ export const DV: Record<string, number> = {
   potassium: 4700,
   sodium: 2300,
   fiber: 28,
+  sugar: 50,          // FDA added-sugars limit (used as reference for total sugar)
+  cholesterol: 300,
+  saturatedFat: 20,
   magnesium: 420,
   zinc: 11,
   folate: 400,

@@ -124,14 +124,26 @@ export default function Dashboard() {
 
   const dateLabel = format(new Date(selectedDate + 'T12:00:00'), 'EEEE, MMMM d');
 
-  const microItems = [
-    { label: 'Vitamin A',   value: totals.vitaminA,   dv: DV.vitaminA,   unit: 'mcg' },
-    { label: 'Vitamin C',   value: totals.vitaminC,   dv: DV.vitaminC,   unit: 'mg' },
-    { label: 'Vitamin D',   value: totals.vitaminD,   dv: DV.vitaminD,   unit: 'mcg' },
-    { label: 'Vitamin B12', value: totals.vitaminB12, dv: DV.vitaminB12, unit: 'mcg' },
-    { label: 'Iron',        value: totals.iron,       dv: DV.iron,       unit: 'mg' },
-    { label: 'Calcium',     value: totals.calcium,    dv: DV.calcium,    unit: 'mg' },
-    { label: 'Potassium',   value: totals.potassium,  dv: DV.potassium,  unit: 'mg' },
+  const dietaryItems = [
+    { label: 'Fiber',         value: totals.fiber,        dv: DV.fiber,        unit: 'g',   bar: 'emerald' },
+    { label: 'Sodium',        value: totals.sodium,       dv: DV.sodium,       unit: 'mg',  bar: 'amber'   },
+    { label: 'Sugar',         value: totals.sugar,        dv: DV.sugar,        unit: 'g',   bar: 'amber'   },
+    { label: 'Cholesterol',   value: totals.cholesterol,  dv: DV.cholesterol,  unit: 'mg',  bar: 'rose'    },
+    { label: 'Saturated Fat', value: totals.saturatedFat, dv: DV.saturatedFat, unit: 'g',   bar: 'rose'    },
+    { label: 'Caffeine',      value: totals.caffeine,     dv: DV.caffeine,     unit: 'mg',  bar: 'violet'  },
+  ];
+
+  const vitaminItems = [
+    { label: 'Vitamin A',   value: totals.vitaminA,   dv: DV.vitaminA,   unit: 'mcg', bar: 'brand'  },
+    { label: 'Vitamin C',   value: totals.vitaminC,   dv: DV.vitaminC,   unit: 'mg',  bar: 'brand'  },
+    { label: 'Vitamin D',   value: totals.vitaminD,   dv: DV.vitaminD,   unit: 'mcg', bar: 'brand'  },
+    { label: 'Vitamin B12', value: totals.vitaminB12, dv: DV.vitaminB12, unit: 'mcg', bar: 'brand'  },
+    { label: 'Iron',        value: totals.iron,       dv: DV.iron,       unit: 'mg',  bar: 'brand'  },
+    { label: 'Calcium',     value: totals.calcium,    dv: DV.calcium,    unit: 'mg',  bar: 'brand'  },
+    { label: 'Potassium',   value: totals.potassium,  dv: DV.potassium,  unit: 'mg',  bar: 'brand'  },
+    { label: 'Magnesium',   value: totals.magnesium,  dv: DV.magnesium,  unit: 'mg',  bar: 'brand'  },
+    { label: 'Zinc',        value: totals.zinc,       dv: DV.zinc,       unit: 'mg',  bar: 'brand'  },
+    { label: 'Folate',      value: totals.folate,     dv: DV.folate,     unit: 'mcg', bar: 'brand'  },
   ];
 
   if (loading) {
@@ -255,34 +267,72 @@ export default function Dashboard() {
         })}
       </div>
 
-      {/* Micronutrients */}
+      {/* Nutrients */}
       <div className="card overflow-hidden">
         <button
           onClick={() => setMicroExpanded(p => !p)}
           className="w-full flex items-center justify-between p-4"
         >
-          <p className="section-label">Micronutrients (% DV)</p>
+          <p className="section-label">Nutrients (% Daily Value)</p>
           <span className="text-gray-600 text-xs">{microExpanded ? '▲' : '▼'}</span>
         </button>
         {microExpanded && (
-          <div className="grid grid-cols-2 gap-2 px-4 pb-4">
-            {microItems.map(item => {
-              const pct    = Math.round((item.value / item.dv) * 100);
-              const filled = Math.min(pct, 100);
-              return (
-                <div key={item.label} className="bg-surface-raised rounded-xl p-3">
-                  <div className="text-xs text-gray-500 mb-1">{item.label}</div>
-                  <div className="text-white font-bold text-sm">{pct}%</div>
-                  <div className="text-xs text-gray-600">{Math.round(item.value * 10) / 10}{item.unit}</div>
-                  <div className="mt-2 bg-surface-high rounded-full h-1">
-                    <div
-                      className="h-1 rounded-full bg-gradient-to-r from-brand-500 to-violet-400"
-                      style={{ width: `${filled}%` }}
-                    />
-                  </div>
-                </div>
-              );
-            })}
+          <div className="px-4 pb-4 space-y-4">
+            {/* Dietary group */}
+            <div>
+              <p className="text-xs text-gray-600 uppercase tracking-wider mb-2">Dietary</p>
+              <div className="grid grid-cols-2 gap-2">
+                {dietaryItems.map(item => {
+                  const pct    = Math.round((item.value / item.dv) * 100);
+                  const filled = Math.min(pct, 100);
+                  const isOver = pct > 100;
+                  const barClass =
+                    isOver                   ? 'from-red-500 to-orange-400' :
+                    item.bar === 'emerald'    ? 'from-emerald-500 to-teal-400' :
+                    item.bar === 'amber'      ? 'from-amber-400 to-orange-400' :
+                    item.bar === 'rose'       ? 'from-rose-500 to-pink-400' :
+                    item.bar === 'violet'     ? 'from-violet-500 to-purple-400' :
+                                               'from-brand-500 to-violet-400';
+                  return (
+                    <div key={item.label} className="bg-surface-raised rounded-xl p-3">
+                      <div className="text-xs text-gray-500 mb-1">{item.label}</div>
+                      <div className={`font-bold text-sm ${isOver ? 'text-red-400' : 'text-white'}`}>{pct}%</div>
+                      <div className="text-xs text-gray-600">
+                        {Math.round(item.value * 10) / 10}{item.unit}
+                        <span className="text-gray-700"> / {item.dv}{item.unit}</span>
+                      </div>
+                      <div className="mt-2 bg-surface-high rounded-full h-1">
+                        <div className={`h-1 rounded-full bg-gradient-to-r ${barClass} transition-all duration-500`} style={{ width: `${filled}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Vitamins & Minerals group */}
+            <div>
+              <p className="text-xs text-gray-600 uppercase tracking-wider mb-2">Vitamins &amp; Minerals</p>
+              <div className="grid grid-cols-2 gap-2">
+                {vitaminItems.map(item => {
+                  const pct    = Math.round((item.value / item.dv) * 100);
+                  const filled = Math.min(pct, 100);
+                  return (
+                    <div key={item.label} className="bg-surface-raised rounded-xl p-3">
+                      <div className="text-xs text-gray-500 mb-1">{item.label}</div>
+                      <div className="text-white font-bold text-sm">{pct}%</div>
+                      <div className="text-xs text-gray-600">
+                        {Math.round(item.value * 10) / 10}{item.unit}
+                        <span className="text-gray-700"> / {item.dv}{item.unit}</span>
+                      </div>
+                      <div className="mt-2 bg-surface-high rounded-full h-1">
+                        <div className="h-1 rounded-full bg-gradient-to-r from-brand-500 to-violet-400 transition-all duration-500" style={{ width: `${filled}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         )}
       </div>
