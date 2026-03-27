@@ -234,8 +234,11 @@ export default function Dashboard() {
                 </span>
               </div>
               {entries.slice(0, 2).map(entry => (
-                <div key={entry.id} className="text-xs text-gray-500 py-0.5 truncate">
-                  {entry.food.name} <span className="text-gray-600">({entry.servings}×)</span>
+                <div key={entry.id} className="flex items-center justify-between py-0.5 gap-2">
+                  <span className="text-xs text-gray-500 truncate">{entry.food.name}</span>
+                  <span className="text-xs text-brand-400 font-medium shrink-0">
+                    {Math.round(entry.food.nutrition.calories * entry.servings)} cal
+                  </span>
                 </div>
               ))}
               {entries.length > 2 && (

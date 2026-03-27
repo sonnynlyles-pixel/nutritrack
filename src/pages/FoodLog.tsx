@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { format, addDays, parseISO } from 'date-fns';
-import { ChevronLeftIcon, ChevronRightIcon, TrashIcon, PlusIcon, XMarkIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
+import { ChevronLeftIcon, ChevronRightIcon, TrashIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useStore } from '../store/useStore';
 import { useDailyLog } from '../hooks/useDailyLog';
 import { sumNutrition } from '../utils/nutrition';
 import FoodSearchModal from '../components/FoodSearch/FoodSearchModal';
 import FoodInsightsPanel from '../components/FoodInsights/FoodInsightsPanel';
+import FoodItemRow from '../components/shared/FoodItemRow';
 import type { MealCategory, MealEntry } from '../types';
 
 const MEALS: { key: MealCategory; label: string; emoji: string }[] = [
@@ -121,36 +122,20 @@ export default function FoodLog() {
               {isExpanded && (
                 <div className="border-t border-white/[0.05]">
                   {entries.map(entry => (
-                    <div key={entry.id} className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.04]">
-                      <button
-                        onClick={() => setSelectedEntry(entry)}
-                        className="flex-1 min-w-0 text-left hover:opacity-75 transition-opacity"
-                      >
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-sm text-white font-medium truncate">{entry.food.name}</span>
-                          <InformationCircleIcon className="w-3.5 h-3.5 text-gray-600 shrink-0" />
-                        </div>
-                        {entry.food.brand && (
-                          <div className="text-xs text-gray-600 truncate">{entry.food.brand}</div>
-                        )}
-                        <div className="text-xs text-gray-600 mt-0.5">
-                          {entry.servings}× {entry.food.servingLabel} ·{' '}
-                          <span className="text-white">{Math.round(entry.food.nutrition.calories * entry.servings)} cal</span>
-                          {' · '}
-                          <span className="text-blue-400">P:{Math.round(entry.food.nutrition.protein * entry.servings)}g</span>
-                          {' '}
-                          <span className="text-amber-400">C:{Math.round(entry.food.nutrition.carbs * entry.servings)}g</span>
-                          {' '}
-                          <span className="text-rose-400">F:{Math.round(entry.food.nutrition.fat * entry.servings)}g</span>
-                        </div>
-                      </button>
-                      <button
-                        onClick={() => removeEntry(key, entry.id)}
-                        className="p-2 text-gray-600 hover:text-red-400 transition-colors shrink-0"
-                      >
-                        <TrashIcon className="w-4 h-4" />
-                      </button>
-                    </div>
+                    <FoodItemRow
+                      key={entry.id}
+                      food={entry.food}
+                      servings={entry.servings}
+                      onTap={() => setSelectedEntry(entry)}
+                      actions={
+                        <button
+                          onClick={() => removeEntry(key, entry.id)}
+                          className="p-2 text-gray-600 hover:text-red-400 transition-colors"
+                        >
+                          <TrashIcon className="w-4 h-4" />
+                        </button>
+                      }
+                    />
                   ))}
                   <button
                     onClick={() => setModalMeal(key)}

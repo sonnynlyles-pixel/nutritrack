@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { XMarkIcon, MagnifyingGlassIcon, QrCodeIcon, BookmarkIcon } from '@heroicons/react/24/outline';
+import FoodItemRow from '../shared/FoodItemRow';
 import { searchFoods, lookupBarcode, emptyNutrition } from '../../utils/foodApi';
 import { db } from '../../db/database';
 import type { FoodItem, MealCategory, MealEntry, NutritionInfo } from '../../types';
@@ -332,21 +333,8 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
 
 function FoodRow({ food, onSelect }: { food: FoodItem; onSelect: (f: FoodItem) => void }) {
   return (
-    <button
-      onClick={() => onSelect(food)}
-      className="w-full text-left bg-gray-800 hover:bg-gray-750 rounded-xl p-3 flex items-center justify-between gap-3 border border-white/[0.07] mb-2 transition-colors"
-    >
-      <div className="flex-1 min-w-0">
-        <div className="text-white font-medium truncate">{food.name}</div>
-        {food.brand && <div className="text-xs text-gray-500 truncate">{food.brand}</div>}
-        <div className="text-xs text-gray-500">{food.servingLabel}</div>
-      </div>
-      <div className="text-right shrink-0">
-        <div className="text-emerald-400 font-semibold">{Math.round(food.nutrition.calories)} cal</div>
-        <div className="text-xs text-gray-500">
-          P:{Math.round(food.nutrition.protein)}g C:{Math.round(food.nutrition.carbs)}g F:{Math.round(food.nutrition.fat)}g
-        </div>
-      </div>
-    </button>
+    <div className="mb-2">
+      <FoodItemRow food={food} onTap={() => onSelect(food)} variant="card" />
+    </div>
   );
 }

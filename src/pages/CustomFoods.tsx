@@ -4,6 +4,7 @@ import { db } from '../db/database';
 import { searchFoods } from '../utils/foodApi';
 import type { FoodItem, Recipe } from '../types';
 import { emptyNutrition } from '../utils/foodApi';
+import FoodItemRow from '../components/shared/FoodItemRow';
 
 type Tab = 'foods' | 'recipes';
 
@@ -437,19 +438,16 @@ export default function CustomFoods() {
             <div className="text-center text-gray-500 py-8">No custom foods yet</div>
           )}
           {foods.map(food => (
-            <div key={food.id} className="card-raised rounded-xl p-3 flex items-center justify-between gap-3">
-              <div className="flex-1 min-w-0">
-                <div className="text-white font-medium truncate">{food.name}</div>
-                {food.brand && <div className="text-xs text-gray-500">{food.brand}</div>}
-                <div className="text-xs text-gray-500">
-                  {food.servingLabel} · {Math.round(food.nutrition.calories)} cal ·
-                  P:{Math.round(food.nutrition.protein)}g C:{Math.round(food.nutrition.carbs)}g F:{Math.round(food.nutrition.fat)}g
-                </div>
-              </div>
-              <button onClick={() => handleDeleteFood(food.id)} className="p-2 text-gray-600 hover:text-red-400 transition-colors">
-                <TrashIcon className="w-4 h-4" />
-              </button>
-            </div>
+            <FoodItemRow
+              key={food.id}
+              food={food}
+              variant="card"
+              actions={
+                <button onClick={() => handleDeleteFood(food.id)} className="p-2 text-gray-600 hover:text-red-400 transition-colors">
+                  <TrashIcon className="w-4 h-4" />
+                </button>
+              }
+            />
           ))}
         </div>
       )}

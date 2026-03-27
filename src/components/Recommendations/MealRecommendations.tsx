@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { SparklesIcon, PlusIcon, XMarkIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
+import { SparklesIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import FoodItemRow from '../shared/FoodItemRow';
 import { db } from '../../db/database';
 import {
   getMealContext,
@@ -207,51 +208,29 @@ export default function MealRecommendations({ remaining, onAdd }: Props) {
             </div>
 
             {/* Food rows */}
-            <div className="divide-y divide-gray-700/50">
+            <div className="divide-y divide-white/[0.04]">
               {recs.map(rec => {
-                const n = rec.food.nutrition;
                 const isAdded = added.has(rec.food.id);
                 return (
-                  <div key={rec.food.id} className="flex items-center gap-3 px-4 py-3">
-                    {/* Tappable info area */}
-                    <button
-                      onClick={() => setSelectedRec(rec)}
-                      className="flex-1 min-w-0 text-left hover:opacity-75 transition-opacity"
-                    >
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-sm text-white font-medium truncate">{rec.food.name}</span>
-                        <InformationCircleIcon className="w-3.5 h-3.5 text-gray-600 shrink-0" />
-                      </div>
-                      {rec.food.brand && (
-                        <div className="text-xs text-gray-500 truncate">{rec.food.brand}</div>
-                      )}
-                      <div className="text-xs text-gray-500 mt-0.5">
-                        {rec.servings}x {rec.food.servingLabel} ·{' '}
-                        <span className="text-white font-medium">
-                          {Math.round(n.calories * rec.servings)} cal
-                        </span>
-                        {' '}·{' '}
-                        <span className="text-blue-400">P:{Math.round(n.protein * rec.servings)}g</span>
-                        {' '}
-                        <span className="text-amber-400">C:{Math.round(n.carbs * rec.servings)}g</span>
-                        {' '}
-                        <span className="text-rose-400">F:{Math.round(n.fat * rec.servings)}g</span>
-                      </div>
-                    </button>
-
-                    {/* Add button */}
-                    <button
-                      onClick={() => handleAdd(rec)}
-                      disabled={isAdded}
-                      className={`shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
-                        isAdded
-                          ? 'bg-emerald-900/40 text-emerald-400 border border-emerald-700'
-                          : 'bg-brand-gradient text-white'
-                      }`}
-                    >
-                      {isAdded ? '✓ Added' : <><PlusIcon className="w-3 h-3" />Add</>}
-                    </button>
-                  </div>
+                  <FoodItemRow
+                    key={rec.food.id}
+                    food={rec.food}
+                    servings={rec.servings}
+                    onTap={() => setSelectedRec(rec)}
+                    actions={
+                      <button
+                        onClick={() => handleAdd(rec)}
+                        disabled={isAdded}
+                        className={`flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+                          isAdded
+                            ? 'bg-emerald-900/40 text-emerald-400 border border-emerald-700'
+                            : 'bg-brand-gradient text-white'
+                        }`}
+                      >
+                        {isAdded ? '✓ Added' : <><PlusIcon className="w-3 h-3" />Add</>}
+                      </button>
+                    }
+                  />
                 );
               })}
             </div>
