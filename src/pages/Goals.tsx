@@ -68,6 +68,7 @@ export default function Goals() {
               type="number"
               className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
               value={draft.age}
+              onFocus={e => e.target.select()}
               onChange={e => update({ age: parseInt(e.target.value) || 0 })}
             />
           </div>
@@ -91,6 +92,7 @@ export default function Goals() {
                 type="number"
                 className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500 pr-8"
                 value={draft.heightFt}
+                onFocus={e => e.target.select()}
                 onChange={e => update({ heightFt: parseInt(e.target.value) || 0 })}
               />
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">ft</span>
@@ -100,6 +102,7 @@ export default function Goals() {
                 type="number"
                 className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500 pr-8"
                 value={draft.heightIn}
+                onFocus={e => e.target.select()}
                 onChange={e => update({ heightIn: parseInt(e.target.value) || 0 })}
               />
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">in</span>
@@ -113,6 +116,7 @@ export default function Goals() {
               type="number"
               className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
               value={draft.currentWeight}
+              onFocus={e => e.target.select()}
               onChange={e => update({ currentWeight: parseFloat(e.target.value) || 0 })}
             />
           </div>
@@ -122,6 +126,7 @@ export default function Goals() {
               type="number"
               className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
               value={draft.goalWeight}
+              onFocus={e => e.target.select()}
               onChange={e => update({ goalWeight: parseFloat(e.target.value) || 0 })}
             />
           </div>
@@ -202,6 +207,7 @@ export default function Goals() {
               type="number"
               className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
               value={draft.calorieGoal}
+              onFocus={e => e.target.select()}
               onChange={e => update({ calorieGoal: parseInt(e.target.value) || 0 })}
             />
           </div>
@@ -268,6 +274,7 @@ export default function Goals() {
             type="number"
             className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
             value={draft.waterGoalOz}
+            onFocus={e => e.target.select()}
             onChange={e => update({ waterGoalOz: parseInt(e.target.value) || 0 })}
           />
           <span className="text-gray-400">oz/day</span>

@@ -142,6 +142,7 @@ export default function Progress() {
             placeholder="Weight (lbs)"
             className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
             value={newWeight}
+            onFocus={e => e.target.select()}
             onChange={e => setNewWeight(e.target.value)}
           />
           <input
