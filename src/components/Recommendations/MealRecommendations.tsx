@@ -147,7 +147,7 @@ export default function MealRecommendations({ remaining, onAdd }: Props) {
   }, []);
 
   const { label, meal } = getMealContext();
-  const recs = getRecommendations(remaining, foods, 6);
+  const recs = getRecommendations(remaining, foods, 6, meal);
 
   if (remaining.calories <= 50) {
     return (
