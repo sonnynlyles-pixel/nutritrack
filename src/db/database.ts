@@ -440,8 +440,6 @@ const SEEDED_FOODS: FoodItem[] = [
 ];
 
 export async function seedFoods() {
-  for (const food of SEEDED_FOODS) {
-    const existing = await db.customFoods.get(food.id);
-    if (!existing) await db.customFoods.put(food);
-  }
+  // Upsert all seeded foods so new entries are always picked up on app update
+  await db.customFoods.bulkPut(SEEDED_FOODS);
 }
