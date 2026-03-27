@@ -115,6 +115,12 @@ export default function Dashboard() {
   const allEntries = log ? Object.values(log.meals).flat() : [];
   const totals = sumNutrition(allEntries);
 
+  // Count how many logged foods have any micronutrient data (non-zero vitamin/mineral)
+  const microFields: (keyof typeof totals)[] = ['vitaminA','vitaminC','vitaminD','vitaminB12','iron','calcium','potassium','magnesium','zinc','folate'];
+  const entriesWithMicros = allEntries.filter(e =>
+    microFields.some(k => (e.food.nutrition[k as keyof typeof e.food.nutrition] ?? 0) > 0)
+  ).length;
+
   const remaining = {
     calories: profile.calorieGoal          - totals.calories,
     protein:  profile.macroTargets.protein - totals.protein,
@@ -278,6 +284,17 @@ export default function Dashboard() {
         </button>
         {microExpanded && (
           <div className="px-4 pb-4 space-y-4">
+            {/* Data completeness notice */}
+            {allEntries.length > 0 && entriesWithMicros < allEntries.length && (
+              <div className="flex items-start gap-2 bg-amber-500/10 border border-amber-500/20 rounded-xl px-3 py-2.5">
+                <span className="text-amber-400 text-sm shrink-0">⚠</span>
+                <p className="text-xs text-amber-300/80 leading-relaxed">
+                  {entriesWithMicros === 0
+                    ? 'None of today\'s logged foods have vitamin/mineral data. Restaurant items and drinks rarely include this — search for whole foods (e.g. "chicken breast", "banana") to see micronutrient totals.'
+                    : `${entriesWithMicros} of ${allEntries.length} logged items have vitamin/mineral data. Totals below may be incomplete.`}
+                </p>
+              </div>
+            )}
             {/* Dietary group */}
             <div>
               <p className="text-xs text-gray-600 uppercase tracking-wider mb-2">Dietary</p>
