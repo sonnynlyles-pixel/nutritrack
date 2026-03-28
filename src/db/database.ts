@@ -174,6 +174,21 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-mcd-sauce-honey',          "Honey",                               "McDonald's",    '1 packet',    50,   0, 12,  0,  0,   0,    0, 0, 12),
   rf('seed-mcd-ketchup-packet',       "Ketchup",                             "McDonald's",    '1 packet',    10,   0,  3,  0,  0,   0,  110, 0,  2),
 
+  // ── Charlotte's Kitchen (Des Moines, IA) ───────────────────────
+  // NOTE: Charlotte's Kitchen does not publish official nutrition data.
+  // These values are estimates based on comparable fried chicken restaurants
+  // and known ingredients. Treat as approximations, not exact figures.
+  rf('seed-ck-nashville-hot-sndwch',  "Nashville Hot Chicken Sandwich",      "Charlotte's Kitchen", '1 sandwich', 720,  38, 54, 36,  8, 110, 1480, 2,  6),
+  rf('seed-ck-crab-rangoon-sndwch',   "Crab Rangoon Chicken Sandwich",       "Charlotte's Kitchen", '1 sandwich', 790,  37, 71, 37, 11, 125, 1320, 2, 20),
+  rf('seed-ck-original-sndwch',       "Original Chicken Sandwich",           "Charlotte's Kitchen", '1 sandwich', 620,  34, 52, 30,  7, 100, 1180, 2,  7),
+  rf('seed-ck-char-fries',            "Char Fries",                          "Charlotte's Kitchen", '1 order',    500,   6, 65, 24,  3,   0,  820, 5,  4),
+  rf('seed-ck-tenders-3pc',           "Chicken Tenders (3 pc)",              "Charlotte's Kitchen", '3 pieces',   380,  30, 24, 18,  4,  85,  920, 1,  1),
+  rf('seed-ck-tenders-4pc',           "Chicken Tenders (4 pc)",              "Charlotte's Kitchen", '4 pieces',   500,  40, 32, 24,  5, 115, 1220, 1,  1),
+  rf('seed-ck-chars-bowl',            "Char's Bowl",                         "Charlotte's Kitchen", '1 bowl',     890,  44, 82, 42,  9, 115, 1950, 6, 10),
+  rf('seed-ck-shake-vanilla',         "Vanilla Milkshake",                   "Charlotte's Kitchen", '1 shake',    580,  11, 82, 23, 14,  80,  230, 0, 72),
+  rf('seed-ck-shake-chocolate',       "Chocolate Milkshake",                 "Charlotte's Kitchen", '1 shake',    620,  12, 88, 24, 15,  80,  250, 1, 78),
+  rf('seed-ck-shake-strawberry',      "Strawberry Milkshake",                "Charlotte's Kitchen", '1 shake',    560,  10, 80, 22, 13,  75,  210, 0, 70),
+
   // ── Chick-fil-A ────────────────────────────────────────────────
   rf('seed-cfa-original-sandwich',    "Original Chicken Sandwich",           "Chick-fil-A",   '1 sandwich', 440,  28, 41, 19,  4,  75, 1350, 2,  6),
   rf('seed-cfa-spicy-deluxe',         "Spicy Deluxe Sandwich",               "Chick-fil-A",   '1 sandwich', 550,  36, 47, 26,  7, 100, 1750, 2,  7),
