@@ -189,6 +189,42 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-ck-shake-chocolate',       "Chocolate Milkshake",                 "Charlotte's Kitchen", '1 shake',    620,  12, 88, 24, 15,  80,  250, 1, 78),
   rf('seed-ck-shake-strawberry',      "Strawberry Milkshake",                "Charlotte's Kitchen", '1 shake',    560,  10, 80, 22, 13,  75,  210, 0, 70),
 
+  // ── B-Bop's Burgers (Iowa chain – official data from b-bops.com) ──────────
+  rf('seed-bbops-qtr-hamburger',      "1/4 lb Hamburger",                    "B-Bop's",       '1 burger',   569,  29, 54, 32, 11,  77,  543, 3, 12),
+  rf('seed-bbops-qtr-cheeseburger',   "1/4 lb Cheeseburger",                 "B-Bop's",       '1 burger',   640,  29, 44, 40, 11, 110, 1090, 3, 13),
+  rf('seed-bbops-half-hamburger',     "1/2 lb Hamburger",                    "B-Bop's",       '1 burger',   900,  46, 43, 61, 21, 175,  810, 4, 12),
+  rf('seed-bbops-half-cheeseburger',  "1/2 lb Cheeseburger",                 "B-Bop's",       '1 burger',  1040,  52, 45, 73, 21, 215, 1490, 4, 14),
+  rf('seed-bbops-charbroiled-chkn',   "Charbroiled Chicken Sandwich",        "B-Bop's",       '1 sandwich', 360,  33, 41,  9,  2,  85,  860, 2,  8),
+  rf('seed-bbops-spicy-chkn',         "Spicy Chicken Sandwich",              "B-Bop's",       '1 sandwich', 440,  24, 56, 13,  2,  55, 1270, 2,  8),
+  rf('seed-bbops-sm-fries',           "French Fries (Small)",                "B-Bop's",       '3.75 oz',    173,   3, 28,  6,  2,   0,  320, 3,  0),
+  rf('seed-bbops-lg-fries',           "French Fries (Large)",                "B-Bop's",       '4.5 oz',     207,   3, 34,  7,  2,   0,  385, 3,  0),
+  rf('seed-bbops-pork-fritter',       "Pork Loin Fritter Sandwich",          "B-Bop's",       '1 sandwich', 750,  35, 68, 36, 10,  90, 1380, 3,  8),
+  rf('seed-bbops-fish-sandwich',      "Fish Sandwich",                       "B-Bop's",       '1 sandwich', 450,  20, 42, 22,  5,  55,  890, 2,  5),
+  rf('seed-bbops-chili-cup',          "Chili (Cup)",                         "B-Bop's",       '1 cup',      280,  18, 22, 12,  4,  45,  820, 4,  6),
+  rf('seed-bbops-choc-shake',         "Chocolate Shake",                     "B-Bop's",       '1 shake',    650,  12, 89, 26, 16,  80,  280, 1, 82),
+
+  // ── Pizza Ranch (Iowa chain – official nutrition PDF 2023) ──────────────────
+  // Fat/sat-fat estimated from calorie balance on items where PDF data wasn't captured
+  rf('seed-pr-pepperoni-sm',          "Pepperoni Pizza (Small slice)",       "Pizza Ranch",   '1 slice',    210,   8, 26,  8,  3,  20,  240, 1,  2),
+  rf('seed-pr-cheese-sm',             "Cheese Pizza (Small slice)",          "Pizza Ranch",   '1 slice',    210,   9, 26,  8,  3,  20,  180, 1,  2),
+  rf('seed-pr-bbq-chicken-sm',        "BBQ Chicken Pizza (Small slice)",     "Pizza Ranch",   '1 slice',    200,   9, 27,  6,  2,  20,  220, 1,  3),
+  rf('seed-pr-chkn-bacon-ranch-skil', "Chicken Bacon Ranch Pizza (Skillet)", "Pizza Ranch",   '1 slice',    340,  13, 28, 18,  6,  40,  560, 1,  2),
+  rf('seed-pr-texan-taco-lg-thin',    "Texan Taco Pizza (Large Thin)",       "Pizza Ranch",   '1 slice',    200,   9, 21,  8,  3,  25,  350, 1,  2),
+  rf('seed-pr-california-sm-thin',    "California Chicken Pizza (Thin)",     "Pizza Ranch",   '1 slice',    140,   7, 10,  6,  2,  20,  200, 0,  1),
+  rf('seed-pr-broasted-wings',        "Broasted Chicken Wings",              "Pizza Ranch",   '1 serving',  348,  29,  0, 25,  7,  95,  500, 0,  0),
+  rf('seed-pr-broasted-breast',       "Broasted Chicken Breast",             "Pizza Ranch",   '1 piece',    330,  26, 18, 19,  5,  80,  600, 1,  0),
+  rf('seed-pr-garlic-bread-cheese',   "Garlic Bread with Cheese",            "Pizza Ranch",   '1 serving',  288,   8, 12, 18,  8,  25,  380, 0,  1),
+
+  // ── Maid-Rite (Iowa-founded chain – third-party confirmed data) ─────────────
+  rf('seed-maidrite-sandwich',        "Maid-Rite Sandwich",                  "Maid-Rite",     '1 sandwich', 415,  31, 27, 19,  7,  90, 1160, 0,  5),
+
+  // ── Tasty Tacos (Des Moines – flour taco confirmed, others estimated) ───────
+  rf('seed-tt-flour-taco-beef',       "Original Flour Taco (Beef)",          "Tasty Tacos",   '1 taco',     321,  13, 20, 15,  5,  40,  700, 3,  3),
+  rf('seed-tt-corn-taco-beef',        "Corn Taco (Beef)",                    "Tasty Tacos",   '1 taco',     240,  11, 19, 12,  4,  35,  560, 2,  2),
+  rf('seed-tt-burrito-beef',          "Beef Burrito",                        "Tasty Tacos",   '1 burrito',  530,  22, 58, 23,  8,  55, 1200, 5,  4),
+  rf('seed-tt-taco-salad',            "Taco Salad (Beef)",                   "Tasty Tacos",   '1 salad',    550,  24, 48, 28,  9,  60, 1100, 6,  5),
+  rf('seed-tt-nacho-supreme',         "Nacho Supreme (Beef)",                "Tasty Tacos",   '1 order',    620,  22, 65, 30, 10,  55, 1300, 6,  5),
+
   // ── Chick-fil-A ────────────────────────────────────────────────
   rf('seed-cfa-original-sandwich',    "Original Chicken Sandwich",           "Chick-fil-A",   '1 sandwich', 440,  28, 41, 19,  4,  75, 1350, 2,  6),
   rf('seed-cfa-spicy-deluxe',         "Spicy Deluxe Sandwich",               "Chick-fil-A",   '1 sandwich', 550,  36, 47, 26,  7, 100, 1750, 2,  7),
