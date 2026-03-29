@@ -225,6 +225,24 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-tt-taco-salad',            "Taco Salad (Beef)",                   "Tasty Tacos",   '1 salad',    550,  24, 48, 28,  9,  60, 1100, 6,  5),
   rf('seed-tt-nacho-supreme',         "Nacho Supreme (Beef)",                "Tasty Tacos",   '1 order',    620,  22, 65, 30, 10,  55, 1300, 6,  5),
 
+  // ── Abelardo's Mexican Food (Iowa/Nebraska chain) ───────────────────────────
+  // California Burrito has a full nutrition panel from MyNetDiary (entry confirmed).
+  // All other burrito macros confirmed via MyNetDiary; sat fat/chol/sodium/fiber/sugar
+  // estimated from ingredients where not captured in third-party data.
+  rf('seed-abel-california-burrito',  "California Burrito",                  "Abelardo's",    '1 burrito', 1131,  57,105, 53, 17, 122, 1278, 7,  2),
+  rf('seed-abel-carne-asada-burrito', "Carne Asada Burrito",                 "Abelardo's",    '1 burrito', 1035, 105, 40, 48, 14, 200, 1400, 4,  3),
+  rf('seed-abel-carnitas-burrito',    "Carnitas Burrito",                    "Abelardo's",    '1 burrito', 1200,  86, 44, 66, 22, 180, 1350, 5,  2),
+  rf('seed-abel-diablo-burrito',      "Diablo Burrito",                      "Abelardo's",    '1 burrito',  669,  70, 36, 27,  8, 155, 1100, 4,  3),
+  rf('seed-abel-meat-lovers-burrito', "Meat Lovers Burrito",                 "Abelardo's",    '1 burrito', 1133,  80, 28, 77, 24, 200, 1600, 3,  2),
+  rf('seed-abel-chile-relleno-bur',   "Chile Relleno Burrito",               "Abelardo's",    '1 burrito',  838,  25, 69, 51, 16, 120, 1200, 6,  5),
+  rf('seed-abel-surf-n-turf-burrito', "Surf N Turf Burrito",                 "Abelardo's",    '1 burrito',  695,  69, 37, 29,  8, 200, 1300, 4,  2),
+  rf('seed-abel-bean-cheese-burrito', "Bean & Cheese Burrito",               "Abelardo's",    '1 burrito',  552,  27, 71, 19,  9,  40,  980,10,  3),
+  rf('seed-abel-steak-egg-burrito',   "Steak & Egg Burrito",                 "Abelardo's",    '1 burrito',  716,  65, 39, 34, 11, 280, 1100, 3,  2),
+  rf('seed-abel-birria-taco',         "Tacos Birria",                        "Abelardo's",    '1 taco',     322,  18, 25, 16,  6,  60,  580, 2,  1),
+  rf('seed-abel-combo15-carne-plate', "Combo 15 – Carne Asada Plate",        "Abelardo's",    '1 plate',   1059,  97, 56, 48, 14, 190, 1500, 8,  4),
+  rf('seed-abel-rice-bowl-texas',     "Rice Bowl Texas",                     "Abelardo's",    '1 bowl',    1176, 110, 35, 64, 18, 220, 1450, 4,  3),
+  rf('seed-abel-super-fries',         "Super Fries",                         "Abelardo's",    '1 order',   1712, 136, 89, 88, 28, 280, 2200, 8,  5),
+
   // ── Chick-fil-A ────────────────────────────────────────────────
   rf('seed-cfa-original-sandwich',    "Original Chicken Sandwich",           "Chick-fil-A",   '1 sandwich', 440,  28, 41, 19,  4,  75, 1350, 2,  6),
   rf('seed-cfa-spicy-deluxe',         "Spicy Deluxe Sandwich",               "Chick-fil-A",   '1 sandwich', 550,  36, 47, 26,  7, 100, 1750, 2,  7),
