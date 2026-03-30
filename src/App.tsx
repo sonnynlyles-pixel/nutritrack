@@ -7,6 +7,7 @@ import Progress from './pages/Progress';
 import Goals from './pages/Goals';
 import CustomFoods from './pages/CustomFoods';
 import OnboardingWizard from './components/Onboarding/OnboardingWizard';
+import UpdateBanner from './components/UpdateBanner/UpdateBanner';
 import { useStore } from './store/useStore';
 import { useEffect } from 'react';
 import { pruneOldData, seedFoods } from './db/database';
@@ -21,6 +22,8 @@ export default function App() {
   if (!profile.setupComplete) return <OnboardingWizard />;
 
   return (
+    <>
+    <UpdateBanner />
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
@@ -34,5 +37,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </>
   );
 }

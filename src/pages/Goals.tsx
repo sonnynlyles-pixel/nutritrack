@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useStore } from '../store/useStore';
 import { calculateCalorieGoal, calculateDefaultMacros, calculateTDEE } from '../utils/nutrition';
+import { db } from '../db/database';
 import type { UserProfile } from '../types';
 
 const ACTIVITY_OPTIONS: { value: UserProfile['activityLevel']; label: string; desc: string }[] = [
@@ -18,6 +19,58 @@ export default function Goals() {
   const [overrideCalories, setOverrideCalories] = useState(false);
   const [manualMacros, setManualMacros] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [backupMsg, setBackupMsg] = useState('');
+  const importRef = useRef<HTMLInputElement>(null);
+
+  const handleExport = async () => {
+    const [dailyLogs, weightEntries, quickMeals, recipes, customFoods] = await Promise.all([
+      db.dailyLogs.toArray(),
+      db.weightEntries.toArray(),
+      db.quickMeals.toArray(),
+      db.recipes.toArray(),
+      db.customFoods.filter(f => !f.id.startsWith('seed-')).toArray(),
+    ]);
+    const backup = {
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      store: localStorage.getItem('nutritrack-store'),
+      dailyLogs,
+      weightEntries,
+      quickMeals,
+      recipes,
+      customFoods,
+    };
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `nutritrack-backup-${new Date().toLocaleDateString('en-CA')}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async (ev) => {
+      try {
+        const backup = JSON.parse(ev.target?.result as string);
+        if (backup.store) localStorage.setItem('nutritrack-store', backup.store);
+        if (backup.dailyLogs?.length)   await db.dailyLogs.bulkPut(backup.dailyLogs);
+        if (backup.weightEntries?.length) await db.weightEntries.bulkPut(backup.weightEntries);
+        if (backup.quickMeals?.length)  await db.quickMeals.bulkPut(backup.quickMeals);
+        if (backup.recipes?.length)     await db.recipes.bulkPut(backup.recipes);
+        if (backup.customFoods?.length) await db.customFoods.bulkPut(backup.customFoods);
+        setBackupMsg('Restored! Reloading...');
+        setTimeout(() => window.location.reload(), 1200);
+      } catch {
+        setBackupMsg('Import failed — make sure you chose a NutriTrack backup file.');
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  };
 
   const update = (patch: Partial<UserProfile>) => setDraft(d => ({ ...d, ...patch }));
 
@@ -306,6 +359,34 @@ export default function Goals() {
             <p className="text-xs text-emerald-400 mt-1">✓ Personal API key active</p>
           )}
         </div>
+      </section>
+
+      {/* Data Backup */}
+      <section className="card p-4 space-y-3">
+        <h2 className="font-semibold text-white">Data Backup</h2>
+        <p className="text-xs text-gray-400">
+          Export your logs, weight history, and settings to a file. Use Import to restore after reinstalling the app.
+        </p>
+        <div className="flex gap-3">
+          <button
+            onClick={handleExport}
+            className="flex-1 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-sm font-medium transition-colors"
+          >
+            Export Backup
+          </button>
+          <button
+            onClick={() => importRef.current?.click()}
+            className="flex-1 py-2.5 rounded-xl bg-gray-700 hover:bg-gray-600 text-white text-sm font-medium transition-colors"
+          >
+            Import Backup
+          </button>
+        </div>
+        <input ref={importRef} type="file" accept=".json" className="hidden" onChange={handleImport} />
+        {backupMsg && (
+          <p className={`text-xs ${backupMsg.includes('failed') ? 'text-red-400' : 'text-emerald-400'}`}>
+            {backupMsg}
+          </p>
+        )}
       </section>
 
       {/* Save */}
