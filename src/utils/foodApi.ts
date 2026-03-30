@@ -86,6 +86,21 @@ export async function lookupBarcode(barcode: string): Promise<FoodItem | null> {
 }
 
 // --- USDA FoodData Central ---
+
+// USDA uses "Category, brand, descriptor, flavor, ..." naming. Strip leading
+// category and join the rest as a readable title-cased string.
+function normalizeUsdaName(description: string): string {
+  const categoryPrefixRe = /^(Beverages|Fast foods?|Snacks|Cereals?[^,]*|Soups?[^,]*|Sauces?|Baked products|Dairy and egg products|Dairy|Sweets|Spices and herbs|Restaurant foods|Meals[^,]*|Beef products|Pork products|Poultry products|Finfish[^,]*|Fruits[^,]*|Vegetables[^,]*|Legumes[^,]*|Nut and seed products|Fats and oils|Baby foods|Lamb[^,]*|Game products|Breakfast items)[^,]*,\s*/i;
+  const cleaned = description.replace(categoryPrefixRe, '');
+  // Split remaining comma-separated segments, title-case each word, join with spaces
+  return cleaned
+    .split(', ')
+    .map(segment =>
+      segment.trim().replace(/\w\S*/g, w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    )
+    .join(' ');
+}
+
 function usdaNutrientValue(nutrients: Array<{ nutrientId: number; value: number }>, id: number): number {
   const n = nutrients?.find((n) => n.nutrientId === id);
   return n?.value ?? 0;
@@ -95,12 +110,19 @@ function parseUSDAFood(f: Record<string, unknown>): FoodItem {
   const nutrients = (f.foodNutrients as Array<{ nutrientId: number; value: number }>) || [];
   const serving = (f.servingSize as number) || 100;
   const servingUnit = (f.servingSizeUnit as string) || 'g';
+  const rawName = (f.description as string) || 'Unknown';
+  // For beverages with no explicit serving (default 100g), show ml since 100g ≈ 100ml
+  const isBevCategory = /^beverages/i.test((f.description as string) || '');
+  const noExplicitServing = !(f.servingSize as number);
+  const servingLabel = (isBevCategory && noExplicitServing)
+    ? '100 ml'
+    : `${serving}${servingUnit === 'g' ? 'g' : ` ${servingUnit}`}`;
   return {
     id: `usda-${f.fdcId}`,
-    name: (f.description as string) || 'Unknown',
+    name: normalizeUsdaName(rawName),
     brand: (f.brandOwner as string) || (f.brandName as string) || undefined,
     servingSizeG: serving,
-    servingLabel: `${serving}${servingUnit}`,
+    servingLabel,
     source: 'usda',
     nutrition: {
       calories: usdaNutrientValue(nutrients, 1008),
