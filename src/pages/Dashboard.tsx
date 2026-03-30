@@ -18,31 +18,33 @@ function CalorieRing({ consumed, goal }: { consumed: number; goal: number }) {
   const circumference = 2 * Math.PI * r;
   const pct = Math.min(consumed / goal, 1);
   const offset = circumference * (1 - pct);
-  const isOver = consumed > goal * 1.05;
-  const isWarning = !isOver && consumed > goal * 0.9;
+  const isOver    = consumed > goal * 1.05;
+  const isGoalMet = !isOver && consumed >= goal * 0.9;
+  const isWarning = !isOver && !isGoalMet && consumed > goal * 0.75;
+
+  const ringColor0 = isOver ? '#ef4444' : isGoalMet ? '#10b981' : '#6366F1';
+  const ringColor1 = isOver ? '#f97316' : isGoalMet ? '#34d399' : '#8B5CF6';
+  const glowColor  = isOver
+    ? 'radial-gradient(circle, #ef4444, transparent)'
+    : isGoalMet
+    ? 'radial-gradient(circle, #10b981, transparent)'
+    : 'radial-gradient(circle, #6366F1, transparent)';
 
   return (
     <div className="flex flex-col items-center">
       <div className="relative">
-        {/* Glow behind ring */}
         <div
-          className="absolute inset-0 rounded-full blur-2xl opacity-20 transition-all duration-700"
-          style={{
-            background: isOver
-              ? 'radial-gradient(circle, #ef4444, transparent)'
-              : 'radial-gradient(circle, #6366F1, transparent)',
-          }}
+          className={`absolute inset-0 rounded-full blur-2xl transition-all duration-700 ${isGoalMet ? 'animate-glow-pulse' : 'opacity-20'}`}
+          style={{ background: glowColor }}
         />
         <svg width="180" height="180" className="-rotate-90 relative">
           <defs>
             <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor={isOver ? '#ef4444' : '#6366F1'} />
-              <stop offset="100%" stopColor={isOver ? '#f97316' : '#8B5CF6'} />
+              <stop offset="0%" stopColor={ringColor0} />
+              <stop offset="100%" stopColor={ringColor1} />
             </linearGradient>
           </defs>
-          {/* Track */}
           <circle cx="90" cy="90" r={r} fill="none" stroke="#1A1A27" strokeWidth="13" />
-          {/* Progress */}
           <circle
             cx="90" cy="90" r={r}
             fill="none"
@@ -54,19 +56,25 @@ function CalorieRing({ consumed, goal }: { consumed: number; goal: number }) {
             className="transition-all duration-700"
           />
         </svg>
-        {/* Center text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className="text-3xl font-bold text-white leading-none">{Math.round(consumed)}</div>
+          <div className={`text-3xl font-bold leading-none transition-colors duration-500 ${isGoalMet ? 'text-emerald-400' : 'text-white'}`}>
+            {Math.round(consumed)}
+          </div>
           <div className="text-xs text-gray-500 mt-1">of {goal} cal</div>
         </div>
       </div>
-      {/* Below ring */}
       <div className="mt-3 text-center">
-        <span className={`text-sm font-semibold ${isOver ? 'text-red-400' : isWarning ? 'text-amber-400' : 'text-brand-400'}`}>
-          {isOver
-            ? `${Math.round(consumed - goal)} cal over`
-            : `${Math.round(goal - consumed)} cal remaining`}
-        </span>
+        {isGoalMet ? (
+          <span className="text-sm font-semibold text-emerald-400 animate-slide-up">
+            🎯 Goal met!
+          </span>
+        ) : (
+          <span className={`text-sm font-semibold ${isOver ? 'text-red-400' : isWarning ? 'text-amber-400' : 'text-brand-400'}`}>
+            {isOver
+              ? `${Math.round(consumed - goal)} cal over`
+              : `${Math.round(goal - consumed)} cal remaining`}
+          </span>
+        )}
       </div>
     </div>
   );
@@ -80,20 +88,35 @@ const MACRO_STYLES = {
 
 function MacroBar({ type, consumed, goal }: { type: keyof typeof MACRO_STYLES; consumed: number; goal: number }) {
   const { label, from, to, text } = MACRO_STYLES[type];
-  const pct = Math.min((consumed / goal) * 100, 100);
-  const isOver = consumed > goal;
+  const pct        = Math.min((consumed / goal) * 100, 100);
+  const isOver     = consumed > goal;
+  const isGoalMet  = !isOver && consumed >= goal * 0.9;
+
+  const barClass = isOver
+    ? 'from-red-500 to-orange-400'
+    : isGoalMet
+    ? 'from-emerald-500 to-teal-400'
+    : `${from} ${to}`;
+
   return (
     <div className="space-y-1.5">
       <div className="flex justify-between items-baseline">
-        <span className="text-xs text-gray-500">{label}</span>
+        <div className="flex items-center gap-1.5">
+          <span className={`text-xs transition-colors duration-500 ${isGoalMet ? 'text-emerald-400' : 'text-gray-500'}`}>{label}</span>
+          {isGoalMet && (
+            <span className="text-xs text-emerald-400 animate-pop leading-none">✓</span>
+          )}
+        </div>
         <span className="text-xs">
-          <span className={`font-bold ${text}`}>{Math.round(consumed)}g</span>
+          <span className={`font-bold transition-colors duration-500 ${isGoalMet ? 'text-emerald-400' : isOver ? 'text-red-400' : text}`}>
+            {Math.round(consumed)}g
+          </span>
           <span className="text-gray-600"> / {goal}g</span>
         </span>
       </div>
       <div className="h-1.5 bg-surface-raised rounded-full overflow-hidden">
         <div
-          className={`h-full rounded-full bg-gradient-to-r ${isOver ? 'from-red-500 to-orange-400' : `${from} ${to}`} transition-all duration-500`}
+          className={`h-full rounded-full bg-gradient-to-r ${barClass} transition-all duration-500`}
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -194,42 +217,54 @@ export default function Dashboard() {
       <MealRecommendations remaining={remaining} onAdd={addEntry} />
 
       {/* Water Tracker */}
-      <div className="card p-4">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2.5">
-            <span className="text-xl">💧</span>
-            <div>
-              <div className="text-sm font-semibold text-white">
-                {log?.waterOz || 0} <span className="text-gray-500 font-normal">/ {profile.waterGoalOz} oz</span>
+      {(() => {
+        const waterOz   = log?.waterOz || 0;
+        const waterMet  = waterOz >= profile.waterGoalOz;
+        const waterPct  = Math.min((waterOz / profile.waterGoalOz) * 100, 100);
+        return (
+          <div className={`card p-4 transition-all duration-500 ${waterMet ? 'ring-1 ring-cyan-500/30' : ''}`}>
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2.5">
+                <span className={`text-xl transition-all duration-300 ${waterMet ? 'animate-pop' : ''}`}>💧</span>
+                <div>
+                  <div className="text-sm font-semibold">
+                    <span className={`transition-colors duration-500 ${waterMet ? 'text-cyan-400' : 'text-white'}`}>
+                      {waterOz}
+                    </span>
+                    <span className="text-gray-500 font-normal"> / {profile.waterGoalOz} oz</span>
+                  </div>
+                  <div className={`text-xs transition-colors duration-500 ${waterMet ? 'text-cyan-500 font-medium animate-slide-up' : 'text-gray-600'}`}>
+                    {waterMet ? '✓ Goal met!' : 'Water intake'}
+                  </div>
+                </div>
               </div>
-              <div className="text-xs text-gray-600">Water intake</div>
+              <div className="w-28 bg-surface-raised rounded-full h-1.5">
+                <div
+                  className={`h-1.5 rounded-full transition-all duration-500 ${waterMet ? 'bg-gradient-to-r from-cyan-400 to-blue-400' : 'bg-gradient-to-r from-blue-500 to-cyan-400'}`}
+                  style={{ width: `${waterPct}%` }}
+                />
+              </div>
+            </div>
+            <div className="flex gap-2">
+              {[8, 16, 24].map(oz => (
+                <button
+                  key={oz}
+                  onClick={() => updateWater(waterOz + oz)}
+                  className="flex-1 py-2 bg-surface-raised hover:bg-surface-high border border-white/[0.06] rounded-xl text-sm text-gray-300 transition-colors"
+                >
+                  +{oz} oz
+                </button>
+              ))}
+              <button
+                onClick={() => updateWater(Math.max(0, waterOz - 8))}
+                className="px-3 py-2 bg-surface-raised hover:bg-surface-high border border-white/[0.06] rounded-xl text-sm text-gray-500 transition-colors"
+              >
+                −
+              </button>
             </div>
           </div>
-          <div className="w-28 bg-surface-raised rounded-full h-1.5">
-            <div
-              className="h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full transition-all"
-              style={{ width: `${Math.min(((log?.waterOz || 0) / profile.waterGoalOz) * 100, 100)}%` }}
-            />
-          </div>
-        </div>
-        <div className="flex gap-2">
-          {[8, 16, 24].map(oz => (
-            <button
-              key={oz}
-              onClick={() => updateWater((log?.waterOz || 0) + oz)}
-              className="flex-1 py-2 bg-surface-raised hover:bg-surface-high border border-white/[0.06] rounded-xl text-sm text-gray-300 transition-colors"
-            >
-              +{oz} oz
-            </button>
-          ))}
-          <button
-            onClick={() => updateWater(Math.max(0, (log?.waterOz || 0) - 8))}
-            className="px-3 py-2 bg-surface-raised hover:bg-surface-high border border-white/[0.06] rounded-xl text-sm text-gray-500 transition-colors"
-          >
-            −
-          </button>
-        </div>
-      </div>
+        );
+      })()}
 
       {/* Meal Cards */}
       <div className="space-y-3">
@@ -334,16 +369,17 @@ export default function Dashboard() {
                 {vitaminItems.map(item => {
                   const pct    = Math.round((item.value / item.dv) * 100);
                   const filled = Math.min(pct, 100);
+                  const met    = pct >= 100;
                   return (
-                    <div key={item.label} className="bg-surface-raised rounded-xl p-3">
-                      <div className="text-xs text-gray-500 mb-1">{item.label}</div>
-                      <div className="text-white font-bold text-sm">{pct}%</div>
+                    <div key={item.label} className={`bg-surface-raised rounded-xl p-3 transition-all duration-500 ${met ? 'ring-1 ring-emerald-500/40' : ''}`}>
+                      <div className={`text-xs mb-1 transition-colors duration-500 ${met ? 'text-emerald-400' : 'text-gray-500'}`}>{item.label}</div>
+                      <div className={`font-bold text-sm transition-colors duration-500 ${met ? 'text-emerald-400' : 'text-white'}`}>{pct}%{met && ' ✓'}</div>
                       <div className="text-xs text-gray-600">
                         {Math.round(item.value * 10) / 10}{item.unit}
                         <span className="text-gray-700"> / {item.dv}{item.unit}</span>
                       </div>
                       <div className="mt-2 bg-surface-high rounded-full h-1">
-                        <div className="h-1 rounded-full bg-gradient-to-r from-brand-500 to-violet-400 transition-all duration-500" style={{ width: `${filled}%` }} />
+                        <div className={`h-1 rounded-full bg-gradient-to-r transition-all duration-500 ${met ? 'from-emerald-500 to-teal-400' : 'from-brand-500 to-violet-400'}`} style={{ width: `${filled}%` }} />
                       </div>
                     </div>
                   );

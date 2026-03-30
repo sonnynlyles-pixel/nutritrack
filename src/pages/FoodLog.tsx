@@ -33,6 +33,7 @@ export default function FoodLog() {
     new Set(mealParam ? [mealParam] : ['breakfast', 'lunch', 'dinner', 'snacks'])
   );
   const [selectedEntry, setSelectedEntry] = useState<MealEntry | null>(null);
+  const [flashMeal, setFlashMeal] = useState<MealCategory | null>(null);
 
   const changeDate = (delta: number) => {
     const newDate = format(addDays(parseISO(currentDate), delta), 'yyyy-MM-dd');
@@ -53,7 +54,11 @@ export default function FoodLog() {
   };
 
   const handleAddEntry = async (entry: MealEntry) => {
-    if (modalMeal) await addEntry(modalMeal, entry);
+    if (modalMeal) {
+      await addEntry(modalMeal, entry);
+      setFlashMeal(modalMeal);
+      setTimeout(() => setFlashMeal(null), 700);
+    }
     setModalMeal(null);
   };
 
@@ -98,21 +103,22 @@ export default function FoodLog() {
           const mealTotals = sumNutrition(entries);
           const isExpanded = expandedMeals.has(key);
 
+          const isFlashing = flashMeal === key;
           return (
-            <div key={key} className="card overflow-hidden">
+            <div key={key} className={`card overflow-hidden transition-all duration-300 ${isFlashing ? 'ring-2 ring-emerald-500/50 animate-flash-bg' : ''}`}>
               <button
                 onClick={() => toggleMeal(key)}
                 className="w-full flex items-center justify-between p-4"
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-lg">{emoji}</span>
+                  <span className={`text-lg ${isFlashing ? 'animate-pop' : ''}`}>{emoji}</span>
                   <span className="font-semibold text-white">{label}</span>
                   {entries.length > 0 && (
                     <span className="text-xs text-gray-600">({entries.length})</span>
                   )}
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-brand-400 font-bold text-sm">
+                  <span className={`font-bold text-sm transition-colors duration-300 ${isFlashing ? 'text-emerald-400' : 'text-brand-400'}`}>
                     {Math.round(mealTotals.calories)} cal
                   </span>
                   <span className="text-gray-600 text-xs">{isExpanded ? '▲' : '▼'}</span>
@@ -121,21 +127,22 @@ export default function FoodLog() {
 
               {isExpanded && (
                 <div className="border-t border-white/[0.05]">
-                  {entries.map(entry => (
-                    <FoodItemRow
-                      key={entry.id}
-                      food={entry.food}
-                      servings={entry.servings}
-                      onTap={() => setSelectedEntry(entry)}
-                      actions={
-                        <button
-                          onClick={() => removeEntry(key, entry.id)}
-                          className="p-2 text-gray-600 hover:text-red-400 transition-colors"
-                        >
-                          <TrashIcon className="w-4 h-4" />
-                        </button>
-                      }
-                    />
+                  {entries.map((entry, idx) => (
+                    <div key={entry.id} className={idx === entries.length - 1 && isFlashing ? 'animate-slide-up' : ''}>
+                      <FoodItemRow
+                        food={entry.food}
+                        servings={entry.servings}
+                        onTap={() => setSelectedEntry(entry)}
+                        actions={
+                          <button
+                            onClick={() => removeEntry(key, entry.id)}
+                            className="p-2 text-gray-600 hover:text-red-400 transition-colors"
+                          >
+                            <TrashIcon className="w-4 h-4" />
+                          </button>
+                        }
+                      />
+                    </div>
                   ))}
                   <button
                     onClick={() => setModalMeal(key)}
