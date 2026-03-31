@@ -1186,6 +1186,83 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-jr-chews',                 "Awesome Twosome Chews",               "Jolly Rancher",  '13 pieces (39g)', 140, 2, 29, 2, 1, 0,  40, 0, 19),
   rf('seed-jr-lollipop',              "Lollipop",                            "Jolly Rancher",  '1 pop (17g)',       60, 0, 15, 0, 0, 0,   0, 0, 10),
   rf('seed-jr-jelly-beans',           "Jelly Beans",                         "Jolly Rancher",  '30 pieces (40g)',  100, 0, 26, 0, 0, 0,  10, 0, 18),
+
+  // ── Oikos Triple Zero Greek Yogurt (5.3 oz / 150g container) ───
+  // All flavors: 0g fat, 0 added sugar, 0 artificial sweeteners per label
+  rf('seed-oikos-tz-mixed-berry',     "Oikos Triple Zero Mixed Berry",       "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  65, 6,  9),
+  rf('seed-oikos-tz-strawberry',      "Oikos Triple Zero Strawberry",        "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  65, 6,  9),
+  rf('seed-oikos-tz-blueberry',       "Oikos Triple Zero Blueberry",         "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  65, 6,  9),
+  rf('seed-oikos-tz-vanilla',         "Oikos Triple Zero Vanilla",           "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  65, 6,  9),
+  rf('seed-oikos-tz-peach',           "Oikos Triple Zero Peach",             "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  65, 6,  9),
+  rf('seed-oikos-tz-black-cherry',    "Oikos Triple Zero Black Cherry",      "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  65, 6,  9),
+  rf('seed-oikos-tz-chocolate',       "Oikos Triple Zero Chocolate",         "Oikos",          '1 container (5.3 oz)', 120, 15, 15, 0, 0, 10,  70, 6,  9),
+  rf('seed-oikos-tz-coconut-creme',   "Oikos Triple Zero Coconut Crème",     "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  65, 6,  9),
+  rf('seed-oikos-tz-banana-creme',    "Oikos Triple Zero Banana Crème",      "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  65, 6,  9),
+  rf('seed-oikos-tz-toasted-coconut', "Oikos Triple Zero Toasted Coconut",   "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  65, 6,  9),
+  rf('seed-oikos-tz-lemon',           "Oikos Triple Zero Lemon",             "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  70, 6,  9),
+  rf('seed-oikos-tz-salted-caramel',  "Oikos Triple Zero Salted Caramel",    "Oikos",          '1 container (5.3 oz)', 120, 15, 14, 0, 0, 10,  90, 6,  9),
+  // Oikos Pro (5.3 oz — higher protein, 0g added sugar)
+  rf('seed-oikos-pro-vanilla',        "Oikos Pro Vanilla",                   "Oikos",          '1 container (5.3 oz)', 130, 20, 10, 0, 0, 10, 125, 3,  9),
+  rf('seed-oikos-pro-strawberry',     "Oikos Pro Strawberry",                "Oikos",          '1 container (5.3 oz)', 130, 20, 10, 0, 0, 10, 125, 3,  9),
+  rf('seed-oikos-pro-blueberry',      "Oikos Pro Blueberry",                 "Oikos",          '1 container (5.3 oz)', 130, 20, 10, 0, 0, 10, 125, 3,  9),
+  rf('seed-oikos-pro-peach',          "Oikos Pro Peach",                     "Oikos",          '1 container (5.3 oz)', 130, 20, 10, 0, 0, 10, 125, 3,  9),
+  // Oikos Plain (5.3 oz)
+  rf('seed-oikos-plain-nonfat',       "Oikos Plain Nonfat Greek Yogurt",     "Oikos",          '1 container (5.3 oz)',  80, 15,  6, 0, 0, 10,  65, 0,  6),
+  rf('seed-oikos-plain-whole',        "Oikos Plain Whole Milk Greek Yogurt", "Oikos",          '1 container (5.3 oz)', 130, 11,  8, 6, 4, 25,  55, 0,  7),
+
+  // ── Chobani Greek Yogurt ────────────────────────────────────────
+  // Zero Sugar (5.3 oz)
+  rf('seed-chobani-zs-vanilla',       "Chobani Zero Sugar Vanilla",          "Chobani",        '1 container (5.3 oz)',  60, 11,  5, 0, 0,  5,  65, 0,  0),
+  rf('seed-chobani-zs-strawberry',    "Chobani Zero Sugar Strawberry",       "Chobani",        '1 container (5.3 oz)',  60, 11,  5, 0, 0,  5,  65, 0,  0),
+  rf('seed-chobani-zs-blueberry',     "Chobani Zero Sugar Blueberry",        "Chobani",        '1 container (5.3 oz)',  60, 11,  5, 0, 0,  5,  65, 0,  0),
+  rf('seed-chobani-zs-peach',         "Chobani Zero Sugar Peach",            "Chobani",        '1 container (5.3 oz)',  60, 11,  5, 0, 0,  5,  65, 0,  0),
+  rf('seed-chobani-zs-mixed-berry',   "Chobani Zero Sugar Mixed Berry",      "Chobani",        '1 container (5.3 oz)',  60, 11,  5, 0, 0,  5,  65, 0,  0),
+  rf('seed-chobani-zs-black-cherry',  "Chobani Zero Sugar Black Cherry",     "Chobani",        '1 container (5.3 oz)',  60, 11,  5, 0, 0,  5,  65, 0,  0),
+  // Chobani Complete (5.3 oz — added protein + fiber)
+  rf('seed-chobani-complete-vanilla', "Chobani Complete Vanilla",            "Chobani",        '1 container (5.3 oz)', 120, 15, 14, 0, 0,  5,  85, 3,  8),
+  rf('seed-chobani-complete-straw',   "Chobani Complete Strawberry",         "Chobani",        '1 container (5.3 oz)', 120, 15, 14, 0, 0,  5,  85, 3,  8),
+  // Chobani Plain (5.3 oz)
+  rf('seed-chobani-plain-nonfat',     "Chobani Plain Nonfat Greek Yogurt",   "Chobani",        '1 container (5.3 oz)',  80, 14,  6, 0, 0,  5,  55, 0,  5),
+  rf('seed-chobani-plain-2pct',       "Chobani Plain 2% Greek Yogurt",       "Chobani",        '1 container (5.3 oz)', 100, 14,  7, 2, 1, 10,  55, 0,  5),
+  rf('seed-chobani-plain-whole',      "Chobani Plain Whole Milk Greek Yogurt","Chobani",       '1 container (5.3 oz)', 130, 12,  7, 7, 5, 25,  55, 0,  5),
+  // Chobani Flip (5.3 oz — higher sugar due to mix-ins)
+  rf('seed-chobani-flip-almond',      "Chobani Flip Almond Coco Loco",       "Chobani",        '1 container (5.3 oz)', 210, 12, 24, 9, 4, 15,  95, 1, 19),
+  rf('seed-chobani-flip-peanut',      "Chobani Flip Peanut Butter Dream",    "Chobani",        '1 container (5.3 oz)', 230, 14, 22,11, 5, 15, 160, 2, 16),
+  rf('seed-chobani-flip-strawberry',  "Chobani Flip Strawberry Cheesecake",  "Chobani",        '1 container (5.3 oz)', 200, 12, 27, 7, 4, 15,  95, 0, 20),
+
+  // ── Fage Greek Yogurt ───────────────────────────────────────────
+  // Total 0% Plain (7 oz container — Fage standard size)
+  rf('seed-fage-0-plain',             "Fage Total 0% Plain",                 "Fage",           '1 container (7 oz)',   100, 18,  7, 0, 0,  5,  65, 0,  7),
+  rf('seed-fage-2-plain',             "Fage Total 2% Plain",                 "Fage",           '1 container (7 oz)',   130, 17,  7, 4, 2, 15,  65, 0,  7),
+  rf('seed-fage-5-plain',             "Fage Total 5% Plain",                 "Fage",           '1 container (7 oz)',   170, 16,  7, 9, 6, 30,  65, 0,  7),
+  // Fage Split Cup 0% (5.3 oz — with fruit on the side)
+  rf('seed-fage-0-strawberry',        "Fage Total 0% Strawberry",            "Fage",           '1 container (5.3 oz)', 130, 12, 20, 0, 0,  5,  55, 0, 18),
+  rf('seed-fage-0-blueberry',         "Fage Total 0% Blueberry",             "Fage",           '1 container (5.3 oz)', 130, 12, 20, 0, 0,  5,  55, 0, 18),
+  rf('seed-fage-0-peach',             "Fage Total 0% Peach",                 "Fage",           '1 container (5.3 oz)', 130, 12, 20, 0, 0,  5,  55, 0, 18),
+  rf('seed-fage-0-honey',             "Fage Total 0% Honey",                 "Fage",           '1 container (5.3 oz)', 170, 12, 29, 0, 0,  5,  55, 0, 28),
+  rf('seed-fage-2-strawberry',        "Fage Total 2% Strawberry",            "Fage",           '1 container (5.3 oz)', 150, 12, 20, 2, 1, 10,  55, 0, 18),
+  rf('seed-fage-2-honey',             "Fage Total 2% Honey",                 "Fage",           '1 container (5.3 oz)', 190, 12, 29, 3, 1, 10,  55, 0, 28),
+
+  // ── Siggi's Icelandic Skyr ──────────────────────────────────────
+  // 4.4 oz containers (Siggi's standard single-serve)
+  rf('seed-siggis-plain-0',           "Siggi's 0% Plain",                    "Siggi's",        '1 container (4.4 oz)', 100, 17,  7, 0, 0,  5,  60, 0,  4),
+  rf('seed-siggis-vanilla-0',         "Siggi's 0% Vanilla",                  "Siggi's",        '1 container (4.4 oz)', 100, 14, 12, 0, 0,  5,  65, 0,  9),
+  rf('seed-siggis-strawberry-0',      "Siggi's 0% Strawberry",               "Siggi's",        '1 container (4.4 oz)', 100, 14, 12, 0, 0,  5,  55, 0,  9),
+  rf('seed-siggis-blueberry-0',       "Siggi's 0% Blueberry",                "Siggi's",        '1 container (4.4 oz)', 100, 14, 12, 0, 0,  5,  55, 0,  9),
+  rf('seed-siggis-peach-0',           "Siggi's 0% Peach",                    "Siggi's",        '1 container (4.4 oz)', 100, 14, 12, 0, 0,  5,  55, 0,  9),
+  rf('seed-siggis-mixed-berry-2',     "Siggi's 2% Mixed Berry",              "Siggi's",        '1 container (4.4 oz)', 120, 14, 12, 2, 1, 10,  55, 0,  9),
+  rf('seed-siggis-vanilla-2',         "Siggi's 2% Vanilla",                  "Siggi's",        '1 container (4.4 oz)', 120, 14, 13, 2, 1, 10,  60, 0, 10),
+  rf('seed-siggis-plain-4',           "Siggi's 4% Plain",                    "Siggi's",        '1 container (4.4 oz)', 140, 14,  5, 6, 4, 20,  55, 0,  4),
+  rf('seed-siggis-strawberry-4',      "Siggi's 4% Strawberry",               "Siggi's",        '1 container (4.4 oz)', 140, 12, 14, 5, 3, 15,  55, 0, 11),
+
+  // ── Two Good Greek Yogurt (5.3 oz) ──────────────────────────────
+  // 2g sugar per container
+  rf('seed-twogood-vanilla',          "Two Good Vanilla",                    "Two Good",       '1 container (5.3 oz)',  80, 12,  4, 0, 0,  5,  65, 0,  2),
+  rf('seed-twogood-strawberry',       "Two Good Strawberry",                 "Two Good",       '1 container (5.3 oz)',  80, 12,  4, 0, 0,  5,  65, 0,  2),
+  rf('seed-twogood-blueberry',        "Two Good Blueberry",                  "Two Good",       '1 container (5.3 oz)',  80, 12,  4, 0, 0,  5,  65, 0,  2),
+  rf('seed-twogood-peach',            "Two Good Peach",                      "Two Good",       '1 container (5.3 oz)',  80, 12,  4, 0, 0,  5,  65, 0,  2),
+  rf('seed-twogood-black-cherry',     "Two Good Black Cherry",               "Two Good",       '1 container (5.3 oz)',  80, 12,  4, 0, 0,  5,  65, 0,  2),
+  rf('seed-twogood-lemon',            "Two Good Lemon",                      "Two Good",       '1 container (5.3 oz)',  80, 12,  4, 0, 0,  5,  65, 0,  2),
 ];
 
 export async function seedFoods() {
