@@ -1283,6 +1283,74 @@ const SEEDED_FOODS: FoodItem[] = [
   // ~1,646 cal total across ~1,200g cooked (~5 cups).  137 cal/100g.
   // Set servings to match grams: 3.5 servings = 350g, 2.5 servings = 250g, etc.
   rf('seed-hh-recipe-mm-beef',        "HH Four Cheese Lasagna (MM 85/15 Beef + Bell Pepper)", "Homemade", '100g', 137, 9, 12, 6, 3, 26, 316, 1, 2),
+
+  // ── Jimmy John's – Slims (8" French bread, meat only) ───────────
+  // Slim subs = bread + meat + optional mayo/mustard, no extras
+  rf('seed-jj-slim1',                 "Slim 1 – Ham & Cheese",               "Jimmy John's",   '8" sub',       550, 27, 63, 21,  8,  55, 1580, 2,  4),
+  rf('seed-jj-slim2',                 "Slim 2 – Roast Beef",                 "Jimmy John's",   '8" sub',       520, 31, 61, 16,  5,  65, 1170, 2,  3),
+  rf('seed-jj-slim3',                 "Slim 3 – Tuna Salad",                 "Jimmy John's",   '8" sub',       680, 24, 62, 36,  6,  35, 1190, 2,  3),
+  rf('seed-jj-slim4',                 "Slim 4 – Turkey Breast",              "Jimmy John's",   '8" sub',       490, 27, 62, 13,  3,  45, 1510, 2,  4),
+  rf('seed-jj-slim5',                 "Slim 5 – Salami",                     "Jimmy John's",   '8" sub',       690, 29, 62, 35, 12,  65, 1920, 2,  3),
+  rf('seed-jj-slim6',                 "Slim 6 – Double Provolone",           "Jimmy John's",   '8" sub',       600, 28, 62, 27, 13,  50, 1320, 2,  4),
+
+  // ── Jimmy John's – 8" Subs ──────────────────────────────────────
+  rf('seed-jj-1-pepe',                "The Pepe #1",                         "Jimmy John's",   '8" sub',       630, 32, 64, 27,  9,  65, 1890, 2,  4),
+  rf('seed-jj-2-bigjohn',             "Big John #2",                         "Jimmy John's",   '8" sub',       590, 35, 63, 19,  4,  75, 1210, 2,  4),
+  rf('seed-jj-3-tuna',                "Totally Tuna #3",                     "Jimmy John's",   '8" sub',       750, 31, 65, 39,  6,  40, 1220, 2,  4),
+  rf('seed-jj-4-tom',                 "Turkey Tom #4",                       "Jimmy John's",   '8" sub',       560, 28, 63, 18,  4,  50, 1550, 2,  5),
+  rf('seed-jj-5-vito',                "Vito #5",                             "Jimmy John's",   '8" sub',       790, 36, 64, 41, 14,  75, 2060, 2,  4),
+  rf('seed-jj-6-veg',                 "Vegetarian #6",                       "Jimmy John's",   '8" sub',       580, 26, 63, 23,  8,  30, 1090, 3,  5),
+  rf('seed-jj-7-smoked-ham',          "Gourmet Smoked Ham Club #7",          "Jimmy John's",   '8" sub',       690, 40, 66, 27,  9,  75, 2120, 2,  5),
+  rf('seed-jj-8-billy',               "Billy Club #8",                       "Jimmy John's",   '8" sub',       780, 46, 67, 31,  8,  95, 1890, 2,  5),
+  rf('seed-jj-9-italian',             "Italian Night Club #9",               "Jimmy John's",   '8" sub',       980, 52, 68, 52, 16, 105, 2530, 2,  5),
+  rf('seed-jj-10-hunter',             "Hunter's Club #10",                   "Jimmy John's",   '8" sub',       700, 44, 66, 23,  6,  95, 1880, 2,  5),
+  rf('seed-jj-11-country',            "Country Club #11",                    "Jimmy John's",   '8" sub',       730, 42, 66, 28,  9,  90, 2310, 2,  5),
+  rf('seed-jj-12-beach',              "Beach Club #12",                      "Jimmy John's",   '8" sub',       740, 37, 66, 32,  8,  75, 1640, 3,  5),
+  rf('seed-jj-13-bootlegger',         "Bootlegger Club #13",                 "Jimmy John's",   '8" sub',       700, 44, 65, 23,  6,  90, 1900, 2,  5),
+  rf('seed-jj-14-gargantuan',         "J.J. Gargantuan #14",                 "Jimmy John's",   '1 sandwich',  1080, 65, 94, 53, 17, 150, 3070, 3,  7),
+  rf('seed-jj-15-club-tuna',          "Club Tuna #15",                       "Jimmy John's",   '8" sub',       900, 40, 67, 50, 12,  75, 1860, 2,  5),
+  rf('seed-jj-16-club-lulu',          "Club Lulu #16",                       "Jimmy John's",   '8" sub',       770, 44, 65, 33,  9, 110, 2140, 2,  5),
+  rf('seed-jj-17-sriracha',           "Sriracha Kick #17",                   "Jimmy John's",   '8" sub',       820, 37, 66, 43, 12,  80, 2100, 2,  6),
+  rf('seed-jj-18-avocado',            "Turkey & Avocado #18",                "Jimmy John's",   '8" sub',       710, 36, 65, 32,  7,  65, 1600, 4,  5),
+  rf('seed-jj-blt',                   "J.J.B.L.T.",                          "Jimmy John's",   '8" sub',       640, 24, 63, 32,  9,  45, 1390, 2,  5),
+
+  // ── Jimmy John's – Giant Subs (same as 8" but doubled meat on 16" bread) ──
+  rf('seed-jj-giant-pepe',            "Giant Pepe #1",                       "Jimmy John's",   '16" sub',     1060, 57, 96, 45, 14, 120, 3180, 3,  7),
+  rf('seed-jj-giant-bigjohn',         "Giant Big John #2",                   "Jimmy John's",   '16" sub',      990, 63, 95, 30,  6, 145, 2090, 3,  7),
+  rf('seed-jj-giant-tuna',            "Giant Totally Tuna #3",               "Jimmy John's",   '16" sub',     1210, 52, 96, 65, 10,  75, 2110, 3,  7),
+  rf('seed-jj-giant-tom',             "Giant Turkey Tom #4",                 "Jimmy John's",   '16" sub',      930, 50, 95, 29,  5,  95, 2760, 3,  8),
+  rf('seed-jj-giant-vito',            "Giant Vito #5",                       "Jimmy John's",   '16" sub',     1310, 65, 96, 70, 24, 145, 3720, 3,  7),
+  rf('seed-jj-giant-billy',           "Giant Billy Club #8",                 "Jimmy John's",   '16" sub',     1290, 85, 100, 51, 13, 185, 3400, 3,  8),
+  rf('seed-jj-giant-italian',         "Giant Italian Night Club #9",         "Jimmy John's",   '16" sub',     1680, 90, 100, 82, 26, 200, 4610, 3,  8),
+  rf('seed-jj-giant-hunter',          "Giant Hunter's Club #10",             "Jimmy John's",   '16" sub',     1120, 82, 100, 38,  9, 185, 3400, 3,  8),
+  rf('seed-jj-giant-country',         "Giant Country Club #11",              "Jimmy John's",   '16" sub',     1180, 79, 100, 45, 13, 175, 4260, 3,  8),
+  rf('seed-jj-giant-beach',           "Giant Beach Club #12",                "Jimmy John's",   '16" sub',     1190, 68, 100, 52, 13, 145, 2940, 4,  8),
+  rf('seed-jj-giant-bootlegger',      "Giant Bootlegger Club #13",           "Jimmy John's",   '16" sub',     1120, 82, 97, 37, 10, 175, 3440, 3,  8),
+
+  // ── Jimmy John's – Unwiches (lettuce wrap, no bread ~−280 cal / −58g carbs) ──
+  rf('seed-jj-uw-pepe',               "Unwich – Pepe #1",                    "Jimmy John's",   '1 lettuce wrap', 290, 22,  5, 22,  8,  60, 1670, 1,  2),
+  rf('seed-jj-uw-bigjohn',            "Unwich – Big John #2",                "Jimmy John's",   '1 lettuce wrap', 250, 25,  4, 14,  4,  70,  990, 1,  2),
+  rf('seed-jj-uw-tuna',               "Unwich – Totally Tuna #3",            "Jimmy John's",   '1 lettuce wrap', 410, 22,  7, 34,  6,  35, 1000, 1,  2),
+  rf('seed-jj-uw-tom',                "Unwich – Turkey Tom #4",              "Jimmy John's",   '1 lettuce wrap', 220, 18,  5, 14,  3,  45, 1330, 1,  3),
+  rf('seed-jj-uw-vito',               "Unwich – Vito #5",                    "Jimmy John's",   '1 lettuce wrap', 480, 27,  6, 38, 13,  70, 1830, 1,  2),
+  rf('seed-jj-uw-veg',                "Unwich – Vegetarian #6",              "Jimmy John's",   '1 lettuce wrap', 250, 17,  7, 18,  7,  25,  870, 2,  3),
+  rf('seed-jj-uw-billy',              "Unwich – Billy Club #8",              "Jimmy John's",   '1 lettuce wrap', 460, 38,  9, 26,  7,  90, 1670, 1,  3),
+  rf('seed-jj-uw-italian',            "Unwich – Italian Night Club #9",      "Jimmy John's",   '1 lettuce wrap', 660, 43, 10, 48, 14, 100, 2310, 1,  3),
+  rf('seed-jj-uw-hunter',             "Unwich – Hunter's Club #10",          "Jimmy John's",   '1 lettuce wrap', 370, 35,  8, 19,  5,  90, 1660, 1,  3),
+  rf('seed-jj-uw-beach',              "Unwich – Beach Club #12",             "Jimmy John's",   '1 lettuce wrap', 410, 28,  9, 28,  7,  70, 1420, 2,  3),
+  rf('seed-jj-uw-bootlegger',         "Unwich – Bootlegger Club #13",        "Jimmy John's",   '1 lettuce wrap', 380, 35,  7, 19,  5,  85, 1680, 1,  3),
+  rf('seed-jj-uw-gargantuan',         "Unwich – J.J. Gargantuan #14",        "Jimmy John's",   '1 lettuce wrap', 760, 55, 12, 46, 15, 140, 2840, 2,  5),
+
+  // ── Jimmy John's – Sides & Extras ──────────────────────────────
+  rf('seed-jj-chips-plain',           "Original Chips",                      "Jimmy John's",   '1 bag (1 oz)',   130,  2, 19,  6, 1,   0,  180, 1,  0),
+  rf('seed-jj-chips-bbq',             "BBQ Chips",                           "Jimmy John's",   '1 bag (1 oz)',   130,  2, 19,  6, 1,   0,  220, 1,  2),
+  rf('seed-jj-chips-jalapeno',        "Jalapeño Chips",                      "Jimmy John's",   '1 bag (1 oz)',   130,  2, 19,  6, 1,   0,  200, 1,  1),
+  rf('seed-jj-chips-salt-vinegar',    "Salt & Vinegar Chips",                "Jimmy John's",   '1 bag (1 oz)',   120,  2, 18,  5, 1,   0,  360, 1,  0),
+  rf('seed-jj-cookie-choc',           "Chocolate Chunk Cookie",              "Jimmy John's",   '1 cookie',       420,  5, 57, 20, 11,  45,  240, 1, 38),
+  rf('seed-jj-cookie-oatmeal',        "Oatmeal Raisin Cookie",               "Jimmy John's",   '1 cookie',       420,  6, 60, 18,  9,  45,  280, 2, 32),
+  rf('seed-jj-cookie-sugar',          "Sugar Cookie",                        "Jimmy John's",   '1 cookie',       400,  4, 54, 19, 10,  40,  250, 0, 30),
+  rf('seed-jj-pickle',                "Kosher Dill Pickle Spear",            "Jimmy John's",   '1 spear',         10,  0,  2,  0,  0,   0,  790, 0,  0),
+  rf('seed-jj-avocado-spread',        "Avocado Spread (add-on)",             "Jimmy John's",   '1 portion',       90,  1,  5,  8,  1,   0,    5, 3,  0),
 ];
 
 export async function seedFoods() {
