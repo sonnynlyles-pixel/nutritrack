@@ -6,6 +6,23 @@ import { db } from '../../db/database';
 import type { FoodItem, MealCategory, MealEntry, NutritionInfo } from '../../types';
 import BarcodeScanner from '../BarcodeScanner/BarcodeScanner';
 import FoodInsightsPanel from '../FoodInsights/FoodInsightsPanel';
+import BowlBuilder from '../BowlBuilder/BowlBuilder';
+
+// Returns brand info if the food is a bowl/burrito builder trigger, otherwise null
+function getBuilderInfo(food: FoodItem): { brandId: string; brandName: string } | null {
+  if (!food.id.endsWith('-builder')) return null;
+  // id format: seed-{brandId}-builder
+  const parts = food.id.split('-');
+  if (parts.length < 3 || parts[0] !== 'seed') return null;
+  const brandId   = parts[1];
+  const brandName = food.brand || (brandId.charAt(0).toUpperCase() + brandId.slice(1));
+  return { brandId, brandName };
+}
+
+// Hide raw ingredient entries from search/my-foods lists
+function isIngredient(food: FoodItem): boolean {
+  return food.id.includes('-ing-');
+}
 
 interface Props {
   isOpen: boolean;
@@ -106,6 +123,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
   const [selected, setSelected] = useState<FoodItem | null>(null);
+  const [builderInfo, setBuilderInfo] = useState<{ brandId: string; brandName: string } | null>(null);
   const [scanning, setScanning] = useState(false);
   const [barcodeResult, setBarcodeResult] = useState<FoodItem | null>(null);
   const [myFoods, setMyFoods] = useState<FoodItem[]>([]);
@@ -130,7 +148,8 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
         const q = query.toLowerCase();
         const allCustom = await db.customFoods.toArray();
         const localMatches = allCustom.filter(f =>
-          f.name.toLowerCase().includes(q) || f.brand?.toLowerCase().includes(q)
+          !isIngredient(f) &&
+          (f.name.toLowerCase().includes(q) || f.brand?.toLowerCase().includes(q))
         );
 
         // Try remote APIs — silently handle failures
@@ -170,11 +189,27 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       timeAdded: new Date().toISOString(),
     };
     onAdd(entry);
-    // Save to recent foods
     await db.recentFoods.put({ ...food, usedAt: new Date().toISOString() });
     setSelected(null);
     setBarcodeResult(null);
+    setBuilderInfo(null);
     onClose();
+  };
+
+  const handleBuilderAdd = async (entry: MealEntry) => {
+    onAdd(entry);
+    await db.recentFoods.put({ ...entry.food, usedAt: new Date().toISOString() });
+    setBuilderInfo(null);
+    onClose();
+  };
+
+  const handleSelectFood = (food: FoodItem) => {
+    const info = getBuilderInfo(food);
+    if (info) {
+      setBuilderInfo(info);
+    } else {
+      setSelected(food);
+    }
   };
 
   if (!isOpen) return null;
@@ -185,12 +220,36 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
     <div className="fixed inset-0 bg-gray-900 z-50 flex flex-col">
       {/* Header */}
       <div className="flex items-center gap-3 p-4 border-b border-white/[0.07]">
-        <button onClick={onClose} className="p-2 rounded-full hover:bg-gray-800">
-          <XMarkIcon className="w-6 h-6 text-gray-400" />
+        <button
+          onClick={() => builderInfo ? setBuilderInfo(null) : onClose()}
+          className="p-2 rounded-full hover:bg-gray-800"
+        >
+          {builderInfo
+            ? <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+            : <XMarkIcon className="w-6 h-6 text-gray-400" />
+          }
         </button>
-        <h2 className="flex-1 text-lg font-semibold text-white">Add to {mealLabel}</h2>
+        <h2 className="flex-1 text-lg font-semibold text-white">
+          {builderInfo
+            ? `${builderInfo.brandName} Builder`
+            : `Add to ${mealLabel}`
+          }
+        </h2>
       </div>
 
+      {/* Builder view — full screen, no tabs */}
+      {builderInfo && (
+        <BowlBuilder
+          brandId={builderInfo.brandId}
+          brandName={builderInfo.brandName}
+          onAdd={handleBuilderAdd}
+          onCancel={() => setBuilderInfo(null)}
+        />
+      )}
+
+      {/* Normal search view */}
+      {!builderInfo && (
+      <>
       {/* Tabs */}
       <div className="flex border-b border-white/[0.07]">
         {([['search', 'Search', MagnifyingGlassIcon], ['barcode', 'Barcode', QrCodeIcon], ['myfoods', 'My Foods', BookmarkIcon]] as const).map(([t, label, Icon]) => (
@@ -238,13 +297,13 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                 {!loading && !query && recentFoods.length > 0 && (
                   <div>
                     <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">Recent</div>
-                    {recentFoods.map(food => (
-                      <FoodRow key={food.id} food={food} onSelect={setSelected} />
+                    {recentFoods.filter(f => !isIngredient(f)).map(food => (
+                      <FoodRow key={food.id} food={food} onSelect={handleSelectFood} />
                     ))}
                   </div>
                 )}
-                {!loading && results.map(food => (
-                  <FoodRow key={food.id} food={food} onSelect={setSelected} />
+                {!loading && results.filter(f => !isIngredient(f)).map(food => (
+                  <FoodRow key={food.id} food={food} onSelect={handleSelectFood} />
                 ))}
                 {!loading && query && results.length === 0 && (
                   <div className="text-center py-8 space-y-2">
@@ -321,12 +380,14 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                 <p className="text-xs mt-1">Create foods in the Foods section</p>
               </div>
             )}
-            {!selected && myFoods.map(food => (
-              <FoodRow key={food.id} food={food} onSelect={setSelected} />
+            {!selected && myFoods.filter(f => !isIngredient(f)).map(food => (
+              <FoodRow key={food.id} food={food} onSelect={handleSelectFood} />
             ))}
           </div>
         )}
       </div>
+      </> /* end !builderInfo */
+      )}
     </div>
   );
 }
