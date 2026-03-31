@@ -6,6 +6,7 @@ import { useStreak } from '../hooks/useStreak';
 import WeightChart from '../components/Charts/WeightChart';
 import WeeklyCalorieChart from '../components/Charts/WeeklyCalorieChart';
 import MacroPieChart from '../components/Charts/MacroPieChart';
+import NutritionScoreCard from '../components/NutritionScore/NutritionScoreCard';
 import type { WeightEntry, DailyLog } from '../types';
 import { sumNutrition } from '../utils/nutrition';
 import { subDays } from 'date-fns';
@@ -107,6 +108,9 @@ export default function Progress() {
           <div className="text-sm text-gray-400">day{streak !== 1 ? 's' : ''} logged in a row</div>
         </div>
       </div>
+
+      {/* Nutrition Score */}
+      <NutritionScoreCard profile={profile} />
 
       {/* Weight Stats */}
       <div className="card p-4 grid grid-cols-2 gap-3">

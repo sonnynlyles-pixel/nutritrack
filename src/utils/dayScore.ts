@@ -120,3 +120,59 @@ export function scoreBg(score: number): string {
   if (score >= 40) return 'bg-orange-500';
   return 'bg-red-500';
 }
+
+export function scoreGradient(score: number): string {
+  if (score >= 80) return 'from-emerald-500 to-teal-400';
+  if (score >= 60) return 'from-yellow-500 to-amber-400';
+  if (score >= 40) return 'from-orange-500 to-amber-500';
+  return 'from-red-500 to-orange-500';
+}
+
+export interface PeriodScore {
+  avg: number;                  // 0–100 average across logged days
+  daysLogged: number;           // how many days had at least one entry
+  daysTotal: number;            // total days in the period
+  categories: {
+    key: keyof Omit<DayScoreBreakdown, 'total'>;
+    label: string;
+    avgPoints: number;
+    max: number;
+    pct: number;               // avgPoints / max * 100
+  }[];
+  strengths: string[];          // category labels where pct >= 80
+  improvements: string[];       // category labels where pct < 50
+}
+
+export function getPeriodScore(
+  logs: DailyLog[],
+  profile: UserProfile,
+  daysTotal: number,
+): PeriodScore {
+  const scored = logs
+    .map(l => getDayScore(l, profile))
+    .filter((s): s is DayScoreBreakdown => s !== null);
+
+  const daysLogged = scored.length;
+  if (daysLogged === 0) {
+    return { avg: 0, daysLogged: 0, daysTotal, categories: [], strengths: [], improvements: [] };
+  }
+
+  const avg = Math.round(scored.reduce((s, d) => s + d.total, 0) / daysLogged);
+
+  const keys: (keyof Omit<DayScoreBreakdown, 'total'>)[] = [
+    'calories', 'protein', 'sodium', 'fiber', 'sugar', 'satFat', 'mealBalance', 'caffeine',
+  ];
+
+  const categories = keys.map(key => {
+    const sum = scored.reduce((s, d) => s + d[key].points, 0);
+    const avgPoints = sum / daysLogged;
+    const max = scored[0][key].max;
+    const pct = Math.round((avgPoints / max) * 100);
+    return { key, label: scored[0][key].label, avgPoints, max, pct };
+  });
+
+  const strengths    = categories.filter(c => c.pct >= 80).map(c => c.label);
+  const improvements = categories.filter(c => c.pct < 50).map(c => c.label);
+
+  return { avg, daysLogged, daysTotal, categories, strengths, improvements };
+}
