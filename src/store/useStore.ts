@@ -41,8 +41,11 @@ export const useStore = create<AppStore>()(
     }),
     {
       name: 'nutritrack-store',
-      // selectedDate should always start as today — never restore a stale date from storage
       partialize: (s) => ({ profile: s.profile, usdaApiKey: s.usdaApiKey }),
+      // After rehydration, always reset selectedDate to today regardless of what was stored
+      onRehydrateStorage: () => (state) => {
+        if (state) state.selectedDate = localToday();
+      },
     }
   )
 );

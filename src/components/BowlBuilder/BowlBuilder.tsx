@@ -131,9 +131,9 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
   };
 
   return (
-    <div className="flex flex-col h-full">
-      {/* Sticky running total */}
-      <div className="sticky top-0 bg-surface-bg/95 backdrop-blur-sm z-10 px-4 py-3 border-b border-white/[0.07]">
+    <div className="flex-1 flex flex-col min-h-0">
+      {/* Running total — fixed, not sticky, so it never fights the scroll container */}
+      <div className="shrink-0 bg-surface-bg/95 backdrop-blur-sm px-4 py-3 border-b border-white/[0.07]">
         <div className="grid grid-cols-4 gap-2 text-center">
           <div>
             <div className="text-white font-bold text-lg leading-none">{Math.round(totalNutrition.calories)}</div>
@@ -154,8 +154,8 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
         </div>
       </div>
 
-      {/* Ingredient categories */}
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5">
+      {/* Ingredient categories — flex-1 + min-h-0 allows overflow-y-auto to actually scroll on iOS */}
+      <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-5">
         {CATEGORIES.map(cat => {
           let items = grouped[cat.key] || [];
           if (items.length === 0) return null;
@@ -232,8 +232,8 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
         })}
       </div>
 
-      {/* Footer */}
-      <div className="px-4 pb-4 pt-3 border-t border-white/[0.07] space-y-3">
+      {/* Footer — shrink-0 keeps it pinned at the bottom, never scrolled away */}
+      <div className="shrink-0 px-4 pb-6 pt-3 border-t border-white/[0.07] space-y-3">
         {ingredientNames ? (
           <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
             {entryName}
