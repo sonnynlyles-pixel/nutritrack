@@ -1263,6 +1263,26 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-twogood-peach',            "Two Good Peach",                      "Two Good",       '1 container (5.3 oz)',  80, 12,  4, 0, 0,  5,  65, 0,  2),
   rf('seed-twogood-black-cherry',     "Two Good Black Cherry",               "Two Good",       '1 container (5.3 oz)',  80, 12,  4, 0, 0,  5,  65, 0,  2),
   rf('seed-twogood-lemon',            "Two Good Lemon",                      "Two Good",       '1 container (5.3 oz)',  80, 12,  4, 0, 0,  5,  65, 0,  2),
+
+  // ── Hamburger Helper ────────────────────────────────────────────
+  // As-packaged: 35g dry = 1 serving (1/5 box)
+  rf('seed-hh-4cheese-dry',           "Four Cheese Lasagna (as packaged)",   "Hamburger Helper", '35g (1/5 box)', 130, 4, 27, 1, 0.5, 0, 720, 1, 3),
+  // Prepared per box label (1 cup prepared with ground beef + milk)
+  rf('seed-hh-4cheese-prep',          "Four Cheese Lasagna (prepared)",      "Hamburger Helper", '1 cup prepared', 360, 22, 32, 14, 5, 65, 870, 1, 4),
+
+  // ── Member's Mark 85/15 Organic Grass Fed Ground Beef ───────────
+  rf('seed-mm-beef-8515-4oz',         "85/15 Organic Grass Fed Ground Beef", "Member's Mark",    '4 oz (113g) raw', 230, 21, 0, 15, 6, 80, 75, 0, 0),
+  rf('seed-mm-beef-8515-3oz',         "85/15 Organic Grass Fed Ground Beef", "Member's Mark",    '3 oz (85g) raw',  170, 16, 0, 11, 4, 60, 55, 0, 0),
+
+  // ── Bell Pepper ─────────────────────────────────────────────────
+  rf('seed-green-bell-pepper',        "Green Bell Pepper",                   "",                 '1 medium (120g)', 30, 1, 7, 0, 0, 0, 4, 2, 4),
+  rf('seed-green-bell-pepper-half',   "Green Bell Pepper",                   "",                 '1/2 medium (60g)', 15, 0.5, 3.5, 0, 0, 0, 2, 1, 2),
+
+  // ── Recipe: HH Four Cheese Lasagna w/ MM 85/15 Beef ─────────────
+  // Full batch: 1 box HH Four Cheese Lasagna + 1 lb MM 85/15 beef + ½ cup 2% milk + ½ green bell pepper
+  // ~1,646 cal total across ~1,200g cooked (~5 cups).  137 cal/100g.
+  // Set servings to match grams: 3.5 servings = 350g, 2.5 servings = 250g, etc.
+  rf('seed-hh-recipe-mm-beef',        "HH Four Cheese Lasagna (MM 85/15 Beef + Bell Pepper)", "Homemade", '100g', 137, 9, 12, 6, 3, 26, 316, 1, 2),
 ];
 
 export async function seedFoods() {
