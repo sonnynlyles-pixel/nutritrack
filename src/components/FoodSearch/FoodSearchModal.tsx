@@ -217,7 +217,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   const mealLabel = category.charAt(0).toUpperCase() + category.slice(1);
 
   return (
-    <div className="fixed inset-0 bg-gray-900 z-50 flex flex-col overflow-hidden">
+    <div className="fixed inset-0 bg-gray-900 z-50 flex flex-col overflow-hidden overscroll-none">
       {/* Header */}
       <div className="flex items-center gap-3 p-4 border-b border-white/[0.07]">
         <button

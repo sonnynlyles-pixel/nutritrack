@@ -154,8 +154,11 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
         </div>
       </div>
 
-      {/* Ingredient categories — flex-1 + min-h-0 allows overflow-y-auto to actually scroll on iOS */}
-      <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-5">
+      {/* Ingredient categories — overscroll-contain + webkit scroll prevents iOS freeze */}
+      <div
+        className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-4 py-4 space-y-5"
+        style={{ WebkitOverflowScrolling: 'touch' }}
+      >
         {CATEGORIES.map(cat => {
           let items = grouped[cat.key] || [];
           if (items.length === 0) return null;
@@ -232,8 +235,8 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
         })}
       </div>
 
-      {/* Footer — shrink-0 keeps it pinned at the bottom, never scrolled away */}
-      <div className="shrink-0 px-4 pb-6 pt-3 border-t border-white/[0.07] space-y-3">
+      {/* Footer — pb-28 clears the fixed bottom nav bar */}
+      <div className="shrink-0 px-4 pb-28 pt-3 border-t border-white/[0.07] space-y-3">
         {ingredientNames ? (
           <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
             {entryName}
