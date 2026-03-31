@@ -279,6 +279,12 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-chipotle-ing-salsa-medium',     "Tomatillo Green (Medium)","Chipotle",'salsa',15,  0,  3,  0, 0,   0, 230, 1, 1),
   rf('seed-chipotle-ing-salsa-hot',        "Tomatillo Red (Hot)", "Chipotle", 'salsa',   30,  1,  4,  1, 0,   0, 500, 1, 1),
   rf('seed-chipotle-ing-salsa-corn',       "Corn Salsa",          "Chipotle", 'salsa',   80,  3, 15,  2, 0,   0, 150, 1, 3),
+  // Double protein (adds a second scoop — same macros as the single serving)
+  rf('seed-chipotle-ing-double-chicken',   "Double Chicken",      "Chipotle", 'double', 180, 32,  2,  7, 2, 105, 310, 0, 0),
+  rf('seed-chipotle-ing-double-steak',     "Double Steak",        "Chipotle", 'double', 150, 21,  1,  7, 3,  65, 310, 0, 0),
+  rf('seed-chipotle-ing-double-carnitas',  "Double Carnitas",     "Chipotle", 'double', 210, 23,  1, 13, 5,  70, 540, 0, 0),
+  rf('seed-chipotle-ing-double-barbacoa',  "Double Barbacoa",     "Chipotle", 'double', 170, 24,  2,  7, 3,  75, 460, 0, 0),
+  rf('seed-chipotle-ing-double-sofritas',  "Double Sofritas",     "Chipotle", 'double', 150,  8, 11,  9, 2,   0, 480, 2, 0),
   // Extras
   rf('seed-chipotle-ing-extra-cheese',     "Cheese",              "Chipotle", 'extra',  110,  6,  1,  9, 5,  30, 180, 0, 0),
   rf('seed-chipotle-ing-extra-sourcream',  "Sour Cream",          "Chipotle", 'extra',  120,  2,  2, 11, 7,  35,  30, 0, 2),
@@ -286,6 +292,8 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-chipotle-ing-extra-queso',      "Queso Blanco",        "Chipotle", 'extra',  120,  4,  4, 10, 4,  15, 390, 0, 1),
   rf('seed-chipotle-ing-extra-fajita',     "Fajita Veggies",      "Chipotle", 'extra',   20,  1,  4,  1, 0,   0, 175, 1, 2),
   rf('seed-chipotle-ing-extra-lettuce',    "Romaine Lettuce",     "Chipotle", 'extra',    5,  0,  1,  0, 0,   0,   5, 0, 0),
+  rf('seed-chipotle-ing-extra-chips',      "Chips & Salsa",       "Chipotle", 'extra',  570, 10, 73, 27, 3,   0, 420, 5, 1),
+  rf('seed-chipotle-ing-extra-kidschips',  "Chips (Kid's)",       "Chipotle", 'extra',  210,  4, 27, 10, 1,   0, 150, 2, 0),
 
   // ── Pancheros — Build Your Own ─────────────────────────────────
   rf('seed-pancheros-builder',        "Build Your Own Bowl / Burrito",       "Pancheros", '1 custom order', 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -293,15 +301,21 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-pancheros-ing-vessel-bowl',     "Bowl",                "Pancheros",'vessel',   0,  0,  0,  0, 0,  0,   0, 0, 0),
   rf('seed-pancheros-ing-vessel-burrito',  "Burrito Tortilla",    "Pancheros",'vessel', 310,  8, 56,  7, 3,  0, 730, 2, 1),
   rf('seed-pancheros-ing-vessel-taco',     "Flour Tacos (×2)",    "Pancheros",'vessel', 260,  6, 44,  7, 2,  0, 640, 2, 2),
+  rf('seed-pancheros-ing-vessel-quesadilla',"Quesadilla",         "Pancheros",'vessel', 380, 14, 44, 16, 8,  35, 810, 2, 2),
+  rf('seed-pancheros-ing-vessel-nachos',   "Nachos",              "Pancheros",'vessel', 480,  6, 58, 24, 4,  0,  620, 4, 1),
   // Protein
   rf('seed-pancheros-ing-protein-chicken', "Chicken",             "Pancheros",'protein', 130, 25,  1,  3, 1,  70, 570, 0, 0),
   rf('seed-pancheros-ing-protein-steak',   "Steak",               "Pancheros",'protein', 130, 20,  1,  5, 2,  50, 420, 0, 0),
   rf('seed-pancheros-ing-protein-pork',    "Pulled Pork",         "Pancheros",'protein', 130, 19,  1,  6, 2,  55, 580, 0, 0),
   rf('seed-pancheros-ing-protein-tofu',    "Tofu",                "Pancheros",'protein', 110, 10,  3,  7, 1,   0,   5, 1, 0),
-  // Rice
+  // Double protein (adds a second scoop)
+  rf('seed-pancheros-ing-double-chicken',  "Double Chicken",      "Pancheros",'double', 130, 25,  1,  3, 1,  70, 570, 0, 0),
+  rf('seed-pancheros-ing-double-steak',    "Double Steak",        "Pancheros",'double', 130, 20,  1,  5, 2,  50, 420, 0, 0),
+  rf('seed-pancheros-ing-double-pork',     "Double Pulled Pork",  "Pancheros",'double', 130, 19,  1,  6, 2,  55, 580, 0, 0),
+  rf('seed-pancheros-ing-double-tofu',     "Double Tofu",         "Pancheros",'double', 110, 10,  3,  7, 1,   0,   5, 1, 0),
+  // Rice — Pancheros only offers cilantro lime rice (one style)
   rf('seed-pancheros-ing-rice-none',       "No Rice",             "Pancheros",'rice',     0,  0,  0,  0, 0,   0,   0, 0, 0),
-  rf('seed-pancheros-ing-rice-white',      "White Rice",          "Pancheros",'rice',   190,  4, 40,  2, 0,   0, 360, 0, 0),
-  rf('seed-pancheros-ing-rice-brown',      "Brown Rice",          "Pancheros",'rice',   195,  4, 41,  2, 0,   0, 280, 2, 0),
+  rf('seed-pancheros-ing-rice-cilantro',   "Cilantro Lime Rice",  "Pancheros",'rice',   200,  4, 41,  2, 0,   0, 340, 0, 0),
   // Beans
   rf('seed-pancheros-ing-beans-none',      "No Beans",            "Pancheros",'beans',   0,  0,  0,  0, 0,   0,   0, 0, 0),
   rf('seed-pancheros-ing-beans-black',     "Black Beans",         "Pancheros",'beans',  100,  7, 18,  1, 0,   0, 340, 6, 0),
@@ -311,6 +325,7 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-pancheros-ing-salsa-chipotle',  "Chipotle Salsa",      "Pancheros",'salsa',   30,  0,  5,  1, 0,   0, 420, 1, 2),
   rf('seed-pancheros-ing-salsa-green',     "Green Tomatillo",     "Pancheros",'salsa',   15,  0,  3,  0, 0,   0, 210, 0, 1),
   rf('seed-pancheros-ing-salsa-corn',      "Corn Salsa",          "Pancheros",'salsa',   55,  1, 12,  1, 0,   0, 120, 1, 3),
+  rf('seed-pancheros-ing-salsa-hot',       "Panchero's Hot Sauce","Pancheros",'salsa',    5,  0,  1,  0, 0,   0, 190, 0, 0),
   // Extras
   rf('seed-pancheros-ing-extra-cheese',    "Cheese",              "Pancheros",'extra',  110,  7,  0,  9, 5,  30, 190, 0, 0),
   rf('seed-pancheros-ing-extra-sourcream', "Sour Cream",          "Pancheros",'extra',   60,  1,  2,  5, 3,  20,  15, 0, 1),
@@ -318,6 +333,8 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-pancheros-ing-extra-guac',      "Guacamole",           "Pancheros",'extra',  120,  1,  5, 11, 2,   0, 115, 3, 0),
   rf('seed-pancheros-ing-extra-fajita',    "Fajita Veggies",      "Pancheros",'extra',   25,  1,  4,  1, 0,   0, 190, 1, 1),
   rf('seed-pancheros-ing-extra-lettuce',   "Lettuce",             "Pancheros",'extra',    5,  0,  1,  0, 0,   0,   5, 0, 0),
+  rf('seed-pancheros-ing-extra-tortilla',  "Side Tortilla",       "Pancheros",'extra',  155,  4, 28,  4, 1,   0, 365, 1, 0),
+  rf('seed-pancheros-ing-extra-chips',     "Chips",               "Pancheros",'extra',  280,  4, 36, 13, 2,   0, 140, 2, 0),
 
   // ── Subway (6-inch, 9-grain wheat) ─────────────────────────────
   rf('seed-sub-turkey-6',             "6\" Turkey Breast",                   "Subway",        '1 sandwich', 210,  13, 36,  4,  1,  20,  730, 5,  6),

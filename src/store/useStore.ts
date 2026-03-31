@@ -39,6 +39,10 @@ export const useStore = create<AppStore>()(
       usdaApiKey: 'DEMO_KEY',
       setUsdaApiKey: (k) => set({ usdaApiKey: k }),
     }),
-    { name: 'nutritrack-store' }
+    {
+      name: 'nutritrack-store',
+      // selectedDate should always start as today — never restore a stale date from storage
+      partialize: (s) => ({ profile: s.profile, usdaApiKey: s.usdaApiKey }),
+    }
   )
 );

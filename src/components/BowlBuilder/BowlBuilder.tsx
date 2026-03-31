@@ -10,13 +10,14 @@ interface Props {
   onCancel: () => void;
 }
 
-const CATEGORIES: { key: string; label: string; multi: boolean; required: boolean }[] = [
-  { key: 'vessel',  label: 'Style',   multi: false, required: true  },
-  { key: 'protein', label: 'Protein', multi: false, required: true  },
-  { key: 'rice',    label: 'Rice',    multi: false, required: false },
-  { key: 'beans',   label: 'Beans',   multi: false, required: false },
-  { key: 'salsa',   label: 'Salsa',   multi: true,  required: false },
-  { key: 'extra',   label: 'Extras',  multi: true,  required: false },
+const CATEGORIES: { key: string; label: string; multi: boolean; required: boolean; hint?: string }[] = [
+  { key: 'vessel',  label: 'Style',          multi: false, required: true  },
+  { key: 'protein', label: 'Protein',        multi: false, required: true  },
+  { key: 'double',  label: 'Double Protein', multi: false, required: false, hint: 'add a 2nd scoop (+$)' },
+  { key: 'rice',    label: 'Rice',           multi: false, required: false },
+  { key: 'beans',   label: 'Beans',          multi: false, required: false },
+  { key: 'salsa',   label: 'Salsa',          multi: true,  required: false },
+  { key: 'extra',   label: 'Extras',         multi: true,  required: false },
 ];
 
 function addNutrition(a: NutritionInfo, b: NutritionInfo): NutritionInfo {
@@ -156,14 +157,26 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
       {/* Ingredient categories */}
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5">
         {CATEGORIES.map(cat => {
-          const items = grouped[cat.key] || [];
+          let items = grouped[cat.key] || [];
           if (items.length === 0) return null;
+
+          // For double protein, only show option matching the currently selected protein
+          if (cat.key === 'double') {
+            const selectedProteinId = singles['protein'];
+            if (!selectedProteinId) return null;
+            const proteinItem = ingredients.find(f => f.id === selectedProteinId);
+            const proteinName = proteinItem?.name.toLowerCase() ?? '';
+            items = items.filter(f => f.name.toLowerCase().replace('double ', '') === proteinName);
+            if (items.length === 0) return null;
+          }
+
           return (
             <div key={cat.key}>
               <div className="flex items-center gap-1.5 mb-2">
                 <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold">{cat.label}</span>
                 {cat.required && <span className="text-[10px] text-emerald-500 font-bold">REQUIRED</span>}
-                {!cat.multi && <span className="text-[10px] text-gray-600 ml-auto">pick one</span>}
+                {cat.hint && <span className="text-[10px] text-gray-600">{cat.hint}</span>}
+                {!cat.required && !cat.hint && !cat.multi && <span className="text-[10px] text-gray-600 ml-auto">pick one</span>}
                 {cat.multi && <span className="text-[10px] text-gray-600 ml-auto">pick any</span>}
               </div>
               <div className="space-y-1.5">
