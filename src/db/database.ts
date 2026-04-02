@@ -372,11 +372,97 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-sbux-bacon-egg-bites',     "Bacon & Gruyère Egg Bites",           "Starbucks",     '2 bites',    310,  19,  9, 22, 11, 215,  560, 0,  1,   0),
   rf('seed-sbux-butter-croissant',    "Butter Croissant",                    "Starbucks",     '1 croissant',260,   5, 31, 14,  8,  30,  230, 1,  8,   0),
 
-  // ── Burger King ────────────────────────────────────────────────
-  rf('seed-bk-whopper',               "Whopper",                             "Burger King",   '1 burger',   660,  28, 49, 40, 12,  90,  980, 2, 11),
-  rf('seed-bk-whopper-cheese',        "Whopper with Cheese",                 "Burger King",   '1 burger',   740,  32, 50, 46, 16, 115, 1240, 2, 11),
-  rf('seed-bk-double-whopper',        "Double Whopper",                      "Burger King",   '1 burger',   900,  52, 49, 57, 19, 165, 1060, 2, 11),
-  rf('seed-bk-ch-sandwich',           "Crispy Chicken Sandwich",             "Burger King",   '1 sandwich', 660,  22, 52, 40,  7,  50, 1200, 2,  7),
+  // ── Burger King – Whoppers ──────────────────────────────────────
+  rf('seed-bk-whopper',               "Whopper",                             "Burger King",   '1 burger',   670,  31, 54, 39, 12,  85, 1170, 3, 13),
+  rf('seed-bk-whopper-cheese',        "Whopper with Cheese",                 "Burger King",   '1 burger',   760,  36, 56, 46, 16, 105, 1600, 3, 14),
+  rf('seed-bk-whopper-bacon-cheese',  "Bacon & Cheese Whopper",              "Burger King",   '1 burger',   820,  40, 56, 51, 18, 115, 1850, 3, 14),
+  rf('seed-bk-double-whopper',        "Double Whopper",                      "Burger King",   '1 burger',   920,  52, 54, 58, 20, 150, 1240, 3, 13),
+  rf('seed-bk-double-whopper-cheese', "Double Whopper with Cheese",          "Burger King",   '1 burger',  1010,  56, 56, 65, 24, 175, 1670, 3, 14),
+  rf('seed-bk-triple-whopper',        "Triple Whopper",                      "Burger King",   '1 burger',  1355,  73, 54, 97, 28, 255, 1120, 3, 13),
+  rf('seed-bk-triple-whopper-cheese', "Triple Whopper with Cheese",          "Burger King",   '1 burger',  1565,  82, 56,114, 32, 280, 1550, 3, 14),
+  rf('seed-bk-whopper-jr',            "Whopper Jr.",                         "Burger King",   '1 burger',   330,  15, 30, 18,  5,  35,  560, 2,  7),
+  rf('seed-bk-whopper-jr-cheese',     "Whopper Jr. with Cheese",             "Burger King",   '1 burger',   370,  18, 31, 22,  7,  45,  780, 2,  8),
+  rf('seed-bk-impossible-whopper',    "Impossible Whopper",                  "Burger King",   '1 burger',   630,  29, 62, 34, 10,  15, 1350, 6, 14),
+
+  // ── Burger King – Burgers ───────────────────────────────────────
+  rf('seed-bk-hamburger',             "Hamburger",                           "Burger King",   '1 burger',   250,  13, 29, 10,  4,  30,  560, 1,  7),
+  rf('seed-bk-cheeseburger',          "Cheeseburger",                        "Burger King",   '1 burger',   290,  15, 30, 13,  6,  40,  780, 1,  7),
+  rf('seed-bk-dbl-hamburger',         "Double Hamburger",                    "Burger King",   '1 burger',   360,  22, 29, 17,  7,  60,  590, 1,  7),
+  rf('seed-bk-dbl-cheeseburger',      "Double Cheeseburger",                 "Burger King",   '1 burger',   400,  24, 30, 21,  9,  70,  810, 1,  7),
+  rf('seed-bk-bacon-cheeseburger',    "Bacon Cheeseburger",                  "Burger King",   '1 burger',   340,  18, 30, 16,  7,  45,  940, 1,  7),
+  rf('seed-bk-bacon-dbl-cheese',      "Bacon Double Cheeseburger",           "Burger King",   '1 burger',   440,  27, 30, 24, 11,  75,  970, 1,  7),
+  rf('seed-bk-rodeo-burger',          "Rodeo Burger",                        "Burger King",   '1 burger',   410,  16, 51, 17,  5,  35,  635, 3, 11),
+  rf('seed-bk-rodeo-cheeseburger',    "Rodeo Cheeseburger",                  "Burger King",   '1 burger',   450,  17, 52, 21,  8,  45,  835, 3, 11),
+  rf('seed-bk-rodeo-king',            "Rodeo King",                          "Burger King",   '1 burger',  1480,  79, 69,100, 39, 310, 2340, 3, 14),
+  rf('seed-bk-big-king',              "Big King",                            "Burger King",   '1 burger',  1009,  55, 57, 64, 26, 174, 2076, 3, 15),
+  rf('seed-bk-bacon-king',            "Bacon King",                          "Burger King",   '1 burger',  1200,  66, 55, 81, 32, 200, 2270, 3, 15),
+  rf('seed-bk-xl-cheeseburger',       "Extra Long Cheeseburger",             "Burger King",   '1 burger',   640,  29, 50, 37, 13,  90, 1120, 2, 11),
+
+  // ── Burger King – Chicken & Fish Sandwiches ─────────────────────
+  rf('seed-bk-royal-crispy',          "Classic Royal Crispy Chicken",        "Burger King",   '1 sandwich', 600,  31, 54, 31,  5,  80, 1330, 9,  9),
+  rf('seed-bk-spicy-royal-crispy',    "Spicy Royal Crispy Chicken",          "Burger King",   '1 sandwich', 760,  31, 58, 47,  8,  80, 1580, 9, 11),
+  rf('seed-bk-swiss-royal-crispy',    "Bacon & Swiss Royal Crispy Chicken",  "Burger King",   '1 sandwich', 740,  39, 56, 43, 11, 110, 1920, 9, 10),
+  rf('seed-bk-orig-chicken',          "Original Chicken Sandwich",           "Burger King",   '1 sandwich', 680,  23, 63, 39,  7,  65, 1380, 3,  7),
+  rf('seed-bk-chicken-jr',            "Chicken Jr.",                         "Burger King",   '1 sandwich', 440,  13, 39, 27,  5,  40,  700, 2,  5),
+  rf('seed-bk-spicy-chicken-jr',      "Spicy Chicken Jr.",                   "Burger King",   '1 sandwich', 380,  12, 42, 19,  4,  30,  680, 2,  6),
+  rf('seed-bk-big-fish',              "Big Fish Sandwich",                   "Burger King",   '1 sandwich', 570,  19, 58, 30,  5,  50, 1270, 3,  8),
+  rf('seed-bk-fiery-big-fish',        "Fiery Big Fish Sandwich",             "Burger King",   '1 sandwich', 730,  19, 61, 46,  8,  55, 1530, 3, 11),
+
+  // ── Burger King – Wraps ─────────────────────────────────────────
+  rf('seed-bk-wrap-classic',          "Classic Royal Crispy Wrap",           "Burger King",   '1 wrap',     310,  15, 28, 17,  4,  45,  700, 2,  3),
+  rf('seed-bk-wrap-honey-mustard',    "Honey Mustard Royal Crispy Wrap",     "Burger King",   '1 wrap',     290,  15, 28, 14,  3,  40,  680, 2,  4),
+  rf('seed-bk-wrap-spicy',            "Spicy Royal Crispy Wrap",             "Burger King",   '1 wrap',     390,  15, 28, 25,  5,  45,  750, 2,  3),
+
+  // ── Burger King – Nuggets & Chicken Fries ───────────────────────
+  rf('seed-bk-nuggets-4pc',           "Chicken Nuggets (4 pc)",              "Burger King",   '4 pieces',   190,   9, 12, 12,  3,  30,  490, 1,  0),
+  rf('seed-bk-nuggets-8pc',           "Chicken Nuggets (8 pc)",              "Burger King",   '8 pieces',   380,  20, 20, 22,  5,  50,  610, 2,  0),
+  rf('seed-bk-nuggets-10pc',          "Chicken Nuggets (10 pc)",             "Burger King",   '10 pieces',  480,  22, 30, 31,  6,  70, 1220, 2,  0),
+  rf('seed-bk-nuggets-20pc',          "Chicken Nuggets (20 pc)",             "Burger King",   '20 pieces',  970,  45, 60, 62, 12, 140, 2440, 5,  0),
+  rf('seed-bk-chkn-fries-8pc',        "Chicken Fries (8 pc)",                "Burger King",   '8 pieces',   220,  13, 16, 12,  3,  35,  520, 1,  0),
+  rf('seed-bk-chkn-fries-12pc',       "Chicken Fries (12 pc)",               "Burger King",   '12 pieces',  340,  20, 24, 18,  5,  52,  780, 2,  0),
+
+  // ── Burger King – Sides ─────────────────────────────────────────
+  rf('seed-bk-fries-value',           "French Fries (Value)",                "Burger King",   '1 value',    230,   3, 33, 10,  1,   0,  170, 2,  1),
+  rf('seed-bk-fries-small',           "French Fries (Small)",                "Burger King",   '1 small',    300,   4, 43, 13,  2,   0,  220, 3,  1),
+  rf('seed-bk-fries-medium',          "French Fries (Medium)",               "Burger King",   '1 medium',   370,   5, 54, 16,  2,   0,  270, 4,  1),
+  rf('seed-bk-fries-large',           "French Fries (Large)",                "Burger King",   '1 large',    440,   5, 64, 19,  3,   0,  320, 5,  1),
+  rf('seed-bk-onion-rings-small',     "Onion Rings (Small)",                 "Burger King",   '1 small',    280,   4, 37, 13,  2,   0,  510, 4,  4),
+  rf('seed-bk-onion-rings-medium',    "Onion Rings (Medium)",                "Burger King",   '1 medium',   360,   4, 48, 16,  3,   0,  640, 5,  5),
+  rf('seed-bk-onion-rings-large',     "Onion Rings (Large)",                 "Burger King",   '1 large',    520,   7, 70, 24,  4,   0,  950, 7,  7),
+  rf('seed-bk-mozzarella-4pc',        "Mozzarella Sticks (4 pc)",            "Burger King",   '4 pieces',   240,  10, 24, 12,  4,  20,  790, 1,  2),
+  rf('seed-bk-jal-bites-4pc',         "Jalapeño Cheddar Bites (4 pc)",       "Burger King",   '4 pieces',   230,   6, 27, 11,  5,  15,  700, 2,  1),
+  rf('seed-bk-jal-bites-8pc',         "Jalapeño Cheddar Bites (8 pc)",       "Burger King",   '8 pieces',   460,  13, 54, 21,  9,  30, 1410, 4,  3),
+
+  // ── Burger King – Breakfast ─────────────────────────────────────
+  rf('seed-bk-cw-egg-cheese',         "Egg & Cheese Croissan'wich",          "Burger King",   '1 sandwich', 352,  14, 29, 21, 11, 250,  855, 3,  5),
+  rf('seed-bk-cw-ham-egg-cheese',     "Ham, Egg & Cheese Croissan'wich",     "Burger King",   '1 sandwich', 392,  20, 30, 23, 11, 265, 1215, 3,  6),
+  rf('seed-bk-cw-saus-egg-cheese',    "Sausage, Egg & Cheese Croissan'wich", "Burger King",   '1 sandwich', 542,  21, 29, 38, 17, 280, 1255, 3,  5),
+  rf('seed-bk-cw-fully-loaded',       "Fully Loaded Croissan'wich",          "Burger King",   '1 sandwich', 704,  34, 33, 50, 23, 320, 2206, 3,  7),
+  rf('seed-bk-saus-biscuit',          "Sausage Biscuit",                     "Burger King",   '1 biscuit',  430,  11, 30, 30, 13,  35, 1150, 1,  2),
+  rf('seed-bk-bec-biscuit',           "Bacon, Egg & Cheese Biscuit",         "Burger King",   '1 biscuit',  410,  15, 32, 26, 12, 225, 1370, 1,  3),
+  rf('seed-bk-sec-biscuit',           "Sausage, Egg & Cheese Biscuit",       "Burger King",   '1 biscuit',  550,  20, 32, 39, 17, 250, 1580, 1,  3),
+  rf('seed-bk-breakfast-burrito',     "Breakfast Burrito Jr.",               "Burger King",   '1 burrito',  420,  16, 29, 26,  9, 235, 1080, 2,  2),
+  rf('seed-bk-pancake-saus',          "Pancake & Sausage Platter",           "Burger King",   '1 platter',  620,  13, 79, 29,  9,  75, 1080, 1, 36),
+  rf('seed-bk-fts-3pc',               "French Toast Sticks (3 pc)",          "Burger King",   '3 pieces',   230,   4, 32, 10,  2,   0,  220, 2,  9),
+  rf('seed-bk-fts-5pc',               "French Toast Sticks (5 pc)",          "Burger King",   '5 pieces',   380,   6, 77, 16,  4,   0,  400, 3, 33),
+  rf('seed-bk-hash-browns-sm',        "Hash Browns (Small)",                 "Burger King",   '1 small',    290,   2, 29, 19,  4,   0,  840, 2,  0),
+  rf('seed-bk-hash-browns-md',        "Hash Browns (Medium)",                "Burger King",   '1 medium',   540,   4, 54, 34,  7,   0, 1480, 5,  0),
+  rf('seed-bk-hash-browns-lg',        "Hash Browns (Large)",                 "Burger King",   '1 large',    740,   6, 75, 48,  9,   0, 2040, 6,  1),
+
+  // ── Burger King – Desserts & Shakes ────────────────────────────
+  rf('seed-bk-soft-serve-cone',       "Soft Serve Cone",                     "Burger King",   '1 cone',     200,   5, 33,  5,  4,  20,  150, 0, 22),
+  rf('seed-bk-hershey-pie',           "Hershey's Sundae Pie",                "Burger King",   '1 slice',    310,   3, 32, 18, 12,  10,  230, 1, 22),
+  rf('seed-bk-vanilla-shake',         "Vanilla Shake",                       "Burger King",   '1 shake',    600,  13, 98, 16, 11,  65,  410, 0, 81),
+  rf('seed-bk-oreo-shake',            "Oreo Cookie Shake",                   "Burger King",   '1 shake',    680,  13,111, 20, 12,  65,  470, 1, 88),
+  rf('seed-bk-choc-shake',            "Chocolate Shake",                     "Burger King",   '1 shake',    580,  13,100, 15, 10,  65,  420, 2, 81),
+  rf('seed-bk-cookie',                "Chocolate Chip Cookie",               "Burger King",   '1 cookie',   160,   2, 23,  8,  4,  10,  110, 1, 14),
+
+  // ── Burger King – Dipping Sauces ───────────────────────────────
+  rf('seed-bk-sauce-bbq',             "BBQ Dipping Sauce",                   "Burger King",   '1 oz packet',  50,  0, 12,  0,  0,   0,  310, 0, 11),
+  rf('seed-bk-sauce-ranch',           "Ranch Dipping Sauce",                 "Burger King",   '1 oz packet', 140,  0,  1, 14,  3,  10,  200, 0,  1),
+  rf('seed-bk-sauce-buffalo',         "Buffalo Dipping Sauce",               "Burger King",   '1 oz packet',  80,  0,  2,  8,  2,  10,  370, 0,  1),
+  rf('seed-bk-sauce-honey-mustard',   "Honey Mustard Dipping Sauce",         "Burger King",   '1 oz packet',  90,  0,  8,  6,  1,  10,  170, 0,  8),
+  rf('seed-bk-sauce-zesty',           "Zesty Onion Ring Sauce",              "Burger King",   '1 oz packet', 150,  0,  3, 16,  3,  15,  230, 0,  1),
 
   // ── Domino's (Large, Hand Tossed, 1 slice) ─────────────────────
   rf('seed-dom-cheese-slice',         "Cheese Pizza (Large, Hand Tossed, 1 slice)", "Domino's", '1 slice',  290,  12, 37, 11,  5,  25,  680, 2,  4),
