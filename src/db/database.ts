@@ -1370,6 +1370,48 @@ const SEEDED_FOODS: FoodItem[] = [
   // Set servings to match grams: 3.5 servings = 350g, 2.5 servings = 250g, etc.
   rf('seed-hh-recipe-mm-beef',        "HH Four Cheese Lasagna (MM 85/15 Beef + Bell Pepper)", "Homemade", '100g', 137, 9, 12, 6, 3, 26, 316, 1, 2),
 
+  // ── Ellenos Greek Yogurt ────────────────────────────────────────
+  rf('seed-ellenos-plain',            "Plain Greek Yogurt",                  "Ellenos",        '1 container (6 oz)', 200, 17, 13,  9, 6, 45, 110, 2, 10),
+  rf('seed-ellenos-marionberry',      "Marionberry Greek Yogurt",            "Ellenos",        '1 container (5.3 oz)', 200, 12, 24, 7, 4, 35,  80, 2, 20),
+  rf('seed-ellenos-strawberry-sc',    "Strawberry Shortcake Greek Yogurt",   "Ellenos",        '1 container (6 oz)', 280, 13, 34, 10, 7, 35, 130, 1, 24),
+  rf('seed-ellenos-lemon-curd',       "Lemon Curd Greek Yogurt",             "Ellenos",        '1 container (4 oz)', 170, 10, 19,  7, 4, 65,  70, 1, 17),
+  rf('seed-ellenos-passion-fruit',    "Passion Fruit Greek Yogurt",          "Ellenos",        '1 container (5.3 oz)', 200, 13, 22, 6, 4, 35,  85, 2, 19),
+  rf('seed-ellenos-vanilla-bean',     "Vanilla Bean Greek Yogurt",           "Ellenos",        '1 container (5.3 oz)', 210, 13, 22, 7, 4, 35,  90, 2, 20),
+  rf('seed-ellenos-mango',            "Mango Greek Yogurt",                  "Ellenos",        '1 container (5.3 oz)', 200, 12, 22, 7, 4, 35,  80, 2, 20),
+  rf('seed-ellenos-black-cherry',     "Black Cherry Greek Yogurt",           "Ellenos",        '1 container (5.3 oz)', 200, 12, 23, 7, 4, 35,  85, 2, 20),
+
+  // ── Solely Organic Fruit Gummies (1 pouch = 20g) ───────────────
+  rf('seed-solely-mango',             "Mango Organic Fruit Gummies",         "Solely",         '1 pouch (0.7 oz)',  70, 0, 14, 0, 0, 0, 0, 1,  7),
+  rf('seed-solely-mango-guava',       "Mango & Guava Organic Fruit Gummies", "Solely",         '1 pouch (0.7 oz)',  60, 0, 13, 0, 0, 0, 0, 1,  6),
+  rf('seed-solely-mango-orange',      "Mango & Orange Organic Fruit Gummies","Solely",         '1 pouch (0.7 oz)',  60, 1, 14, 0, 0, 0, 0, 1,  7),
+  rf('seed-solely-mango-pf',          "Mango & Passion Fruit Organic Gummies","Solely",        '1 pouch (0.7 oz)',  60, 0, 15, 0, 0, 0, 0, 1,  9),
+  rf('seed-solely-mango-blueberry',   "Mango & Blueberry Organic Gummies",  "Solely",         '1 pouch (0.7 oz)',  60, 0, 14, 0, 0, 0, 0, 1, 11),
+  rf('seed-solely-mango-strawberry',  "Mango & Strawberry Organic Gummies", "Solely",         '1 pouch (0.7 oz)',  60, 0, 14, 0, 0, 0, 0, 1,  7),
+
+  // ── 365 by Whole Foods ──────────────────────────────────────────
+  rf('seed-365-oatmeal-plain',        "Organic Instant Oatmeal Original",    "365 by Whole Foods", '1 packet (40g)', 150, 5, 27, 2.5, 0, 0, 0, 4, 0),
+
+  // ── SUNSET Wild Wonders Medley Tomatoes ────────────────────────
+  rf('seed-sunset-wild-wonders',      "Wild Wonders Medley Tomatoes",        "SUNSET",         '~25 tomatoes (92g)',  25, 1, 4, 0, 0, 0, 0, 1, 3),
+
+  // ── Cape Gooseberries ───────────────────────────────────────────
+  rf('seed-peeled-cape-gooseberry',   "Cape Gooseberries",                   "Peeled",         '1/2 cup (85g)',  45, 1.5, 9.5, 0.5, 0, 0, 1, 3, 6),
+
+  // ── Hot Ones Los Calientes Verde Hot Sauce ──────────────────────
+  rf('seed-hot-ones-verde',           "Los Calientes Verde Hot Sauce",       "Hot Ones",       '1 tsp (5g)',  0, 0, 0.5, 0, 0, 0, 40, 0, 0),
+
+  // ── Zack's Mighty Chile Lime Rolled Tortilla Chips ──────────────
+  rf('seed-zacks-chile-lime',         "Chile Lime Rolled Tortilla Chips",    "Zack's Mighty",  '1 oz (28g)', 140, 2, 15, 8, 0.5, 0, 190, 1, 0),
+
+  // ── Chomps Beef Sticks (all flavors share identical macros) ─────
+  rf('seed-chomps-original',          "Original Beef Stick",                 "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
+  rf('seed-chomps-jalapeno',          "Jalapeño Beef Stick",                 "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
+  rf('seed-chomps-italian',           "Italian Style Beef Stick",            "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
+  rf('seed-chomps-sea-salt',          "Sea Salt Beef Stick",                 "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
+  rf('seed-chomps-smoky-bbq',         "Smoky BBQ Beef Stick",                "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
+  rf('seed-chomps-taco',              "Taco Seasoned Beef Stick",            "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
+  rf('seed-chomps-habanero',          "Habanero Beef Stick",                 "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
+
   // ── Jimmy John's – Slims (8" French bread, meat only) ───────────
   // Slim subs = bread + meat + optional mayo/mustard, no extras
   rf('seed-jj-slim1',                 "Slim 1 – Ham & Cheese",               "Jimmy John's",   '8" sub',       550, 27, 63, 21,  8,  55, 1580, 2,  4),
