@@ -77,13 +77,13 @@ export default function FoodLog() {
     <div className="max-w-lg mx-auto pb-24">
 
       {/* Date header */}
-      <div className="sticky top-0 glass border-b border-white/[0.06] z-10">
+      <div className="sticky top-0 glass border-b border-brand-400/20 z-10">
         <div className="flex items-center justify-between px-4 py-3">
           <button onClick={() => changeDate(-1)} className="p-2 rounded-full hover:bg-white/[0.06] transition-colors">
             <ChevronLeftIcon className="w-5 h-5 text-gray-400" />
           </button>
           <div className="text-center">
-            <div className="font-semibold text-white">{dateLabel}</div>
+            <div className="font-semibold text-gray-900">{dateLabel}</div>
             {isToday && <div className="text-xs text-brand-400">Today</div>}
           </div>
           <button
@@ -112,7 +112,7 @@ export default function FoodLog() {
               >
                 <div className="flex items-center gap-2">
                   <span className={`text-lg ${isFlashing ? 'animate-pop' : ''}`}>{emoji}</span>
-                  <span className="font-semibold text-white">{label}</span>
+                  <span className="font-semibold text-gray-900">{label}</span>
                   {entries.length > 0 && (
                     <span className="text-xs text-gray-600">({entries.length})</span>
                   )}
@@ -126,7 +126,7 @@ export default function FoodLog() {
               </button>
 
               {isExpanded && (
-                <div className="border-t border-white/[0.05]">
+                <div className="border-t border-brand-400/15">
                   {entries.map((entry, idx) => (
                     <div key={entry.id} className={idx === entries.length - 1 && isFlashing ? 'animate-slide-up' : ''}>
                       <FoodItemRow
@@ -162,24 +162,24 @@ export default function FoodLog() {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <span className="text-lg">💧</span>
-              <span className="font-semibold text-white">Water</span>
+              <span className="font-semibold text-gray-900">Water</span>
             </div>
             <span className="text-blue-400 font-bold">{log?.waterOz || 0} oz</span>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => updateWater(Math.max(0, (log?.waterOz || 0) - 8))}
-              className="w-10 h-10 bg-surface-raised hover:bg-surface-high border border-white/[0.06] rounded-xl text-white font-bold transition-colors"
+              className="w-10 h-10 bg-surface-raised hover:bg-surface-high border border-brand-400/20 rounded-xl text-gray-900 font-bold transition-colors"
             >−</button>
             <input
               type="number"
-              className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-brand-500 transition-colors"
+              className="flex-1 bg-surface-raised border border-brand-400/20 rounded-xl px-3 py-2 text-center text-gray-900 focus:outline-none focus:border-brand-500 transition-colors"
               value={log?.waterOz || 0}
               onChange={e => updateWater(Math.max(0, parseInt(e.target.value) || 0))}
             />
             <button
               onClick={() => updateWater((log?.waterOz || 0) + 8)}
-              className="w-10 h-10 bg-surface-raised hover:bg-surface-high border border-white/[0.06] rounded-xl text-white font-bold transition-colors"
+              className="w-10 h-10 bg-surface-raised hover:bg-surface-high border border-brand-400/20 rounded-xl text-gray-900 font-bold transition-colors"
             >+</button>
           </div>
         </div>
@@ -188,7 +188,7 @@ export default function FoodLog() {
         <div className="card p-4">
           <label className="block section-label mb-3">Notes</label>
           <textarea
-            className="w-full bg-surface-raised border border-white/[0.06] rounded-xl p-3 text-gray-200 text-sm resize-none focus:outline-none focus:border-brand-500 transition-colors"
+            className="w-full bg-surface-raised border border-brand-400/20 rounded-xl p-3 text-gray-700 text-sm resize-none focus:outline-none focus:border-brand-500 transition-colors"
             rows={3}
             placeholder="How are you feeling today?"
             value={log?.notes || ''}
@@ -198,10 +198,10 @@ export default function FoodLog() {
       </div>
 
       {/* Sticky totals bar */}
-      <div className="fixed bottom-16 left-0 right-0 glass border-t border-white/[0.06] px-4 py-2.5 z-10">
+      <div className="fixed bottom-16 left-0 right-0 glass border-t border-brand-400/20 px-4 py-2.5 z-10">
         <div className="flex justify-around max-w-lg mx-auto text-center">
           <div>
-            <div className="text-white font-bold">{Math.round(totals.calories)}</div>
+            <div className="text-gray-900 font-bold">{Math.round(totals.calories)}</div>
             <div className="text-xs text-gray-600">Cal</div>
           </div>
           <div>
@@ -223,13 +223,13 @@ export default function FoodLog() {
       {selectedEntry && (
         <div className="fixed inset-0 z-50 flex flex-col justify-end">
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setSelectedEntry(null)} />
-          <div className="relative bg-surface-card rounded-t-3xl max-h-[85vh] overflow-y-auto border-t border-white/[0.08]">
+          <div className="relative bg-surface-card rounded-t-3xl max-h-[85vh] overflow-y-auto border-t border-brand-400/20">
             <div className="flex justify-center pt-3 pb-1">
               <div className="w-10 h-1 bg-white/20 rounded-full" />
             </div>
-            <div className="flex items-start justify-between px-4 pt-2 pb-3 border-b border-white/[0.06]">
+            <div className="flex items-start justify-between px-4 pt-2 pb-3 border-b border-brand-400/20">
               <div className="flex-1 min-w-0 pr-3">
-                <h2 className="text-base font-semibold text-white leading-snug">{selectedEntry.food.name}</h2>
+                <h2 className="text-base font-semibold text-gray-900 leading-snug">{selectedEntry.food.name}</h2>
                 {selectedEntry.food.brand && <p className="text-xs text-gray-500 mt-0.5">{selectedEntry.food.brand}</p>}
                 <p className="text-xs text-gray-600 mt-0.5">{selectedEntry.servings}× {selectedEntry.food.servingLabel}</p>
               </div>
@@ -240,7 +240,7 @@ export default function FoodLog() {
             <div className="px-4 py-4 space-y-4">
               <div className="grid grid-cols-4 gap-2 text-center">
                 {([
-                  { label: 'Calories', value: Math.round(selectedEntry.food.nutrition.calories * selectedEntry.servings), unit: '',  color: 'text-white' },
+                  { label: 'Calories', value: Math.round(selectedEntry.food.nutrition.calories * selectedEntry.servings), unit: '',  color: 'text-gray-900' },
                   { label: 'Protein',  value: Math.round(selectedEntry.food.nutrition.protein  * selectedEntry.servings), unit: 'g', color: 'text-blue-400' },
                   { label: 'Carbs',    value: Math.round(selectedEntry.food.nutrition.carbs    * selectedEntry.servings), unit: 'g', color: 'text-amber-400' },
                   { label: 'Fat',      value: Math.round(selectedEntry.food.nutrition.fat      * selectedEntry.servings), unit: 'g', color: 'text-rose-400' },
@@ -269,7 +269,7 @@ export default function FoodLog() {
                 ] as const).filter(({ value }) => (value ?? 0) > 0).map(({ label, value, unit }) => (
                   <div key={label} className="flex items-center justify-between px-3 py-2">
                     <span className="text-xs text-gray-500">{label}</span>
-                    <span className="text-xs text-white font-medium">
+                    <span className="text-xs text-gray-900 font-medium">
                       {Math.round((value ?? 0) * selectedEntry.servings * 10) / 10}{unit}
                     </span>
                   </div>

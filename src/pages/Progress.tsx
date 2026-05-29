@@ -98,7 +98,7 @@ export default function Progress() {
 
   return (
     <div className="max-w-lg mx-auto p-4 space-y-6">
-      <h1 className="text-xl font-bold text-white pt-2">Progress</h1>
+      <h1 className="text-xl font-bold text-gray-900 pt-2">Progress</h1>
 
       {/* Streak */}
       <div className="card p-4 flex items-center gap-4">
@@ -116,7 +116,7 @@ export default function Progress() {
       <div className="card p-4 grid grid-cols-2 gap-3">
         <div className="bg-surface-raised rounded-xl p-3">
           <div className="text-xs text-gray-500">Current</div>
-          <div className="text-xl font-bold text-white">{currentWeight} lbs</div>
+          <div className="text-xl font-bold text-gray-900">{currentWeight} lbs</div>
         </div>
         <div className="bg-surface-raised rounded-xl p-3">
           <div className="text-xs text-gray-500">Goal</div>
@@ -130,7 +130,7 @@ export default function Progress() {
         </div>
         <div className="bg-surface-raised rounded-xl p-3">
           <div className="text-xs text-gray-500">Remaining</div>
-          <div className={`text-xl font-bold ${Math.abs(remaining) < 5 ? 'text-emerald-400' : 'text-white'}`}>
+          <div className={`text-xl font-bold ${Math.abs(remaining) < 5 ? 'text-emerald-400' : 'text-gray-900'}`}>
             {Math.abs(remaining).toFixed(1)} lbs
           </div>
         </div>
@@ -138,34 +138,34 @@ export default function Progress() {
 
       {/* Log Weight */}
       <div className="card p-4 space-y-3">
-        <h3 className="font-semibold text-white">Log Weight</h3>
+        <h3 className="font-semibold text-gray-900">Log Weight</h3>
         <div className="flex gap-2">
           <input
             type="number"
             step="0.1"
             placeholder="Weight (lbs)"
-            className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
+            className="flex-1 bg-surface-raised border border-brand-400/20 rounded-xl px-3 py-2 text-gray-900 focus:outline-none focus:border-brand-500"
             value={newWeight}
             onFocus={e => e.target.select()}
             onChange={e => setNewWeight(e.target.value)}
           />
           <input
             type="date"
-            className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
+            className="flex-1 bg-surface-raised border border-brand-400/20 rounded-xl px-3 py-2 text-gray-900 focus:outline-none focus:border-brand-500"
             value={newWeightDate}
             onChange={e => setNewWeightDate(e.target.value)}
           />
         </div>
         <input
           placeholder="Notes (optional)"
-          className="w-full bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
+          className="w-full bg-surface-raised border border-brand-400/20 rounded-xl px-3 py-2 text-gray-900 focus:outline-none focus:border-brand-500"
           value={newWeightNotes}
           onChange={e => setNewWeightNotes(e.target.value)}
         />
         <button
           onClick={handleSaveWeight}
           disabled={!newWeight || saving}
-          className="w-full py-3 bg-brand-gradient disabled:bg-gray-700 disabled:text-gray-500 text-white rounded-xl font-semibold transition-colors"
+          className="w-full py-3 bg-brand-gradient disabled:bg-gray-100 disabled:text-gray-400 text-white rounded-xl font-semibold transition-colors"
         >
           {saving ? 'Saving...' : 'Save Weight'}
         </button>
@@ -173,14 +173,14 @@ export default function Progress() {
 
       {/* Weight Chart */}
       <div className="card p-4">
-        <h3 className="font-semibold text-white mb-3">Weight Trend</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">Weight Trend</h3>
         <WeightChart entries={weightEntries} goalWeight={profile.goalWeight} />
         {/* Recent entries */}
         <div className="mt-3 space-y-1 max-h-32 overflow-y-auto">
           {weightEntries.slice(0, 10).map(e => (
             <div key={e.id} className="flex items-center justify-between text-sm">
               <span className="text-gray-400">{e.date}</span>
-              <span className="text-white">{e.weightLbs} lbs</span>
+              <span className="text-gray-900">{e.weightLbs} lbs</span>
               <button onClick={() => handleDeleteWeight(e.id)} className="text-gray-600 hover:text-red-400 text-xs">✕</button>
             </div>
           ))}
@@ -189,11 +189,11 @@ export default function Progress() {
 
       {/* 30-day heatmap */}
       <div className="card p-4">
-        <h3 className="font-semibold text-white mb-3">30-Day Calorie Compliance</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">30-Day Calorie Compliance</h3>
         <div className="grid grid-cols-10 gap-1">
           {heatmapDays.map(({ dateStr, cal }) => {
             const pct = cal / profile.calorieGoal;
-            const color = cal === 0 ? 'bg-gray-700' : pct <= 1.0 ? 'bg-emerald-500' : pct <= 1.1 ? 'bg-yellow-500' : 'bg-red-500';
+            const color = cal === 0 ? 'bg-gray-100' : pct <= 1.0 ? 'bg-emerald-500' : pct <= 1.1 ? 'bg-yellow-500' : 'bg-red-500';
             return (
               <div
                 key={dateStr}
@@ -212,19 +212,19 @@ export default function Progress() {
 
       {/* Weekly Calorie Chart */}
       <div className="card p-4">
-        <h3 className="font-semibold text-white mb-3">This Week's Calories</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">This Week's Calories</h3>
         <WeeklyCalorieChart logs={weeklyLogs} calorieGoal={profile.calorieGoal} />
       </div>
 
       {/* Macro Pie */}
       <div className="card p-4">
-        <h3 className="font-semibold text-white mb-1">Weekly Macro Avg</h3>
+        <h3 className="font-semibold text-gray-900 mb-1">Weekly Macro Avg</h3>
         <MacroPieChart protein={avgMacros.protein} carbs={avgMacros.carbs} fat={avgMacros.fat} />
       </div>
 
       {/* Weekly Table */}
       <div className="card p-4 overflow-x-auto">
-        <h3 className="font-semibold text-white mb-3">Daily Breakdown</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">Daily Breakdown</h3>
         <table className="w-full text-sm">
           <thead>
             <tr className="text-gray-500 text-xs">
@@ -237,9 +237,9 @@ export default function Progress() {
           </thead>
           <tbody>
             {weekDays.map((day, i) => (
-              <tr key={i} className="border-t border-white/[0.07]">
-                <td className="py-2 text-gray-300">{day.label}</td>
-                <td className={`py-2 text-right font-medium ${day.calories > 0 ? 'text-white' : 'text-gray-600'}`}>
+              <tr key={i} className="border-t border-gray-100">
+                <td className="py-2 text-gray-700">{day.label}</td>
+                <td className={`py-2 text-right font-medium ${day.calories > 0 ? 'text-gray-900' : 'text-gray-600'}`}>
                   {day.calories > 0 ? Math.round(day.calories) : '-'}
                 </td>
                 <td className="py-2 text-right text-blue-400">{day.protein > 0 ? `${Math.round(day.protein)}g` : '-'}</td>
@@ -253,7 +253,7 @@ export default function Progress() {
 
       {/* Body Measurements */}
       <div className="card p-4 space-y-3">
-        <h3 className="font-semibold text-white">Body Measurements (inches)</h3>
+        <h3 className="font-semibold text-gray-900">Body Measurements (inches)</h3>
         {(Object.keys(measurements) as Array<keyof Measurements>).map(key => (
           <div key={key} className="flex items-center gap-3">
             <label className="w-20 text-sm text-gray-400 capitalize">{key}</label>
@@ -261,7 +261,7 @@ export default function Progress() {
               type="number"
               step="0.1"
               placeholder="—"
-              className="flex-1 bg-surface-raised border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500 text-sm"
+              className="flex-1 bg-surface-raised border border-brand-400/20 rounded-xl px-3 py-2 text-gray-900 focus:outline-none focus:border-brand-500 text-sm"
               value={measurements[key]}
               onChange={e => setMeasurements(prev => ({ ...prev, [key]: e.target.value }))}
             />

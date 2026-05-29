@@ -54,16 +54,16 @@ function FoodDetailSheet({
   return (
     <div className="fixed inset-0 z-50 flex flex-col justify-end">
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-surface-card rounded-t-3xl max-h-[85vh] overflow-y-auto border-t border-white/[0.08]">
+      <div className="relative bg-surface-card rounded-t-3xl max-h-[85vh] overflow-y-auto border-t border-brand-400/20">
         {/* Handle */}
         <div className="flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 bg-white/20 rounded-full" />
         </div>
 
         {/* Header */}
-        <div className="flex items-start justify-between px-4 pt-2 pb-3 border-b border-white/[0.06]">
+        <div className="flex items-start justify-between px-4 pt-2 pb-3 border-b border-brand-400/20">
           <div className="flex-1 min-w-0 pr-3">
-            <h2 className="text-base font-semibold text-white leading-snug">{rec.food.name}</h2>
+            <h2 className="text-base font-semibold text-gray-900 leading-snug">{rec.food.name}</h2>
             {rec.food.brand && <p className="text-xs text-gray-500 mt-0.5">{rec.food.brand}</p>}
             <p className="text-xs text-gray-600 mt-0.5">{s}× {rec.food.servingLabel}</p>
           </div>
@@ -76,7 +76,7 @@ function FoodDetailSheet({
           {/* Macro grid */}
           <div className="grid grid-cols-4 gap-2 text-center">
             {([
-              { label: 'Calories', value: Math.round(n.calories * s),  unit: '',  color: 'text-white' },
+              { label: 'Calories', value: Math.round(n.calories * s),  unit: '',  color: 'text-gray-900' },
               { label: 'Protein',  value: Math.round(n.protein  * s),  unit: 'g', color: 'text-blue-400' },
               { label: 'Carbs',    value: Math.round(n.carbs    * s),  unit: 'g', color: 'text-amber-400' },
               { label: 'Fat',      value: Math.round(n.fat      * s),  unit: 'g', color: 'text-rose-400' },
@@ -94,7 +94,7 @@ function FoodDetailSheet({
               {microItems.map(({ label, value, unit }) => (
                 <div key={label} className="flex items-center justify-between px-3 py-2">
                   <span className="text-xs text-gray-500">{label}</span>
-                  <span className="text-xs text-white font-medium">
+                  <span className="text-xs text-gray-900 font-medium">
                     {Math.round((value ?? 0) * s * 10) / 10}{unit}
                   </span>
                 </div>
@@ -154,7 +154,7 @@ export default function MealRecommendations({ remaining, onAdd }: Props) {
       <div className="card p-4 flex items-center gap-3">
         <SparklesIcon className="w-5 h-5 text-emerald-400 shrink-0" />
         <div>
-          <div className="text-sm font-semibold text-gray-300">Smart Suggestions</div>
+          <div className="text-sm font-semibold text-gray-700">Smart Suggestions</div>
           <div className="text-xs text-emerald-400 mt-0.5">You've hit your calorie goal for today!</div>
         </div>
       </div>
@@ -185,7 +185,7 @@ export default function MealRecommendations({ remaining, onAdd }: Props) {
         >
           <div className="flex items-center gap-2">
             <SparklesIcon className="w-4 h-4 text-emerald-400" />
-            <h3 className="text-sm font-semibold text-gray-300">{label}</h3>
+            <h3 className="text-sm font-semibold text-gray-700">{label}</h3>
           </div>
           <span className="text-gray-600 text-xs">{expanded ? '▲' : '▼'}</span>
         </button>
@@ -193,9 +193,9 @@ export default function MealRecommendations({ remaining, onAdd }: Props) {
         {expanded && (
           <>
             {/* Remaining macro strip */}
-            <div className="flex gap-3 px-4 pb-3 border-b border-white/[0.07]">
+            <div className="flex gap-3 px-4 pb-3 border-b border-gray-100">
               {[
-                { label: 'Cal left', value: Math.round(Math.max(remaining.calories, 0)), color: 'text-white' },
+                { label: 'Cal left', value: Math.round(Math.max(remaining.calories, 0)), color: 'text-gray-900' },
                 { label: 'Protein', value: `${Math.round(Math.max(remaining.protein, 0))}g`, color: 'text-blue-400' },
                 { label: 'Carbs',   value: `${Math.round(Math.max(remaining.carbs,   0))}g`, color: 'text-amber-400' },
                 { label: 'Fat',     value: `${Math.round(Math.max(remaining.fat,     0))}g`, color: 'text-rose-400' },
@@ -235,7 +235,7 @@ export default function MealRecommendations({ remaining, onAdd }: Props) {
               })}
             </div>
 
-            <div className="px-4 py-2 border-t border-white/[0.07]">
+            <div className="px-4 py-2 border-t border-gray-100">
               <p className="text-xs text-gray-600 text-center">
                 Tap a food for details · servings auto-sized to fit your goals
               </p>

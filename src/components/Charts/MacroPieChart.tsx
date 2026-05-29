@@ -44,15 +44,15 @@ export default function MacroPieChart({ protein, carbs, fat }: Props) {
           ))}
         </Pie>
         <Tooltip
-          contentStyle={{ background: '#1f2937', border: '1px solid #374151', borderRadius: 8 }}
-          labelStyle={{ color: '#f9fafb' }}
+          contentStyle={{ background: '#FFFFFF', border: '1px solid rgba(57,255,122,0.4)', borderRadius: 8, boxShadow: '0 0 14px rgba(57,255,122,0.12)' }}
+          labelStyle={{ color: '#0F172A' }}
           formatter={(value: number, name: string) => {
             const grams = name === 'Fat' ? Math.round(value / 9) : Math.round(value / 4);
             return [`${grams}g (${value} cal)`, name];
           }}
         />
         <Legend
-          formatter={(value) => <span style={{ color: '#9ca3af', fontSize: 12 }}>{value}</span>}
+          formatter={(value) => <span style={{ color: '#475569', fontSize: 12 }}>{value}</span>}
         />
       </PieChart>
     </ResponsiveContainer>

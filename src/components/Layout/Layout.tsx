@@ -27,7 +27,7 @@ const navItems = [
 
 export default function Layout() {
   return (
-    <div className="flex flex-col h-screen bg-surface-bg text-gray-100">
+    <div className="flex flex-col h-screen bg-surface-bg text-gray-900">
       <main className="flex-1 overflow-y-auto pb-20">
         <Outlet />
       </main>
@@ -41,7 +41,7 @@ export default function Layout() {
             end={to === '/'}
             className={({ isActive }) =>
               `flex-1 flex flex-col items-center py-2.5 gap-0.5 text-[10px] font-medium transition-all ${
-                isActive ? 'text-brand-400' : 'text-gray-600 hover:text-gray-400'
+                isActive ? 'text-brand-500' : 'text-gray-400 hover:text-gray-600'
               }`
             }
           >
@@ -49,7 +49,7 @@ export default function Layout() {
               <>
                 <div className="relative">
                   {isActive
-                    ? <ActiveIcon className="w-6 h-6 drop-shadow-[0_0_8px_rgba(129,140,248,0.8)]" />
+                    ? <ActiveIcon className="w-6 h-6 drop-shadow-[0_0_8px_rgba(57,255,122,0.8)]" />
                     : <Icon className="w-6 h-6" />
                   }
                   {isActive && (

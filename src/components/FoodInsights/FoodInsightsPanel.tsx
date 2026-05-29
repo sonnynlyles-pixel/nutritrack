@@ -11,14 +11,14 @@ const CATEGORY_LABELS: Record<InsightCategory, string> = {
 
 const SEVERITY_STYLES: Record<string, string> = {
   positive: 'border-emerald-700 bg-emerald-900/20',
-  neutral:  'border-white/[0.06] bg-gray-800',
+  neutral:  'border-brand-400/20 bg-gray-50',
   caution:  'border-yellow-700 bg-yellow-900/20',
   warning:  'border-orange-700 bg-orange-900/20',
 };
 
 const SEVERITY_TITLE_STYLES: Record<string, string> = {
   positive: 'text-emerald-400',
-  neutral:  'text-gray-300',
+  neutral:  'text-gray-700',
   caution:  'text-yellow-400',
   warning:  'text-orange-400',
 };
@@ -60,12 +60,12 @@ export default function FoodInsightsPanel({ food, servings }: Props) {
   );
 
   return (
-    <div className="rounded-xl border border-white/[0.07] overflow-hidden">
+    <div className="rounded-xl border border-gray-100 overflow-hidden">
       <button
         onClick={() => setExpanded(prev => !prev)}
-        className="w-full flex items-center justify-between px-4 py-3 bg-gray-800 hover:bg-gray-700 transition-colors text-left"
+        className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors text-left"
       >
-        <span className="text-sm font-medium text-gray-200">Food Insights</span>
+        <span className="text-sm font-medium text-gray-700">Food Insights</span>
         <div className="flex items-center gap-2">
           <span className={`text-xs font-medium ${isEmpty ? 'text-emerald-400' : 'text-gray-400'}`}>{summary}</span>
           {expanded
@@ -79,7 +79,7 @@ export default function FoodInsightsPanel({ food, servings }: Props) {
           {isEmpty ? (
             <div className="rounded-lg border border-emerald-700 bg-emerald-900/20 px-3 py-2.5">
               <div className="text-sm font-semibold text-emerald-400 mb-1">✓ Clean nutritional profile</div>
-              <div className="text-xs text-gray-300 leading-relaxed">
+              <div className="text-xs text-gray-700 leading-relaxed">
                 No significant nutritional concerns flagged for this food at this serving size. Low in sugar, sodium, and saturated fat.
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function FoodInsightsPanel({ food, servings }: Props) {
                           <span className="mr-1.5">{SEVERITY_ICONS[insight.severity]}</span>
                           {insight.title}
                         </div>
-                        <div className="text-xs text-gray-300 leading-relaxed">{insight.body}</div>
+                        <div className="text-xs text-gray-700 leading-relaxed">{insight.body}</div>
                       </div>
                     ))}
                   </div>

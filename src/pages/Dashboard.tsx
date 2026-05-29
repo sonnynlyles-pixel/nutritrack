@@ -22,13 +22,13 @@ function CalorieRing({ consumed, goal }: { consumed: number; goal: number }) {
   const isGoalMet = !isOver && consumed >= goal * 0.9;
   const isWarning = !isOver && !isGoalMet && consumed > goal * 0.75;
 
-  const ringColor0 = isOver ? '#ef4444' : isGoalMet ? '#10b981' : '#6366F1';
-  const ringColor1 = isOver ? '#f97316' : isGoalMet ? '#34d399' : '#8B5CF6';
+  const ringColor0 = isOver ? '#ef4444' : isGoalMet ? '#10b981' : '#00CC58';
+  const ringColor1 = isOver ? '#f97316' : isGoalMet ? '#34d399' : '#39FF7A';
   const glowColor  = isOver
     ? 'radial-gradient(circle, #ef4444, transparent)'
     : isGoalMet
     ? 'radial-gradient(circle, #10b981, transparent)'
-    : 'radial-gradient(circle, #6366F1, transparent)';
+    : 'radial-gradient(circle, #39FF7A, transparent)';
 
   return (
     <div className="flex flex-col items-center">
@@ -44,7 +44,7 @@ function CalorieRing({ consumed, goal }: { consumed: number; goal: number }) {
               <stop offset="100%" stopColor={ringColor1} />
             </linearGradient>
           </defs>
-          <circle cx="90" cy="90" r={r} fill="none" stroke="#1A1A27" strokeWidth="13" />
+          <circle cx="90" cy="90" r={r} fill="none" stroke="#EAFFF4" strokeWidth="13" />
           <circle
             cx="90" cy="90" r={r}
             fill="none"
@@ -57,7 +57,7 @@ function CalorieRing({ consumed, goal }: { consumed: number; goal: number }) {
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className={`text-3xl font-bold leading-none transition-colors duration-500 ${isGoalMet ? 'text-emerald-400' : 'text-white'}`}>
+          <div className={`text-3xl font-bold leading-none transition-colors duration-500 ${isGoalMet ? 'text-emerald-400' : 'text-gray-900'}`}>
             {Math.round(consumed)}
           </div>
           <div className="text-xs text-gray-500 mt-1">of {goal} cal</div>
@@ -189,7 +189,7 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex items-start justify-between pt-3">
         <div>
-          <h1 className="text-xl font-bold text-white">{greeting}, {profile.name}!</h1>
+          <h1 className="text-xl font-bold text-gray-900">{greeting}, {profile.name}!</h1>
           <p className="text-sm text-gray-500 mt-0.5">{dateLabel}</p>
         </div>
         {streak > 0 && (
@@ -228,7 +228,7 @@ export default function Dashboard() {
                 <span className={`text-xl transition-all duration-300 ${waterMet ? 'animate-pop' : ''}`}>💧</span>
                 <div>
                   <div className="text-sm font-semibold">
-                    <span className={`transition-colors duration-500 ${waterMet ? 'text-cyan-400' : 'text-white'}`}>
+                    <span className={`transition-colors duration-500 ${waterMet ? 'text-cyan-400' : 'text-gray-900'}`}>
                       {waterOz}
                     </span>
                     <span className="text-gray-500 font-normal"> / {profile.waterGoalOz} oz</span>
@@ -250,14 +250,14 @@ export default function Dashboard() {
                 <button
                   key={oz}
                   onClick={() => updateWater(waterOz + oz)}
-                  className="flex-1 py-2 bg-surface-raised hover:bg-surface-high border border-white/[0.06] rounded-xl text-sm text-gray-300 transition-colors"
+                  className="flex-1 py-2 bg-surface-raised hover:bg-surface-high border border-brand-400/20 rounded-xl text-sm text-gray-700 transition-colors"
                 >
                   +{oz} oz
                 </button>
               ))}
               <button
                 onClick={() => updateWater(Math.max(0, waterOz - 8))}
-                className="px-3 py-2 bg-surface-raised hover:bg-surface-high border border-white/[0.06] rounded-xl text-sm text-gray-500 transition-colors"
+                className="px-3 py-2 bg-surface-raised hover:bg-surface-high border border-brand-400/20 rounded-xl text-sm text-gray-500 transition-colors"
               >
                 −
               </button>
@@ -277,7 +277,7 @@ export default function Dashboard() {
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <span className="text-base">{MEAL_EMOJI[meal]}</span>
-                  <h4 className="font-semibold text-white capitalize">{meal}</h4>
+                  <h4 className="font-semibold text-gray-900 capitalize">{meal}</h4>
                   {entries.length > 0 && (
                     <span className="text-xs text-gray-600">({entries.length})</span>
                   )}
@@ -299,7 +299,7 @@ export default function Dashboard() {
               )}
               <button
                 onClick={() => navigate(`/log?meal=${meal}`)}
-                className="mt-3 w-full py-2 border border-dashed border-white/[0.1] hover:border-brand-500/50 rounded-xl text-brand-400 text-sm transition-colors"
+                className="mt-3 w-full py-2 border border-dashed border-brand-400/25 hover:border-brand-500/50 rounded-xl text-brand-400 text-sm transition-colors"
               >
                 + Add Food
               </button>
@@ -348,7 +348,7 @@ export default function Dashboard() {
                   return (
                     <div key={item.label} className="bg-surface-raised rounded-xl p-3">
                       <div className="text-xs text-gray-500 mb-1">{item.label}</div>
-                      <div className={`font-bold text-sm ${isOver ? 'text-red-400' : 'text-white'}`}>{pct}%</div>
+                      <div className={`font-bold text-sm ${isOver ? 'text-red-400' : 'text-gray-900'}`}>{pct}%</div>
                       <div className="text-xs text-gray-600">
                         {Math.round(item.value * 10) / 10}{item.unit}
                         <span className="text-gray-700"> / {item.dv}{item.unit}</span>
@@ -373,7 +373,7 @@ export default function Dashboard() {
                   return (
                     <div key={item.label} className={`bg-surface-raised rounded-xl p-3 transition-all duration-500 ${met ? 'ring-1 ring-emerald-500/40' : ''}`}>
                       <div className={`text-xs mb-1 transition-colors duration-500 ${met ? 'text-emerald-400' : 'text-gray-500'}`}>{item.label}</div>
-                      <div className={`font-bold text-sm transition-colors duration-500 ${met ? 'text-emerald-400' : 'text-white'}`}>{pct}%{met && ' ✓'}</div>
+                      <div className={`font-bold text-sm transition-colors duration-500 ${met ? 'text-emerald-400' : 'text-gray-900'}`}>{pct}%{met && ' ✓'}</div>
                       <div className="text-xs text-gray-600">
                         {Math.round(item.value * 10) / 10}{item.unit}
                         <span className="text-gray-700"> / {item.dv}{item.unit}</span>

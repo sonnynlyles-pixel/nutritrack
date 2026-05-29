@@ -34,12 +34,12 @@ export default function WeightChart({ entries, goalWeight }: Props) {
   return (
     <ResponsiveContainer width="100%" height={200}>
       <LineChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-        <XAxis dataKey="label" tick={{ fill: '#9ca3af', fontSize: 11 }} />
-        <YAxis domain={[minW, maxW]} tick={{ fill: '#9ca3af', fontSize: 11 }} />
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(57,255,122,0.18)" />
+        <XAxis dataKey="label" tick={{ fill: '#6B7280', fontSize: 11 }} />
+        <YAxis domain={[minW, maxW]} tick={{ fill: '#6B7280', fontSize: 11 }} />
         <Tooltip
-          contentStyle={{ background: '#1f2937', border: '1px solid #374151', borderRadius: 8 }}
-          labelStyle={{ color: '#f9fafb' }}
+          contentStyle={{ background: '#FFFFFF', border: '1px solid rgba(57,255,122,0.4)', borderRadius: 8, boxShadow: '0 0 14px rgba(57,255,122,0.12)' }}
+          labelStyle={{ color: '#0F172A' }}
           formatter={(value: number) => [`${value} lbs`, 'Weight']}
         />
         <ReferenceLine

@@ -29,12 +29,12 @@ export default function WeeklyCalorieChart({ logs, calorieGoal }: Props) {
   return (
     <ResponsiveContainer width="100%" height={200}>
       <BarChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-        <XAxis dataKey="day" tick={{ fill: '#9ca3af', fontSize: 12 }} />
-        <YAxis tick={{ fill: '#9ca3af', fontSize: 11 }} />
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(57,255,122,0.18)" />
+        <XAxis dataKey="day" tick={{ fill: '#6B7280', fontSize: 12 }} />
+        <YAxis tick={{ fill: '#6B7280', fontSize: 11 }} />
         <Tooltip
-          contentStyle={{ background: '#1f2937', border: '1px solid #374151', borderRadius: 8 }}
-          labelStyle={{ color: '#f9fafb' }}
+          contentStyle={{ background: '#FFFFFF', border: '1px solid rgba(57,255,122,0.4)', borderRadius: 8, boxShadow: '0 0 14px rgba(57,255,122,0.12)' }}
+          labelStyle={{ color: '#0F172A' }}
           formatter={(value: number) => [`${value} cal`, 'Calories']}
         />
         <ReferenceLine
@@ -47,7 +47,7 @@ export default function WeeklyCalorieChart({ logs, calorieGoal }: Props) {
           {data.map((entry) => (
             <Cell
               key={entry.date}
-              fill={entry.calories === 0 ? '#374151' : entry.calories <= calorieGoal ? '#10b981' : '#ef4444'}
+              fill={entry.calories === 0 ? '#E5E7EB' : entry.calories <= calorieGoal ? '#10b981' : '#ef4444'}
             />
           ))}
         </Bar>

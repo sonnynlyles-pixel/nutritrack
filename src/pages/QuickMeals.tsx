@@ -56,17 +56,17 @@ export default function QuickMeals() {
 
   return (
     <div className="max-w-lg mx-auto p-4 space-y-5">
-      <h1 className="text-xl font-bold text-white pt-2">Quick Meals</h1>
+      <h1 className="text-xl font-bold text-gray-900 pt-2">Quick Meals</h1>
 
       {/* Add to meal selector */}
       <div className="card p-4 space-y-3">
-        <h3 className="font-semibold text-white text-sm">Add quick meal to:</h3>
+        <h3 className="font-semibold text-gray-900 text-sm">Add quick meal to:</h3>
         <div className="flex gap-2">
           {MEAL_OPTIONS.map(m => (
             <button
               key={m}
               onClick={() => setTargetMeal(m)}
-              className={`flex-1 py-2 rounded-xl text-xs font-medium capitalize transition-colors border ${targetMeal === m ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-700 border-white/[0.06] text-gray-300'}`}
+              className={`flex-1 py-2 rounded-xl text-xs font-medium capitalize transition-colors border ${targetMeal === m ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-100 border-brand-400/20 text-gray-700'}`}
             >
               {m}
             </button>
@@ -76,11 +76,11 @@ export default function QuickMeals() {
 
       {/* Save current meal */}
       <div className="card p-4 space-y-3">
-        <h3 className="font-semibold text-white text-sm">Save a meal from today</h3>
+        <h3 className="font-semibold text-gray-900 text-sm">Save a meal from today</h3>
         {savingMeal ? (
           <div className="space-y-3">
             <input
-              className="w-full bg-gray-700 border border-white/[0.06] rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-500"
+              className="w-full bg-gray-100 border border-brand-400/20 rounded-xl px-3 py-2 text-gray-900 focus:outline-none focus:border-brand-500"
               placeholder="Quick meal name (e.g. My Breakfast)"
               value={newMealName}
               onChange={e => setNewMealName(e.target.value)}
@@ -88,14 +88,14 @@ export default function QuickMeals() {
             <div className="flex gap-2">
               <button
                 onClick={() => setSavingMeal(null)}
-                className="flex-1 py-2 bg-gray-700 text-gray-300 rounded-xl"
+                className="flex-1 py-2 bg-gray-100 text-gray-700 rounded-xl"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSaveCurrentMeal}
                 disabled={!newMealName.trim()}
-                className="flex-1 py-2 bg-brand-gradient disabled:bg-gray-700 disabled:text-gray-500 text-white rounded-xl font-semibold"
+                className="flex-1 py-2 bg-brand-gradient disabled:bg-gray-100 disabled:text-gray-500 text-gray-900 rounded-xl font-semibold"
               >
                 Save
               </button>
@@ -110,7 +110,7 @@ export default function QuickMeals() {
                   key={m}
                   onClick={() => setSavingMeal(m)}
                   disabled={count === 0}
-                  className={`flex-1 py-2 rounded-xl text-xs font-medium capitalize border transition-colors ${count > 0 ? 'bg-gray-700 border-white/[0.06] text-gray-200 hover:border-emerald-600' : 'bg-gray-800 border-white/[0.07] text-gray-600 cursor-not-allowed'}`}
+                  className={`flex-1 py-2 rounded-xl text-xs font-medium capitalize border transition-colors ${count > 0 ? 'bg-gray-100 border-brand-400/20 text-gray-700 hover:border-emerald-600' : 'bg-gray-50 border-gray-100 text-gray-600 cursor-not-allowed'}`}
                 >
                   {m}
                   {count > 0 && <span className="ml-1 text-emerald-400">({count})</span>}
@@ -134,7 +134,7 @@ export default function QuickMeals() {
           <div key={qm.id} className="card p-4">
             <div className="flex items-start justify-between mb-2">
               <div>
-                <div className="font-semibold text-white">{qm.name}</div>
+                <div className="font-semibold text-gray-900">{qm.name}</div>
                 <div className="text-xs text-gray-500">
                   {qm.entries.length} items · {qm.totalCalories} cal
                 </div>

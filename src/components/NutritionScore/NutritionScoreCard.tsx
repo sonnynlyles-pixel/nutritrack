@@ -34,7 +34,7 @@ function ScoreRing({ score }: { score: number }) {
   return (
     <div className="relative w-36 h-36 mx-auto">
       <svg width="144" height="144" className="-rotate-90">
-        <circle cx="72" cy="72" r={r} fill="none" stroke="#1A1A27" strokeWidth="11" />
+        <circle cx="72" cy="72" r={r} fill="none" stroke="#EAFFF4" strokeWidth="11" />
         <circle
           cx="72" cy="72" r={r}
           fill="none"
@@ -76,7 +76,7 @@ export default function NutritionScoreCard({ profile }: { profile: UserProfile }
     <div className="card p-4 space-y-4">
       {/* Header + period tabs */}
       <div className="flex items-center justify-between">
-        <h3 className="font-semibold text-white">Nutrition Score</h3>
+        <h3 className="font-semibold text-gray-900">Nutrition Score</h3>
         <div className="flex bg-surface-raised rounded-xl overflow-hidden">
           {(Object.entries(PERIOD_LABELS) as [Period, string][]).map(([key, label]) => (
             <button
@@ -85,7 +85,7 @@ export default function NutritionScoreCard({ profile }: { profile: UserProfile }
               className={`px-3 py-1.5 text-xs font-medium transition-colors ${
                 period === key
                   ? 'bg-emerald-600 text-white'
-                  : 'text-gray-400 hover:text-gray-200'
+                  : 'text-gray-400 hover:text-gray-700'
               }`}
             >
               {label}
@@ -142,21 +142,21 @@ export default function NutritionScoreCard({ profile }: { profile: UserProfile }
 
           {/* Strengths */}
           {score.strengths.length > 0 && (
-            <div className="bg-emerald-900/20 border border-emerald-800/40 rounded-xl p-3 space-y-1">
+            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 space-y-1">
               <p className="text-xs font-semibold text-emerald-400 mb-1.5">✓ Doing well</p>
               {score.strengths.map(s => (
-                <p key={s} className="text-xs text-gray-300">· {s}</p>
+                <p key={s} className="text-xs text-gray-700">· {s}</p>
               ))}
             </div>
           )}
 
           {/* Improvements */}
           {score.improvements.length > 0 && (
-            <div className="bg-orange-900/20 border border-orange-800/40 rounded-xl p-3 space-y-2">
+            <div className="bg-orange-50 border border-orange-200 rounded-xl p-3 space-y-2">
               <p className="text-xs font-semibold text-orange-400 mb-1.5">↑ Room to improve</p>
               {score.improvements.map(s => (
                 <div key={s}>
-                  <p className="text-xs text-gray-300 font-medium">· {s}</p>
+                  <p className="text-xs text-gray-700 font-medium">· {s}</p>
                   {TIPS[s] && (
                     <p className="text-xs text-gray-500 ml-2 mt-0.5">{TIPS[s]}</p>
                   )}

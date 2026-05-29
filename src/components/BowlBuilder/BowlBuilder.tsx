@@ -133,10 +133,10 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
   return (
     <div className="flex-1 flex flex-col min-h-0">
       {/* Running total — fixed, not sticky, so it never fights the scroll container */}
-      <div className="shrink-0 bg-surface-bg/95 backdrop-blur-sm px-4 py-3 border-b border-white/[0.07]">
+      <div className="shrink-0 bg-surface-bg/95 backdrop-blur-sm px-4 py-3 border-b border-gray-100">
         <div className="grid grid-cols-4 gap-2 text-center">
           <div>
-            <div className="text-white font-bold text-lg leading-none">{Math.round(totalNutrition.calories)}</div>
+            <div className="text-gray-900 font-bold text-lg leading-none">{Math.round(totalNutrition.calories)}</div>
             <div className="text-gray-500 text-xs mt-0.5">cal</div>
           </div>
           <div>
@@ -196,7 +196,7 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl border transition-all ${
                         isSelected
                           ? 'bg-emerald-900/40 border-emerald-600/70'
-                          : 'bg-surface-raised border-white/[0.05] active:bg-surface-high'
+                          : 'bg-surface-raised border-brand-400/15 active:bg-surface-high'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -207,7 +207,7 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
                             : `w-4 h-4 rounded-full border-2 ${isSelected ? 'border-emerald-500' : 'border-gray-600'}`
                         }`}>
                           {cat.multi && isSelected && (
-                            <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 12 12">
+                            <svg className="w-2.5 h-2.5 text-gray-900" fill="currentColor" viewBox="0 0 12 12">
                               <path d="M10 3L5 8.5 2 5.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"/>
                             </svg>
                           )}
@@ -215,7 +215,7 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
                             <div className="w-2 h-2 rounded-full bg-emerald-500" />
                           )}
                         </div>
-                        <span className={`text-sm ${isSelected ? 'text-white font-medium' : 'text-gray-300'}`}>
+                        <span className={`text-sm ${isSelected ? 'text-gray-900 font-medium' : 'text-gray-700'}`}>
                           {item.name}
                         </span>
                       </div>
@@ -236,7 +236,7 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
       </div>
 
       {/* Footer — pb-28 clears the fixed bottom nav bar */}
-      <div className="shrink-0 px-4 pb-28 pt-3 border-t border-white/[0.07] space-y-3">
+      <div className="shrink-0 px-4 pb-28 pt-3 border-t border-gray-100 space-y-3">
         {ingredientNames ? (
           <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
             {entryName}
@@ -245,7 +245,7 @@ export default function BowlBuilder({ brandId, brandName, onAdd, onCancel }: Pro
         <div className="flex gap-3">
           <button
             onClick={onCancel}
-            className="flex-1 py-3 rounded-xl bg-gray-700 text-gray-300 font-medium"
+            className="flex-1 py-3 rounded-xl bg-gray-100 text-gray-700 font-medium"
           >
             Cancel
           </button>

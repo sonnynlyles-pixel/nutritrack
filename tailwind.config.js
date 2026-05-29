@@ -8,16 +8,16 @@ export default {
     extend: {
       colors: {
         surface: {
-          bg:     '#0D0D14',
-          card:   '#13131C',
-          raised: '#1A1A27',
-          high:   '#212130',
+          bg:     '#FFFFFF',
+          card:   '#FFFFFF',
+          raised: '#F5FFF9',
+          high:   '#EAFFF4',
         },
         brand: {
-          300: '#A5B4FC',
-          400: '#818CF8',
-          500: '#6366F1',
-          600: '#4F46E5',
+          300: '#AAFFD1',
+          400: '#39FF7A',
+          500: '#00CC58',
+          600: '#00994A',
         },
         emerald: {
           400: '#34d399',
@@ -28,15 +28,15 @@ export default {
         },
       },
       backgroundImage: {
-        'brand-gradient':  'linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)',
+        'brand-gradient':  'linear-gradient(135deg, #00994A 0%, #00CC58 100%)',
         'emerald-gradient':'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
         'danger-gradient': 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
       },
       boxShadow: {
-        'card':         '0 0 0 1px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.5)',
-        'glow-brand':   '0 0 24px rgba(99,102,241,0.35)',
-        'glow-emerald': '0 0 24px rgba(16,185,129,0.3)',
-        'nav':          '0 -1px 0 rgba(255,255,255,0.06), 0 -8px 32px rgba(0,0,0,0.6)',
+        'card':         '0 0 0 1px rgba(57,255,122,0.22), 0 4px 20px rgba(57,255,122,0.08)',
+        'glow-brand':   '0 0 20px rgba(57,255,122,0.5)',
+        'glow-emerald': '0 0 20px rgba(57,255,122,0.4)',
+        'nav':          '0 -1px 0 rgba(57,255,122,0.18), 0 -4px 20px rgba(0,0,0,0.04)',
       },
       keyframes: {
         pop: {
@@ -50,11 +50,11 @@ export default {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         'glow-pulse': {
-          '0%, 100%': { opacity: '0.25' },
-          '50%':      { opacity: '0.55' },
+          '0%, 100%': { opacity: '0.3' },
+          '50%':      { opacity: '0.7' },
         },
         'flash-bg': {
-          '0%':   { backgroundColor: 'rgba(16,185,129,0.18)' },
+          '0%':   { backgroundColor: 'rgba(57,255,122,0.15)' },
           '100%': { backgroundColor: 'transparent' },
         },
       },

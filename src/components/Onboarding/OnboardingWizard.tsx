@@ -46,7 +46,7 @@ export default function OnboardingWizard() {
           {Array.from({ length: totalSteps }).map((_, i) => (
             <div
               key={i}
-              className={`w-2 h-2 rounded-full transition-colors ${i === step ? 'bg-emerald-400' : i < step ? 'bg-emerald-700' : 'bg-gray-700'}`}
+              className={`w-2 h-2 rounded-full transition-colors ${i === step ? 'bg-emerald-400' : i < step ? 'bg-emerald-700' : 'bg-gray-100'}`}
             />
           ))}
         </div>
@@ -55,12 +55,12 @@ export default function OnboardingWizard() {
         {step === 0 && (
           <div className="text-center space-y-6">
             <div className="text-6xl mb-4">🥗</div>
-            <h1 className="text-3xl font-bold text-white">Welcome to NutriTrack</h1>
+            <h1 className="text-3xl font-bold text-gray-900">Welcome to NutriTrack</h1>
             <p className="text-gray-400">Your personal calorie and nutrition tracker. Let's get you set up in under a minute.</p>
             <div>
               <label className="block text-sm text-gray-400 mb-2 text-left">What's your name?</label>
               <input
-                className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white text-lg focus:outline-none focus:border-brand-500"
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-gray-900 text-lg focus:outline-none focus:border-brand-500"
                 placeholder="Enter your name"
                 value={draft.name}
                 onChange={e => update({ name: e.target.value })}
@@ -73,12 +73,12 @@ export default function OnboardingWizard() {
         {/* Step 1: Personal Info */}
         {step === 1 && (
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white mb-6">Personal Info</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Personal Info</h2>
             <div>
               <label className="block text-sm text-gray-400 mb-1">Age</label>
               <input
                 type="number"
-                className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500"
                 value={draft.age}
                 onChange={e => update({ age: parseInt(e.target.value) || 0 })}
               />
@@ -90,7 +90,7 @@ export default function OnboardingWizard() {
                   <button
                     key={g}
                     onClick={() => update({ gender: g })}
-                    className={`flex-1 py-3 rounded-xl border capitalize font-medium transition-colors ${draft.gender === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-800 border-white/[0.07] text-gray-300'}`}
+                    className={`flex-1 py-3 rounded-xl border capitalize font-medium transition-colors ${draft.gender === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-50 border-gray-100 text-gray-700'}`}
                   >
                     {g}
                   </button>
@@ -103,7 +103,7 @@ export default function OnboardingWizard() {
                 <div className="flex-1">
                   <input
                     type="number"
-                    className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500"
                     value={draft.heightFt}
                     onChange={e => update({ heightFt: parseInt(e.target.value) || 0 })}
                   />
@@ -112,7 +112,7 @@ export default function OnboardingWizard() {
                 <div className="flex-1">
                   <input
                     type="number"
-                    className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500"
                     value={draft.heightIn}
                     onChange={e => update({ heightIn: parseInt(e.target.value) || 0 })}
                   />
@@ -125,7 +125,7 @@ export default function OnboardingWizard() {
                 <label className="block text-sm text-gray-400 mb-1">Current Weight (lbs)</label>
                 <input
                   type="number"
-                  className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
+                  className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500"
                   value={draft.currentWeight}
                   onChange={e => update({ currentWeight: parseFloat(e.target.value) || 0 })}
                 />
@@ -134,7 +134,7 @@ export default function OnboardingWizard() {
                 <label className="block text-sm text-gray-400 mb-1">Goal Weight (lbs)</label>
                 <input
                   type="number"
-                  className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
+                  className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500"
                   value={draft.goalWeight}
                   onChange={e => update({ goalWeight: parseFloat(e.target.value) || 0 })}
                 />
@@ -146,14 +146,14 @@ export default function OnboardingWizard() {
         {/* Step 2: Activity Level */}
         {step === 2 && (
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white mb-6">Activity Level</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Activity Level</h2>
             {ACTIVITY_OPTIONS.map(opt => (
               <button
                 key={opt.value}
                 onClick={() => update({ activityLevel: opt.value })}
-                className={`w-full text-left p-4 rounded-xl border transition-colors ${draft.activityLevel === opt.value ? 'bg-emerald-900 border-emerald-500' : 'bg-gray-800 border-white/[0.07]'}`}
+                className={`w-full text-left p-4 rounded-xl border transition-colors ${draft.activityLevel === opt.value ? 'bg-emerald-900 border-emerald-500' : 'bg-gray-50 border-gray-100'}`}
               >
-                <div className="font-medium text-white">{opt.label}</div>
+                <div className="font-medium text-gray-900">{opt.label}</div>
                 <div className="text-sm text-gray-400 mt-0.5">{opt.desc}</div>
               </button>
             ))}
@@ -163,7 +163,7 @@ export default function OnboardingWizard() {
         {/* Step 3: Weight Goal */}
         {step === 3 && (
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Weight Goal</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Weight Goal</h2>
             <div>
               <label className="block text-sm text-gray-400 mb-2">What's your goal?</label>
               <div className="flex gap-2">
@@ -171,7 +171,7 @@ export default function OnboardingWizard() {
                   <button
                     key={g}
                     onClick={() => update({ weightGoal: g })}
-                    className={`flex-1 py-3 rounded-xl border capitalize font-medium transition-colors ${draft.weightGoal === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-800 border-white/[0.07] text-gray-300'}`}
+                    className={`flex-1 py-3 rounded-xl border capitalize font-medium transition-colors ${draft.weightGoal === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-50 border-gray-100 text-gray-700'}`}
                   >
                     {g}
                   </button>
@@ -188,7 +188,7 @@ export default function OnboardingWizard() {
                     <button
                       key={r}
                       onClick={() => update({ goalRateLbs: r })}
-                      className={`flex-1 py-2 rounded-xl border text-sm font-medium transition-colors ${draft.goalRateLbs === r ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-800 border-white/[0.07] text-gray-300'}`}
+                      className={`flex-1 py-2 rounded-xl border text-sm font-medium transition-colors ${draft.goalRateLbs === r ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-gray-50 border-gray-100 text-gray-700'}`}
                     >
                       {r}
                     </button>
@@ -203,7 +203,7 @@ export default function OnboardingWizard() {
               <label className="block text-sm text-gray-400 mb-1">Water Goal (oz/day)</label>
               <input
                 type="number"
-                className="w-full bg-gray-800 border border-white/[0.07] rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-500"
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500"
                 value={draft.waterGoalOz}
                 onChange={e => update({ waterGoalOz: parseInt(e.target.value) || 64 })}
               />
@@ -214,30 +214,30 @@ export default function OnboardingWizard() {
         {/* Step 4: Review */}
         {step === 4 && (
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white mb-2">Your Plan</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Your Plan</h2>
             <p className="text-gray-400 text-sm mb-6">Based on your info, here's your personalized plan:</p>
             <div className="card p-5 space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-gray-400">TDEE (maintenance)</span>
-                <span className="text-white font-semibold">{tdee} cal</span>
+                <span className="text-gray-900 font-semibold">{tdee} cal</span>
               </div>
-              <div className="flex justify-between items-center border-t border-white/[0.07] pt-4">
+              <div className="flex justify-between items-center border-t border-gray-100 pt-4">
                 <span className="text-gray-400">Daily Calorie Goal</span>
                 <span className="text-emerald-400 font-bold text-xl">{calorieGoal} cal</span>
               </div>
-              <div className="border-t border-white/[0.07] pt-4 space-y-3">
+              <div className="border-t border-gray-100 pt-4 space-y-3">
                 <div className="text-sm text-gray-400 mb-2">Macro Targets</div>
                 <div className="flex justify-between">
                   <span className="text-blue-400">Protein</span>
-                  <span className="text-white">{macros.protein}g</span>
+                  <span className="text-gray-900">{macros.protein}g</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-amber-400">Carbs</span>
-                  <span className="text-white">{macros.carbs}g</span>
+                  <span className="text-gray-900">{macros.carbs}g</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-rose-400">Fat</span>
-                  <span className="text-white">{macros.fat}g</span>
+                  <span className="text-gray-900">{macros.fat}g</span>
                 </div>
               </div>
             </div>
@@ -251,7 +251,7 @@ export default function OnboardingWizard() {
         {step === 5 && (
           <div className="text-center space-y-6">
             <div className="text-6xl">🎉</div>
-            <h2 className="text-2xl font-bold text-white">You're all set, {draft.name}!</h2>
+            <h2 className="text-2xl font-bold text-gray-900">You're all set, {draft.name}!</h2>
             <p className="text-gray-400">Start logging your meals and tracking your progress toward your goal.</p>
             <div className="card p-4 text-left space-y-2">
               <div className="flex justify-between text-sm">
@@ -260,11 +260,11 @@ export default function OnboardingWizard() {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-400">Goal</span>
-                <span className="text-white capitalize">{draft.weightGoal} weight</span>
+                <span className="text-gray-900 capitalize">{draft.weightGoal} weight</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-400">Target</span>
-                <span className="text-white">{draft.goalWeight} lbs</span>
+                <span className="text-gray-900">{draft.goalWeight} lbs</span>
               </div>
             </div>
           </div>
@@ -275,7 +275,7 @@ export default function OnboardingWizard() {
           {step > 0 && (
             <button
               onClick={() => setStep(s => s - 1)}
-              className="flex-1 py-4 rounded-2xl bg-gray-800 text-gray-300 font-semibold"
+              className="flex-1 py-4 rounded-2xl bg-gray-50 text-gray-700 font-semibold"
             >
               Back
             </button>
@@ -284,7 +284,7 @@ export default function OnboardingWizard() {
             <button
               onClick={() => setStep(s => s + 1)}
               disabled={!canNext()}
-              className={`flex-1 py-4 rounded-2xl font-semibold transition-colors ${canNext() ? 'bg-brand-gradient text-white' : 'bg-gray-700 text-gray-500 cursor-not-allowed'}`}
+              className={`flex-1 py-4 rounded-2xl font-semibold transition-colors ${canNext() ? 'bg-brand-gradient text-white' : 'bg-gray-100 text-gray-500 cursor-not-allowed'}`}
             >
               Continue
             </button>

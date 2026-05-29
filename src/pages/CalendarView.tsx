@@ -70,11 +70,11 @@ export default function CalendarView() {
     <div className="max-w-lg mx-auto p-4 space-y-4 pb-24">
       {/* Month header */}
       <div className="flex items-center justify-between py-2">
-        <button onClick={() => setViewDate(subMonths(viewDate, 1))} className="p-2 rounded-full hover:bg-gray-800">
+        <button onClick={() => setViewDate(subMonths(viewDate, 1))} className="p-2 rounded-full hover:bg-gray-50">
           <ChevronLeftIcon className="w-5 h-5 text-gray-400" />
         </button>
-        <h2 className="text-lg font-bold text-white">{format(viewDate, 'MMMM yyyy')}</h2>
-        <button onClick={() => setViewDate(addMonths(viewDate, 1))} className="p-2 rounded-full hover:bg-gray-800">
+        <h2 className="text-lg font-bold text-gray-900">{format(viewDate, 'MMMM yyyy')}</h2>
+        <button onClick={() => setViewDate(addMonths(viewDate, 1))} className="p-2 rounded-full hover:bg-gray-50">
           <ChevronRightIcon className="w-5 h-5 text-gray-400" />
         </button>
       </div>
@@ -102,14 +102,14 @@ export default function CalendarView() {
               onClick={() => selectDay(day)}
               className={`relative aspect-square flex flex-col items-center justify-center rounded-xl text-sm transition-colors
                 ${!isCurrentMo ? 'opacity-30' : ''}
-                ${isSelected ? 'bg-emerald-700' : isToday ? 'ring-2 ring-emerald-500 bg-gray-800' : 'bg-gray-800 hover:bg-gray-700'}
+                ${isSelected ? 'bg-emerald-700' : isToday ? 'ring-2 ring-emerald-500 bg-gray-50' : 'bg-gray-50 hover:bg-gray-100'}
               `}
             >
-              <span className={`text-xs font-medium ${isSelected ? 'text-white' : 'text-gray-200'}`}>
+              <span className={`text-xs font-medium ${isSelected ? 'text-gray-900' : 'text-gray-700'}`}>
                 {format(day, 'd')}
               </span>
               {score ? (
-                <span className={`text-xs font-bold leading-none mt-0.5 ${isSelected ? 'text-white' : scoreColor(score.total)}`}>
+                <span className={`text-xs font-bold leading-none mt-0.5 ${isSelected ? 'text-gray-900' : scoreColor(score.total)}`}>
                   {score.total}
                 </span>
               ) : log && getDayCalories(log) > 0 ? (
@@ -119,7 +119,7 @@ export default function CalendarView() {
               ) : null}
               {/* Score bar at bottom of cell */}
               {score && (
-                <div className="absolute bottom-1 left-1.5 right-1.5 h-0.5 bg-gray-700 rounded-full overflow-hidden">
+                <div className="absolute bottom-1 left-1.5 right-1.5 h-0.5 bg-gray-100 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full ${scoreBg(score.total)}`}
                     style={{ width: `${score.total}%` }}
@@ -149,14 +149,14 @@ export default function CalendarView() {
             <div className="flex gap-2">
               <button
                 onClick={() => navigate(`/log?date=${selectedDate}`)}
-                className="flex items-center gap-1.5 px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-xl text-sm text-gray-300"
+                className="flex items-center gap-1.5 px-3 py-2 bg-gray-100 hover:bg-gray-600 rounded-xl text-sm text-gray-700"
               >
                 <ClipboardDocumentListIcon className="w-4 h-4" />
                 View Log
               </button>
               <button
                 onClick={() => setShowScoreSheet(false)}
-                className="px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-xl text-sm text-gray-300"
+                className="px-3 py-2 bg-gray-100 hover:bg-gray-600 rounded-xl text-sm text-gray-700"
               >
                 ✕
               </button>
@@ -164,7 +164,7 @@ export default function CalendarView() {
           </div>
 
           {/* Score bar */}
-          <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full transition-all ${scoreBg(scoreBreakdown.total)}`}
               style={{ width: `${scoreBreakdown.total}%` }}
@@ -185,7 +185,7 @@ export default function CalendarView() {
             ] as const).map((item) => (
               <div key={item.label} className="flex items-center gap-3">
                 <div className="w-28 text-xs text-gray-400 shrink-0">{item.label}</div>
-                <div className="flex-1 h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full ${scoreBg(Math.round((item.points / item.max) * 100))}`}
                     style={{ width: `${Math.round((item.points / item.max) * 100)}%` }}
@@ -206,7 +206,7 @@ export default function CalendarView() {
       {/* Weekly summary */}
       <div className="card p-4">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-sm font-semibold text-white">Week Summary</h3>
+          <h3 className="text-sm font-semibold text-gray-900">Week Summary</h3>
           {avgCal > 0 && (
             <span className="text-xs text-gray-400">avg {avgCal.toLocaleString()} cal/day</span>
           )}

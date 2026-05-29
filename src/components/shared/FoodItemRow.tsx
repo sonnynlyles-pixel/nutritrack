@@ -27,13 +27,13 @@ export default function FoodItemRow({
   const fat  = Math.round(n.fat      * servings);
 
   const containerClass = variant === 'card'
-    ? 'flex items-center gap-3 bg-surface-raised rounded-xl px-3 py-3 border border-white/[0.05]'
-    : 'flex items-center gap-3 px-4 py-3 border-b border-white/[0.04]';
+    ? 'flex items-center gap-3 bg-surface-raised rounded-xl px-3 py-3 border border-brand-400/15'
+    : 'flex items-center gap-3 px-4 py-3 border-b border-brand-400/15';
 
   const body = (
     <div className="flex-1 min-w-0">
       <div className="flex items-center gap-1.5">
-        <span className="text-sm text-white font-semibold truncate">{food.name}</span>
+        <span className="text-sm text-gray-900 font-semibold truncate">{food.name}</span>
         {onTap && <InformationCircleIcon className="w-3.5 h-3.5 text-gray-600 shrink-0" />}
       </div>
       {food.brand && (
