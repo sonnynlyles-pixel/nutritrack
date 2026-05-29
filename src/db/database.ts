@@ -501,12 +501,53 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-bk-choc-shake',            "Chocolate Shake",                     "Burger King",   '1 shake',    580,  13,100, 15, 10,  65,  420, 2, 81),
   rf('seed-bk-cookie',                "Chocolate Chip Cookie",               "Burger King",   '1 cookie',   160,   2, 23,  8,  4,  10,  110, 1, 14),
 
+  // ── Burger King – Chicken Tenders ──────────────────────────────
+  rf('seed-bk-tenders-3pc',           "Chicken Tenders (3 pc)",              "Burger King",   '3 pieces',   390,  26, 35, 15,  3,  65,  900, 2,  1),
+  rf('seed-bk-tenders-6pc',           "Chicken Tenders (6 pc)",              "Burger King",   '6 pieces',   760,  50, 69, 30,  5, 130, 1790, 4,  2),
+  rf('seed-bk-tenders-10pc',          "Chicken Tenders (10 pc)",             "Burger King",   '10 pieces', 1250,  84,116, 48,  8, 215, 2980, 7,  2),
+
+  // ── Burger King – Sides (additions) ────────────────────────────
+  rf('seed-bk-mozzarella-8pc',        "Mozzarella Sticks (8 pc)",            "Burger King",   '8 pieces',   480,  20, 48, 24,  8,  40, 1580, 2,  4),
+  rf('seed-bk-apple-slices',          "Apple Slices",                        "Burger King",   '1 bag',       35,   0,  9,  0,  0,   0,    0, 1,  7),
+  rf('seed-bk-side-salad',            "Side Garden Salad",                   "Burger King",   '1 salad',     20,   1,  4,  0,  0,   0,   15, 1,  2),
+
+  // ── Burger King – Desserts (additions) ─────────────────────────
+  rf('seed-bk-strawberry-shake',      "Strawberry Shake",                    "Burger King",   '1 shake',    660,  13,109, 16, 10,  65,  390, 0, 91),
+  rf('seed-bk-dutch-apple-pie',       "Dutch Apple Pie",                     "Burger King",   '1 pie',      310,   2, 44, 15,  4,   0,  180, 2, 21),
+  rf('seed-bk-soft-serve-cup',        "Soft Serve Cup",                      "Burger King",   '1 cup',      200,   5, 33,  5,  4,  20,  150, 0, 22),
+
+  // ── Burger King – Fountain Drinks (medium) ──────────────────────
+  rf('seed-bk-med-coke',              "Coca-Cola (Medium)",                  "Burger King",   '22 fl oz',   200,   0, 55,  0,  0,   0,   15, 0, 55),
+  rf('seed-bk-med-diet-coke',         "Diet Coke (Medium)",                  "Burger King",   '22 fl oz',     0,   0,  0,  0,  0,   0,   40, 0,  0),
+  rf('seed-bk-med-sprite',            "Sprite (Medium)",                     "Burger King",   '22 fl oz',   190,   0, 51,  0,  0,   0,   50, 0, 51),
+  rf('seed-bk-med-dr-pepper',         "Dr Pepper (Medium)",                  "Burger King",   '22 fl oz',   200,   0, 54,  0,  0,   0,   80, 0, 54),
+  rf('seed-bk-med-hi-c',              "Hi-C Orange (Medium)",                "Burger King",   '22 fl oz',   170,   0, 46,  0,  0,   0,   50, 0, 46),
+  rf('seed-bk-med-barqs',             "Barq's Root Beer (Medium)",           "Burger King",   '22 fl oz',   200,   0, 55,  0,  0,   0,  105, 0, 55),
+  rf('seed-bk-med-fanta',             "Fanta Orange (Medium)",               "Burger King",   '22 fl oz',   220,   0, 59,  0,  0,   0,   30, 0, 59),
+  rf('seed-bk-med-sweet-tea',         "Sweet Tea (Medium)",                  "Burger King",   '22 fl oz',   160,   0, 42,  0,  0,   0,   10, 0, 42),
+  rf('seed-bk-med-unsweet-tea',       "Unsweetened Iced Tea (Medium)",       "Burger King",   '22 fl oz',     0,   0,  0,  0,  0,   0,    0, 0,  0),
+  rf('seed-bk-sm-oj',                 "Orange Juice (Small)",                "Burger King",   '12 fl oz',   140,   2, 33,  0,  0,   0,   20, 0, 28),
+  rf('seed-bk-chocolate-milk',        "Chocolate Milk (1% LF)",              "Burger King",   '8 fl oz',    130,   8, 22,  2,  1,  10,  180, 1, 20),
+  rf('seed-bk-apple-juice',           "Apple Juice (Small)",                 "Burger King",   '6.75 fl oz',  90,   0, 22,  0,  0,   0,   15, 0, 20),
+
+  // ── Burger King – BK Café Drinks ────────────────────────────────
+  rf('seed-bk-sm-coffee',             "Small Coffee (black)",                "Burger King",   '12 fl oz',     0,   0,  0,  0,  0,   0,    0, 0,  0, 140),
+  rf('seed-bk-med-coffee',            "Medium Coffee (black)",               "Burger King",   '16 fl oz',     0,   0,  0,  0,  0,   0,    0, 0,  0, 180),
+  rf('seed-bk-lg-coffee',             "Large Coffee (black)",                "Burger King",   '20 fl oz',     0,   0,  0,  0,  0,   0,    0, 0,  0, 225),
+  rf('seed-bk-med-iced-coffee',       "Medium Iced Coffee",                  "Burger King",   '22 fl oz',   180,   1, 32,  5,  3,  15,   20, 0, 31, 200),
+  rf('seed-bk-med-latte',             "Medium Latte",                        "Burger King",   '16 fl oz',   160,  10, 14,  6,  4,  25,  100, 0, 12,  90),
+  rf('seed-bk-med-caramel-latte',     "Medium Caramel Latte",                "Burger King",   '16 fl oz',   290,  10, 46,  6,  4,  25,  140, 0, 44,  90),
+  rf('seed-bk-med-mocha',             "Medium Mocha",                        "Burger King",   '16 fl oz',   270,  10, 41,  7,  4,  25,  130, 1, 38,  90),
+  rf('seed-bk-frozen-coke',           "ICEE Frozen Coca-Cola (Medium)",      "Burger King",   '22 fl oz',   190,   0, 50,  0,  0,   0,   30, 0, 50),
+
   // ── Burger King – Dipping Sauces ───────────────────────────────
   rf('seed-bk-sauce-bbq',             "BBQ Dipping Sauce",                   "Burger King",   '1 oz packet',  50,  0, 12,  0,  0,   0,  310, 0, 11),
   rf('seed-bk-sauce-ranch',           "Ranch Dipping Sauce",                 "Burger King",   '1 oz packet', 140,  0,  1, 14,  3,  10,  200, 0,  1),
   rf('seed-bk-sauce-buffalo',         "Buffalo Dipping Sauce",               "Burger King",   '1 oz packet',  80,  0,  2,  8,  2,  10,  370, 0,  1),
   rf('seed-bk-sauce-honey-mustard',   "Honey Mustard Dipping Sauce",         "Burger King",   '1 oz packet',  90,  0,  8,  6,  1,  10,  170, 0,  8),
   rf('seed-bk-sauce-zesty',           "Zesty Onion Ring Sauce",              "Burger King",   '1 oz packet', 150,  0,  3, 16,  3,  15,  230, 0,  1),
+  rf('seed-bk-sauce-tartar',          "Tartar Sauce",                        "Burger King",   '1 oz packet', 150,  0,  2, 16,  3,  15,  200, 0,  2),
+  rf('seed-bk-sauce-sw-chili',        "Sweet Chili Sauce",                   "Burger King",   '1 oz packet',  40,  0,  9,  0,  0,   0,  310, 0,  8),
 
   // ── Domino's (Large, Hand Tossed, 1 slice) ─────────────────────
   rf('seed-dom-cheese-slice',         "Cheese Pizza (Large, Hand Tossed, 1 slice)", "Domino's", '1 slice',  290,  12, 37, 11,  5,  25,  680, 2,  4),
