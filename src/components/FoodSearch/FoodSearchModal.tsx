@@ -8,6 +8,7 @@ import BarcodeScanner from '../BarcodeScanner/BarcodeScanner';
 import FoodInsightsPanel from '../FoodInsights/FoodInsightsPanel';
 import BowlBuilder from '../BowlBuilder/BowlBuilder';
 import DonutBuilder from '../DonutBuilder/DonutBuilder';
+import SizePicker, { SIZE_FAMILIES } from '../SizePicker/SizePicker';
 
 // Returns brand info if the food is a bowl/burrito builder trigger, otherwise null
 function getBuilderInfo(food: FoodItem): { brandId: string; brandName: string } | null {
@@ -126,6 +127,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   const [selected, setSelected] = useState<FoodItem | null>(null);
   const [builderInfo, setBuilderInfo] = useState<{ brandId: string; brandName: string } | null>(null);
   const [donutBuilder, setDonutBuilder] = useState(false);
+  const [sizerId, setSizerId] = useState<string | null>(null);
   const [scanning, setScanning] = useState(false);
   const [barcodeResult, setBarcodeResult] = useState<FoodItem | null>(null);
   const [myFoods, setMyFoods] = useState<FoodItem[]>([]);
@@ -203,12 +205,17 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
     await db.recentFoods.put({ ...entry.food, usedAt: new Date().toISOString() });
     setBuilderInfo(null);
     setDonutBuilder(false);
+    setSizerId(null);
     onClose();
   };
 
   const handleSelectFood = (food: FoodItem) => {
     if (food.id === 'seed-dun-donut-builder') {
       setDonutBuilder(true);
+      return;
+    }
+    if (SIZE_FAMILIES[food.id]) {
+      setSizerId(food.id);
       return;
     }
     const info = getBuilderInfo(food);
@@ -228,21 +235,34 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       {/* Header */}
       <div className="flex items-center gap-3 p-4 border-b border-brand-400/20">
         <button
-          onClick={() => { builderInfo ? setBuilderInfo(null) : donutBuilder ? setDonutBuilder(false) : onClose(); }}
+          onClick={() => { builderInfo ? setBuilderInfo(null) : donutBuilder ? setDonutBuilder(false) : sizerId ? setSizerId(null) : onClose(); }}
           className="p-2 rounded-full hover:bg-surface-raised"
         >
-          {(builderInfo || donutBuilder)
+          {(builderInfo || donutBuilder || sizerId)
             ? <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             : <XMarkIcon className="w-6 h-6 text-gray-400" />
           }
         </button>
         <h2 className="flex-1 text-lg font-semibold text-gray-900">
-          {donutBuilder ? "Dunkin' Donut Builder" : builderInfo ? `${builderInfo.brandName} Builder` : `Add to ${mealLabel}`}
+          {sizerId
+            ? `${SIZE_FAMILIES[sizerId]?.brand} — Pick a Size`
+            : donutBuilder ? "Dunkin' Donut Builder"
+            : builderInfo ? `${builderInfo.brandName} Builder`
+            : `Add to ${mealLabel}`}
         </h2>
       </div>
 
+      {/* Size Picker view */}
+      {sizerId && (
+        <SizePicker
+          sizerId={sizerId}
+          onAdd={handleBuilderAdd}
+          onCancel={() => setSizerId(null)}
+        />
+      )}
+
       {/* Donut Builder view */}
-      {donutBuilder && (
+      {!sizerId && donutBuilder && (
         <DonutBuilder
           onAdd={handleBuilderAdd}
           onCancel={() => setDonutBuilder(false)}
@@ -250,7 +270,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       )}
 
       {/* Bowl Builder view */}
-      {!donutBuilder && builderInfo && (
+      {!sizerId && !donutBuilder && builderInfo && (
         <BowlBuilder
           brandId={builderInfo.brandId}
           brandName={builderInfo.brandName}
@@ -260,7 +280,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       )}
 
       {/* Normal search view */}
-      {!builderInfo && !donutBuilder && (
+      {!builderInfo && !donutBuilder && !sizerId && (
       <>
       {/* Tabs */}
       <div className="flex border-b border-gray-100">
@@ -398,7 +418,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
           </div>
         )}
       </div>
-      </> /* end !builderInfo && !donutBuilder */
+      </> /* end normal search view */
       )}
     </div>
   );

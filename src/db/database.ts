@@ -103,6 +103,8 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-mcd-sm-fries',             "Small Fries",                         "McDonald's",    '1 small',    230,   3, 30, 11,  2,   0,  190, 3,  0),
   rf('seed-mcd-med-fries',            "Medium Fries",                        "McDonald's",    '1 medium',   320,   4, 43, 15,  2,   0,  270, 4,  0),
   rf('seed-mcd-large-fries',          "Large Fries",                         "McDonald's",    '1 large',    480,   7, 66, 22,  3,   0,  400, 6,  0),
+  { id: 'seed-mcd-fries-sizer',       name: "French Fries — Pick a Size 🍟",  brand: "McDonald's",    servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-mcd-nuggets-sizer',     name: "Chicken McNuggets — Pick a Size 🍗", brand: "McDonald's", servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-mcd-side-salad',           "Side Salad",                          "McDonald's",    '1 salad',     15,   1,  2,  0,  0,   0,   10, 1,  1),
   rf('seed-mcd-apple-slices',         "Apple Slices",                        "McDonald's",    '1 bag',       15,   0,  4,  0,  0,   0,    0, 0,  3),
   rf('seed-mcd-southwest-salad',      "Southwest Grilled Chicken Salad",     "McDonald's",    '1 salad',    350,  37, 27, 12,  4,  90,  840, 6,  9),
@@ -294,6 +296,9 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-cfa-nuggets-8pc',          "Chicken Nuggets (8 pc)",              "Chick-fil-A",   '8 pieces',   260,  27, 11, 12,  2,  70, 1210, 0,  1),
   rf('seed-cfa-strips-3pc',           "Chicken Strips (3 pc)",               "Chick-fil-A",   '3 strips',   370,  37, 21, 17,  3,  65, 1210, 0,  2),
   rf('seed-cfa-waffle-fries-med',     "Waffle Fries (Medium)",               "Chick-fil-A",   '1 medium',   420,   5, 50, 22,  4,   0,  260, 5,  0),
+  { id: 'seed-cfa-waffle-fries-sizer', name: 'Waffle Fries — Pick a Size 🍟', brand: 'Chick-fil-A', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-cfa-nuggets-sizer', name: 'Chicken Nuggets — Pick a Size 🍗', brand: 'Chick-fil-A', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-cfa-mac-sizer', name: 'Mac & Cheese — Pick a Size 🧀', brand: 'Chick-fil-A', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
 
   // ── Chipotle — Build Your Own (builder trigger) ────────────────
   // Tapping this opens the bowl builder; ingredient entries below are hidden from normal search
@@ -394,6 +399,7 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-wdy-spicy-chicken',        "Spicy Chicken Sandwich",              "Wendy's",       '1 sandwich', 500,  29, 51, 19,  4,  65, 1200, 2,  7),
   rf('seed-wdy-jr-bacon-cheeseburger',"Jr. Bacon Cheeseburger",              "Wendy's",       '1 burger',   380,  20, 27, 20,  8,  65,  700, 1,  6),
   rf('seed-wdy-small-frosty',         "Small Chocolate Frosty",              "Wendy's",       '1 small',    340,   9, 57,  9,  6,  35,  200, 0, 46),
+  { id: 'seed-wend-fries-sizer', name: 'Natural-Cut Fries — Pick a Size 🍟', brand: "Wendy's", servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
 
   // ── Taco Bell – Tacos ───────────────────────────────────────────
   rf('seed-tb-crunchy-taco',          "Crunchy Taco",                        "Taco Bell",     '1 taco',     170,   8, 13,  9,  4,  25,  300, 2,  1),
@@ -546,6 +552,9 @@ const SEEDED_FOODS: FoodItem[] = [
 
   // ── Burger King – Sides ─────────────────────────────────────────
   rf('seed-bk-fries-value',           "French Fries (Value)",                "Burger King",   '1 value',    230,   3, 33, 10,  1,   0,  170, 2,  1),
+  { id: 'seed-bk-fries-sizer', name: 'French Fries — Pick a Size 🍟', brand: 'Burger King', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-bk-onion-rings-sizer', name: 'Onion Rings — Pick a Size 🧅', brand: 'Burger King', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-bk-nuggets-sizer', name: 'Chicken Nuggets — Pick a Size 🍗', brand: 'Burger King', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-bk-fries-small',           "French Fries (Small)",                "Burger King",   '1 small',    300,   4, 43, 13,  2,   0,  220, 3,  1),
   rf('seed-bk-fries-medium',          "French Fries (Medium)",               "Burger King",   '1 medium',   370,   5, 54, 16,  2,   0,  270, 4,  1),
   rf('seed-bk-fries-large',           "French Fries (Large)",                "Burger King",   '1 large',    440,   5, 64, 19,  3,   0,  320, 5,  1),
@@ -638,6 +647,7 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-pop-tenders-3pc',          "Chicken Tenders (3 pc)",              "Popeyes",       '3 pieces',   340,  28, 17, 17,  4,  80, 1060, 0,  0),
   rf('seed-pop-2pc-leg-thigh',        "2pc Leg & Thigh",                     "Popeyes",       '2 pieces',   370,  25, 16, 23,  7, 120,  920, 0,  0),
   rf('seed-pop-cajun-fries-reg',      "Cajun Fries (Regular)",               "Popeyes",       '1 regular',  260,   3, 32, 13,  3,   0,  630, 3,  0),
+  { id: 'seed-pop-cajun-fries-sizer', name: 'Cajun Fries — Pick a Size 🍟', brand: 'Popeyes', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-pop-mashed-potatoes',      "Mashed Potatoes with Gravy",          "Popeyes",       '1 regular',  120,   2, 19,  4,  1,   0,  570, 1,  0),
   rf('seed-pop-mac-cheese',           "Mac & Cheese",                        "Popeyes",       '1 regular',  220,   6, 26, 10,  4,  20,  680, 1,  4),
   rf('seed-pop-coleslaw',             "Coleslaw",                            "Popeyes",       '1 regular',  200,   1, 22, 12,  2,  10,  230, 2, 17),
@@ -713,6 +723,7 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-ws-tenders-5pc',           "Chicken Tenders (5 pc)",              "Wingstop",      '5 tenders',  550,  50, 27, 28,  5, 135, 1370, 1,  0),
   // Sides
   rf('seed-ws-seasoned-fries-reg',    "Seasoned Fries (Regular)",            "Wingstop",      '1 regular',  310,   4, 41, 15,  3,   0,  840, 3,  0),
+  { id: 'seed-ws-fries-sizer', name: 'Seasoned Fries — Pick a Size 🍟', brand: 'Wingstop', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-ws-seasoned-fries-lg',     "Seasoned Fries (Large)",              "Wingstop",      '1 large',    510,   7, 67, 25,  5,   0, 1380, 5,  0),
   rf('seed-ws-cheese-fries-reg',      "Cheese Fries (Regular)",              "Wingstop",      '1 regular',  440,  10, 46, 24,  8,  30, 1160, 3,  1),
   rf('seed-ws-cheese-fries-lg',       "Cheese Fries (Large)",                "Wingstop",      '1 large',    640,  15, 72, 35, 12,  45, 1700, 4,  1),
@@ -739,6 +750,8 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-fg-hot-dog',               "Hot Dog",                             "Five Guys",     '1 hot dog',  540,  21, 40, 32, 12,  65,  860, 2,  9),
   rf('seed-fg-veggie-sandwich',       "Veggie Sandwich",                     "Five Guys",     '1 sandwich', 440,  17, 60, 15,  5,  25,  530, 5, 12),
   rf('seed-fg-reg-fries',             "Regular Fries",                       "Five Guys",     '1 regular',  953,  13,131, 41,  7,   0,  962, 9,  1),
+  { id: 'seed-fg-fries-sizer', name: 'Fries — Pick a Size 🍟', brand: 'Five Guys', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-fg-cajun-fries-sizer', name: 'Cajun Fries — Pick a Size 🍟', brand: 'Five Guys', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-fg-cajun-fries',           "Cajun Fries (Regular)",               "Five Guys",     '1 regular',  953,  13,131, 41,  7,   0, 1327, 9,  1),
 
   // ── Shake Shack ─────────────────────────────────────────────────
@@ -763,6 +776,8 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-wb-whatachickn',           "Whatachick'n Sandwich",               "Whataburger",   '1 sandwich', 560,  25, 56, 26,  5,  60, 1220, 2,  8),
   rf('seed-wb-whatachickn-strips',    "Whatachick'n Strips (3 pc)",          "Whataburger",   '3 strips',   440,  29, 25, 25,  5,  70, 1180, 1,  1),
   rf('seed-wb-fries-med',             "French Fries (Medium)",               "Whataburger",   '1 medium',   380,   5, 50, 18,  3,   0,  470, 4,  0),
+  { id: 'seed-wb-fries-sizer', name: 'French Fries — Pick a Size 🍟', brand: 'Whataburger', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-wb-onion-rings-sizer', name: 'Onion Rings — Pick a Size 🧅', brand: 'Whataburger', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-wb-onion-rings-med',       "Onion Rings (Medium)",                "Whataburger",   '1 medium',   430,   6, 53, 22,  4,   0,  660, 3,  8),
   rf('seed-wb-taquito',               "Taquito with Cheese (Breakfast)",     "Whataburger",   '1 taquito',  380,  18, 25, 23, 10, 290,  780, 1,  1),
   rf('seed-wb-brekfast-bun',          "Breakfast on a Bun (Sausage/Egg)",    "Whataburger",   '1 sandwich', 480,  20, 36, 29, 11, 265, 1100, 1,  4),
@@ -796,6 +811,9 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-sonic-tater-tots-med',     "Tater Tots (Medium)",                 "Sonic",         '1 medium',   310,   3, 39, 16,  3,   0,  560, 3,  0),
   rf('seed-sonic-mozz-sticks',        "Mozzarella Sticks (4 pc)",            "Sonic",         '4 pieces',   430,  18, 38, 23, 10,  40, 1040, 1,  3),
   rf('seed-sonic-fries-med',          "French Fries (Medium)",               "Sonic",         '1 medium',   350,   4, 46, 17,  3,   0,  380, 3,  0),
+  { id: 'seed-sonic-fries-sizer', name: 'French Fries — Pick a Size 🍟', brand: 'Sonic', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-sonic-tots-sizer', name: 'Tater Tots — Pick a Size 🥔', brand: 'Sonic', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-sonic-onion-rings-sizer', name: 'Onion Rings — Pick a Size 🧅', brand: 'Sonic', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-sonic-vanilla-shake-med',  "Vanilla Shake (Medium)",              "Sonic",         '1 medium',   540,  14, 76, 21, 13,  75,  350, 0, 65),
   rf('seed-sonic-choc-shake-med',     "Chocolate Shake (Medium)",            "Sonic",         '1 medium',   580,  14, 84, 21, 13,  75,  380, 1, 72),
   rf('seed-sonic-cherry-limeade-med', "Cherry Limeade (Medium)",             "Sonic",         '1 medium',   180,   0, 46,  0,  0,   0,   15, 0, 44),
@@ -811,6 +829,7 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-arb-chkn-bacon-swiss',     "Chicken Bacon Swiss (Crispy)",        "Arby's",        '1 sandwich', 680,  38, 57, 32,  9, 100, 1560, 2,  7),
   rf('seed-arb-loaded-curly-fries',   "Loaded Curly Fries",                  "Arby's",        '1 order',    650,  17, 67, 36, 10,  40, 1720, 5,  2),
   rf('seed-arb-curly-fries-med',      "Curly Fries (Medium)",                "Arby's",        '1 medium',   410,   6, 51, 20,  4,   0, 1010, 4,  0),
+  { id: 'seed-arb-curly-fries-sizer', name: 'Curly Fries — Pick a Size 🍟', brand: "Arby's", servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-arb-mozz-sticks',          "Mozzarella Sticks (4 pc)",            "Arby's",        '4 pieces',   430,  18, 38, 23, 10,  40, 1050, 2,  3),
   rf('seed-arb-jalapeno-bites',       "Jalapeño Bites (5 pc)",               "Arby's",        '5 pieces',   290,   7, 33, 15,  6,  15,  680, 1,  3),
   rf('seed-arb-choc-shake-med',       "Chocolate Shake (Medium)",            "Arby's",        '1 medium',   660,  15,105, 20, 13,  70,  530, 1, 88),
@@ -835,6 +854,8 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-dq-peanut-buster-parfait', "Peanut Buster Parfait",               "Dairy Queen",   '1 serving',  700,  16, 99, 29, 14,  35,  390, 3, 80),
   rf('seed-dq-choc-sundae-med',       "Chocolate Sundae (Medium)",           "Dairy Queen",   '1 medium',   400,   8, 66, 11,  7,  30,  200, 1, 54),
   rf('seed-dq-fries-reg',             "Regular Fries",                       "Dairy Queen",   '1 regular',  300,   4, 41, 13,  2,   0,  530, 3,  0),
+  { id: 'seed-dq-fries-sizer', name: 'French Fries — Pick a Size 🍟', brand: 'Dairy Queen', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-dq-onion-rings-sizer', name: 'Onion Rings — Pick a Size 🧅', brand: 'Dairy Queen', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-dq-onion-rings-reg',       "Onion Rings (Regular)",               "Dairy Queen",   '1 regular',  360,   5, 47, 17,  3,   0,  740, 2,  5),
 
   // ── Jack in the Box ─────────────────────────────────────────────
@@ -849,6 +870,8 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-jitb-tacos-2pc',           "Tacos (2 pc)",                        "Jack in the Box",'2 tacos',   340,  14, 32, 18,  7,  25,  620, 4,  2),
   rf('seed-jitb-curly-fries-med',     "Seasoned Curly Fries (Medium)",       "Jack in the Box",'1 medium',  400,   6, 49, 20,  4,   0,  870, 4,  0),
   rf('seed-jitb-fries-med',           "Regular Fries (Medium)",              "Jack in the Box",'1 medium',  380,   5, 47, 19,  4,   0,  590, 4,  0),
+  { id: 'seed-jitb-fries-sizer', name: 'Regular Fries — Pick a Size 🍟', brand: 'Jack in the Box', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-jitb-curly-fries-sizer', name: 'Seasoned Curly Fries — Pick a Size 🍟', brand: 'Jack in the Box', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-jitb-mini-churros',        "Mini Churros (5 pc)",                 "Jack in the Box",'5 pieces',  230,   3, 34,  9,  2,   0,  220, 1, 10),
 
   // ── Hardee's / Carl's Jr. ───────────────────────────────────────
@@ -860,6 +883,7 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-hrd-spicy-chkn',           "Spicy Chicken Sandwich",              "Hardee's",      '1 sandwich', 510,  26, 52, 22,  4,  55, 1300, 2,  6),
   rf('seed-hrd-tenders-3pc',          "Hand-Breaded Chicken Tenders (3 pc)", "Hardee's",      '3 pieces',   370,  24, 25, 19,  4,  70,  870, 1,  1),
   rf('seed-hrd-fries-med',            "Natural Cut Fries (Medium)",          "Hardee's",      '1 medium',   430,   5, 57, 20,  4,   0,  640, 5,  0),
+  { id: 'seed-hrd-fries-sizer', name: 'Natural Cut Fries — Pick a Size 🍟', brand: "Hardee's", servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
   rf('seed-hrd-monster-biscuit',      "Monster Biscuit (Breakfast)",         "Hardee's",      '1 biscuit',  780,  37, 43, 52, 18, 330, 2230, 1,  3),
   rf('seed-hrd-loaded-omelet-biscuit',"Loaded Omelet Biscuit",               "Hardee's",      '1 biscuit',  640,  27, 44, 41, 14, 260, 1760, 1,  4),
   rf('seed-hrd-biscuit-gravy',        "Made From Scratch Biscuit & Gravy",   "Hardee's",      '1 order',    510,  11, 53, 28, 10,  25, 1560, 2,  5),
