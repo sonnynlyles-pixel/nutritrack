@@ -234,14 +234,28 @@ export const SIZE_FAMILIES: Record<string, SizeFamily> = {
 export function findSizerForFood(food: { id: string; brand?: string; name: string }): string | null {
   // Direct match: the food IS a sizer trigger
   if (SIZE_FAMILIES[food.id]) return food.id;
-  // Reverse match: find a sizer whose brand + itemName keywords match this food
+
   const nameLower = food.name.toLowerCase();
   const brandLower = (food.brand ?? '').toLowerCase();
+  // Full text combining brand + name (covers external API results that embed brand in name)
+  const fullText = `${brandLower} ${nameLower}`.trim();
+
   for (const [sizerId, family] of Object.entries(SIZE_FAMILIES)) {
-    if (family.brand.toLowerCase() !== brandLower) continue;
-    // Check that each word in the itemName appears in the food's name
+    const familyBrand = family.brand.toLowerCase();
+    // Strip possessive for looser matching: "mcdonald's" → "mcdonald"
+    const familyBrandCore = familyBrand.replace(/['''s]+$/, '').replace(/[''']/g, '');
+
+    // Brand must appear in the explicit brand field OR embedded in the food name
+    const brandMatch =
+      brandLower.includes(familyBrandCore) ||
+      nameLower.includes(familyBrandCore) ||
+      familyBrand === brandLower;
+
+    if (!brandMatch) continue;
+
+    // Every meaningful keyword in the sizer's itemName must appear in the food name
     const keywords = family.itemName.toLowerCase().split(/\s+/).filter(w => w.length > 2);
-    if (keywords.length > 0 && keywords.every(kw => nameLower.includes(kw))) {
+    if (keywords.length > 0 && keywords.every(kw => fullText.includes(kw))) {
       return sizerId;
     }
   }
