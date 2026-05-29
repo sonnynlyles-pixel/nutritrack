@@ -203,6 +203,51 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-mcd-choc-milk-jug',        "Chocolate Milk (8 oz)",               "McDonald's",    '8 fl oz',    140,   8, 22,  2,  1,  10,  130, 0, 21),
 
   // ── McDonald's – Desserts & Bakery ──────────────────────────────
+  // ── McDonald's – Best in the World Specialty Drinks ─────────────
+  // Dirty Dr Pepper: Dr Pepper + coconut syrup + cream
+  rf('seed-mcd-sm-dirty-drp',         "Dirty Dr Pepper (Small)",             "McDonald's",    '16 fl oz',   200,   0, 51,  2,  1,   5,   60, 0, 49, 41),
+  rf('seed-mcd-med-dirty-drp',        "Dirty Dr Pepper (Medium)",            "McDonald's",    '22 fl oz',   280,   0, 63,  3,  2,   8,   85, 0, 61, 55),
+  rf('seed-mcd-lg-dirty-drp',         "Dirty Dr Pepper (Large)",             "McDonald's",    '30 fl oz',   370,   0, 82,  4,  2,  10,  110, 0, 79, 72),
+  // Orange Dream: Hi-C Orange + vanilla cream (orange creamsicle vibes)
+  rf('seed-mcd-sm-orange-dream',      "Orange Dream (Small)",                "McDonald's",    '16 fl oz',   190,   1, 38,  5,  3,  15,   50, 0, 36),
+  rf('seed-mcd-med-orange-dream',     "Orange Dream (Medium)",               "McDonald's",    '22 fl oz',   250,   1, 50,  6,  4,  20,   65, 0, 48),
+  rf('seed-mcd-lg-orange-dream',      "Orange Dream (Large)",                "McDonald's",    '30 fl oz',   330,   2, 66,  8,  5,  25,   85, 0, 63),
+  // Lavender Lemonade
+  rf('seed-mcd-sm-lavender-lemon',    "Lavender Lemonade (Small)",           "McDonald's",    '16 fl oz',   180,   0, 47,  0,  0,   0,   10, 0, 45),
+  rf('seed-mcd-med-lavender-lemon',   "Lavender Lemonade (Medium)",          "McDonald's",    '22 fl oz',   240,   0, 63,  0,  0,   0,   10, 0, 61),
+  rf('seed-mcd-lg-lavender-lemon',    "Lavender Lemonade (Large)",           "McDonald's",    '30 fl oz',   320,   0, 84,  0,  0,   0,   15, 0, 81),
+  // Spicy Strawberry Lemonade
+  rf('seed-mcd-sm-spicy-straw-lemon', "Spicy Strawberry Lemonade (Small)",   "McDonald's",    '16 fl oz',   190,   0, 50,  0,  0,   0,   10, 0, 48),
+  rf('seed-mcd-med-spicy-straw-lemon',"Spicy Strawberry Lemonade (Medium)",  "McDonald's",    '22 fl oz',   250,   0, 66,  0,  0,   0,   10, 0, 64),
+  rf('seed-mcd-lg-spicy-straw-lemon', "Spicy Strawberry Lemonade (Large)",   "McDonald's",    '30 fl oz',   330,   0, 88,  0,  0,   0,   15, 0, 85),
+  // Peach Mango Refresher
+  rf('seed-mcd-sm-peach-mango-ref',   "Peach Mango Refresher (Small)",       "McDonald's",    '16 fl oz',   170,   0, 44,  0,  0,   0,   15, 0, 42),
+  rf('seed-mcd-med-peach-mango-ref',  "Peach Mango Refresher (Medium)",      "McDonald's",    '22 fl oz',   230,   0, 60,  0,  0,   0,   20, 0, 57),
+  rf('seed-mcd-lg-peach-mango-ref',   "Peach Mango Refresher (Large)",       "McDonald's",    '30 fl oz',   300,   0, 79,  0,  0,   0,   25, 0, 75),
+  // McCafé Cold Brew
+  rf('seed-mcd-sm-creamy-cold-brew',  "Creamy Cold Brew (Small)",            "McDonald's",    '12 fl oz',    80,   1, 10,  4,  2,  15,   50, 0,  9, 175),
+  rf('seed-mcd-med-creamy-cold-brew', "Creamy Cold Brew (Medium)",           "McDonald's",    '16 fl oz',   110,   1, 14,  5,  3,  20,   70, 0, 12, 233),
+  rf('seed-mcd-lg-creamy-cold-brew',  "Creamy Cold Brew (Large)",            "McDonald's",    '22 fl oz',   150,   2, 20,  7,  4,  30,   90, 0, 17, 310),
+  rf('seed-mcd-sm-caramel-cold-brew', "Caramel Cold Brew (Small)",           "McDonald's",    '12 fl oz',   160,   1, 28,  4,  2,  15,   55, 0, 27, 175),
+  rf('seed-mcd-med-caramel-cold-brew',"Caramel Cold Brew (Medium)",          "McDonald's",    '16 fl oz',   210,   1, 37,  5,  3,  20,   75, 0, 35, 233),
+  rf('seed-mcd-lg-caramel-cold-brew', "Caramel Cold Brew (Large)",           "McDonald's",    '22 fl oz',   280,   2, 50,  7,  4,  30,   95, 0, 47, 310),
+  rf('seed-mcd-sm-vanilla-cold-brew', "Vanilla Sweet Cream Cold Brew (Sm)",  "McDonald's",    '12 fl oz',    90,   1, 11,  5,  3,  20,   50, 0, 10, 175),
+  rf('seed-mcd-med-vanilla-cold-brew',"Vanilla Sweet Cream Cold Brew (Med)", "McDonald's",    '16 fl oz',   120,   1, 15,  6,  4,  25,   65, 0, 13, 233),
+  rf('seed-mcd-lg-vanilla-cold-brew', "Vanilla Sweet Cream Cold Brew (Lg)",  "McDonald's",    '22 fl oz',   160,   2, 20,  8,  5,  35,   85, 0, 17, 310),
+  // Shamrock Shake (seasonal March)
+  rf('seed-mcd-sm-shamrock-shake',    "Shamrock Shake (Small)",              "McDonald's",    '12 fl oz',   460,  11, 73, 15,  9,  55,  180, 0, 60),
+  rf('seed-mcd-med-shamrock-shake',   "Shamrock Shake (Medium)",             "McDonald's",    '16 fl oz',   570,  13, 91, 17, 11,  70,  230, 0, 75),
+  rf('seed-mcd-lg-shamrock-shake',    "Shamrock Shake (Large)",              "McDonald's",    '22 fl oz',   740,  17,118, 22, 14,  90,  290, 0, 97),
+  // Specialty drink size-picker triggers
+  { id: 'seed-mcd-dirty-drp-sizer',        name: "Dirty Dr Pepper — Pick a Size 🥤",         brand: "McDonald's", servingSizeG: 1, servingLabel: '1 drink', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-mcd-orange-dream-sizer',     name: "Orange Dream — Pick a Size 🍊",            brand: "McDonald's", servingSizeG: 1, servingLabel: '1 drink', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-mcd-lavender-lemon-sizer',   name: "Lavender Lemonade — Pick a Size 💜",       brand: "McDonald's", servingSizeG: 1, servingLabel: '1 drink', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-mcd-spicy-straw-lemon-sizer',name: "Spicy Strawberry Lemonade — Pick a Size 🍓",brand: "McDonald's", servingSizeG: 1, servingLabel: '1 drink', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-mcd-peach-mango-ref-sizer',  name: "Peach Mango Refresher — Pick a Size 🍑",   brand: "McDonald's", servingSizeG: 1, servingLabel: '1 drink', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-mcd-creamy-cold-brew-sizer', name: "Creamy Cold Brew — Pick a Size ☕",         brand: "McDonald's", servingSizeG: 1, servingLabel: '1 drink', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  { id: 'seed-mcd-shamrock-shake-sizer',   name: "Shamrock Shake — Pick a Size ☘️",          brand: "McDonald's", servingSizeG: 1, servingLabel: '1 drink', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+
+  // ── McDonald's – Desserts & Bakery ──────────────────────────────
   rf('seed-mcd-apple-pie',            "Baked Apple Pie",                     "McDonald's",    '1 pie',      250,   3, 33, 13,  6,   0,  170, 1, 13),
   rf('seed-mcd-choc-chip-cookie',     "Chocolate Chip Cookie",               "McDonald's",    '1 cookie',   170,   2, 22,  9,  5,  15,  115, 1, 14),
   rf('seed-mcd-sugar-cookie',         "Sugar Cookie",                        "McDonald's",    '1 cookie',   190,   2, 25, 10,  5,  20,  120, 0, 15),

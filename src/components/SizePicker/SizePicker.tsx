@@ -228,6 +228,63 @@ export const SIZE_FAMILIES: Record<string, SizeFamily> = {
       { label: '10 pc',  servingLabel: '10 pieces', cal: 480, protein: 22, carbs: 30, fat: 31, satFat: 6, sodium: 1220, fiber: 2, sugar: 0 },
     ],
   },
+  // ── McDonald's Specialty Drinks ──────────────────────────────────
+  'seed-mcd-dirty-drp-sizer': {
+    itemName: "Dirty Dr Pepper", brand: "McDonald's", emoji: "🥤",
+    sizes: [
+      { label: 'Small',  servingLabel: '16 fl oz', cal: 200, protein: 0, carbs: 51, fat: 2, satFat: 1, sodium:  60, fiber: 0, sugar: 49 },
+      { label: 'Medium', servingLabel: '22 fl oz', cal: 280, protein: 0, carbs: 63, fat: 3, satFat: 2, sodium:  85, fiber: 0, sugar: 61 },
+      { label: 'Large',  servingLabel: '30 fl oz', cal: 370, protein: 0, carbs: 82, fat: 4, satFat: 2, sodium: 110, fiber: 0, sugar: 79 },
+    ],
+  },
+  'seed-mcd-orange-dream-sizer': {
+    itemName: "Orange Dream", brand: "McDonald's", emoji: "🍊",
+    sizes: [
+      { label: 'Small',  servingLabel: '16 fl oz', cal: 190, protein: 1, carbs: 38, fat: 5, satFat: 3, sodium:  50, fiber: 0, sugar: 36 },
+      { label: 'Medium', servingLabel: '22 fl oz', cal: 250, protein: 1, carbs: 50, fat: 6, satFat: 4, sodium:  65, fiber: 0, sugar: 48 },
+      { label: 'Large',  servingLabel: '30 fl oz', cal: 330, protein: 2, carbs: 66, fat: 8, satFat: 5, sodium:  85, fiber: 0, sugar: 63 },
+    ],
+  },
+  'seed-mcd-lavender-lemon-sizer': {
+    itemName: "Lavender Lemonade", brand: "McDonald's", emoji: "💜",
+    sizes: [
+      { label: 'Small',  servingLabel: '16 fl oz', cal: 180, protein: 0, carbs: 47, fat: 0, satFat: 0, sodium:  10, fiber: 0, sugar: 45 },
+      { label: 'Medium', servingLabel: '22 fl oz', cal: 240, protein: 0, carbs: 63, fat: 0, satFat: 0, sodium:  10, fiber: 0, sugar: 61 },
+      { label: 'Large',  servingLabel: '30 fl oz', cal: 320, protein: 0, carbs: 84, fat: 0, satFat: 0, sodium:  15, fiber: 0, sugar: 81 },
+    ],
+  },
+  'seed-mcd-spicy-straw-lemon-sizer': {
+    itemName: "Spicy Strawberry Lemonade", brand: "McDonald's", emoji: "🍓",
+    sizes: [
+      { label: 'Small',  servingLabel: '16 fl oz', cal: 190, protein: 0, carbs: 50, fat: 0, satFat: 0, sodium:  10, fiber: 0, sugar: 48 },
+      { label: 'Medium', servingLabel: '22 fl oz', cal: 250, protein: 0, carbs: 66, fat: 0, satFat: 0, sodium:  10, fiber: 0, sugar: 64 },
+      { label: 'Large',  servingLabel: '30 fl oz', cal: 330, protein: 0, carbs: 88, fat: 0, satFat: 0, sodium:  15, fiber: 0, sugar: 85 },
+    ],
+  },
+  'seed-mcd-peach-mango-ref-sizer': {
+    itemName: "Peach Mango Refresher", brand: "McDonald's", emoji: "🍑",
+    sizes: [
+      { label: 'Small',  servingLabel: '16 fl oz', cal: 170, protein: 0, carbs: 44, fat: 0, satFat: 0, sodium:  15, fiber: 0, sugar: 42 },
+      { label: 'Medium', servingLabel: '22 fl oz', cal: 230, protein: 0, carbs: 60, fat: 0, satFat: 0, sodium:  20, fiber: 0, sugar: 57 },
+      { label: 'Large',  servingLabel: '30 fl oz', cal: 300, protein: 0, carbs: 79, fat: 0, satFat: 0, sodium:  25, fiber: 0, sugar: 75 },
+    ],
+  },
+  'seed-mcd-creamy-cold-brew-sizer': {
+    itemName: "Creamy Cold Brew", brand: "McDonald's", emoji: "☕",
+    sizes: [
+      { label: 'Small',  servingLabel: '12 fl oz', cal:  80, protein: 1, carbs: 10, fat: 4, satFat: 2, sodium:  50, fiber: 0, sugar:  9 },
+      { label: 'Medium', servingLabel: '16 fl oz', cal: 110, protein: 1, carbs: 14, fat: 5, satFat: 3, sodium:  70, fiber: 0, sugar: 12 },
+      { label: 'Large',  servingLabel: '22 fl oz', cal: 150, protein: 2, carbs: 20, fat: 7, satFat: 4, sodium:  90, fiber: 0, sugar: 17 },
+    ],
+  },
+  'seed-mcd-shamrock-shake-sizer': {
+    itemName: "Shamrock Shake", brand: "McDonald's", emoji: "☘️",
+    sizes: [
+      { label: 'Small',  servingLabel: '12 fl oz', cal: 460, protein: 11, carbs:  73, fat: 15, satFat:  9, sodium: 180, fiber: 0, sugar:  60 },
+      { label: 'Medium', servingLabel: '16 fl oz', cal: 570, protein: 13, carbs:  91, fat: 17, satFat: 11, sodium: 230, fiber: 0, sugar:  75 },
+      { label: 'Large',  servingLabel: '22 fl oz', cal: 740, protein: 17, carbs: 118, fat: 22, satFat: 14, sodium: 290, fiber: 0, sugar:  97 },
+    ],
+  },
 };
 
 /** Returns the sizer ID if this food item has a matching size picker, else null. */
