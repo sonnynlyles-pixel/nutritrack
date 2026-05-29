@@ -230,6 +230,24 @@ export const SIZE_FAMILIES: Record<string, SizeFamily> = {
   },
 };
 
+/** Returns the sizer ID if this food item has a matching size picker, else null. */
+export function findSizerForFood(food: { id: string; brand?: string; name: string }): string | null {
+  // Direct match: the food IS a sizer trigger
+  if (SIZE_FAMILIES[food.id]) return food.id;
+  // Reverse match: find a sizer whose brand + itemName keywords match this food
+  const nameLower = food.name.toLowerCase();
+  const brandLower = (food.brand ?? '').toLowerCase();
+  for (const [sizerId, family] of Object.entries(SIZE_FAMILIES)) {
+    if (family.brand.toLowerCase() !== brandLower) continue;
+    // Check that each word in the itemName appears in the food's name
+    const keywords = family.itemName.toLowerCase().split(/\s+/).filter(w => w.length > 2);
+    if (keywords.length > 0 && keywords.every(kw => nameLower.includes(kw))) {
+      return sizerId;
+    }
+  }
+  return null;
+}
+
 interface Props {
   sizerId: string;
   onAdd: (entry: MealEntry) => void;

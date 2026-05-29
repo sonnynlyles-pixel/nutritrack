@@ -8,7 +8,7 @@ import BarcodeScanner from '../BarcodeScanner/BarcodeScanner';
 import FoodInsightsPanel from '../FoodInsights/FoodInsightsPanel';
 import BowlBuilder from '../BowlBuilder/BowlBuilder';
 import DonutBuilder from '../DonutBuilder/DonutBuilder';
-import SizePicker, { SIZE_FAMILIES } from '../SizePicker/SizePicker';
+import SizePicker, { SIZE_FAMILIES, findSizerForFood } from '../SizePicker/SizePicker';
 
 // Returns brand info if the food is a bowl/burrito builder trigger, otherwise null
 function getBuilderInfo(food: FoodItem): { brandId: string; brandName: string } | null {
@@ -214,8 +214,9 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       setDonutBuilder(true);
       return;
     }
-    if (SIZE_FAMILIES[food.id]) {
-      setSizerId(food.id);
+    const sizer = findSizerForFood(food);
+    if (sizer) {
+      setSizerId(sizer);
       return;
     }
     const info = getBuilderInfo(food);
@@ -425,6 +426,24 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
 }
 
 function FoodRow({ food, onSelect }: { food: FoodItem; onSelect: (f: FoodItem) => void }) {
+  const family = SIZE_FAMILIES[food.id];
+  if (family) {
+    return (
+      <button
+        onClick={() => onSelect(food)}
+        className="mb-2 w-full flex items-center gap-3 px-4 py-3 bg-brand-400/10 border border-brand-400/40 rounded-xl hover:bg-brand-400/20 transition-colors text-left"
+      >
+        <span className="text-2xl">{family.emoji}</span>
+        <div className="flex-1 min-w-0">
+          <div className="text-sm font-semibold text-brand-600">{family.itemName}</div>
+          <div className="text-xs text-gray-500">{family.brand} · {family.sizes.map(s => s.label).join(' / ')}</div>
+        </div>
+        <div className="shrink-0 text-xs font-semibold text-brand-500 bg-brand-400/20 px-2.5 py-1 rounded-full">
+          Pick Size →
+        </div>
+      </button>
+    );
+  }
   return (
     <div className="mb-2">
       <FoodItemRow food={food} onTap={() => onSelect(food)} variant="card" />
