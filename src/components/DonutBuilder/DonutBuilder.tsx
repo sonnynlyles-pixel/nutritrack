@@ -152,73 +152,52 @@ export default function DonutBuilder({ onAdd, onCancel }: Props) {
         </div>
       </div>
 
-      {/* Nutrition preview + add */}
-      {selected && (
-        <div className="shrink-0 border-t border-brand-400/20 p-3 space-y-3 bg-white">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="text-sm font-semibold text-gray-900">{selected.name}</div>
-              <div className="text-xs text-gray-500">{selected.category === 'Munchkins' ? selected.name : '1 donut'}</div>
-            </div>
+      {/* Compact bottom bar — always visible */}
+      <div className="shrink-0 border-t border-brand-400/20 bg-white px-3 pt-2 pb-3 space-y-2">
+        {selected && (
+          <>
+            {/* Name + servings + macros in one row */}
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => setServings(s => Math.max(0.5, s - 0.5))}
-                className="w-7 h-7 rounded-lg bg-surface-raised border border-brand-400/20 text-gray-700 font-bold text-sm"
-              >−</button>
-              <span className="text-sm font-semibold text-gray-900 w-8 text-center">{servings}x</span>
-              <button
-                onClick={() => setServings(s => s + 0.5)}
-                className="w-7 h-7 rounded-lg bg-surface-raised border border-brand-400/20 text-gray-700 font-bold text-sm"
-              >+</button>
+              <div className="flex-1 min-w-0">
+                <div className="text-xs font-semibold text-gray-900 truncate">{selected.name}</div>
+                <div className="flex gap-2 text-xs mt-0.5">
+                  <span className="font-bold text-gray-900">{sc(selected.cal)} cal</span>
+                  <span className="text-blue-500">{sc(selected.protein)}g P</span>
+                  <span className="text-amber-500">{sc(selected.carbs)}g C</span>
+                  <span className="text-rose-500">{sc(selected.fat)}g F</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 shrink-0">
+                <button
+                  onClick={() => setServings(s => Math.max(0.5, s - 0.5))}
+                  className="w-7 h-7 rounded-lg bg-surface-raised border border-brand-400/20 text-gray-700 font-bold text-sm flex items-center justify-center"
+                >−</button>
+                <span className="text-sm font-semibold text-gray-900 w-7 text-center">{servings}x</span>
+                <button
+                  onClick={() => setServings(s => s + 0.5)}
+                  className="w-7 h-7 rounded-lg bg-surface-raised border border-brand-400/20 text-gray-700 font-bold text-sm flex items-center justify-center"
+                >+</button>
+              </div>
             </div>
-          </div>
-
-          <div className="grid grid-cols-4 gap-2 bg-surface-raised rounded-xl p-3 text-center text-xs">
-            <div>
-              <div className="font-bold text-gray-900 text-sm">{sc(selected.cal)}</div>
-              <div className="text-gray-500">cal</div>
-            </div>
-            <div>
-              <div className="font-semibold text-blue-500">{sc(selected.protein)}g</div>
-              <div className="text-gray-500">protein</div>
-            </div>
-            <div>
-              <div className="font-semibold text-amber-500">{sc(selected.carbs)}g</div>
-              <div className="text-gray-500">carbs</div>
-            </div>
-            <div>
-              <div className="font-semibold text-rose-500">{sc(selected.fat)}g</div>
-              <div className="text-gray-500">fat</div>
-            </div>
-          </div>
-
-          <div className="flex gap-2">
-            <button
-              onClick={onCancel}
-              className="flex-1 py-2.5 rounded-xl bg-gray-100 text-gray-700 font-medium text-sm"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleAdd}
-              className="flex-[2] py-2.5 rounded-xl bg-brand-gradient text-white font-semibold text-sm shadow-glow-brand"
-            >
-              Add to Meal
-            </button>
-          </div>
-        </div>
-      )}
-
-      {!selected && (
-        <div className="shrink-0 p-3 border-t border-brand-400/20">
+          </>
+        )}
+        {/* Buttons always visible */}
+        <div className="flex gap-2">
           <button
             onClick={onCancel}
-            className="w-full py-2.5 rounded-xl bg-gray-100 text-gray-700 font-medium text-sm"
+            className="flex-1 py-2.5 rounded-xl bg-gray-100 text-gray-700 font-medium text-sm"
           >
             Cancel
           </button>
+          <button
+            onClick={handleAdd}
+            disabled={!selected}
+            className="flex-[2] py-2.5 rounded-xl bg-brand-gradient text-white font-semibold text-sm shadow-glow-brand disabled:opacity-40"
+          >
+            {selected ? 'Add to Meal' : 'Select a Donut'}
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 }
