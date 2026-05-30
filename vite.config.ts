@@ -12,8 +12,8 @@ export default defineConfig({
         name: 'NutriTrack',
         short_name: 'NutriTrack',
         description: 'Personal calorie and nutrition tracker',
-        theme_color: '#10b981',
-        background_color: '#111827',
+        theme_color: '#00CC58',
+        background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
         icons: [
