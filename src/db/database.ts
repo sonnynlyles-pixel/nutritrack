@@ -840,6 +840,8 @@ const SEEDED_FOODS: FoodItem[] = [
   rf('seed-culv-fries-reg',           "Crinkle Cut Fries (Regular)",         "Culver's",      '1 regular',  340,   5, 44, 16,  3,   0,  410, 4,  0),
   rf('seed-culv-concrete-oreo',       "Concrete Mixer (Vanilla/Oreo)",       "Culver's",      '1 regular',  740,  16, 95, 32, 18, 100,  490, 1, 72),
   rf('seed-culv-vanilla-custard',     "Vanilla Custard (Dish)",              "Culver's",      '1 dish',     340,   8, 42, 16,  9,  90,  170, 0, 34),
+  rf('seed-culv-jalap-jack-single',   "Jalapeño Jack Pub Burger (Single)",   "Culver's",      '1 burger',   500,  28, 24, 34, 14, 100,  600, 1,  5),
+  rf('seed-culv-jalap-jack-double',   "Jalapeño Jack Pub Burger (Double)",   "Culver's",      '1 burger',   860,  46, 40, 58, 24, 165,  980, 1,  9),
 
   // ── Sonic Drive-In ──────────────────────────────────────────────
   rf('seed-sonic-classic-chzbrgr',    "Classic Cheeseburger",                "Sonic",         '1 burger',   710,  34, 52, 40, 15, 100, 1060, 2, 10),
