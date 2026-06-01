@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { XMarkIcon, MagnifyingGlassIcon, QrCodeIcon, BookmarkIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, MagnifyingGlassIcon, QrCodeIcon, BookmarkIcon, BuildingStorefrontIcon } from '@heroicons/react/24/outline';
 import FoodItemRow from '../shared/FoodItemRow';
 import { searchFoods, lookupBarcode, emptyNutrition } from '../../utils/foodApi';
 import { db } from '../../db/database';
@@ -9,6 +9,7 @@ import FoodInsightsPanel from '../FoodInsights/FoodInsightsPanel';
 import BowlBuilder from '../BowlBuilder/BowlBuilder';
 import DonutBuilder from '../DonutBuilder/DonutBuilder';
 import SizePicker, { SIZE_FAMILIES, findSizerForFood } from '../SizePicker/SizePicker';
+import RestaurantBrowse from './RestaurantBrowse';
 
 // Returns brand info if the food is a bowl/burrito builder trigger, otherwise null
 function getBuilderInfo(food: FoodItem): { brandId: string; brandName: string } | null {
@@ -33,7 +34,7 @@ interface Props {
   category: MealCategory;
 }
 
-type Tab = 'search' | 'barcode' | 'myfoods';
+type Tab = 'search' | 'barcode' | 'myfoods' | 'restaurants';
 
 function ServingAdjuster({
   food,
@@ -285,7 +286,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       <>
       {/* Tabs */}
       <div className="flex border-b border-gray-100">
-        {([['search', 'Search', MagnifyingGlassIcon], ['barcode', 'Barcode', QrCodeIcon], ['myfoods', 'My Foods', BookmarkIcon]] as const).map(([t, label, Icon]) => (
+        {([['search', 'Search', MagnifyingGlassIcon], ['barcode', 'Barcode', QrCodeIcon], ['myfoods', 'My Foods', BookmarkIcon], ['restaurants', 'Restaurants', BuildingStorefrontIcon]] as const).map(([t, label, Icon]) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -417,6 +418,10 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
               <FoodRow key={food.id} food={food} onSelect={handleSelectFood} />
             ))}
           </div>
+        )}
+
+        {tab === 'restaurants' && (
+          <RestaurantBrowse onSelect={handleSelectFood} />
         )}
       </div>
       </> /* end normal search view */
