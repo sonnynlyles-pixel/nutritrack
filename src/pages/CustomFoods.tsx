@@ -307,13 +307,14 @@ export default function CustomFoods() {
   const [showCreateRecipe, setShowCreateRecipe] = useState(false);
 
   useEffect(() => {
-    db.customFoods.toArray().then(setFoods);
+    db.customFoods.toArray().then(foods => setFoods(foods.filter(f => !f.id.startsWith('seed-'))));
     db.recipes.toArray().then(setRecipes);
   }, []);
 
   const handleSaveFood = async (food: FoodItem) => {
     await db.customFoods.put(food);
-    setFoods(await db.customFoods.toArray());
+    const allFoods = await db.customFoods.toArray();
+    setFoods(allFoods.filter(f => !f.id.startsWith('seed-')));
     setShowCreateFood(false);
   };
 
