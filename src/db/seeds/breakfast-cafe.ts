@@ -12,9 +12,6 @@ export const SEEDS: FoodItem[] = [
   rf('seed-sbux-bacon-egg-bites',     "Bacon & Gruyère Egg Bites",           "Starbucks",     '2 bites',    310,  19,  9, 22, 11, 215,  560, 0,  1,   0),
   rf('seed-sbux-butter-croissant',    "Butter Croissant",                    "Starbucks",     '1 croissant',260,   5, 31, 14,  8,  30,  230, 1,  8,   0),
 
-  // ── Dunkin' – Donut Builder trigger ─────────────────────────────
-  { id: 'seed-dun-donut-builder', name: "Dunkin' Donut Builder 🍩", brand: "Dunkin'", servingSizeG: 1, servingLabel: '1 donut', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
-
   // ── Dunkin' – Donuts (also individually searchable) ──────────────
   rf('seed-dun-glazed-donut',         "Original Glazed Donut",               "Dunkin'",       '1 donut',    260,   4, 33, 13,  6,   0,  260, 1, 13),
   rf('seed-dun-boston-kreme',         "Boston Kreme Donut",                  "Dunkin'",       '1 donut',    300,   4, 43, 13,  6,   0,  310, 1, 20),
@@ -143,4 +140,5 @@ export const SEEDS: FoodItem[] = [
   rf('seed-ihop-big-steak-omelet',    "Big Steak Omelette",                  "IHOP",          '1 omelet',  1180,  67, 36, 87, 33, 820, 2620, 4,  7),
   rf('seed-ihop-french-toast',        "Thick N Fluffy French Toast (2 pc)",  "IHOP",          '2 slices',   600,  13, 83, 24,  5, 110,  780, 2, 30),
   rf('seed-ihop-simple-fit-veggie',   "Simple & Fit Veggie Omelette",        "IHOP",          '1 omelet',   380,  25, 17, 25,  8, 615,  870, 3,  7),
+
 ];
