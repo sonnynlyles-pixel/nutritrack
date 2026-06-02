@@ -100,6 +100,10 @@ export const SEEDS: FoodItem[] = [
   rf('seed-culv-mushroom-swiss',      "Mushroom & Swiss ButterBurger",       "Culver's",      '1 burger',   500,  25, 35, 29, 11,  80, 1080, 2,  6),
   rf('seed-culv-pub-burger-single',   "Jalapeño Jack Pub Burger (Single)",   "Culver's",      '1 burger',   600,  33, 35, 38, 14, 105, 1270, 1, 10),
   rf('seed-culv-pub-burger-double',   "Jalapeño Jack Pub Burger (Double)",   "Culver's",      '1 burger',   820,  50, 35, 55, 21, 160, 1640, 1, 10),
+  rf('seed-culv-onion-rings-small',   "Onion Rings (Small)",                 "Culver's",      '1 small',    240,   3, 26, 13,  2,   0,  420, 2,  1),
+  rf('seed-culv-onion-rings-medium',  "Onion Rings (Medium)",                "Culver's",      '1 medium',   350,   4, 38, 19,  3,   0,  610, 3,  2),
+  rf('seed-culv-onion-rings-large',   "Onion Rings (Large)",                 "Culver's",      '1 large',    480,   6, 52, 26,  4,   0,  840, 4,  2),
+  { id: 'seed-culv-onion-rings-sizer', name: 'Onion Rings — Pick a Size 🧅', brand: 'Culver\'s', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
 
   // ── Sonic ────────────────────────────────────────────────────────
   rf('seed-sonic-jr-burger',          "Jr. Burger",                          "Sonic",         '1 burger',   350,  16, 34, 18,  7,  40,  650, 1,  5),

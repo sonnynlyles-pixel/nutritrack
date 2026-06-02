@@ -49,6 +49,15 @@ export const SIZE_FAMILIES: Record<string, SizeFamily> = {
       { label: 'Large',  servingLabel: '1 large',  cal: 520, protein: 7, carbs: 70, fat: 24, satFat: 4, sodium: 950, fiber: 7, sugar: 7 },
     ],
   },
+  // ── Culver's ─────────────────────────────────────────────────────
+  'seed-culv-onion-rings-sizer': {
+    itemName: "Onion Rings", brand: "Culver's", emoji: "🧅",
+    sizes: [
+      { label: 'Small',  servingLabel: '1 small',  cal: 240, protein: 3, carbs: 26, fat: 13, satFat: 2, sodium: 420, fiber: 2, sugar: 1 },
+      { label: 'Medium', servingLabel: '1 medium', cal: 350, protein: 4, carbs: 38, fat: 19, satFat: 3, sodium: 610, fiber: 3, sugar: 2 },
+      { label: 'Large',  servingLabel: '1 large',  cal: 480, protein: 6, carbs: 52, fat: 26, satFat: 4, sodium: 840, fiber: 4, sugar: 2 },
+    ],
+  },
   // ── Chick-fil-A ─────────────────────────────────────────────────
   'seed-cfa-waffle-fries-sizer': {
     itemName: "Waffle Fries", brand: "Chick-fil-A", emoji: "🍟",
