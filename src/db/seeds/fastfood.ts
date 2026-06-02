@@ -104,6 +104,10 @@ export const SEEDS: FoodItem[] = [
   rf('seed-culv-onion-rings-medium',  "Onion Rings (Medium)",                "Culver's",      '1 medium',   350,   4, 38, 19,  3,   0,  610, 3,  2),
   rf('seed-culv-onion-rings-large',   "Onion Rings (Large)",                 "Culver's",      '1 large',    480,   6, 52, 26,  4,   0,  840, 4,  2),
   { id: 'seed-culv-onion-rings-sizer', name: 'Onion Rings — Pick a Size 🧅', brand: 'Culver\'s', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+  rf('seed-culv-root-beer-small',      "Fountain Root Beer (Small)",          "Culver's",      '1 small',    140,   0, 39,  0,  0,   0,   35, 0, 39),
+  rf('seed-culv-root-beer-medium',     "Fountain Root Beer (Medium)",         "Culver's",      '1 medium',   220,   0, 61,  0,  0,   0,   55, 0, 61),
+  rf('seed-culv-root-beer-large',      "Fountain Root Beer (Large)",          "Culver's",      '1 large',    310,   0, 86,  0,  0,   0,   80, 0, 86),
+  { id: 'seed-culv-root-beer-sizer', name: 'Fountain Root Beer — Pick a Size 🥤', brand: 'Culver\'s', servingSizeG: 1, servingLabel: '1 drink', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
 
   // ── Sonic ────────────────────────────────────────────────────────
   rf('seed-sonic-jr-burger',          "Jr. Burger",                          "Sonic",         '1 burger',   350,  16, 34, 18,  7,  40,  650, 1,  5),

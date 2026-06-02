@@ -58,6 +58,14 @@ export const SIZE_FAMILIES: Record<string, SizeFamily> = {
       { label: 'Large',  servingLabel: '1 large',  cal: 480, protein: 6, carbs: 52, fat: 26, satFat: 4, sodium: 840, fiber: 4, sugar: 2 },
     ],
   },
+  'seed-culv-root-beer-sizer': {
+    itemName: "Fountain Root Beer", brand: "Culver's", emoji: "🥤",
+    sizes: [
+      { label: 'Small',  servingLabel: '1 small',  cal: 140, protein: 0, carbs: 39, fat: 0, satFat: 0, sodium: 35, fiber: 0, sugar: 39 },
+      { label: 'Medium', servingLabel: '1 medium', cal: 220, protein: 0, carbs: 61, fat: 0, satFat: 0, sodium: 55, fiber: 0, sugar: 61 },
+      { label: 'Large',  servingLabel: '1 large',  cal: 310, protein: 0, carbs: 86, fat: 0, satFat: 0, sodium: 80, fiber: 0, sugar: 86 },
+    ],
+  },
   // ── Chick-fil-A ─────────────────────────────────────────────────
   'seed-cfa-waffle-fries-sizer': {
     itemName: "Waffle Fries", brand: "Chick-fil-A", emoji: "🍟",
