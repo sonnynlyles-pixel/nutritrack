@@ -119,7 +119,7 @@ function RestaurantBrowse({ onSelect }: Props) {
       setLoading(true);
       const brandItems = await db.customFoods
         .where('brand')
-        .equals(selectedBrand)
+        .equals(selectedBrand as string)
         .toArray();
       const filtered = brandItems.filter(
         (f) => !isIngredient(f) && !isBuilder(f)
@@ -222,12 +222,13 @@ function RestaurantBrowse({ onSelect }: Props) {
         )}
         {!loading &&
           filteredItems.map((food) => (
-            <FoodItemRow
+            <button
               key={food.id}
-              food={food}
-              variant="card"
               onClick={() => onSelect(food)}
-            />
+              className="w-full text-left"
+            >
+              <FoodItemRow food={food} variant="card" />
+            </button>
           ))}
       </div>
     </div>
