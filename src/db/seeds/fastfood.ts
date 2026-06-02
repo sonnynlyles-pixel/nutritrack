@@ -169,4 +169,36 @@ export const SEEDS: FoodItem[] = [
   rf('seed-cfa-nuggets-8pc',          "Chicken Nuggets (8 pc)",              "Chick-fil-A",   '8 pieces',   260,  27, 11, 12,  2,  70, 1210, 0,  1),
   rf('seed-cfa-strips-3pc',           "Chicken Strips (3 pc)",               "Chick-fil-A",   '3 strips',   370,  37, 21, 17,  3,  65, 1210, 0,  2),
   rf('seed-cfa-waffle-fries-med',     "Waffle Fries (Medium)",               "Chick-fil-A",   '1 medium',   420,   5, 50, 22,  4,   0,  260, 5,  0),
+
+  // ── Wingstop Chicken Tenders ───────────────────────────────────
+  // 3-piece tenders
+  rf('seed-ws-tender-3pc-atomic',     "Chicken Tenders 3pc - Atomic",       "Wingstop",      '3 pieces',   450,  30, 36, 21,  3,  90, 2550, 0,  0),
+  rf('seed-ws-tender-3pc-cajun',      "Chicken Tenders 3pc - Cajun",        "Wingstop",      '3 pieces',   450,  30, 33, 21,  3,  90, 3060, 0,  0),
+  rf('seed-ws-tender-3pc-garlic',     "Chicken Tenders 3pc - Garlic Parm",  "Wingstop",      '3 pieces',   630,  30, 33, 42,  8,  90, 1650, 0,  0),
+  rf('seed-ws-tender-3pc-hawaiian',   "Chicken Tenders 3pc - Hawaiian",     "Wingstop",      '3 pieces',   480,  30, 48, 21,  3,  90, 1740, 0, 15),
+  rf('seed-ws-tender-3pc-hickory',    "Chicken Tenders 3pc - Hickory BBQ",  "Wingstop",      '3 pieces',   510,  30, 51, 21,  3,  90, 2130, 0, 18),
+  rf('seed-ws-tender-3pc-honey-rub',  "Chicken Tenders 3pc - Hot Honey",    "Wingstop",      '3 pieces',   660,  30, 42, 42,  8,  90, 2340, 0,  9),
+  rf('seed-ws-tender-3pc-lemon',      "Chicken Tenders 3pc - Lemon Pepper", "Wingstop",      '3 pieces',   600,  30, 30, 39,  8,  90, 1860, 0,  0),
+  rf('seed-ws-tender-3pc-louisiana',  "Chicken Tenders 3pc - Louisiana",    "Wingstop",      '3 pieces',   540,  30, 30, 36,  6,  90, 1620, 0,  0),
+  rf('seed-ws-tender-3pc-mango',      "Chicken Tenders 3pc - Mango Hab",    "Wingstop",      '3 pieces',   510,  30, 51, 21,  3,  90, 1710, 0, 21),
+  rf('seed-ws-tender-3pc-mild',       "Chicken Tenders 3pc - Mild",         "Wingstop",      '3 pieces',   600,  30, 30, 42,  8,  90, 2190, 0,  0),
+  rf('seed-ws-tender-3pc-original',   "Chicken Tenders 3pc - Original Hot", "Wingstop",      '3 pieces',   420,  30, 30, 21,  3,  90, 2610, 0,  0),
+  rf('seed-ws-tender-3pc-plain',      "Chicken Tenders 3pc - Plain",        "Wingstop",      '3 pieces',   420,  30, 30, 21,  3,  90, 1410, 0,  0),
+  rf('seed-ws-tender-3pc-korean',     "Chicken Tenders 3pc - Spicy Korean", "Wingstop",      '3 pieces',   510,  30, 48, 21,  3,  90, 2040, 0, 18),
+  // 5-piece tenders
+  rf('seed-ws-tender-5pc-atomic',     "Chicken Tenders 5pc - Atomic",       "Wingstop",      '5 pieces',   750,  50, 60, 35,  5, 150, 4250, 0,  0),
+  rf('seed-ws-tender-5pc-cajun',      "Chicken Tenders 5pc - Cajun",        "Wingstop",      '5 pieces',   750,  50, 55, 35,  5, 150, 5100, 0,  0),
+  rf('seed-ws-tender-5pc-garlic',     "Chicken Tenders 5pc - Garlic Parm",  "Wingstop",      '5 pieces',  1050,  50, 55, 70, 13, 150, 2750, 0,  0),
+  rf('seed-ws-tender-5pc-hawaiian',   "Chicken Tenders 5pc - Hawaiian",     "Wingstop",      '5 pieces',   800,  50, 80, 35,  5, 150, 2900, 0, 25),
+  rf('seed-ws-tender-5pc-hickory',    "Chicken Tenders 5pc - Hickory BBQ",  "Wingstop",      '5 pieces',   850,  50, 85, 35,  5, 150, 3550, 0, 30),
+  rf('seed-ws-tender-5pc-honey-rub',  "Chicken Tenders 5pc - Hot Honey",    "Wingstop",      '5 pieces',  1100,  50, 70, 70, 13, 150, 3900, 0, 15),
+  rf('seed-ws-tender-5pc-lemon',      "Chicken Tenders 5pc - Lemon Pepper", "Wingstop",      '5 pieces',  1000,  50, 50, 65, 13, 150, 3100, 0,  0),
+  rf('seed-ws-tender-5pc-louisiana',  "Chicken Tenders 5pc - Louisiana",    "Wingstop",      '5 pieces',   900,  50, 50, 60, 10, 150, 2700, 0,  0),
+  rf('seed-ws-tender-5pc-mango',      "Chicken Tenders 5pc - Mango Hab",    "Wingstop",      '5 pieces',   850,  50, 85, 35,  5, 150, 2850, 0, 35),
+  rf('seed-ws-tender-5pc-mild',       "Chicken Tenders 5pc - Mild",         "Wingstop",      '5 pieces',  1000,  50, 50, 70, 13, 150, 3650, 0,  0),
+  rf('seed-ws-tender-5pc-original',   "Chicken Tenders 5pc - Original Hot", "Wingstop",      '5 pieces',   700,  50, 50, 35,  5, 150, 4350, 0,  0),
+  rf('seed-ws-tender-5pc-plain',      "Chicken Tenders 5pc - Plain",        "Wingstop",      '5 pieces',   700,  50, 50, 35,  5, 150, 2350, 0,  0),
+  rf('seed-ws-tender-5pc-korean',     "Chicken Tenders 5pc - Spicy Korean", "Wingstop",      '5 pieces',   850,  50, 80, 35,  5, 150, 3400, 0, 30),
+  // Sizer entry
+  { id: 'seed-ws-tenders-sizer', name: 'Chicken Tenders — Pick Size & Flavor 🍗', brand: 'Wingstop', servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
 ];

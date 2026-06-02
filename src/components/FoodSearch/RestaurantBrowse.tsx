@@ -93,6 +93,10 @@ function RestaurantBrowse({ onSelect }: Props) {
     return food.id.endsWith('-builder') || food.id.endsWith('-sizer');
   }
 
+  function isTenderVariant(food: FoodItem): boolean {
+    return food.id.startsWith('seed-ws-tender-') && !food.id.endsWith('-sizer');
+  }
+
   // Load item counts for all brands on mount
   useEffect(() => {
     async function loadItemCounts() {
@@ -122,7 +126,7 @@ function RestaurantBrowse({ onSelect }: Props) {
         .equals(selectedBrand as string)
         .toArray();
       const filtered = brandItems.filter(
-        (f) => !isIngredient(f) && !isBuilder(f)
+        (f) => !isIngredient(f) && !isBuilder(f) && !isTenderVariant(f)
       );
       setItems(filtered);
       setFilteredItems(filtered);

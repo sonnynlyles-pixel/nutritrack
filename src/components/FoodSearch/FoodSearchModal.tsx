@@ -9,6 +9,7 @@ import FoodInsightsPanel from '../FoodInsights/FoodInsightsPanel';
 import BowlBuilder from '../BowlBuilder/BowlBuilder';
 import DonutBuilder from '../DonutBuilder/DonutBuilder';
 import SizePicker, { SIZE_FAMILIES, findSizerForFood } from '../SizePicker/SizePicker';
+import TenderPicker from '../SizePicker/TenderPicker';
 import RestaurantBrowse from './RestaurantBrowse';
 
 // Returns brand info if the food is a bowl/burrito builder trigger, otherwise null
@@ -129,6 +130,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   const [builderInfo, setBuilderInfo] = useState<{ brandId: string; brandName: string } | null>(null);
   const [donutBuilder, setDonutBuilder] = useState(false);
   const [sizerId, setSizerId] = useState<string | null>(null);
+  const [tenderPicker, setTenderPicker] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [barcodeResult, setBarcodeResult] = useState<FoodItem | null>(null);
   const [myFoods, setMyFoods] = useState<FoodItem[]>([]);
@@ -215,6 +217,10 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       setDonutBuilder(true);
       return;
     }
+    if (food.id === 'seed-ws-tenders-sizer') {
+      setTenderPicker(true);
+      return;
+    }
     const sizer = findSizerForFood(food);
     if (sizer) {
       setSizerId(sizer);
@@ -237,16 +243,18 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       {/* Header */}
       <div className="flex items-center gap-3 p-4 border-b border-brand-400/20">
         <button
-          onClick={() => { builderInfo ? setBuilderInfo(null) : donutBuilder ? setDonutBuilder(false) : sizerId ? setSizerId(null) : onClose(); }}
+          onClick={() => { builderInfo ? setBuilderInfo(null) : donutBuilder ? setDonutBuilder(false) : sizerId ? setSizerId(null) : tenderPicker ? setTenderPicker(false) : onClose(); }}
           className="p-2 rounded-full hover:bg-surface-raised"
         >
-          {(builderInfo || donutBuilder || sizerId)
+          {(builderInfo || donutBuilder || sizerId || tenderPicker)
             ? <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             : <XMarkIcon className="w-6 h-6 text-gray-400" />
           }
         </button>
         <h2 className="flex-1 text-lg font-semibold text-gray-900">
-          {sizerId
+          {tenderPicker
+            ? "Wingstop — Chicken Tenders"
+            : sizerId
             ? `${SIZE_FAMILIES[sizerId]?.brand} — Pick a Size`
             : donutBuilder ? "Dunkin' Donut Builder"
             : builderInfo ? `${builderInfo.brandName} Builder`
@@ -263,8 +271,16 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
         />
       )}
 
+      {/* Tender Picker view */}
+      {tenderPicker && (
+        <TenderPicker
+          onAdd={handleBuilderAdd}
+          onCancel={() => setTenderPicker(false)}
+        />
+      )}
+
       {/* Donut Builder view */}
-      {!sizerId && donutBuilder && (
+      {!sizerId && !tenderPicker && donutBuilder && (
         <DonutBuilder
           onAdd={handleBuilderAdd}
           onCancel={() => setDonutBuilder(false)}
@@ -272,7 +288,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       )}
 
       {/* Bowl Builder view */}
-      {!sizerId && !donutBuilder && builderInfo && (
+      {!sizerId && !tenderPicker && !donutBuilder && builderInfo && (
         <BowlBuilder
           brandId={builderInfo.brandId}
           brandName={builderInfo.brandName}
@@ -282,7 +298,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       )}
 
       {/* Normal search view */}
-      {!builderInfo && !donutBuilder && !sizerId && (
+      {!builderInfo && !donutBuilder && !sizerId && !tenderPicker && (
       <>
       {/* Tabs */}
       <div className="flex border-b border-gray-100">
