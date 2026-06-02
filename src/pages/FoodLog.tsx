@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { format, addDays, parseISO } from 'date-fns';
+import { format, addDays, parseISO, startOfDay } from 'date-fns';
 import { ChevronLeftIcon, ChevronRightIcon, TrashIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useStore } from '../store/useStore';
 import { useDailyLog } from '../hooks/useDailyLog';
@@ -24,7 +24,7 @@ export default function FoodLog() {
 
   const dateParam  = searchParams.get('date');
   const mealParam  = searchParams.get('meal') as MealCategory | null;
-  const today      = new Date().toLocaleDateString('en-CA');
+  const today      = format(startOfDay(new Date()), 'yyyy-MM-dd');
   const [currentDate, setCurrentDate] = useState(dateParam || today);
 
   const { log, loading, addEntry, removeEntry, updateWater, updateNotes } = useDailyLog(currentDate);
