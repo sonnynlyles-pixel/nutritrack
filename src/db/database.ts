@@ -23,6 +23,9 @@ export class NutriTrackDB extends Dexie {
     this.version(2).stores({
       customFoods: 'id, name, brand'
     });
+    this.version(3).stores({
+      customFoods: 'id, name, brand'
+    });
   }
 }
 
