@@ -106,6 +106,9 @@ export const SEEDS: FoodItem[] = [
   rf('seed-bk-chicken-bacon-king',    "Chicken Bacon King",                  "Burger King",   '1 burger',   839,  46, 31, 53, 19, 155, 2202, 0, 17),
   rf('seed-bk-chicken-fries-6pc',     "Chicken Fries (6pc)",                 "Burger King",   '6 pieces',   483,  14, 25, 30,  7,  35, 790,  1,  0),
   rf('seed-bk-chicken-fries-9pc',     "Chicken Fries (9pc)",                 "Burger King",   '9 pieces',   523,  16, 32, 32,  8,  45, 968,  1,  0),
+  rf('seed-bk-chicken-nuggets-4pc',   "Chicken Nuggets (4pc)",               "Burger King",   '4 pieces',   202,   8, 12, 11,  3,  25, 388,  0,  0),
+  rf('seed-bk-chicken-nuggets-6pc',   "Chicken Nuggets (6pc)",               "Burger King",   '6 pieces',   317,  13, 20, 17,  4,  40, 620,  0,  0),
+  rf('seed-bk-chicken-nuggets-9pc',   "Chicken Nuggets (9pc)",               "Burger King",   '9 pieces',   461,  19, 30, 24,  6,  65, 1020, 0,  0),
   // SIDES & FRIES
   rf('seed-bk-fries-small',           "Fries (Small)",                       "Burger King",   '1 small',    254,   4, 34, 10,  2,   0, 390,  3,  0),
   rf('seed-bk-fries-medium',          "Fries (Medium)",                      "Burger King",   '1 medium',   363,   5, 48, 15,  3,   0, 583,  4,  0),
