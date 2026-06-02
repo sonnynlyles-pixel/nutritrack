@@ -230,13 +230,9 @@ function RestaurantBrowse({ onSelect }: Props) {
         )}
         {!loading &&
           filteredItems.map((food) => (
-            <button
-              key={food.id}
-              onClick={() => onSelect(food)}
-              className="w-full text-left"
-            >
-              <FoodItemRow food={food} variant="card" />
-            </button>
+            <div key={food.id}>
+              <FoodItemRow food={food} variant="card" onTap={() => onSelect(food)} />
+            </div>
           ))}
       </div>
     </div>
