@@ -90,7 +90,7 @@ function RestaurantBrowse({ onSelect }: Props) {
   }
 
   function isBuilder(food: FoodItem): boolean {
-    return food.id.endsWith('-builder') || food.id.endsWith('-sizer');
+    return food.id.endsWith('-builder') || (food.id.endsWith('-sizer') && !food.id.includes('ws-tenders'));
   }
 
   function isTenderVariant(food: FoodItem): boolean {
