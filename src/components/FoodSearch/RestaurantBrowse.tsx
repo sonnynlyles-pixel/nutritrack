@@ -94,6 +94,10 @@ function RestaurantBrowse({ onSelect }: Props) {
   }
 
   function isTenderVariant(food: FoodItem): boolean {
+    // Hide all Wingstop tender items except the sizer
+    if (food.brand === 'Wingstop' && food.id.includes('tender') && !food.id.endsWith('-sizer')) {
+      return true;
+    }
     return food.id.startsWith('seed-ws-tender-') && !food.id.endsWith('-sizer');
   }
 
