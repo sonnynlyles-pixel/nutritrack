@@ -18,21 +18,24 @@ body {
 
 @layer components {
   .card {
-    @apply bg-surface-card border border-brand-400/[0.28] rounded-2xl shadow-card;
+    @apply bg-white border border-gray-100 rounded-2xl shadow-card;
   }
   .card-raised {
-    @apply bg-surface-raised border border-brand-400/[0.28] rounded-2xl shadow-card;
+    @apply bg-gray-50 border border-gray-100 rounded-2xl shadow-card;
   }
   .btn-primary {
-    @apply bg-brand-gradient text-white font-semibold rounded-xl transition-all active:scale-95 shadow-glow-brand;
+    @apply bg-blue-500 text-white font-semibold rounded-2xl transition-all active:scale-95 hover:bg-blue-600 px-6 py-3.5;
   }
   .btn-secondary {
-    @apply bg-surface-raised border border-brand-400/[0.25] text-gray-700 font-medium rounded-xl transition-all active:scale-95;
+    @apply bg-gray-100 border-0 text-gray-800 font-medium rounded-2xl transition-all active:scale-95;
   }
   .glass {
-    @apply bg-white/95 backdrop-blur-2xl border border-brand-400/[0.2];
+    @apply bg-white/90 backdrop-blur-2xl border border-gray-200/60;
   }
   .section-label {
-    @apply text-xs font-semibold uppercase tracking-widest text-gray-500;
+    @apply text-sm font-semibold text-gray-500;
+  }
+  .input-ios {
+    @apply bg-gray-100 rounded-2xl px-4 py-3 text-gray-900 outline-none border-0 w-full;
   }
 }

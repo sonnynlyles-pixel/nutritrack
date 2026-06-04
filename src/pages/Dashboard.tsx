@@ -57,7 +57,7 @@ function CalorieRing({ consumed, goal }: { consumed: number; goal: number }) {
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className={`text-3xl font-bold leading-none transition-colors duration-500 ${isGoalMet ? 'text-emerald-400' : 'text-gray-900'}`}>
+          <div className={`text-4xl font-bold leading-none transition-colors duration-500 ${isGoalMet ? 'text-emerald-400' : 'text-gray-900'}`}>
             {Math.round(consumed)}
           </div>
           <div className="text-xs text-gray-500 mt-1">of {goal} cal</div>
@@ -114,7 +114,7 @@ function MacroBar({ type, consumed, goal }: { type: keyof typeof MACRO_STYLES; c
           <span className="text-gray-600"> / {goal}g</span>
         </span>
       </div>
-      <div className="h-1.5 bg-surface-raised rounded-full overflow-hidden">
+      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
         <div
           className={`h-full rounded-full bg-gradient-to-r ${barClass} transition-all duration-500`}
           style={{ width: `${pct}%` }}
@@ -189,7 +189,7 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex items-start justify-between pt-3">
         <div>
-          <h1 className="text-xl font-bold text-gray-900">{greeting}, {profile.name}!</h1>
+          <h1 className="text-2xl font-bold text-gray-900">{greeting}, {profile.name}!</h1>
           <p className="text-sm text-gray-500 mt-0.5">{dateLabel}</p>
         </div>
         {streak > 0 && (
@@ -250,14 +250,14 @@ export default function Dashboard() {
                 <button
                   key={oz}
                   onClick={() => updateWater(waterOz + oz)}
-                  className="flex-1 py-2 bg-surface-raised hover:bg-surface-high border border-brand-400/20 rounded-xl text-sm text-gray-700 transition-colors"
+                  className="flex-1 py-2 bg-gray-100 hover:bg-gray-200 border-0 rounded-xl text-sm text-gray-700 transition-colors"
                 >
                   +{oz} oz
                 </button>
               ))}
               <button
                 onClick={() => updateWater(Math.max(0, waterOz - 8))}
-                className="px-3 py-2 bg-surface-raised hover:bg-surface-high border border-brand-400/20 rounded-xl text-sm text-gray-500 transition-colors"
+                className="px-3 py-2 bg-gray-100 hover:bg-gray-200 border-0 rounded-xl text-sm text-gray-500 transition-colors"
               >
                 −
               </button>
@@ -282,14 +282,14 @@ export default function Dashboard() {
                     <span className="text-xs text-gray-600">({entries.length})</span>
                   )}
                 </div>
-                <span className="text-sm font-bold text-brand-400">
+                <span className="text-sm font-bold text-blue-500">
                   {Math.round(mealTotals.calories)} cal
                 </span>
               </div>
               {entries.slice(0, 2).map(entry => (
                 <div key={entry.id} className="flex items-center justify-between py-0.5 gap-2">
                   <span className="text-xs text-gray-500 truncate">{entry.food.name}</span>
-                  <span className="text-xs text-brand-400 font-medium shrink-0">
+                  <span className="text-xs text-blue-500 font-medium shrink-0">
                     {Math.round(entry.food.nutrition.calories * entry.servings)} cal
                   </span>
                 </div>
@@ -299,7 +299,7 @@ export default function Dashboard() {
               )}
               <button
                 onClick={() => navigate(`/log?meal=${meal}`)}
-                className="mt-3 w-full py-2 border border-dashed border-brand-400/25 hover:border-brand-500/50 rounded-xl text-brand-400 text-sm transition-colors"
+                className="mt-3 w-full py-2 bg-gray-50 rounded-xl text-gray-400 text-sm transition-colors hover:bg-gray-100"
               >
                 + Add Food
               </button>

@@ -33,10 +33,10 @@ export default {
         'danger-gradient': 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
       },
       boxShadow: {
-        'card':         '0 0 0 1px rgba(57,255,122,0.22), 0 4px 20px rgba(57,255,122,0.08)',
+        'card':         '0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.08)',
         'glow-brand':   '0 0 20px rgba(57,255,122,0.5)',
         'glow-emerald': '0 0 20px rgba(57,255,122,0.4)',
-        'nav':          '0 -1px 0 rgba(57,255,122,0.18), 0 -4px 20px rgba(0,0,0,0.04)',
+        'nav':          '0 -1px 0 rgba(0,0,0,0.08)',
       },
       keyframes: {
         pop: {

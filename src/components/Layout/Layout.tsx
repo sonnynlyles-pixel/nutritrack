@@ -41,21 +41,16 @@ export default function Layout() {
             end={to === '/'}
             className={({ isActive }) =>
               `flex-1 flex flex-col items-center py-2.5 gap-0.5 text-[10px] font-medium transition-all ${
-                isActive ? 'text-brand-500' : 'text-gray-400 hover:text-gray-600'
+                isActive ? 'text-blue-500' : 'text-gray-400 hover:text-gray-600'
               }`
             }
           >
             {({ isActive }) => (
               <>
-                <div className="relative">
-                  {isActive
-                    ? <ActiveIcon className="w-6 h-6 drop-shadow-[0_0_8px_rgba(57,255,122,0.8)]" />
-                    : <Icon className="w-6 h-6" />
-                  }
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand-400" />
-                  )}
-                </div>
+                {isActive
+                  ? <ActiveIcon className="w-6 h-6" />
+                  : <Icon className="w-6 h-6" />
+                }
                 <span>{label}</span>
               </>
             )}

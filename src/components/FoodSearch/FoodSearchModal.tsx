@@ -111,7 +111,7 @@ function ServingAdjuster({
         </button>
         <button
           onClick={() => onAdd(servings)}
-          className="flex-1 py-3 rounded-xl bg-emerald-600 text-white font-semibold"
+          className="flex-1 py-3 rounded-2xl bg-blue-500 text-white font-semibold hover:bg-blue-600"
         >
           Add to Meal
         </button>
@@ -302,17 +302,19 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       {!builderInfo && !donutBuilder && !sizerId && !tenderPicker && (
       <>
       {/* Tabs */}
-      <div className="flex border-b border-gray-100">
-        {([['search', 'Search', MagnifyingGlassIcon], ['barcode', 'Barcode', QrCodeIcon], ['myfoods', 'My Foods', BookmarkIcon], ['restaurants', 'Restaurants', BuildingStorefrontIcon]] as const).map(([t, label, Icon]) => (
-          <button
-            key={t}
-            onClick={() => setTab(t)}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-3 text-sm font-medium transition-colors border-b-2 ${tab === t ? 'text-emerald-400 border-emerald-400' : 'text-gray-500 border-transparent'}`}
-          >
-            <Icon className="w-4 h-4" />
-            {label}
-          </button>
-        ))}
+      <div className="flex justify-center p-4 border-b border-gray-100">
+        <div className="bg-gray-100 rounded-2xl p-1 flex gap-1 w-full max-w-md">
+          {([['search', 'Search', MagnifyingGlassIcon], ['barcode', 'Barcode', QrCodeIcon], ['myfoods', 'My Foods', BookmarkIcon], ['restaurants', 'Restaurants', BuildingStorefrontIcon]] as const).map(([t, label, Icon]) => (
+            <button
+              key={t}
+              onClick={() => setTab(t)}
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 text-sm font-medium transition-all rounded-xl ${tab === t ? 'bg-white shadow-sm text-gray-900' : 'text-gray-500'}`}
+            >
+              <Icon className="w-4 h-4" />
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -320,9 +322,9 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
         {tab === 'search' && (
           <>
             <div className="relative">
-              <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+              <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
               <input
-                className="w-full bg-gray-50 border border-gray-100 rounded-xl pl-10 pr-4 py-3 text-gray-900 focus:outline-none focus:border-brand-500"
+                className="input-ios pl-10"
                 placeholder="Search foods..."
                 value={query}
                 onChange={e => setQuery(e.target.value)}
