@@ -213,23 +213,29 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   };
 
   const handleSelectFood = (food: FoodItem) => {
+    console.log('handleSelectFood called with:', food.name);
     if (food.id === 'seed-dun-donut-builder') {
+      console.log('Is donut builder');
       setDonutBuilder(true);
       return;
     }
     if (food.id === 'seed-ws-tenders-sizer') {
+      console.log('Is tender sizer');
       setTenderPicker(true);
       return;
     }
     const sizer = findSizerForFood(food);
     if (sizer) {
+      console.log('Found sizer:', sizer);
       setSizerId(sizer);
       return;
     }
     const info = getBuilderInfo(food);
     if (info) {
+      console.log('Is builder:', info);
       setBuilderInfo(info);
     } else {
+      console.log('Setting selected food');
       setSelected(food);
     }
   };
