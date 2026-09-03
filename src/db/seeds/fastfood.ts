@@ -37,6 +37,9 @@ export const SEEDS: FoodItem[] = [
   rf('seed-mcd-chicken-big-mac',      "Chicken Big Mac",                     "McDonald's",    '1 burger',   720,  41, 49, 40,  9, 120, 1680, 2,  8),
   rf('seed-mcd-grilled-chkn-sndwch',  "Grilled Chicken Sandwich",            "McDonald's",    '1 sandwich', 390,  37, 44,  9,  2,  75, 1040, 3,  8),
 
+  // ── McDonald's – Sides ─────────────────────────────────────────
+  { id: 'seed-mcd-fries-sizer', name: 'French Fries — Pick a Size 🍟', brand: "McDonald's", servingSizeG: 1, servingLabel: '1 order', source: 'custom' as const, nutrition: { calories: 0, protein: 0, carbs: 0, fat: 0, sugar: 0, fiber: 0, sodium: 0, cholesterol: 0, saturatedFat: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine: 0, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } },
+
   // ── McDonald's – Chicken & Fish ─────────────────────────────────
   rf('seed-mcd-nuggets-4pc',          "Chicken McNuggets (4 pc)",            "McDonald's",    '4 pieces',   170,   9, 10, 10,  2,  25,  340, 0,  0),
   rf('seed-mcd-nuggets-6pc',          "Chicken McNuggets (6 pc)",            "McDonald's",    '6 pieces',   250,  13, 15, 15,  3,  40,  510, 1,  0),
