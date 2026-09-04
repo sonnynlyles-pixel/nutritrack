@@ -134,13 +134,50 @@ export const SEEDS: FoodItem[] = [
   rf('seed-pj-large-pan-1',           "Large Pan Pizza (1 slice)",           "Papa John's",   '1 slice',    310,  12, 36, 13,  5,  20,  580, 2,  4),
   rf('seed-pj-large-pan-2',           "Large Pan Pizza (2 slices)",          "Papa John's",   '2 slices',   620,  24, 72, 26, 10,  40, 1160, 4,  8),
 
-  // ── Panda Express ────────────────────────────────────────────────
-  rf('seed-pe-orange-chicken',        "Orange Chicken",                      "Panda Express",  '1 item',     380,  16, 38, 17,  3,  35,  700, 2, 17),
-  rf('seed-pe-black-pepper-steak',    "Black Pepper Angus Steak",            "Panda Express",  '1 item',     170,  16,  7,  8,  2,  35,  580, 0,  3),
-  rf('seed-pe-kung-pao-chicken',      "Kung Pao Chicken",                    "Panda Express",  '1 item',     240,  15, 15, 13,  2,  40,  590, 0,  7),
-  rf('seed-pe-sizzling-shrimp',       "Sizzling Shrimp",                     "Panda Express",  '1 item',     160,  15,  6,  7,  1, 140,  520, 0,  3),
-  rf('seed-pe-hot-ones',              "Hot Ones Blazing Bourbon Chicken",    "Panda Express",  '1 item',     250,  14, 20, 12,  2,  40,  680, 1,  6),
-  rf('seed-pe-fried-rice',            "Fried Rice",                          "Panda Express",  '1 item',     380,   9, 48, 16,  3,  25,  700, 2,  5),
-  rf('seed-pe-white-rice',            "White Rice",                          "Panda Express",  '1 item',     200,   3, 45,  1,  0,   0,  350, 0,  0),
-  rf('seed-pe-brown-rice',            "Brown Rice",                          "Panda Express",  '1 item',     210,   4, 45,  2,  0,   0,  330, 2,  0),
+  // ── Panda Express – Chicken ──────────────────────────────────────
+  rf('seed-pe-asian-chicken',         "Asian Chicken",                       "Panda Express",  '1 item',     340,  41, 14, 13, 3.5, 195,  630, 3, 10),
+  rf('seed-pe-beyond-orange-chicken', "Beyond Orange Chicken",               "Panda Express",  '1 item',     440,  13, 47, 22,  5,    0,  810, 5, 15),
+  rf('seed-pe-black-pepper-chicken',  "Black Pepper Chicken",                "Panda Express",  '1 item',     280,  13, 15, 19, 3.5,  55, 1130, 1,  7),
+  rf('seed-pe-grilled-asian-chicken', "Grilled Asian Chicken",               "Panda Express",  '1 item',     300,  36,  8, 13,  4,  185,  530, 0,  8),
+  rf('seed-pe-grilled-teriyaki-chicken',"Grilled Teriyaki Chicken",          "Panda Express",  '1 item',     300,  36,  8, 13,  4,  185,  530, 0,  8),
+  rf('seed-pe-honey-sesame-chicken',  "Honey Sesame Chicken Breast",         "Panda Express",  '1 item',     490,  16, 40, 22,  4,   45,  480, 2, 19),
+  rf('seed-pe-kung-pao-chicken',      "Kung Pao Chicken",                    "Panda Express",  '1 item',     290,  16, 14, 19, 3.5,  55,  970, 2,  6),
+  rf('seed-pe-mushroom-chicken',      "Mushroom Chicken",                    "Panda Express",  '1 item',     220,  12, 11, 14, 2.5,  50,  840, 1,  4),
+  rf('seed-pe-orange-chicken',        "Orange Chicken",                      "Panda Express",  '1 item',     370,  19, 38, 17, 3.5,  60,  620, 1, 14),
+  rf('seed-pe-potato-chicken',        "Potato Chicken",                      "Panda Express",  '1 item',     190,   8, 18,  9,  2,   30,  680, 2,  2),
+  rf('seed-pe-string-bean-chicken',   "String Bean Chicken Breast",          "Panda Express",  '1 item',     190,  14, 13,  9,  2,   34,  590, 4,  4),
+  rf('seed-pe-sweet-sour-chicken',    "Sweet & Sour Chicken Breast",         "Panda Express",  '1 item',     300,  10, 40, 12,  3,   25,  260, 1, 24),
+  rf('seed-pe-sweetfire-chicken',     "SweetFire Chicken Breast",            "Panda Express",  '1 item',     380,  13, 47, 15,  3,   35,  320, 1, 27),
+  rf('seed-pe-teriyaki-chicken',      "Teriyaki Chicken",                    "Panda Express",  '1 item',     340,  41, 14, 13, 3.5, 195,  630, 3, 10),
+
+  // ── Panda Express – Beef & Pork ───────────────────────────────────
+  rf('seed-pe-beijing-beef',          "Beijing Beef",                        "Panda Express",  '1 item',     470,  13, 46, 26,  5,   25,  660, 1, 24),
+  rf('seed-pe-black-pepper-steak',    "Black Pepper Angus Steak",            "Panda Express",  '1 item',     180,  19, 10,  7,  2,   40,  750, 1,  6),
+  rf('seed-pe-broccoli-beef',         "Broccoli Beef",                       "Panda Express",  '1 item',     150,   9, 13,  7, 1.5,  12,  520, 2,  7),
+
+  // ── Panda Express – Shrimp & Fish ─────────────────────────────────
+  rf('seed-pe-chili-crisp-shrimp',    "Chili Crisp Shrimp",                  "Panda Express",  '1 item',     210,  13, 19, 10,  2,  100,  340, 2,  1),
+  rf('seed-pe-golden-treasure-shrimp',"Golden Treasure Shrimp",              "Panda Express",  '1 item',     360,  14, 35, 18,  3,  100,  440, 2, 14),
+  rf('seed-pe-honey-walnut-shrimp',   "Honey Walnut Shrimp",                 "Panda Express",  '1 item',     360,  13, 35, 23, 3.5, 100,  440, 2,  9),
+  rf('seed-pe-steamed-ginger-fish',   "Steamed Ginger Fish",                 "Panda Express",  '1 item',     200,  15,  8, 12, 2.5,  40, 1990, 0,  6),
+  rf('seed-pe-wok-fired-shrimp',      "Wok-fired Shrimp",                    "Panda Express",  '1 item',     190,  17, 19,  5,  1,  140, 1140, 1, 15),
+
+  // ── Panda Express – Vegetables ─────────────────────────────────────
+  rf('seed-pe-eggplant-tofu',         "Eggplant & Tofu",                     "Panda Express",  '1 item',     340,   7, 23, 24, 3.5,   0,  520, 3, 17),
+  rf('seed-pe-super-greens-entree',   "Super Greens (Entree)",               "Panda Express",  '1 item',      45,   3,  5,1.5,   0,   0,  130, 3,  2),
+  rf('seed-pe-super-greens-side',     "Super Greens (Side)",                 "Panda Express",  '1 side',      90,   6, 10,2.5,   0,   0,  260, 5,  4),
+
+  // ── Panda Express – Appetizers ─────────────────────────────────────
+  rf('seed-pe-chicken-egg-roll',      "Chicken Egg Roll",                    "Panda Express",  '1 roll',     200,   8, 16, 12,  4,   20,  390, 2,  2),
+  rf('seed-pe-chicken-potsticker',    "Chicken Potstickers (3 pc)",          "Panda Express",  '3 pieces',   220,   7, 23, 11, 2.5,  20,  280, 1,  2),
+  rf('seed-pe-cream-cheese-rangoon',  "Cream Cheese Rangoon (3 pc)",         "Panda Express",  '3 pieces',   190,   5, 24,  8,  5,   35,  180, 2,  1),
+  rf('seed-pe-veggie-spring-roll',    "Veggie Spring Roll (2 rolls)",        "Panda Express",  '2 rolls',    160,   4, 22,  7,  1,    0,  540, 4,  2),
+  rf('seed-pe-hot-sour-soup',         "Hot & Sour Soup (Bowl)",              "Panda Express",  '1 bowl',     170,  10, 20,  6,  1,   90, 1260, 1,  6),
+
+  // ── Panda Express – Sides ───────────────────────────────────────────
+  rf('seed-pe-chow-fun',              "Chow Fun",                            "Panda Express",  '1 item',     410,   9, 73,  9,  1,    0, 1110, 1,  6),
+  rf('seed-pe-chow-mein',             "Chow Mein",                           "Panda Express",  '1 item',     510,  13, 80, 20, 3.5,   0,  860, 6,  9),
+  rf('seed-pe-fried-rice',            "Fried Rice",                          "Panda Express",  '1 item',     520,  11, 85, 16,  3,  120,  850, 1,  3),
+  rf('seed-pe-brown-rice',            "Steamed Brown Rice",                  "Panda Express",  '1 item',     420,   9, 87,  4,  1,    0,   15, 4,  1),
+  rf('seed-pe-white-rice',            "Steamed White Rice",                  "Panda Express",  '1 item',     380,   7, 86,  0,  0,    0,    0, 0,  0),
 ];
