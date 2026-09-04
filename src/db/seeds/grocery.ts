@@ -24,6 +24,11 @@ export const SEEDS: FoodItem[] = [
   rf('seed-oikos-pro-strawberry',     "Oikos Pro Strawberry",                "Oikos",          '1 container (5.3 oz)', 130, 20, 10, 0, 0, 10, 125, 3,  9),
   rf('seed-oikos-pro-blueberry',      "Oikos Pro Blueberry",                 "Oikos",          '1 container (5.3 oz)', 130, 20, 10, 0, 0, 10, 125, 3,  9),
   rf('seed-oikos-pro-peach',          "Oikos Pro Peach",                     "Oikos",          '1 container (5.3 oz)', 130, 20, 10, 0, 0, 10, 125, 3,  9),
+  // Oikos Pro Drink (ready-to-drink protein shake, 1 bottle = 207mL — macros identical across flavors per label)
+  rf('seed-oikos-pro-drink-vanilla',        "Oikos Pro Drink Vanilla",             "Oikos",          '1 bottle (207mL)', 120, 23, 5, 1.5, 1, 35, 120, 0, 4),
+  rf('seed-oikos-pro-drink-chocolate',      "Oikos Pro Drink Chocolate",           "Oikos",          '1 bottle (207mL)', 120, 23, 5, 1.5, 1, 35, 120, 0, 4),
+  rf('seed-oikos-pro-drink-strawberry',     "Oikos Pro Drink Strawberry",          "Oikos",          '1 bottle (207mL)', 120, 23, 5, 1.5, 1, 35, 120, 0, 4),
+  rf('seed-oikos-pro-drink-cookies-cream',  "Oikos Pro Drink Cookies & Cream",     "Oikos",          '1 bottle (207mL)', 120, 23, 5, 1.5, 1, 35, 120, 0, 4),
   // Oikos Plain (5.3 oz)
   rf('seed-oikos-plain-nonfat',       "Oikos Plain Nonfat Greek Yogurt",     "Oikos",          '1 container (5.3 oz)',  80, 15,  6, 0, 0, 10,  65, 0,  6),
   rf('seed-oikos-plain-whole',        "Oikos Plain Whole Milk Greek Yogurt", "Oikos",          '1 container (5.3 oz)', 130, 11,  8, 6, 4, 25,  55, 0,  7),
