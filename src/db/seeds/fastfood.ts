@@ -34,7 +34,6 @@ export const SEEDS: FoodItem[] = [
   rf('seed-mcd-spicy-mccrispy',       "Spicy McCrispy Chicken Sandwich",     "McDonald's",    '1 sandwich', 530,  27, 52, 25,  4,  65, 1290, 2,  7),
   rf('seed-mcd-mccrispy',             "McCrispy Chicken Sandwich",           "McDonald's",    '1 sandwich', 470,  26, 46, 21,  4,  65,  980, 2,  6),
   rf('seed-mcd-dbl-mccrispy',         "Double McCrispy Chicken Sandwich",    "McDonald's",    '1 sandwich', 720,  47, 53, 38,  8, 120, 1530, 2,  7),
-  rf('seed-mcd-chicken-big-mac',      "Chicken Big Mac",                     "McDonald's",    '1 burger',   720,  41, 49, 40,  9, 120, 1680, 2,  8),
   rf('seed-mcd-grilled-chkn-sndwch',  "Grilled Chicken Sandwich",            "McDonald's",    '1 sandwich', 390,  37, 44,  9,  2,  75, 1040, 3,  8),
 
   // ── McDonald's – Sides ─────────────────────────────────────────
