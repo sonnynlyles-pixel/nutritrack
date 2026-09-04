@@ -143,4 +143,14 @@ export const SEEDS: FoodItem[] = [
   rf('seed-chomps-smoky-bbq',         "Smoky BBQ Beef Stick",                "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
   rf('seed-chomps-taco',              "Taco Seasoned Beef Stick",            "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
   rf('seed-chomps-habanero',          "Habanero Beef Stick",                 "Chomps",         '1 stick (33g)', 100, 10, 0, 7, 3, 30, 380, 0, 0),
+
+  // ── belVita Breakfast Biscuits (1 pack = 4 biscuits, 50g) — values sourced from USDA FoodData Central Mondelez USA branded label data ─
+  rf('seed-belvita-blueberry',        "Blueberry Breakfast Biscuits",        "belVita",        '1 pack (4 biscuits)', 230, 4, 36, 8, 0.5, 0, 210, 3, 13),
+  rf('seed-belvita-vanilla',          "Vanilla Breakfast Biscuits",          "belVita",        '1 pack (4 biscuits)', 230, 4, 35, 9, 1,   0, 180, 3, 11),
+  rf('seed-belvita-cranberry-orange', "Cranberry Orange Breakfast Biscuits", "belVita",        '1 pack (4 biscuits)', 230, 3, 35, 8, 0.5, 0, 220, 3, 12),
+  rf('seed-belvita-toasted-coconut',  "Toasted Coconut Breakfast Biscuits",  "belVita",        '1 pack (4 biscuits)', 230, 4, 35, 9, 1.5, 0, 115, 3, 11),
+  rf('seed-belvita-apple-cinnamon',   "Apple Cinnamon Breakfast Biscuits",   "belVita",        '1 pack (4 biscuits)', 230, 3, 36, 8, 0.5, 0, 170, 3, 13),
+  rf('seed-belvita-golden-oat',       "Golden Oat Breakfast Biscuits",       "belVita",        '1 pack (4 biscuits)', 230, 4, 35, 8, 0.5, 0, 220, 3, 11),
+  rf('seed-belvita-choc-chip',        "Chocolate Chip Breakfast Biscuits",   "belVita",        '1 pack (4 biscuits)', 230, 4, 35, 8, 1.5, 0, 180, 4, 11),
+  rf('seed-belvita-cinnamon-bs',      "Cinnamon Brown Sugar Breakfast Biscuits","belVita",     '1 pack (4 biscuits)', 230, 4, 35, 8, 0.5, 0, 220, 3, 10),
 ];
