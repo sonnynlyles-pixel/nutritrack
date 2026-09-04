@@ -304,7 +304,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       {/* Tabs */}
       <div className="flex justify-center p-4 border-b border-gray-100">
         <div className="bg-gray-100 rounded-2xl p-1 flex gap-1 w-full max-w-md">
-          {([['search', 'Search', MagnifyingGlassIcon], ['barcode', 'Barcode', QrCodeIcon], ['myfoods', 'My Foods', BookmarkIcon], ['restaurants', 'Restaurants', BuildingStorefrontIcon]] as const).map(([t, label, Icon]) => (
+          {([['search', 'Search', MagnifyingGlassIcon], ['barcode', 'Barcode', QrCodeIcon], ['myfoods', 'My Foods', BookmarkIcon], ['restaurants', 'Brands', BuildingStorefrontIcon]] as const).map(([t, label, Icon]) => (
             <button
               key={t}
               onClick={() => setTab(t)}

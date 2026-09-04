@@ -74,6 +74,23 @@ const RESTAURANT_GROUPS = [
       "Casey's General Store",
     ],
   },
+  {
+    category: 'Energy Drinks',
+    brands: [
+      'Monster',
+      'Red Bull',
+      'Rockstar',
+      'Bang',
+      'Ghost',
+      'Celsius',
+      'Reign',
+      'NOS',
+      'AMP',
+      'Full Throttle',
+      'C4',
+      'Alani Nu',
+    ],
+  },
 ];
 
 function RestaurantBrowse({ onSelect }: Props) {
