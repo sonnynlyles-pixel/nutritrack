@@ -6,9 +6,10 @@ import type { PeriodScore } from '../../utils/dayScore';
 import type { UserProfile } from '../../types';
 import type { DailyLog } from '../../types';
 
-type Period = '7' | '30' | '365';
+type Period = '1' | '7' | '30' | '365';
 
 const PERIOD_LABELS: Record<Period, string> = {
+  '1':   'Today',
   '7':   'Week',
   '30':  'Month',
   '365': 'Year',
@@ -55,7 +56,7 @@ function ScoreRing({ score }: { score: number }) {
 }
 
 export default function NutritionScoreCard({ profile }: { profile: UserProfile }) {
-  const [period, setPeriod] = useState<Period>('7');
+  const [period, setPeriod] = useState<Period>('1');
   const [score, setScore] = useState<PeriodScore | null>(null);
   const [loading, setLoading] = useState(true);
 
