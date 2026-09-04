@@ -125,11 +125,19 @@ export default function NutritionScoreCard({ profile }: { profile: UserProfile }
 
           {/* Category bars */}
           <div className="space-y-2.5">
+            <p className="text-xs text-gray-400 -mb-1">
+              % = how well each area met the daily guideline (100% = ideal), not how much you consumed.
+            </p>
             {score.categories.map(cat => (
               <div key={cat.key}>
                 <div className="flex justify-between items-baseline mb-1">
                   <span className="text-xs text-gray-400">{cat.label}</span>
-                  <span className={`text-xs font-semibold ${scoreColor(cat.pct)}`}>{cat.pct}%</span>
+                  <span className="flex items-baseline gap-1.5">
+                    <span className="text-xs text-gray-500">
+                      {period === '1' ? cat.avgValue : `avg ${cat.avgValue}`}{cat.unit === 'meals' ? '' : cat.unit}
+                    </span>
+                    <span className={`text-xs font-semibold ${scoreColor(cat.pct)}`}>{cat.pct}%</span>
+                  </span>
                 </div>
                 <div className="h-1.5 bg-surface-raised rounded-full overflow-hidden">
                   <div

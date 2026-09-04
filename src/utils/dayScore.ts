@@ -2,16 +2,18 @@ import type { DailyLog } from '../types';
 import type { UserProfile } from '../types';
 import { sumNutrition } from './nutrition';
 
+interface ScoreItem { points: number; max: number; label: string; detail: string; value: number; unit: string }
+
 export interface DayScoreBreakdown {
   total: number; // 0–100
-  calories:     { points: number; max: number; label: string; detail: string };
-  protein:      { points: number; max: number; label: string; detail: string };
-  sodium:       { points: number; max: number; label: string; detail: string };
-  fiber:        { points: number; max: number; label: string; detail: string };
-  sugar:        { points: number; max: number; label: string; detail: string };
-  satFat:       { points: number; max: number; label: string; detail: string };
-  mealBalance:  { points: number; max: number; label: string; detail: string };
-  caffeine:     { points: number; max: number; label: string; detail: string };
+  calories:     ScoreItem;
+  protein:      ScoreItem;
+  sodium:       ScoreItem;
+  fiber:        ScoreItem;
+  sugar:        ScoreItem;
+  satFat:       ScoreItem;
+  mealBalance:  ScoreItem;
+  caffeine:     ScoreItem;
 }
 
 export function getDayScore(log: DailyLog, profile: UserProfile): DayScoreBreakdown | null {
@@ -96,14 +98,14 @@ export function getDayScore(log: DailyLog, profile: UserProfile): DayScoreBreakd
 
   return {
     total,
-    calories:    { points: calPts,  max: 25, label: 'Calorie Goal',    detail: calDetail },
-    protein:     { points: protPts, max: 20, label: 'Protein',         detail: protDetail },
-    sodium:      { points: sodPts,  max: 15, label: 'Sodium',          detail: sodDetail },
-    fiber:       { points: fibPts,  max: 15, label: 'Fiber',           detail: fibDetail },
-    sugar:       { points: sugPts,  max: 10, label: 'Sugar',           detail: sugDetail },
-    satFat:      { points: satPts,  max: 5,  label: 'Saturated Fat',   detail: satDetail },
-    mealBalance: { points: mealPts, max: 5,  label: 'Meal Balance',    detail: mealDetail },
-    caffeine:    { points: cafPts,  max: 5,  label: 'Caffeine',        detail: cafDetail },
+    calories:    { points: calPts,  max: 25, label: 'Calorie Goal',    detail: calDetail,  value: cal,                          unit: 'cal' },
+    protein:     { points: protPts, max: 20, label: 'Protein',         detail: protDetail, value: Math.round(n.protein),         unit: 'g' },
+    sodium:      { points: sodPts,  max: 15, label: 'Sodium',          detail: sodDetail,  value: Math.round(n.sodium),          unit: 'mg' },
+    fiber:       { points: fibPts,  max: 15, label: 'Fiber',           detail: fibDetail,  value: Math.round(n.fiber),           unit: 'g' },
+    sugar:       { points: sugPts,  max: 10, label: 'Sugar',           detail: sugDetail,  value: Math.round(n.sugar),           unit: 'g' },
+    satFat:      { points: satPts,  max: 5,  label: 'Saturated Fat',   detail: satDetail,  value: Math.round(n.saturatedFat),    unit: 'g' },
+    mealBalance: { points: mealPts, max: 5,  label: 'Meal Balance',    detail: mealDetail, value: mealsLogged,                   unit: 'meals' },
+    caffeine:    { points: cafPts,  max: 5,  label: 'Caffeine',        detail: cafDetail,  value: Math.round(totalCaffeine),     unit: 'mg' },
   };
 }
 
@@ -137,7 +139,9 @@ export interface PeriodScore {
     label: string;
     avgPoints: number;
     max: number;
-    pct: number;               // avgPoints / max * 100
+    pct: number;               // avgPoints / max * 100 — how well you met the guideline, NOT amount consumed
+    avgValue: number;          // average measured amount (e.g. avg grams of sugar per day)
+    unit: string;
   }[];
   strengths: string[];          // category labels where pct >= 80
   improvements: string[];       // category labels where pct < 50
@@ -168,7 +172,8 @@ export function getPeriodScore(
     const avgPoints = sum / daysLogged;
     const max = scored[0][key].max;
     const pct = Math.round((avgPoints / max) * 100);
-    return { key, label: scored[0][key].label, avgPoints, max, pct };
+    const avgValue = Math.round((scored.reduce((s, d) => s + d[key].value, 0) / daysLogged) * 10) / 10;
+    return { key, label: scored[0][key].label, avgPoints, max, pct, avgValue, unit: scored[0][key].unit };
   });
 
   const strengths    = categories.filter(c => c.pct >= 80).map(c => c.label);
