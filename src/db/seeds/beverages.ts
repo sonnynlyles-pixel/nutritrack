@@ -337,25 +337,21 @@ export const SEEDS: FoodItem[] = [
   rf('seed-redbull-original-8oz',          "Red Bull Original",                  "Red Bull",     '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
   rf('seed-redbull-sugarfree-8oz',         "Red Bull Sugarfree",                 "Red Bull",     '1 can (8.4 fl oz)',     10, 0,  3, 0, 0, 0, 105, 0,  0, 80),
   rf('seed-redbull-zero-8oz',              "Red Bull Zero",                      "Red Bull",     '1 can (8.4 fl oz)',      0, 0,  0, 0, 0, 0, 105, 0,  0, 80),
-  rf('seed-redbull-red-8oz',               "Red Bull Red Edition (Cranberry)",   "Red Bull",     '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
+  rf('seed-redbull-red-8oz',               "Red Bull Red Edition (Watermelon)",  "Red Bull",     '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
   rf('seed-redbull-yellow-8oz',            "Red Bull Yellow Edition (Tropical)", "Red Bull",     '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
-  rf('seed-redbull-blue-8oz',              "Red Bull Blue Edition (Blueberry)",  "Red Bull",     '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
-  rf('seed-redbull-purple-8oz',            "Red Bull Purple Edition (Acai Berry)","Red Bull",    '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
-  rf('seed-redbull-green-8oz',             "Red Bull Green Edition (Dragon Fruit)","Red Bull",   '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
-  rf('seed-redbull-white-8oz',             "Red Bull White Edition (Coconut Berry)","Red Bull",  '1 can (8.4 fl oz)',   100, 0, 25, 0, 0, 0, 105, 0, 25, 80),
-  rf('seed-redbull-peach-8oz',             "Red Bull Peach Edition",             "Red Bull",     '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
-  rf('seed-redbull-watermelon-8oz',        "Red Bull Watermelon Edition",        "Red Bull",     '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
+  rf('seed-redbull-sea-blue-8oz',          "Red Bull Sea Blue Edition (Juneberry)","Red Bull",   '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
+  rf('seed-redbull-pink-8oz',              "Red Bull Pink Edition (Raspberry)",  "Red Bull",     '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
+  rf('seed-redbull-coconut-8oz',           "Red Bull Coconut Edition",           "Red Bull",     '1 can (8.4 fl oz)',   100, 0, 25, 0, 0, 0, 105, 0, 25, 80),
+  rf('seed-redbull-amber-8oz',             "Red Bull Amber Edition (Strawberry Apricot)","Red Bull",'1 can (8.4 fl oz)',110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
+  rf('seed-redbull-peach-8oz',             "Red Bull Peach Edition (White Peach)","Red Bull",    '1 can (8.4 fl oz)',   110, 0, 27, 0, 0, 0, 105, 0, 27, 80),
 
   // ── Bang Energy ──────────────────────────────────────────────────
-  rf('seed-bang-original-16oz',            "Bang Energy Original",               "Bang",         '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
-  rf('seed-bang-blue-razz-16oz',           "Bang Energy Blue Razz",              "Bang",         '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
-  rf('seed-bang-sour-heads-16oz',          "Bang Energy Sour Heads",             "Bang",         '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
-  rf('seed-bang-purple-guava-pear-16oz',   "Bang Energy Purple Guava Pear",      "Bang",         '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
-  rf('seed-bang-cotton-candy-16oz',        "Bang Energy Cotton Candy",           "Bang",         '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
-  rf('seed-bang-black-cherry-vanilla-16oz',"Bang Energy Black Cherry Vanilla",   "Bang",         '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
-  rf('seed-bang-peach-mango-16oz',         "Bang Energy Peach Mango",            "Bang",         '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
-  rf('seed-bang-star-blast-16oz',          "Bang Energy Star Blast",             "Bang",         '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
-  rf('seed-bang-radical-skadattle-16oz',   "Bang Energy Radical Skadattle",      "Bang",         '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
+  // Note: convenience.ts already has a larger Bang Energy lineup under brand "Bang Energy" —
+  // these are only the confirmed-real flavors from that couldn't-verify list that weren't duplicates.
+  rf('seed-bang-bangster-berry-16oz',      "Bang Bangster Berry",                "Bang Energy",  '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
+  rf('seed-bang-sour-heads-16oz',          "Bang Sour Heads",                    "Bang Energy",  '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
+  rf('seed-bang-purple-guava-pear-16oz',   "Bang Purple Guava Pear",             "Bang Energy",  '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
+  rf('seed-bang-radical-skadattle-16oz',   "Bang Radical Skadattle",             "Bang Energy",  '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  40, 0,  0, 300),
 
   // ── Ghost Energy ─────────────────────────────────────────────────
   rf('seed-ghost-warheads-watermelon-16oz',"Ghost Energy Warheads Sour Watermelon","Ghost",      '1 can (16 fl oz)',      10, 0,  2, 0, 0, 0, 100, 0,  0, 200),
@@ -364,26 +360,29 @@ export const SEEDS: FoodItem[] = [
   rf('seed-ghost-welchs-grape-16oz',       "Ghost Energy Welch's Grape",         "Ghost",        '1 can (16 fl oz)',      10, 0,  2, 0, 0, 0, 100, 0,  0, 200),
   rf('seed-ghost-swedish-fish-16oz',       "Ghost Energy Swedish Fish",          "Ghost",        '1 can (16 fl oz)',      10, 0,  2, 0, 0, 0, 100, 0,  0, 200),
   rf('seed-ghost-cherry-limeade-16oz',     "Ghost Energy Cherry Limeade",        "Ghost",        '1 can (16 fl oz)',      10, 0,  2, 0, 0, 0, 100, 0,  0, 200),
-  rf('seed-ghost-peach-ring-16oz',         "Ghost Energy Peach Ring",            "Ghost",        '1 can (16 fl oz)',      10, 0,  2, 0, 0, 0, 100, 0,  0, 200),
-  rf('seed-ghost-orange-cream-16oz',       "Ghost Energy Orange Cream Swirl",    "Ghost",        '1 can (16 fl oz)',      10, 0,  2, 0, 0, 0, 100, 0,  0, 200),
+  rf('seed-ghost-peach-ring-16oz',         "Ghost Energy Peaches",               "Ghost",        '1 can (16 fl oz)',      10, 0,  2, 0, 0, 0, 100, 0,  0, 200),
+  rf('seed-ghost-orange-cream-16oz',       "Ghost Energy Orange Cream",          "Ghost",        '1 can (16 fl oz)',      10, 0,  2, 0, 0, 0, 100, 0,  0, 200),
 
   // ── NOS Energy ───────────────────────────────────────────────────
   rf('seed-nos-original-16oz',             "NOS Original",                       "NOS",          '1 can (16 fl oz)',    215, 0, 58, 0, 0, 0, 260, 0, 58, 160),
   rf('seed-nos-zero-16oz',                 "NOS Zero Sugar",                     "NOS",          '1 can (16 fl oz)',     10, 0,  3, 0, 0, 0, 260, 0,  0, 160),
-  rf('seed-nos-charged-16oz',              "NOS Charged",                        "NOS",          '1 can (16 fl oz)',    220, 0, 60, 0, 0, 0, 260, 0, 60, 200),
-  rf('seed-nos-grape-16oz',                "NOS Grape",                          "NOS",          '1 can (16 fl oz)',    215, 0, 58, 0, 0, 0, 260, 0, 58, 160),
+  rf('seed-nos-charged-16oz',              "NOS Charged Citrus",                 "NOS",          '1 can (16 fl oz)',    220, 0, 60, 0, 0, 0, 260, 0, 60, 200),
+  rf('seed-nos-grape-16oz',                "NOS GT Grape",                       "NOS",          '1 can (16 fl oz)',    215, 0, 58, 0, 0, 0, 260, 0, 58, 160),
 
   // ── AMP Energy ───────────────────────────────────────────────────
-  rf('seed-amp-original-16oz',             "AMP Energy Original",                "AMP",          '1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 200, 0, 58, 142),
+  rf('seed-amp-original-16oz',             "AMP Energy Original Citrus",         "AMP",          '1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 200, 0, 58, 142),
   rf('seed-amp-zero-16oz',                 "AMP Energy Zero",                    "AMP",          '1 can (16 fl oz)',      5, 0,  1, 0, 0, 0, 200, 0,  0, 142),
   rf('seed-amp-elevate-16oz',              "AMP Energy Elevate",                 "AMP",          '1 can (16 fl oz)',     10, 0,  3, 0, 0, 0, 200, 0,  0, 142),
   rf('seed-amp-strawberry-limeade-16oz',   "AMP Energy Strawberry Limeade",      "AMP",          '1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 200, 0, 58, 142),
 
   // ── Full Throttle ────────────────────────────────────────────────
-  rf('seed-fullthrottle-original-16oz',    "Full Throttle Original",             "Full Throttle",'1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 300, 0, 58, 160),
-  rf('seed-fullthrottle-blue-demon-16oz',  "Full Throttle Blue Demon",           "Full Throttle",'1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 300, 0, 58, 160),
-  rf('seed-fullthrottle-fury-16oz',        "Full Throttle Fury Fruit Punch",     "Full Throttle",'1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 300, 0, 58, 160),
-  rf('seed-fullthrottle-killer-citrus-16oz',"Full Throttle Killer Citrus",       "Full Throttle",'1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 300, 0, 58, 160),
+  // Current lineup per drinkfullthrottle.com (Blue Demon/Fury/Killer Citrus were
+  // Coca-Cola-era flavors, discontinued after Monster acquired the brand in 2015).
+  // Mocha and Caramel also currently exist but aren't added here — they're dairy/
+  // creamer-based and would need real label macros, not the carbonated-drink template.
+  rf('seed-fullthrottle-citrus-16oz',      "Full Throttle Citrus",               "Full Throttle",'1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 300, 0, 58, 160),
+  rf('seed-fullthrottle-blue-agave-16oz',  "Full Throttle Blue Agave",           "Full Throttle",'1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 300, 0, 58, 160),
+  rf('seed-fullthrottle-red-berry-16oz',   "Full Throttle Red Berry",            "Full Throttle",'1 can (16 fl oz)',    220, 0, 58, 0, 0, 0, 300, 0, 58, 160),
 
   // ── C4 Energy ────────────────────────────────────────────────────
   rf('seed-c4-original-16oz',              "C4 Energy Original (Fruit Punch)",   "C4",           '1 can (16 fl oz)',       0, 0,  0, 0, 0, 0,  50, 0,  0, 200),

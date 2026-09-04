@@ -80,7 +80,7 @@ const RESTAURANT_GROUPS = [
       'Monster',
       'Red Bull',
       'Rockstar',
-      'Bang',
+      'Bang Energy',
       'Ghost',
       'Celsius',
       'Reign',
