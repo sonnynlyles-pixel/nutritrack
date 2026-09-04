@@ -153,4 +153,7 @@ export const SEEDS: FoodItem[] = [
   rf('seed-belvita-golden-oat',       "Golden Oat Breakfast Biscuits",       "belVita",        '1 pack (4 biscuits)', 230, 4, 35, 8, 0.5, 0, 220, 3, 11),
   rf('seed-belvita-choc-chip',        "Chocolate Chip Breakfast Biscuits",   "belVita",        '1 pack (4 biscuits)', 230, 4, 35, 8, 1.5, 0, 180, 4, 11),
   rf('seed-belvita-cinnamon-bs',      "Cinnamon Brown Sugar Breakfast Biscuits","belVita",     '1 pack (4 biscuits)', 230, 4, 35, 8, 0.5, 0, 220, 3, 10),
+
+  // ── Counter High Protein Frozen Burritos ────────────────────────
+  rf('seed-counter-beefy-queso',      "Beefy Queso Burrito",                 "Counter",        '1 burrito (204g)', 360, 30, 43, 10, 1.5, 10, 1040, 5, 2),
 ];
