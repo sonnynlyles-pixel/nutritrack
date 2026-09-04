@@ -157,15 +157,47 @@ export const SEEDS: FoodItem[] = [
   rf('seed-popy-chicken-tenders-5',   "Chicken Tenders (5 pc)",              "Popeyes",       '5 pieces',   630,  39, 33, 38,  7,  75,  960, 1,  3),
 
   // ── Jimmy John's ────────────────────────────────────────────────
-  rf('seed-jj-pepe-slim',             "Pepe (Slim)",                         "Jimmy John's",  '1 sandwich', 325,  16, 30, 14,  5,  60, 1090, 1,  3),
-  rf('seed-jj-pepe-8in',              "Pepe (8\\\")",                         "Jimmy John's",  '1 sandwich', 650,  32, 60, 29, 10, 120, 2180, 2,  6),
-  rf('seed-jj-pepe-giant',            "Pepe (Giant)",                        "Jimmy John's",  '1 sandwich', 975,  48, 90, 43, 15, 180, 3270, 3,  9),
-  rf('seed-jj-vito-slim',             "Vito (Slim)",                         "Jimmy John's",  '1 sandwich', 405,  21, 30, 21,  8,  75, 1570, 1,  3),
-  rf('seed-jj-vito-8in',              "Vito (8\\\")",                         "Jimmy John's",  '1 sandwich', 810,  42, 60, 41, 16, 150, 3140, 2,  6),
-  rf('seed-jj-gourmet-smoked-ham-slim',"Gourmet Smoked Ham (Slim)",          "Jimmy John's",  '1 sandwich', 305,  17, 30, 12,  4,  50, 1030, 1,  2),
-  rf('seed-jj-bootlegger-slim',       "Bootlegger (Slim)",                   "Jimmy John's",  '1 sandwich', 385,  21, 30, 19,  7,  75, 1230, 1,  3),
-  rf('seed-jj-billy-slim',            "Billy (Slim)",                        "Jimmy John's",  '1 sandwich', 365,  22, 30, 16,  5,  80, 1080, 1,  2),
-  rf('seed-jj-italian-night-slim',    "Italian Night Club (Slim)",           "Jimmy John's",  '1 sandwich', 545,  27, 30, 36, 11, 115, 1570, 1,  3),
+  // Nutrition verified against Jimmy John's official current Nutrition Guide
+  // (Effective 3.3.2025) — replaces a previous partial/inaccurate set.
+  // Originals (8" French bread, with lettuce/tomato/mayo)
+  rf('seed-jj-pepe-8in',              "Pepe",                                "Jimmy John's",  '1 sandwich (8")', 600, 29, 50, 29,  9,  70, 1570, 4, 4),
+  rf('seed-jj-bigjohn-8in',           "Big John",                            "Jimmy John's",  '1 sandwich (8")', 500, 26, 47, 21,3.5,  60, 1110, 4, 2),
+  rf('seed-jj-totallytuna-8in',       "Totally Tuna",                        "Jimmy John's",  '1 sandwich (8")', 510, 21, 51, 22,  3,  40, 1160, 5, 4),
+  rf('seed-jj-turkeytom-8in',         "Turkey Tom",                          "Jimmy John's",  '1 sandwich (8")', 480, 23, 48, 19,2.5,  50, 1160, 4, 2),
+  rf('seed-jj-vito-8in',              "Vito",                                "Jimmy John's",  '1 sandwich (8")', 570, 32, 52, 26, 11,  85, 1850, 5, 4),
+  rf('seed-jj-veggie-8in',            "The Veggie",                          "Jimmy John's",  '1 sandwich (8")', 670, 27, 50, 38, 14,  60, 1260, 5, 3),
+  rf('seed-jj-jjblt-8in',             "J.J.B.L.T.",                          "Jimmy John's",  '1 sandwich (8")', 710, 28, 70, 33,  8,  45, 1580, 6, 2),
+  rf('seed-jj-spicy-eastcoast-8in',   "Spicy East Coast Italian",            "Jimmy John's",  '1 sandwich (8")',1020, 50, 77, 54, 18, 160, 3440, 7, 5),
+  // Favorites (8" French bread)
+  rf('seed-jj-billyclub-8in',         "Billy Club",                          "Jimmy John's",  '1 sandwich (8")', 810, 50, 73, 32, 10, 110, 2360, 6, 4),
+  rf('seed-jj-italiannight-8in',      "Italian Night Club",                  "Jimmy John's",  '1 sandwich (8")', 930, 48, 77, 46, 14, 130, 2850, 6, 5),
+  rf('seed-jj-huntersclub-8in',       "Hunter's Club",                       "Jimmy John's",  '1 sandwich (8")', 830, 55, 70, 34, 10, 130, 2080, 6, 2),
+  rf('seed-jj-countryclub-8in',       "Country Club",                        "Jimmy John's",  '1 sandwich (8")', 780, 48, 74, 30,  9, 100, 2350, 6, 4),
+  rf('seed-jj-beachclub-8in',         "Beach Club",                          "Jimmy John's",  '1 sandwich (8")', 850, 45, 75, 39, 14,  95, 2050, 7, 3),
+  rf('seed-jj-jimmycubano-8in',       "Jimmy Cubano",                        "Jimmy John's",  '1 sandwich (8")', 830, 43, 71, 38, 13,  90, 3330, 6, 2),
+  rf('seed-jj-bootleggerclub-8in',    "Bootlegger Club",                     "Jimmy John's",  '1 sandwich (8")', 680, 44, 71, 23,3.5,  90, 1890, 6, 2),
+  rf('seed-jj-clubtuna-8in',          "Club Tuna",                           "Jimmy John's",  '1 sandwich (8")', 860, 42, 76, 40, 14,  85, 1980, 7, 4),
+  rf('seed-jj-clublulu-8in',          "Club Lulu",                           "Jimmy John's",  '1 sandwich (8")', 690, 35, 71, 26,  5,  65, 1760, 6, 2),
+  rf('seed-jj-ultimateporker-8in',    "Ultimate Porker",                     "Jimmy John's",  '1 sandwich (8")', 690, 33, 72, 28,  6,  60, 1890, 6, 3),
+  rf('seed-jj-gargantuan-8in',        "The J.J. Gargantuan",                 "Jimmy John's",  '1 sandwich (8")',1080, 78, 78, 49, 15, 205, 3930, 6, 5),
+  rf('seed-jj-chickencaesar-8in',     "Chicken Caesar",                      "Jimmy John's",  '1 sandwich (8")', 870, 39, 79, 43,  9,  90, 2160, 5, 3),
+  rf('seed-jj-kickinranch-wrap',      "Kickin' Ranch Chicken Wrap",          "Jimmy John's",  '1 wrap',           850, 39, 60, 42, 12,  95, 1970, 6, 4),
+  rf('seed-jj-tuscanitalian-8in',     "Tuscan Italian",                      "Jimmy John's",  '1 sandwich (8")', 840, 45, 62, 45, 13, 130, 2760, 5, 5),
+  // Plain Slims (8" French bread, meat/cheese only — no veggies/condiments)
+  rf('seed-jj-pepe-slim',             "Pepe (Plain Slim)",                   "Jimmy John's",  '1 sandwich (8" Slim)', 540, 33, 69, 13,  6,  50, 1610, 4, 1),
+  rf('seed-jj-bigjohn-slim',          "Big John (Plain Slim)",               "Jimmy John's",  '1 sandwich (8" Slim)', 440, 30, 66,  5,  1,  45, 1200, 4, 0),
+  rf('seed-jj-totallytuna-slim',      "Totally Tuna (Plain Slim)",           "Jimmy John's",  '1 sandwich (8" Slim)', 600, 24, 70, 23,  3,  30, 1410, 5, 2),
+  rf('seed-jj-turkeytom-slim',        "Turkey Tom (Plain Slim)",             "Jimmy John's",  '1 sandwich (8" Slim)', 420, 27, 68,  3,  0,  30, 1250, 4, 0),
+  rf('seed-jj-vito-slim',             "Vito (Plain Slim)",                   "Jimmy John's",  '1 sandwich (8" Slim)', 630, 35, 69, 23, 10,  85, 1980, 4, 1),
+  rf('seed-jj-veggie-slim',           "The Veggie (Plain Slim)",             "Jimmy John's",  '1 sandwich (8" Slim)', 590, 30, 68, 21, 11,  45, 1180, 4, 0),
+  // Little Johns (mini version of each Original)
+  rf('seed-jj-littlejohn-1',          "Little John 1 (Pepe)",                "Jimmy John's",  '1 mini sandwich', 300, 15, 25, 15,  4,  35,  770, 2, 2),
+  rf('seed-jj-littlejohn-2',          "Little John 2 (Big John)",            "Jimmy John's",  '1 mini sandwich', 250, 13, 24, 11,  2,  30,  560, 2, 1),
+  rf('seed-jj-littlejohn-3',          "Little John 3 (Totally Tuna)",        "Jimmy John's",  '1 mini sandwich', 250, 10, 26, 11,1.5,  15,  590, 3, 2),
+  rf('seed-jj-littlejohn-4',          "Little John 4 (Turkey Tom)",          "Jimmy John's",  '1 mini sandwich', 240, 12, 24, 10,1.5,  25,  580, 2, 1),
+  rf('seed-jj-littlejohn-5',          "Little John 5 (Vito)",                "Jimmy John's",  '1 mini sandwich', 290, 16, 26, 13,  5,  40,  900, 2, 2),
+  rf('seed-jj-littlejohn-6',          "Little John 6 (The Veggie)",          "Jimmy John's",  '1 mini sandwich', 340, 13, 25, 20,  7,  30,  580, 3, 1),
+  rf('seed-jj-littlejohn-blt',        "Little John B.L.T.",                  "Jimmy John's",  '1 mini sandwich', 300, 12, 24, 16,4.5,  25,  680, 2, 1),
 
   // ── Subway ──────────────────────────────────────────────────────
   rf('seed-sub-italian-6in',          "Italian BMT (6\\\")",                  "Subway",        '1 sandwich', 280,  13, 37, 10,  4,  30,  880, 2,  4),
