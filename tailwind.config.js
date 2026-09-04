@@ -32,11 +32,20 @@ export default {
         'emerald-gradient':'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
         'danger-gradient': 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
       },
+      borderRadius: {
+        '4xl': '1.75rem',
+        '5xl': '2.25rem',
+      },
       boxShadow: {
         'card':         '0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.08)',
         'glow-brand':   '0 0 20px rgba(57,255,122,0.5)',
         'glow-emerald': '0 0 20px rgba(57,255,122,0.4)',
         'nav':          '0 -1px 0 rgba(0,0,0,0.08)',
+        'glass':        'inset 0 1px 0 rgba(255,255,255,0.7), 0 8px 30px rgba(15,23,42,0.10)',
+        'dock':         'inset 0 1px 0 rgba(255,255,255,0.8), 0 12px 40px rgba(15,23,42,0.16), 0 2px 8px rgba(15,23,42,0.06)',
+      },
+      transitionTimingFunction: {
+        spring: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
       },
       keyframes: {
         pop: {

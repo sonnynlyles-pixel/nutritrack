@@ -197,24 +197,29 @@ export default function FoodLog() {
         </div>
       </div>
 
-      {/* Sticky totals bar */}
-      <div className="fixed bottom-16 left-0 right-0 glass border-t border-brand-400/20 px-4 py-2.5 z-10">
-        <div className="flex justify-around max-w-lg mx-auto text-center">
-          <div>
-            <div className="text-gray-900 font-bold">{Math.round(totals.calories)}</div>
-            <div className="text-xs text-gray-600">Cal</div>
-          </div>
-          <div>
-            <div className="text-blue-400 font-bold">{Math.round(totals.protein)}g</div>
-            <div className="text-xs text-gray-600">Protein</div>
-          </div>
-          <div>
-            <div className="text-amber-400 font-bold">{Math.round(totals.carbs)}g</div>
-            <div className="text-xs text-gray-600">Carbs</div>
-          </div>
-          <div>
-            <div className="text-rose-400 font-bold">{Math.round(totals.fat)}g</div>
-            <div className="text-xs text-gray-600">Fat</div>
+      {/* Floating totals bar */}
+      <div
+        className="fixed left-0 right-0 z-10 flex justify-center px-3"
+        style={{ bottom: 'calc(5.75rem + env(safe-area-inset-bottom))' }}
+      >
+        <div className="glass rounded-3xl w-full max-w-lg mx-auto px-4 py-2.5">
+          <div className="flex justify-around text-center">
+            <div>
+              <div className="text-gray-900 font-bold">{Math.round(totals.calories)}</div>
+              <div className="text-xs text-gray-600">Cal</div>
+            </div>
+            <div>
+              <div className="text-blue-400 font-bold">{Math.round(totals.protein)}g</div>
+              <div className="text-xs text-gray-600">Protein</div>
+            </div>
+            <div>
+              <div className="text-amber-400 font-bold">{Math.round(totals.carbs)}g</div>
+              <div className="text-xs text-gray-600">Carbs</div>
+            </div>
+            <div>
+              <div className="text-rose-400 font-bold">{Math.round(totals.fat)}g</div>
+              <div className="text-xs text-gray-600">Fat</div>
+            </div>
           </div>
         </div>
       </div>
