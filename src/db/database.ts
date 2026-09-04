@@ -40,6 +40,20 @@ export async function pruneOldData() {
   await db.weightEntries.where('date').below(cutoffStr).delete();
 }
 
+// Removes stale seed-managed foods left behind when an item is renamed or
+// dropped from the seed database. Only touches ids with the 'seed-' prefix —
+// user-created custom foods use 'custom-'/'recipe-food-' prefixes and are
+// never affected.
+export async function pruneStaleSeeds() {
+  const currentIds = new Set(SEEDED_FOODS.map(f => f.id));
+  const existingSeedIds = await db.customFoods.where('id').startsWith('seed-').primaryKeys();
+  const staleIds = existingSeedIds.filter(id => !currentIds.has(id as string));
+  if (staleIds.length > 0) {
+    await db.customFoods.bulkDelete(staleIds);
+  }
+}
+
 export async function seedFoods() {
   await db.customFoods.bulkPut(SEEDED_FOODS);
+  await pruneStaleSeeds();
 }
