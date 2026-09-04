@@ -1,4 +1,5 @@
 import type { FoodItem, MealCategory } from '../types';
+import { isBrandAvailable } from './brandAvailability';
 
 export interface MacroTarget {
   calories: number;
@@ -166,6 +167,7 @@ export function getRecommendations(
   foods: FoodItem[],
   limit = 6,
   meal?: MealCategory,
+  userState?: string,
 ): Recommendation[] {
   if (remaining.calories <= 50) return [];
 
@@ -181,6 +183,7 @@ export function getRecommendations(
   for (const food of foods) {
     const cal = food.nutrition.calories;
     if (cal <= 0) continue;
+    if (!isBrandAvailable(food.brand, userState)) continue;
 
     // Find optimal servings: aim for ~60% of remaining calories, clamped 0.5–3
     const rawServings = (remaining.calories * 0.6) / cal;

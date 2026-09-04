@@ -13,6 +13,7 @@ export interface UserProfile {
   macroTargets: { protein: number; carbs: number; fat: number }; // grams
   waterGoalOz: number;
   setupComplete: boolean;
+  state?: string; // 2-letter USPS state code, e.g. "IA" — used to filter regional restaurant suggestions
 }
 
 export interface NutritionInfo {

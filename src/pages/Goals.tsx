@@ -1,8 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
 import { useStore } from '../store/useStore';
 import { calculateCalorieGoal, calculateDefaultMacros, calculateTDEE } from '../utils/nutrition';
+import { detectStateFromBrowser } from '../utils/geolocation';
 import { db } from '../db/database';
 import type { UserProfile } from '../types';
+
+const US_STATES = [
+  ['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],
+  ['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],
+  ['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],
+  ['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],
+  ['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],
+  ['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],
+  ['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],
+  ['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],
+  ['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],
+  ['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],
+  ['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming'],
+] as const;
 
 const ACTIVITY_OPTIONS: { value: UserProfile['activityLevel']; label: string; desc: string }[] = [
   { value: 'sedentary', label: 'Sedentary', desc: 'Little/no exercise' },
@@ -21,6 +36,25 @@ export default function Goals() {
   const [saved, setSaved] = useState(false);
   const [backupMsg, setBackupMsg] = useState('');
   const importRef = useRef<HTMLInputElement>(null);
+  const [detecting, setDetecting] = useState(false);
+  const [locationError, setLocationError] = useState('');
+
+  const handleDetectLocation = async () => {
+    setDetecting(true);
+    setLocationError('');
+    try {
+      const loc = await detectStateFromBrowser();
+      if (loc) {
+        update({ state: loc.state });
+      } else {
+        setLocationError("Couldn't determine a US state from your location — choose one manually below.");
+      }
+    } catch {
+      setLocationError('Location permission denied or unavailable — choose your state manually below.');
+    } finally {
+      setDetecting(false);
+    }
+  };
 
   const handleExport = async () => {
     const [dailyLogs, weightEntries, quickMeals, recipes, customFoods] = await Promise.all([
@@ -183,6 +217,41 @@ export default function Goals() {
               onChange={e => update({ goalWeight: parseFloat(e.target.value) || 0 })}
             />
           </div>
+        </div>
+      </section>
+
+      {/* Location */}
+      <section className="card p-4 space-y-3">
+        <h2 className="font-semibold text-gray-900">Location</h2>
+        <p className="text-xs text-gray-500">Used to filter Smart Suggestions to restaurant chains actually near you.</p>
+        <div className="flex gap-2 items-center">
+          <button
+            type="button"
+            onClick={handleDetectLocation}
+            disabled={detecting}
+            className="px-4 py-2.5 rounded-xl bg-brand-gradient text-white text-sm font-semibold disabled:opacity-60 shrink-0"
+          >
+            {detecting ? 'Detecting…' : '📍 Detect My Location'}
+          </button>
+          {draft.state && (
+            <div className="flex-1 px-3 py-2.5 bg-surface-raised border border-brand-400/20 rounded-xl text-sm text-gray-900 text-center">
+              {US_STATES.find(([code]) => code === draft.state)?.[1] ?? draft.state}
+            </div>
+          )}
+        </div>
+        {locationError && <p className="text-xs text-red-400">{locationError}</p>}
+        <div>
+          <label className="text-xs text-gray-400 block mb-1">Or choose manually</label>
+          <select
+            className="w-full bg-surface-raised border border-brand-400/20 rounded-xl px-3 py-2 text-gray-900 focus:outline-none focus:border-brand-500"
+            value={draft.state ?? ''}
+            onChange={e => update({ state: e.target.value || undefined })}
+          >
+            <option value="">Not set</option>
+            {US_STATES.map(([code, name]) => (
+              <option key={code} value={code}>{name}</option>
+            ))}
+          </select>
         </div>
       </section>
 

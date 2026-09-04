@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { SparklesIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import FoodItemRow from '../shared/FoodItemRow';
 import { db } from '../../db/database';
+import { useStore } from '../../store/useStore';
 import {
   getMealContext,
   getRecommendations,
@@ -123,6 +124,7 @@ function FoodDetailSheet({
 }
 
 export default function MealRecommendations({ remaining, onAdd }: Props) {
+  const { profile } = useStore();
   const [foods, setFoods] = useState<FoodItem[]>([]);
   const [expanded, setExpanded] = useState(true);
   const [added, setAdded] = useState<Set<string>>(new Set());
@@ -147,7 +149,7 @@ export default function MealRecommendations({ remaining, onAdd }: Props) {
   }, []);
 
   const { label, meal } = getMealContext();
-  const recs = getRecommendations(remaining, foods, 6, meal);
+  const recs = getRecommendations(remaining, foods, 6, meal, profile.state);
 
   if (remaining.calories <= 50) {
     return (
