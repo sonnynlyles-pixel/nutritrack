@@ -1,4 +1,5 @@
 import type { FoodItem, NutritionInfo } from '../types';
+import { rankFoods } from './foodSearch';
 
 // Key is passed in at call time so the user can set their own via Settings
 let _usdaKey = 'DEMO_KEY';
@@ -165,12 +166,18 @@ export async function searchFoods(query: string): Promise<FoodItem[]> {
   const [offResults, usdaResults] = await Promise.allSettled([searchOFF(query), searchUSDA(query)]);
   const off = offResults.status === 'fulfilled' ? offResults.value : [];
   const usda = usdaResults.status === 'fulfilled' ? usdaResults.value : [];
-  // Interleave results: OFF first (better branded), USDA second (better generics)
-  const combined: FoodItem[] = [];
+  // Rank by relevance to the query rather than blindly interleaving — remote
+  // APIs' own result order doesn't always match what the user actually typed.
+  const ranked = rankFoods(query, [...off, ...usda]);
+  // rankFoods excludes zero-score items; fall back to the raw interleave for
+  // anything it filtered out so a query with only loose remote matches still
+  // returns something instead of nothing.
+  const rankedIds = new Set(ranked.map(f => f.id));
+  const leftover: FoodItem[] = [];
   const maxLen = Math.max(off.length, usda.length);
   for (let i = 0; i < maxLen; i++) {
-    if (i < off.length) combined.push(off[i]);
-    if (i < usda.length) combined.push(usda[i]);
+    if (i < off.length && !rankedIds.has(off[i].id)) leftover.push(off[i]);
+    if (i < usda.length && !rankedIds.has(usda[i].id)) leftover.push(usda[i]);
   }
-  return combined.slice(0, 25);
+  return [...ranked, ...leftover].slice(0, 25);
 }
