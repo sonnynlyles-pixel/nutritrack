@@ -6,38 +6,49 @@ function rf(id: string, name: string, brand: string, label: string, cal: number,
 
 export const SEEDS: FoodItem[] = [
   // ── Jersey Mike's ──────────────────────────────────────────────
-  // Full numbered menu, Regular size on White Sub, Mike's Way where applicable.
-  // Nutrition sourced from Jersey Mike's official "Menu Label Report" (the US
-  // site's nutrition page is an interactive JS tool with no static data; the
-  // Canadian portal publishes the same standardized chain-wide recipes as a
-  // downloadable report) — numbers may drift slightly from US labeling.
-  rf('seed-jm-1-blt',                 "BLT",                                 "Jersey Mike's", '1 sandwich (Regular)', 750, 25, 60, 46, 10,  70, 1480, 4, 5, 0, 0.2),
-  rf('seed-jm-2-jersey-shore',        "Jersey Shore's Favorite",             "Jersey Mike's", '1 sandwich (Regular)', 770, 37, 63, 42, 11,  80, 2120, 4, 6, 0, 0.3),
-  rf('seed-jm-3-ham-provolone',       "Ham and Provolone",                   "Jersey Mike's", '1 sandwich (Regular)', 750, 36, 62, 41, 11,  75, 2050, 4, 6, 0, 0.3),
-  rf('seed-jm-4-number-four',         "The Number Four",                     "Jersey Mike's", '1 sandwich (Regular)', 750, 35, 63, 41, 11,  70, 1990, 4, 6, 0, 0.4),
-  rf('seed-jm-5-super-sub',           "The Super Sub",                       "Jersey Mike's", '1 sandwich (Regular)', 780, 40, 63, 42, 11,  85, 2300, 4, 7, 0, 0.4),
-  rf('seed-jm-6-roast-beef-provolone',"Roast Beef and Provolone",            "Jersey Mike's", '1 sandwich (Regular)', 820, 48, 61, 44, 12, 105, 1220, 4, 5, 0, 0.4),
-  rf('seed-jm-7-turkey-provolone',    "Turkey and Provolone",                "Jersey Mike's", '1 sandwich (Regular)', 780, 36, 64, 43, 12,  75, 1680, 4, 6, 0, 0.3),
-  rf('seed-jm-8-club-sub',            "Club Sub",                            "Jersey Mike's", '1 sandwich (Regular)', 850, 44, 63, 48, 14, 100, 2270, 4, 6, 0, 0.3),
-  rf('seed-jm-9-club-supreme',        "Club Supreme",                        "Jersey Mike's", '1 sandwich (Regular)', 870, 48, 63, 48, 13, 105, 1730, 4, 6, 0, 0.3),
-  rf('seed-jm-10-tuna-fish',          "Tuna Fish",                           "Jersey Mike's", '1 sandwich (Regular)', 970, 30, 61, 68, 10,  80, 1270, 4, 5, 0, 0.3),
-  rf('seed-jm-11-stickball',          "Stickball Special",                   "Jersey Mike's", '1 sandwich (Regular)', 830, 37, 62, 48, 14,  85, 2200, 4, 6, 0, 0.4),
-  rf('seed-jm-12-cancro',             "Cancro Special",                      "Jersey Mike's", '1 sandwich (Regular)', 880, 51, 62, 48, 14, 115, 1400, 4, 6, 0, 0.5),
-  rf('seed-jm-13-original-italian',   "The Original Italian",                "Jersey Mike's", '1 sandwich (Regular)', 900, 45, 64, 52, 15, 110, 2740, 4, 7, 0, 0.5),
-  rf('seed-jm-14-veggie',             "The Veggie",                          "Jersey Mike's", '1 sandwich (Regular)', 900, 36, 64, 56, 22,  80, 1160, 4, 6, 0, 1),
-  rf('seed-jm-16-chicken-philly',     "Chicken Philly",                      "Jersey Mike's", '1 sandwich (Regular)', 600, 51, 68, 14,  7, 115, 2030, 3, 10, 0, 0.3),
-  rf('seed-jm-17-steak-philly',       "Steak Philly",                        "Jersey Mike's", '1 sandwich (Regular)', 660, 44, 67, 25, 11, 120, 2090, 3, 10, 0, 0.3),
-  rf('seed-jm-26-chicken-bacon-ranch',"Chicken Bacon Ranch Cheesesteak",     "Jersey Mike's", '1 sandwich (Regular)', 850, 56, 67, 40, 11, 140, 2350, 3, 8, 0, 1),
-  rf('seed-jm-31-california-chicken', "California Chicken Cheesesteak",      "Jersey Mike's", '1 sandwich (Regular)', 810, 51, 64, 40, 10, 135, 1990, 3, 7, 0, 0.5),
-  rf('seed-jm-42-chipotle-chicken-philly',"Chipotle Chicken Philly",         "Jersey Mike's", '1 sandwich (Regular)', 880, 51, 70, 45, 11, 135, 2360, 3, 11, 0, 0.5),
-  rf('seed-jm-43-chipotle-steak-philly',"Chipotle Steak Philly",             "Jersey Mike's", '1 sandwich (Regular)', 950, 45, 68, 56, 16, 145, 2450, 3, 11, 0, 0.5),
-  rf('seed-jm-44-buffalo-chicken',    "Buffalo Chicken Cheesesteak",         "Jersey Mike's", '1 sandwich (Regular)', 790, 52, 69, 35,  9, 125, 3530, 3, 8, 0, 1),
-  rf('seed-jm-54-hot-veggie',         "Hot Veggie",                          "Jersey Mike's", '1 sandwich (Regular)', 540, 26, 73, 17, 10,  50, 1750, 6, 11, 0, 0.5),
-  rf('seed-jm-55-chicken-big-kahuna', "Chicken Big Kahuna",                  "Jersey Mike's", '1 sandwich (Regular)', 640, 54, 70, 17,  8, 120, 2360, 3, 11, 0, 0.4),
-  rf('seed-jm-56-big-kahuna',         "Big Kahuna",                          "Jersey Mike's", '1 sandwich (Regular)', 710, 48, 69, 28, 13, 130, 2460, 3, 11, 0, 0.4),
-  rf('seed-jm-64-portabella-swiss',   "Portabella Mushroom & Swiss",         "Jersey Mike's", '1 sandwich (Regular)', 620, 24, 68, 29, 10,  30,  850, 5, 8, 0, 0.4),
-  rf('seed-jm-65-portabella-chicken-philly',"Portabella Chicken Philly",     "Jersey Mike's", '1 sandwich (Regular)', 600, 51, 69, 14,  6, 110, 2000, 3, 11, 0, 0.3),
-  rf('seed-jm-66-portabella-steak-philly',"Portabella Steak Philly",         "Jersey Mike's", '1 sandwich (Regular)', 670, 45, 68, 25, 11, 120, 2100, 3, 11, 0, 0.3),
+  // Full current numbered menu, Regular size on White Bread ("Mike's Way"
+  // defaults) — for size/bread variants, see SubBuilder (opens automatically
+  // when one of these is selected).
+  //
+  // Nutrition pulled live from Jersey Mike's own US ingredient-level nutrition
+  // API (subs.jerseymikes.com/nutrition/{productId}/{sizeId} — the same data
+  // that powers their real "build your sub" calculator on the live US site),
+  // replacing an earlier version sourced from their Canadian nutrition PDF that
+  // ran 9-29% low on several nutrients for the same items. Verified byte-exact
+  // against a user-provided real calculator readout before regenerating.
+  //
+  // #64/#65/#66 Portabella items dropped — discontinued, not on the current US
+  // menu at all. #87/#88 Teriyaki Chicken/Steak also skipped — Jersey Mike's
+  // own API returns null nutrition for them (an ingredient, likely the sauce
+  // or rice, has incomplete data on their backend); omitted rather than guess.
+  // #19 BBQ Beef and #20 Grilled Pastrami Reuben added — real current items
+  // that weren't in the previous seed set.
+  rf('seed-jm-1-blt',                       "BLT",                                   "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 788.14, 28.6, 64.35, 47.77, 10.31, 58.63, 1633.37, 4.06, 5.73, 0, 0.3),
+  rf('seed-jm-2-jersey-shore',              "Jersey Shore's Favorite",               "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 823.6, 39.24, 68.59, 44.35, 10.63, 65.68, 2008.94, 4.39, 7.93, 0, 0.37),
+  rf('seed-jm-3-ham-provolone',             "Ham and Provolone",                     "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 816.8, 38.23, 67.86, 44.36, 10.7, 63.44, 1962.5, 4.39, 7.35, 0, 0.37),
+  rf('seed-jm-4-number-four',               "The Number Four",                       "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 806.15, 37.19, 70.05, 42.62, 9.61, 55.89, 1851.22, 4.39, 8.9, 0, 0.37),
+  rf('seed-jm-5-super-sub',                 "The Super Sub",                         "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 837.46, 41.71, 70.03, 44.17, 10.32, 67.96, 2120.83, 4.39, 9.05, 0, 0.37),
+  rf('seed-jm-6-roast-beef-provolone',      "Roast Beef and Provolone",              "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 913.34, 56.93, 65.83, 46.25, 11.23, 116.77, 1323.88, 4.39, 5.33, 0, 0.41),
+  rf('seed-jm-7-turkey-provolone',          "Turkey and Provolone",                  "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 817.2, 45.37, 66.48, 41.38, 9.18, 73.51, 1976.4, 4.39, 5.98, 0, 0.37),
+  rf('seed-jm-8-club-sub',                  "Club Sub",                              "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 1162.99, 50.15, 68.31, 77.83, 16.46, 105.12, 2563.9, 4.39, 7.77, 0, 0.64),
+  rf('seed-jm-9-club-supreme',              "Club Supreme",                          "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 1191.2, 59.31, 66.88, 76.74, 15.65, 131.96, 2050.66, 4.39, 6.42, 0, 0.41),
+  rf('seed-jm-10-tuna-fish',                "Tuna Fish",                             "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 1062.1, 33.1, 66.96, 74.74, 10.47, 55.94, 1348.35, 4.78, 6.45, 0, 0.41),
+  rf('seed-jm-11-stickball',                "Stickball Special",                     "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 887.46, 39.43, 68.29, 51.32, 13.49, 75.85, 2170.81, 4.41, 7.73, 0, 0.37),
+  rf('seed-jm-12-cancro',                   "Cancro Special",                        "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 966.35, 59.05, 66.33, 50.97, 12.87, 127.35, 1504.57, 4.45, 5.7, 0, 0.41),
+  rf('seed-jm-13-original-italian',         "The Original Italian",                  "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 956.02, 46.78, 71.09, 54.52, 14.21, 92.38, 2571.21, 4.47, 9.95, 0, 0.37),
+  rf('seed-jm-14-veggie',                   "The Veggie",                            "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 953.62, 39.35, 68.74, 58.57, 20.23, 81.4, 1310.48, 4.93, 6.15, 0, 0.75),
+  rf('seed-jm-16-chicken-philly',           "Mike's Chicken Philly",                 "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 683.84, 48.34, 72.98, 21.67, 9.93, 134.52, 2187.75, 3.21, 10.64, 0, 0.25),
+  rf('seed-jm-17-famous-philly',            "Mike's Famous Philly",                  "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 748.33, 45.95, 74.01, 30.32, 14.39, 120.05, 2164.61, 3.21, 9.66, 0, 0.77),
+  rf('seed-jm-19-bbq-beef',                 "BBQ Beef",                              "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 708.07, 60.08, 87.37, 11.37, 3.27, 123.57, 1811.47, 3.64, 20.13, 0, 0.15),
+  rf('seed-jm-20-pastrami-reuben',          "Grilled Pastrami Reuben",               "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 721.29, 41.68, 74.24, 29.77, 8.22, 99.78, 1914.94, 5.49, 9.11, 0, 0.11),
+  rf('seed-jm-26-bacon-ranch-cheesesteak',  "Bacon Ranch Chicken Cheese Steak",      "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 923.8, 55.05, 71.35, 46.8, 14.77, 163.71, 2485.08, 3.74, 8.8, 0, 0.25),
+  rf('seed-jm-31-california-chicken',       "California Chicken Cheese Steak",       "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 931.78, 49.2, 70.04, 50.83, 14.36, 150.07, 2148.02, 3.74, 8.43, 0, 0.52),
+  rf('seed-jm-42-chipotle-chicken-cheesesteak', "Chipotle Chicken Cheese Steak",         "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 973.27, 48.8, 74.66, 53.39, 14.87, 158.61, 2547.17, 3.3, 11.88, 0, 0.46),
+  rf('seed-jm-43-chipotle-cheesesteak',     "Chipotle Cheese Steak",                 "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 1037.76, 46.41, 75.69, 62.04, 19.32, 144.14, 2524.03, 3.3, 10.91, 0, 0.98),
+  rf('seed-jm-44-buffalo-chicken',          "Buffalo Chicken Cheese Steak",          "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 894.46, 50.31, 72.95, 44.46, 14.27, 155, 3588.26, 4.14, 9.49, 0, 0.31),
+  rf('seed-jm-54-big-kahuna-hot-veggie',    "Big Kahuna Hot Veggie",                 "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 715.14, 39.44, 67.28, 32.57, 17.13, 81.4, 1307.09, 4.99, 5.23, 0, 0.75),
+  rf('seed-jm-55-big-kahuna-chicken',       "Big Kahuna Chicken Cheese Steak",       "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 741.28, 51.12, 75.22, 26.1, 12.65, 147.73, 2740.95, 3.67, 11.85, 0, 0.32),
+  rf('seed-jm-56-big-kahuna',               "Big Kahuna Cheese Steak",               "Jersey Mike's",  '1 sandwich (Regular, White Bread)', 802.93, 48.66, 75.59, 34.74, 17.11, 133.26, 2717.53, 3.55, 10.58, 0, 0.84),
 
   // ── McDonald's – Burgers & Sandwiches ──────────────────────────
   rf('seed-mcd-big-mac',              "Big Mac",                             "McDonald's",    '1 burger',   590,  25, 46, 34, 11,  85, 1050, 3,  9),
