@@ -1,19 +1,43 @@
 import type { FoodItem } from '../../types';
 
-function rf(id: string, name: string, brand: string, label: string, cal: number, protein: number, carbs: number, fat: number, satFat: number, chol: number, sodium: number, fiber: number, sugar: number, caffeine = 0): FoodItem {
-  return { id, name, brand, servingSizeG: 1, servingLabel: label, source: 'custom', nutrition: { calories: cal, protein, carbs, fat, saturatedFat: satFat, cholesterol: chol, sodium, fiber, sugar, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } };
+function rf(id: string, name: string, brand: string, label: string, cal: number, protein: number, carbs: number, fat: number, satFat: number, chol: number, sodium: number, fiber: number, sugar: number, caffeine = 0, transFat = 0): FoodItem {
+  return { id, name, brand, servingSizeG: 1, servingLabel: label, source: 'custom', nutrition: { calories: cal, protein, carbs, fat, saturatedFat: satFat, cholesterol: chol, sodium, fiber, sugar, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine, alcohol: 0, addedSugar: 0, transFat, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } };
 }
 
 export const SEEDS: FoodItem[] = [
   // ── Jersey Mike's ──────────────────────────────────────────────
-  rf('seed-jm-chipotle-steak-reg',    "Chipotle Cheese Steak (Regular)",     "Jersey Mike's", '1 sandwich', 980,  45, 63, 60, 19, 147, 2381, 3,  9),
-  rf('seed-jm-chipotle-steak-giant',  "Chipotle Cheese Steak (Giant)",       "Jersey Mike's", '1 sandwich', 1480, 68, 95, 90, 29, 220, 3571, 5, 14),
-  rf('seed-jm-turkey-provolone-reg',  "Turkey & Provolone (Regular)",        "Jersey Mike's", '1 sandwich', 580,  44, 61, 19,  8,  80, 1530, 3,  7),
-  rf('seed-jm-club-sub-reg',          "Club Sub (Regular)",                  "Jersey Mike's", '1 sandwich', 640,  45, 62, 26,  9,  95, 1580, 3,  7),
-  rf('seed-jm-blt-reg',               "BLT (Regular)",                       "Jersey Mike's", '1 sandwich', 600,  26, 54, 33, 11,  55, 1020, 3,  6),
-  rf('seed-jm-italian-sub-reg',       "Italian Sub (Regular)",               "Jersey Mike's", '1 sandwich', 720,  36, 61, 40, 14, 105, 1700, 3,  7),
-  rf('seed-jm-roast-beef-reg',        "Roast Beef (Regular)",                "Jersey Mike's", '1 sandwich', 610,  42, 61, 19,  8,  75, 1140, 3,  6),
-  rf('seed-jm-steak-cheese-reg',      "Steak & Cheese (Regular)",            "Jersey Mike's", '1 sandwich', 630,  38, 63, 26, 10,  85, 1350, 3,  7),
+  // Full numbered menu, Regular size on White Sub, Mike's Way where applicable.
+  // Nutrition sourced from Jersey Mike's official "Menu Label Report" (the US
+  // site's nutrition page is an interactive JS tool with no static data; the
+  // Canadian portal publishes the same standardized chain-wide recipes as a
+  // downloadable report) — numbers may drift slightly from US labeling.
+  rf('seed-jm-1-blt',                 "BLT",                                 "Jersey Mike's", '1 sandwich (Regular)', 750, 25, 60, 46, 10,  70, 1480, 4, 5, 0, 0.2),
+  rf('seed-jm-2-jersey-shore',        "Jersey Shore's Favorite",             "Jersey Mike's", '1 sandwich (Regular)', 770, 37, 63, 42, 11,  80, 2120, 4, 6, 0, 0.3),
+  rf('seed-jm-3-ham-provolone',       "Ham and Provolone",                   "Jersey Mike's", '1 sandwich (Regular)', 750, 36, 62, 41, 11,  75, 2050, 4, 6, 0, 0.3),
+  rf('seed-jm-4-number-four',         "The Number Four",                     "Jersey Mike's", '1 sandwich (Regular)', 750, 35, 63, 41, 11,  70, 1990, 4, 6, 0, 0.4),
+  rf('seed-jm-5-super-sub',           "The Super Sub",                       "Jersey Mike's", '1 sandwich (Regular)', 780, 40, 63, 42, 11,  85, 2300, 4, 7, 0, 0.4),
+  rf('seed-jm-6-roast-beef-provolone',"Roast Beef and Provolone",            "Jersey Mike's", '1 sandwich (Regular)', 820, 48, 61, 44, 12, 105, 1220, 4, 5, 0, 0.4),
+  rf('seed-jm-7-turkey-provolone',    "Turkey and Provolone",                "Jersey Mike's", '1 sandwich (Regular)', 780, 36, 64, 43, 12,  75, 1680, 4, 6, 0, 0.3),
+  rf('seed-jm-8-club-sub',            "Club Sub",                            "Jersey Mike's", '1 sandwich (Regular)', 850, 44, 63, 48, 14, 100, 2270, 4, 6, 0, 0.3),
+  rf('seed-jm-9-club-supreme',        "Club Supreme",                        "Jersey Mike's", '1 sandwich (Regular)', 870, 48, 63, 48, 13, 105, 1730, 4, 6, 0, 0.3),
+  rf('seed-jm-10-tuna-fish',          "Tuna Fish",                           "Jersey Mike's", '1 sandwich (Regular)', 970, 30, 61, 68, 10,  80, 1270, 4, 5, 0, 0.3),
+  rf('seed-jm-11-stickball',          "Stickball Special",                   "Jersey Mike's", '1 sandwich (Regular)', 830, 37, 62, 48, 14,  85, 2200, 4, 6, 0, 0.4),
+  rf('seed-jm-12-cancro',             "Cancro Special",                      "Jersey Mike's", '1 sandwich (Regular)', 880, 51, 62, 48, 14, 115, 1400, 4, 6, 0, 0.5),
+  rf('seed-jm-13-original-italian',   "The Original Italian",                "Jersey Mike's", '1 sandwich (Regular)', 900, 45, 64, 52, 15, 110, 2740, 4, 7, 0, 0.5),
+  rf('seed-jm-14-veggie',             "The Veggie",                          "Jersey Mike's", '1 sandwich (Regular)', 900, 36, 64, 56, 22,  80, 1160, 4, 6, 0, 1),
+  rf('seed-jm-16-chicken-philly',     "Chicken Philly",                      "Jersey Mike's", '1 sandwich (Regular)', 600, 51, 68, 14,  7, 115, 2030, 3, 10, 0, 0.3),
+  rf('seed-jm-17-steak-philly',       "Steak Philly",                        "Jersey Mike's", '1 sandwich (Regular)', 660, 44, 67, 25, 11, 120, 2090, 3, 10, 0, 0.3),
+  rf('seed-jm-26-chicken-bacon-ranch',"Chicken Bacon Ranch Cheesesteak",     "Jersey Mike's", '1 sandwich (Regular)', 850, 56, 67, 40, 11, 140, 2350, 3, 8, 0, 1),
+  rf('seed-jm-31-california-chicken', "California Chicken Cheesesteak",      "Jersey Mike's", '1 sandwich (Regular)', 810, 51, 64, 40, 10, 135, 1990, 3, 7, 0, 0.5),
+  rf('seed-jm-42-chipotle-chicken-philly',"Chipotle Chicken Philly",         "Jersey Mike's", '1 sandwich (Regular)', 880, 51, 70, 45, 11, 135, 2360, 3, 11, 0, 0.5),
+  rf('seed-jm-43-chipotle-steak-philly',"Chipotle Steak Philly",             "Jersey Mike's", '1 sandwich (Regular)', 950, 45, 68, 56, 16, 145, 2450, 3, 11, 0, 0.5),
+  rf('seed-jm-44-buffalo-chicken',    "Buffalo Chicken Cheesesteak",         "Jersey Mike's", '1 sandwich (Regular)', 790, 52, 69, 35,  9, 125, 3530, 3, 8, 0, 1),
+  rf('seed-jm-54-hot-veggie',         "Hot Veggie",                          "Jersey Mike's", '1 sandwich (Regular)', 540, 26, 73, 17, 10,  50, 1750, 6, 11, 0, 0.5),
+  rf('seed-jm-55-chicken-big-kahuna', "Chicken Big Kahuna",                  "Jersey Mike's", '1 sandwich (Regular)', 640, 54, 70, 17,  8, 120, 2360, 3, 11, 0, 0.4),
+  rf('seed-jm-56-big-kahuna',         "Big Kahuna",                          "Jersey Mike's", '1 sandwich (Regular)', 710, 48, 69, 28, 13, 130, 2460, 3, 11, 0, 0.4),
+  rf('seed-jm-64-portabella-swiss',   "Portabella Mushroom & Swiss",         "Jersey Mike's", '1 sandwich (Regular)', 620, 24, 68, 29, 10,  30,  850, 5, 8, 0, 0.4),
+  rf('seed-jm-65-portabella-chicken-philly',"Portabella Chicken Philly",     "Jersey Mike's", '1 sandwich (Regular)', 600, 51, 69, 14,  6, 110, 2000, 3, 11, 0, 0.3),
+  rf('seed-jm-66-portabella-steak-philly',"Portabella Steak Philly",         "Jersey Mike's", '1 sandwich (Regular)', 670, 45, 68, 25, 11, 120, 2100, 3, 11, 0, 0.3),
 
   // ── McDonald's – Burgers & Sandwiches ──────────────────────────
   rf('seed-mcd-big-mac',              "Big Mac",                             "McDonald's",    '1 burger',   590,  25, 46, 34, 11,  85, 1050, 3,  9),
