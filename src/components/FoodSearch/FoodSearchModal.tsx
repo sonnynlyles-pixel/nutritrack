@@ -1,7 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { XMarkIcon, MagnifyingGlassIcon, QrCodeIcon, BookmarkIcon, BuildingStorefrontIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, MagnifyingGlassIcon, QrCodeIcon, BookmarkIcon, BuildingStorefrontIcon, HeartIcon } from '@heroicons/react/24/outline';
+import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import FoodItemRow from '../shared/FoodItemRow';
+import CreateFoodForm from '../shared/CreateFoodForm';
 import { searchFoods, lookupBarcode, emptyNutrition } from '../../utils/foodApi';
+import { rankFoods, suggestRelatedTerms } from '../../utils/foodSearch';
+import { toggleFavorite, getFavoriteFoods } from '../../utils/favorites';
 import { db } from '../../db/database';
 import type { FoodItem, MealCategory, MealEntry, NutritionInfo } from '../../types';
 import BarcodeScanner from '../BarcodeScanner/BarcodeScanner';
@@ -135,29 +139,67 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   const [barcodeResult, setBarcodeResult] = useState<FoodItem | null>(null);
   const [myFoods, setMyFoods] = useState<FoodItem[]>([]);
   const [recentFoods, setRecentFoods] = useState<FoodItem[]>([]);
+  const [frequentFoods, setFrequentFoods] = useState<FoodItem[]>([]);
+  const [favoriteFoods, setFavoriteFoods] = useState<FoodItem[]>([]);
+  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
+  const [showSearchCreateFood, setShowSearchCreateFood] = useState(false);
+  const [showBarcodeCreateFood, setShowBarcodeCreateFood] = useState(false);
+  const [barcodeNotFound, setBarcodeNotFound] = useState(false);
+  const [scannedBarcode, setScannedBarcode] = useState('');
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (isOpen) {
       db.customFoods.toArray().then(setMyFoods);
       db.recentFoods.orderBy('usedAt').reverse().limit(10).toArray().then(setRecentFoods);
+      getFavoriteFoods().then(favs => {
+        setFavoriteFoods(favs);
+        setFavoriteIds(new Set(favs.map(f => f.id)));
+      });
+      db.dailyLogs.toArray().then(logs => {
+        const counts = new Map<string, { food: FoodItem; count: number }>();
+        for (const log of logs) {
+          for (const entries of Object.values(log.meals)) {
+            for (const entry of entries) {
+              const existing = counts.get(entry.food.id);
+              if (existing) existing.count++;
+              else counts.set(entry.food.id, { food: entry.food, count: 1 });
+            }
+          }
+        }
+        const top = Array.from(counts.values())
+          .filter(c => c.count > 1)
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 8)
+          .map(c => c.food);
+        setFrequentFoods(top);
+      });
     }
   }, [isOpen]);
 
+  const handleToggleFavorite = useCallback(async (food: FoodItem) => {
+    const nowFav = await toggleFavorite(food.id);
+    setFavoriteIds(prev => {
+      const next = new Set(prev);
+      if (nowFav) next.add(food.id); else next.delete(food.id);
+      return next;
+    });
+    setFavoriteFoods(prev => nowFav ? [food, ...prev] : prev.filter(f => f.id !== food.id));
+  }, []);
+
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
+    setShowSearchCreateFood(false);
     if (!query.trim()) { setResults([]); setApiError(false); return; }
     debounceRef.current = setTimeout(async () => {
       setLoading(true);
       setApiError(false);
       try {
-        // Always search local custom/seeded foods first (works offline)
-        const q = query.toLowerCase();
+        // Always search local custom/seeded foods first (works offline) — ranked
+        // by relevance (exact/alias/brand/token/fuzzy match), not insertion order.
         const allCustom = await db.customFoods.toArray();
-        const localMatches = allCustom.filter(f =>
-          !isIngredient(f) &&
-          (f.name.toLowerCase().includes(q) || f.brand?.toLowerCase().includes(q))
-        );
+        const candidates = allCustom.filter(f => !isIngredient(f));
+        const localMatches = rankFoods(query, candidates);
 
         // Try remote APIs — silently handle failures
         let remoteResults: FoodItem[] = [];
@@ -167,7 +209,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
           if (localMatches.length === 0) setApiError(true);
         }
 
-        // Merge: local first (exact brand matches feel faster), then remote
+        // Merge: ranked local first (feels faster, works offline), then remote
         const remoteDeduped = remoteResults.filter(r => !localMatches.find(l => l.id === r.id));
         setResults([...localMatches, ...remoteDeduped].slice(0, 30));
       } finally {
@@ -177,12 +219,23 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
     return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
   }, [query]);
 
+  const relatedTerms = (query.trim() && !loading && results.length === 0)
+    ? suggestRelatedTerms(query, myFoods)
+    : [];
+
   const handleScan = useCallback(async (barcode: string) => {
     setScanning(false);
     setLoading(true);
+    setBarcodeNotFound(false);
+    setShowBarcodeCreateFood(false);
     try {
       const food = await lookupBarcode(barcode);
-      setBarcodeResult(food);
+      if (food) {
+        setBarcodeResult(food);
+      } else {
+        setScannedBarcode(barcode);
+        setBarcodeNotFound(true);
+      }
     } finally {
       setLoading(false);
     }
@@ -351,24 +404,65 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                   <div>
                     <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">Recent</div>
                     {recentFoods.filter(f => !isIngredient(f)).map(food => (
-                      <FoodRow key={food.id} food={food} onSelect={handleSelectFood} />
+                      <FoodRow key={food.id} food={food} onSelect={handleSelectFood} isFav={favoriteIds.has(food.id)} onToggleFav={handleToggleFavorite} />
+                    ))}
+                  </div>
+                )}
+                {!loading && !query && frequentFoods.length > 0 && (
+                  <div>
+                    <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">Frequently Logged</div>
+                    {frequentFoods.filter(f => !isIngredient(f)).map(food => (
+                      <FoodRow key={food.id} food={food} onSelect={handleSelectFood} isFav={favoriteIds.has(food.id)} onToggleFav={handleToggleFavorite} />
                     ))}
                   </div>
                 )}
                 {!loading && results.filter(f => !isIngredient(f)).map(food => (
-                  <FoodRow key={food.id} food={food} onSelect={handleSelectFood} />
+                  <FoodRow key={food.id} food={food} onSelect={handleSelectFood} isFav={favoriteIds.has(food.id)} onToggleFav={handleToggleFavorite} />
                 ))}
-                {!loading && query && results.length === 0 && (
-                  <div className="text-center py-8 space-y-2">
+                {!loading && query && results.length === 0 && !showSearchCreateFood && (
+                  <div className="text-center py-8 space-y-3">
                     {apiError ? (
                       <>
                         <div className="text-yellow-400 font-medium">Food databases are temporarily unavailable</div>
                         <div className="text-gray-500 text-sm">Try the Foods tab to search your saved items, or add a custom food.</div>
                       </>
                     ) : (
-                      <div className="text-gray-500">No results found for "{query}"</div>
+                      <>
+                        <div className="text-gray-500">No exact matches for "{query}"</div>
+                        {relatedTerms.length > 0 && (
+                          <div className="flex flex-wrap justify-center gap-2">
+                            <span className="text-xs text-gray-500 self-center">Try:</span>
+                            {relatedTerms.map(term => (
+                              <button
+                                key={term}
+                                onClick={() => setQuery(term)}
+                                className="text-xs px-2.5 py-1 bg-gray-100 rounded-full text-gray-700"
+                              >
+                                {term}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </>
                     )}
+                    <button
+                      onClick={() => setShowSearchCreateFood(true)}
+                      className="mt-2 px-5 py-2.5 bg-brand-gradient text-white rounded-xl font-semibold text-sm"
+                    >
+                      + Create Custom Food
+                    </button>
                   </div>
+                )}
+                {!loading && query && results.length === 0 && showSearchCreateFood && (
+                  <CreateFoodForm
+                    initialName={query}
+                    onSave={async (food) => {
+                      await db.customFoods.put(food);
+                      setShowSearchCreateFood(false);
+                      setSelected(food);
+                    }}
+                    onCancel={() => setShowSearchCreateFood(false)}
+                  />
                 )}
               </>
             )}
@@ -385,7 +479,40 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                 onCancel={() => setBarcodeResult(null)}
               />
             )}
-            {!barcodeResult && !scanning && (
+            {!barcodeResult && barcodeNotFound && !showBarcodeCreateFood && (
+              <div className="text-center space-y-4 py-8">
+                <QrCodeIcon className="w-16 h-16 text-gray-600 mx-auto" />
+                <p className="text-gray-900 font-medium">Product not found</p>
+                <p className="text-gray-400 text-sm">Barcode {scannedBarcode} isn't in any food database we checked.</p>
+                <div className="flex gap-3 justify-center">
+                  <button
+                    onClick={() => { setBarcodeNotFound(false); setScanning(true); }}
+                    className="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-xl font-medium text-sm"
+                  >
+                    Scan Again
+                  </button>
+                  <button
+                    onClick={() => setShowBarcodeCreateFood(true)}
+                    className="px-5 py-2.5 bg-brand-gradient text-white rounded-xl font-semibold text-sm"
+                  >
+                    + Create Custom Food
+                  </button>
+                </div>
+              </div>
+            )}
+            {!barcodeResult && barcodeNotFound && showBarcodeCreateFood && (
+              <CreateFoodForm
+                initialBarcode={scannedBarcode}
+                onSave={async (food) => {
+                  await db.customFoods.put(food);
+                  setShowBarcodeCreateFood(false);
+                  setBarcodeNotFound(false);
+                  setBarcodeResult(food);
+                }}
+                onCancel={() => setShowBarcodeCreateFood(false)}
+              />
+            )}
+            {!barcodeResult && !barcodeNotFound && !scanning && (
               <div className="text-center space-y-4 py-8">
                 <QrCodeIcon className="w-16 h-16 text-gray-600 mx-auto" />
                 <p className="text-gray-400">Scan a product barcode to quickly find food info</p>
@@ -426,6 +553,14 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                 onCancel={() => setSelected(null)}
               />
             )}
+            {!selected && favoriteFoods.length > 0 && (
+              <div>
+                <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">Favorites</div>
+                {favoriteFoods.filter(f => !isIngredient(f)).map(food => (
+                  <FoodRow key={food.id} food={food} onSelect={handleSelectFood} isFav={true} onToggleFav={handleToggleFavorite} />
+                ))}
+              </div>
+            )}
             {!selected && myFoods.length === 0 && (
               <div className="text-center text-gray-500 py-8">
                 <BookmarkIcon className="w-12 h-12 mx-auto mb-3 text-gray-700" />
@@ -433,8 +568,11 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                 <p className="text-xs mt-1">Create foods in the Foods section</p>
               </div>
             )}
+            {!selected && myFoods.length > 0 && (
+              <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">All Foods</div>
+            )}
             {!selected && myFoods.filter(f => !isIngredient(f)).map(food => (
-              <FoodRow key={food.id} food={food} onSelect={handleSelectFood} />
+              <FoodRow key={food.id} food={food} onSelect={handleSelectFood} isFav={favoriteIds.has(food.id)} onToggleFav={handleToggleFavorite} />
             ))}
           </div>
         )}
@@ -449,7 +587,12 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   );
 }
 
-function FoodRow({ food, onSelect }: { food: FoodItem; onSelect: (f: FoodItem) => void }) {
+function FoodRow({ food, onSelect, isFav, onToggleFav }: {
+  food: FoodItem;
+  onSelect: (f: FoodItem) => void;
+  isFav?: boolean;
+  onToggleFav?: (f: FoodItem) => void;
+}) {
   const family = SIZE_FAMILIES[food.id];
   if (family) {
     return (
@@ -470,7 +613,18 @@ function FoodRow({ food, onSelect }: { food: FoodItem; onSelect: (f: FoodItem) =
   }
   return (
     <div className="mb-2">
-      <FoodItemRow food={food} onTap={() => onSelect(food)} variant="card" />
+      <FoodItemRow
+        food={food}
+        onTap={() => onSelect(food)}
+        variant="card"
+        actions={onToggleFav ? (
+          <button onClick={() => onToggleFav(food)} className="p-1.5">
+            {isFav
+              ? <HeartIconSolid className="w-5 h-5 text-rose-500" />
+              : <HeartIcon className="w-5 h-5 text-gray-400" />}
+          </button>
+        ) : undefined}
+      />
     </div>
   );
 }
