@@ -41,6 +41,10 @@ interface Props {
 
 type Tab = 'search' | 'barcode' | 'myfoods' | 'restaurants';
 
+// Only the categories worth browsing by chip — restaurant/drink items are
+// already well served by the Brands tab, so they're excluded here.
+const BROWSABLE_CATEGORIES = ['Fruits', 'Vegetables', 'Meat', 'Dairy', 'Grains', 'Protein', 'Snacks'];
+
 function ServingAdjuster({
   food,
   onAdd,
@@ -143,6 +147,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   const [favoriteFoods, setFavoriteFoods] = useState<FoodItem[]>([]);
   const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
   const [showSearchCreateFood, setShowSearchCreateFood] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showBarcodeCreateFood, setShowBarcodeCreateFood] = useState(false);
   const [barcodeNotFound, setBarcodeNotFound] = useState(false);
   const [scannedBarcode, setScannedBarcode] = useState('');
@@ -190,6 +195,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     setShowSearchCreateFood(false);
+    if (query.trim()) setSelectedCategory(null);
     if (!query.trim()) { setResults([]); setApiError(false); return; }
     debounceRef.current = setTimeout(async () => {
       setLoading(true);
@@ -221,6 +227,11 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
 
   const relatedTerms = (query.trim() && !loading && results.length === 0)
     ? suggestRelatedTerms(query, myFoods)
+    : [];
+
+  const availableCategories = BROWSABLE_CATEGORIES.filter(cat => myFoods.some(f => f.category === cat));
+  const categoryResults = selectedCategory
+    ? myFoods.filter(f => f.category === selectedCategory && !isIngredient(f))
     : [];
 
   const handleScan = useCallback(async (barcode: string) => {
@@ -400,7 +411,31 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                     <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
                   </div>
                 )}
-                {!loading && !query && recentFoods.length > 0 && (
+                {!loading && !query && availableCategories.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {availableCategories.map(cat => (
+                      <button
+                        key={cat}
+                        onClick={() => setSelectedCategory(prev => prev === cat ? null : cat)}
+                        className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
+                          selectedCategory === cat ? 'bg-brand-gradient text-white' : 'bg-gray-100 text-gray-700'
+                        }`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                {!loading && !query && selectedCategory && (
+                  <div>
+                    {categoryResults.length === 0 ? (
+                      <div className="text-center text-gray-500 py-6 text-sm">No {selectedCategory.toLowerCase()} saved yet</div>
+                    ) : categoryResults.map(food => (
+                      <FoodRow key={food.id} food={food} onSelect={handleSelectFood} isFav={favoriteIds.has(food.id)} onToggleFav={handleToggleFavorite} />
+                    ))}
+                  </div>
+                )}
+                {!loading && !query && !selectedCategory && recentFoods.length > 0 && (
                   <div>
                     <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">Recent</div>
                     {recentFoods.filter(f => !isIngredient(f)).map(food => (
@@ -408,7 +443,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
                     ))}
                   </div>
                 )}
-                {!loading && !query && frequentFoods.length > 0 && (
+                {!loading && !query && !selectedCategory && frequentFoods.length > 0 && (
                   <div>
                     <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">Frequently Logged</div>
                     {frequentFoods.filter(f => !isIngredient(f)).map(food => (
