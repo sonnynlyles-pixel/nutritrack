@@ -13,6 +13,7 @@ import FoodInsightsPanel from '../FoodInsights/FoodInsightsPanel';
 import BowlBuilder from '../BowlBuilder/BowlBuilder';
 import DonutBuilder from '../DonutBuilder/DonutBuilder';
 import SizePicker, { SIZE_FAMILIES, findSizerForFood } from '../SizePicker/SizePicker';
+import SubBuilder, { findSubFamilyForFood } from '../SizePicker/SubBuilder';
 import TenderPicker from '../SizePicker/TenderPicker';
 import RestaurantBrowse from './RestaurantBrowse';
 
@@ -138,6 +139,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
   const [builderInfo, setBuilderInfo] = useState<{ brandId: string; brandName: string } | null>(null);
   const [donutBuilder, setDonutBuilder] = useState(false);
   const [sizerId, setSizerId] = useState<string | null>(null);
+  const [subBuilderId, setSubBuilderId] = useState<string | null>(null);
   const [tenderPicker, setTenderPicker] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [barcodeResult, setBarcodeResult] = useState<FoodItem | null>(null);
@@ -273,6 +275,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
     setBuilderInfo(null);
     setDonutBuilder(false);
     setSizerId(null);
+    setSubBuilderId(null);
     onClose();
   };
 
@@ -283,6 +286,11 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
     }
     if (food.id === 'seed-ws-tenders-sizer') {
       setTenderPicker(true);
+      return;
+    }
+    const subFamily = findSubFamilyForFood(food);
+    if (subFamily) {
+      setSubBuilderId(subFamily);
       return;
     }
     const sizer = findSizerForFood(food);
@@ -308,10 +316,10 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       {/* Header */}
       <div className="flex items-center gap-3 p-4 border-b border-brand-400/20">
         <button
-          onClick={() => { builderInfo ? setBuilderInfo(null) : donutBuilder ? setDonutBuilder(false) : sizerId ? setSizerId(null) : tenderPicker ? setTenderPicker(false) : onClose(); }}
+          onClick={() => { builderInfo ? setBuilderInfo(null) : donutBuilder ? setDonutBuilder(false) : sizerId ? setSizerId(null) : subBuilderId ? setSubBuilderId(null) : tenderPicker ? setTenderPicker(false) : onClose(); }}
           className="p-2 rounded-full hover:bg-surface-raised"
         >
-          {(builderInfo || donutBuilder || sizerId || tenderPicker)
+          {(builderInfo || donutBuilder || sizerId || subBuilderId || tenderPicker)
             ? <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             : <XMarkIcon className="w-6 h-6 text-gray-400" />
           }
@@ -321,6 +329,8 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
             ? "Wingstop — Chicken Tenders"
             : sizerId
             ? `${SIZE_FAMILIES[sizerId]?.brand} — Pick a Size`
+            : subBuilderId
+            ? `Build Your Sub`
             : donutBuilder ? "Dunkin' Donut Builder"
             : builderInfo ? `${builderInfo.brandName} Builder`
             : `Add to ${mealLabel}`}
@@ -336,6 +346,15 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
         />
       )}
 
+      {/* Sub Builder view (size then bread) */}
+      {!sizerId && subBuilderId && (
+        <SubBuilder
+          subId={subBuilderId}
+          onAdd={handleBuilderAdd}
+          onCancel={() => setSubBuilderId(null)}
+        />
+      )}
+
       {/* Tender Picker view */}
       {tenderPicker && (
         <TenderPicker
@@ -345,7 +364,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       )}
 
       {/* Donut Builder view */}
-      {!sizerId && !tenderPicker && donutBuilder && (
+      {!sizerId && !subBuilderId && !tenderPicker && donutBuilder && (
         <DonutBuilder
           onAdd={handleBuilderAdd}
           onCancel={() => setDonutBuilder(false)}
@@ -353,7 +372,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       )}
 
       {/* Bowl Builder view */}
-      {!sizerId && !tenderPicker && !donutBuilder && builderInfo && (
+      {!sizerId && !subBuilderId && !tenderPicker && !donutBuilder && builderInfo && (
         <BowlBuilder
           brandId={builderInfo.brandId}
           brandName={builderInfo.brandName}
@@ -363,7 +382,7 @@ export default function FoodSearchModal({ isOpen, onClose, onAdd, category }: Pr
       )}
 
       {/* Normal search view */}
-      {!builderInfo && !donutBuilder && !sizerId && !tenderPicker && (
+      {!builderInfo && !donutBuilder && !sizerId && !subBuilderId && !tenderPicker && (
       <>
       {/* Tabs */}
       <div className="flex justify-center p-4 border-b border-gray-100">
