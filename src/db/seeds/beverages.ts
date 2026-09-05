@@ -1,7 +1,7 @@
 import type { FoodItem } from '../../types';
 
-function rf(id: string, name: string, brand: string, label: string, cal: number, protein: number, carbs: number, fat: number, satFat: number, chol: number, sodium: number, fiber: number, sugar: number, caffeine = 0): FoodItem {
-  return { id, name, brand, servingSizeG: 1, servingLabel: label, source: 'custom', nutrition: { calories: cal, protein, carbs, fat, saturatedFat: satFat, cholesterol: chol, sodium, fiber, sugar, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine, alcohol: 0, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } };
+function rf(id: string, name: string, brand: string, label: string, cal: number, protein: number, carbs: number, fat: number, satFat: number, chol: number, sodium: number, fiber: number, sugar: number, caffeine = 0, alcohol = 0): FoodItem {
+  return { id, name, brand, servingSizeG: 1, servingLabel: label, source: 'custom', nutrition: { calories: cal, protein, carbs, fat, saturatedFat: satFat, cholesterol: chol, sodium, fiber, sugar, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, iron: 0, calcium: 0, potassium: 0, caffeine, alcohol, addedSugar: 0, transFat: 0, magnesium: 0, zinc: 0, omega3: 0, folate: 0 } };
 }
 
 export const SEEDS: FoodItem[] = [
@@ -81,53 +81,58 @@ export const SEEDS: FoodItem[] = [
   rf('seed-caseys-hashbrown',            "Hashbrown",                               "Casey's", '1 order',               140,  2, 17,  7,  2,  0,  200, 1, 0),
 
   // ── Beer ─────────────────────────────────────────────────────────
+  // Alcohol grams computed from each beer's published ABV% for a 12 fl oz
+  // (355mL) serving: mL × ABV% × 0.789 g/mL. Previously hardcoded to 0 since
+  // the shared rf() helper never accepted an alcohol parameter — found during
+  // a data-quality audit (calories didn't reconcile with 4P+4C+9F, the missing
+  // ~7 cal/g of alcohol was the reason).
   // Anheuser-Busch
-  rf('seed-beer-budweiser',              "Budweiser",                    "Anheuser-Busch", '12 fl oz', 145, 1.3, 10.6, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-bud-light',              "Bud Light",                    "Anheuser-Busch", '12 fl oz', 110, 0.9,  6.6, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-bud-light-lime',         "Bud Light Lime",               "Anheuser-Busch", '12 fl oz', 116, 0.9,  8.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-bud-select-55',          "Budweiser Select 55",          "Anheuser-Busch", '12 fl oz',  55, 0.9,  1.9, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-bud-select-99',          "Budweiser Select 99",          "Anheuser-Busch", '12 fl oz',  99, 1.0,  3.1, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-bud-ice',                "Bud Ice",                      "Anheuser-Busch", '12 fl oz', 123, 1.2,  8.9, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-busch',                  "Busch",                        "Anheuser-Busch", '12 fl oz', 133, 0.9, 10.2, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-busch-light',            "Busch Light",                  "Anheuser-Busch", '12 fl oz',  95, 0.7,  3.2, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-busch-ice',              "Busch Ice",                    "Anheuser-Busch", '12 fl oz', 136, 1.0, 10.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-busch-na',               "Busch NA",                     "Anheuser-Busch", '12 fl oz',  64, 0.7, 14.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-natural-light',          "Natural Light",                "Anheuser-Busch", '12 fl oz',  95, 0.7,  3.2, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-natural-ice',            "Natural Ice",                  "Anheuser-Busch", '12 fl oz', 130, 1.1,  8.9, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-michelob-ultra',         "Michelob Ultra",               "Anheuser-Busch", '12 fl oz',  95, 0.6,  2.6, 0, 0, 0,  5, 0, 0),
-  rf('seed-beer-michelob-ultra-gold',    "Michelob Ultra Pure Gold",     "Anheuser-Busch", '12 fl oz',  85, 0.5,  2.5, 0, 0, 0,  5, 0, 0),
-  rf('seed-beer-stella-artois',          "Stella Artois",                "AB InBev",       '12 fl oz', 154, 1.5, 13.0, 0, 0, 0, 10, 0, 0),
+  rf('seed-beer-budweiser',              "Budweiser",                    "Anheuser-Busch", '12 fl oz', 145, 1.3, 10.6, 0, 0, 0, 10, 0, 0, 0, 14.0),
+  rf('seed-beer-bud-light',              "Bud Light",                    "Anheuser-Busch", '12 fl oz', 110, 0.9,  6.6, 0, 0, 0, 10, 0, 0, 0, 11.8),
+  rf('seed-beer-bud-light-lime',         "Bud Light Lime",               "Anheuser-Busch", '12 fl oz', 116, 0.9,  8.0, 0, 0, 0, 10, 0, 0, 0, 11.8),
+  rf('seed-beer-bud-select-55',          "Budweiser Select 55",          "Anheuser-Busch", '12 fl oz',  55, 0.9,  1.9, 0, 0, 0, 10, 0, 0, 0,  6.7),
+  rf('seed-beer-bud-select-99',          "Budweiser Select 99",          "Anheuser-Busch", '12 fl oz',  99, 1.0,  3.1, 0, 0, 0, 10, 0, 0, 0,  7.8),
+  rf('seed-beer-bud-ice',                "Bud Ice",                      "Anheuser-Busch", '12 fl oz', 123, 1.2,  8.9, 0, 0, 0, 10, 0, 0, 0, 15.4),
+  rf('seed-beer-busch',                  "Busch",                        "Anheuser-Busch", '12 fl oz', 133, 0.9, 10.2, 0, 0, 0, 10, 0, 0, 0, 12.0),
+  rf('seed-beer-busch-light',            "Busch Light",                  "Anheuser-Busch", '12 fl oz',  95, 0.7,  3.2, 0, 0, 0, 10, 0, 0, 0, 11.5),
+  rf('seed-beer-busch-ice',              "Busch Ice",                    "Anheuser-Busch", '12 fl oz', 136, 1.0, 10.0, 0, 0, 0, 10, 0, 0, 0, 16.5),
+  rf('seed-beer-busch-na',               "Busch NA",                     "Anheuser-Busch", '12 fl oz',  64, 0.7, 14.0, 0, 0, 0, 10, 0, 0, 0,  1.4),
+  rf('seed-beer-natural-light',          "Natural Light",                "Anheuser-Busch", '12 fl oz',  95, 0.7,  3.2, 0, 0, 0, 10, 0, 0, 0, 11.8),
+  rf('seed-beer-natural-ice',            "Natural Ice",                  "Anheuser-Busch", '12 fl oz', 130, 1.1,  8.9, 0, 0, 0, 10, 0, 0, 0, 16.5),
+  rf('seed-beer-michelob-ultra',         "Michelob Ultra",               "Anheuser-Busch", '12 fl oz',  95, 0.6,  2.6, 0, 0, 0,  5, 0, 0, 0, 11.8),
+  rf('seed-beer-michelob-ultra-gold',    "Michelob Ultra Pure Gold",     "Anheuser-Busch", '12 fl oz',  85, 0.5,  2.5, 0, 0, 0,  5, 0, 0, 0, 10.6),
+  rf('seed-beer-stella-artois',          "Stella Artois",                "AB InBev",       '12 fl oz', 154, 1.5, 13.0, 0, 0, 0, 10, 0, 0, 0, 14.0),
   // Molson Coors
-  rf('seed-beer-coors-light',            "Coors Light",                  "Molson Coors",   '12 fl oz', 102, 0.8,  5.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-coors-banquet',          "Coors Banquet",                "Molson Coors",   '12 fl oz', 147, 1.0, 12.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-miller-lite',            "Miller Lite",                  "Molson Coors",   '12 fl oz',  96, 1.0,  3.2, 0, 0, 0,  5, 0, 0),
-  rf('seed-beer-miller-high-life',       "Miller High Life",             "Molson Coors",   '12 fl oz', 141, 1.0, 12.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-miller-64',              "Miller 64",                    "Molson Coors",   '12 fl oz',  64, 0.5,  2.4, 0, 0, 0,  5, 0, 0),
-  rf('seed-beer-miller-genuine-draft',   "Miller Genuine Draft",         "Molson Coors",   '12 fl oz', 143, 1.0, 13.1, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-blue-moon',              "Blue Moon Belgian White",      "Molson Coors",   '12 fl oz', 168, 2.0, 14.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-keystone-light',         "Keystone Light",               "Molson Coors",   '12 fl oz', 101, 1.0,  4.7, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-icehouse',               "Icehouse",                     "Molson Coors",   '12 fl oz', 149, 0.9,  9.8, 0, 0, 0, 10, 0, 0),
+  rf('seed-beer-coors-light',            "Coors Light",                  "Molson Coors",   '12 fl oz', 102, 0.8,  5.0, 0, 0, 0, 10, 0, 0, 0, 11.8),
+  rf('seed-beer-coors-banquet',          "Coors Banquet",                "Molson Coors",   '12 fl oz', 147, 1.0, 12.0, 0, 0, 0, 10, 0, 0, 0, 14.0),
+  rf('seed-beer-miller-lite',            "Miller Lite",                  "Molson Coors",   '12 fl oz',  96, 1.0,  3.2, 0, 0, 0,  5, 0, 0, 0, 11.8),
+  rf('seed-beer-miller-high-life',       "Miller High Life",             "Molson Coors",   '12 fl oz', 141, 1.0, 12.0, 0, 0, 0, 10, 0, 0, 0, 12.9),
+  rf('seed-beer-miller-64',              "Miller 64",                    "Molson Coors",   '12 fl oz',  64, 0.5,  2.4, 0, 0, 0,  5, 0, 0, 0,  7.8),
+  rf('seed-beer-miller-genuine-draft',   "Miller Genuine Draft",         "Molson Coors",   '12 fl oz', 143, 1.0, 13.1, 0, 0, 0, 10, 0, 0, 0, 13.2),
+  rf('seed-beer-blue-moon',              "Blue Moon Belgian White",      "Molson Coors",   '12 fl oz', 168, 2.0, 14.0, 0, 0, 0, 10, 0, 0, 0, 15.1),
+  rf('seed-beer-keystone-light',         "Keystone Light",               "Molson Coors",   '12 fl oz', 101, 1.0,  4.7, 0, 0, 0, 10, 0, 0, 0, 11.8),
+  rf('seed-beer-icehouse',               "Icehouse",                     "Molson Coors",   '12 fl oz', 149, 0.9,  9.8, 0, 0, 0, 10, 0, 0, 0, 15.4),
   // Constellation Brands (Corona / Modelo)
-  rf('seed-beer-modelo-especial',        "Modelo Especial",              "Modelo",         '12 fl oz', 143, 1.1, 13.6, 0, 0, 0, 20, 0, 0),
-  rf('seed-beer-modelo-negra',           "Modelo Negra",                 "Modelo",         '12 fl oz', 172, 1.4, 15.7, 0, 0, 0, 20, 0, 0),
-  rf('seed-beer-modelo-oro',             "Modelo Oro",                   "Modelo",         '12 fl oz',  90, 0.7,  3.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-corona-extra',           "Corona Extra",                 "Corona",         '12 fl oz', 148, 1.2, 13.9, 0, 0, 0,  5, 0, 0),
-  rf('seed-beer-corona-light',           "Corona Light",                 "Corona",         '12 fl oz',  99, 0.8,  5.0, 0, 0, 0,  5, 0, 0),
-  rf('seed-beer-corona-premier',         "Corona Premier",               "Corona",         '12 fl oz',  90, 0.7,  2.6, 0, 0, 0,  5, 0, 0),
-  rf('seed-beer-pacifico',               "Pacifico Clara",               "Pacifico",       '12 fl oz', 143, 1.1, 13.6, 0, 0, 0, 10, 0, 0),
+  rf('seed-beer-modelo-especial',        "Modelo Especial",              "Modelo",         '12 fl oz', 143, 1.1, 13.6, 0, 0, 0, 20, 0, 0, 0, 12.3),
+  rf('seed-beer-modelo-negra',           "Modelo Negra",                 "Modelo",         '12 fl oz', 172, 1.4, 15.7, 0, 0, 0, 20, 0, 0, 0, 15.1),
+  rf('seed-beer-modelo-oro',             "Modelo Oro",                   "Modelo",         '12 fl oz',  90, 0.7,  3.0, 0, 0, 0, 10, 0, 0, 0, 11.2),
+  rf('seed-beer-corona-extra',           "Corona Extra",                 "Corona",         '12 fl oz', 148, 1.2, 13.9, 0, 0, 0,  5, 0, 0, 0, 12.9),
+  rf('seed-beer-corona-light',           "Corona Light",                 "Corona",         '12 fl oz',  99, 0.8,  5.0, 0, 0, 0,  5, 0, 0, 0, 11.2),
+  rf('seed-beer-corona-premier',         "Corona Premier",               "Corona",         '12 fl oz',  90, 0.7,  2.6, 0, 0, 0,  5, 0, 0, 0, 11.2),
+  rf('seed-beer-pacifico',               "Pacifico Clara",               "Pacifico",       '12 fl oz', 143, 1.1, 13.6, 0, 0, 0, 10, 0, 0, 0, 12.6),
   // Heineken group (incl. Dos Equis & Tecate)
-  rf('seed-beer-heineken',               "Heineken",                     "Heineken",       '12 fl oz', 148, 1.0,  9.8, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-heineken-light',         "Heineken Light",               "Heineken",       '12 fl oz',  90, 0.7,  6.8, 0, 0, 0, 10, 0, 0),
+  rf('seed-beer-heineken',               "Heineken",                     "Heineken",       '12 fl oz', 148, 1.0,  9.8, 0, 0, 0, 10, 0, 0, 0, 14.0),
+  rf('seed-beer-heineken-light',         "Heineken Light",               "Heineken",       '12 fl oz',  90, 0.7,  6.8, 0, 0, 0, 10, 0, 0, 0,  9.2),
   rf('seed-beer-heineken-00',            "Heineken 0.0",                 "Heineken",       '12 fl oz',  69, 0.0, 16.0, 0, 0, 0, 15, 0, 0),
-  rf('seed-beer-dos-equis-lager',        "Dos Equis Lager Especial",     "Dos Equis",      '12 fl oz', 131, 0.9, 11.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-dos-equis-ambar',        "Dos Equis Ambar",              "Dos Equis",      '12 fl oz', 146, 1.0, 14.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-tecate',                 "Tecate Original",              "Tecate",         '12 fl oz', 142, 1.0, 12.8, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-tecate-light',           "Tecate Light",                 "Tecate",         '12 fl oz', 110, 0.7,  6.5, 0, 0, 0, 10, 0, 0),
+  rf('seed-beer-dos-equis-lager',        "Dos Equis Lager Especial",     "Dos Equis",      '12 fl oz', 131, 0.9, 11.0, 0, 0, 0, 10, 0, 0, 0, 11.8),
+  rf('seed-beer-dos-equis-ambar',        "Dos Equis Ambar",              "Dos Equis",      '12 fl oz', 146, 1.0, 14.0, 0, 0, 0, 10, 0, 0, 0, 14.6),
+  rf('seed-beer-tecate',                 "Tecate Original",              "Tecate",         '12 fl oz', 142, 1.0, 12.8, 0, 0, 0, 10, 0, 0, 0, 12.6),
+  rf('seed-beer-tecate-light',           "Tecate Light",                 "Tecate",         '12 fl oz', 110, 0.7,  6.5, 0, 0, 0, 10, 0, 0, 0, 11.2),
   // Boston Beer Company
-  rf('seed-beer-sam-adams-lager',        "Samuel Adams Boston Lager",    "Samuel Adams",   '12 fl oz', 175, 2.0, 17.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-sam-adams-summer',       "Samuel Adams Summer Ale",      "Samuel Adams",   '12 fl oz', 165, 1.5, 18.0, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-sam-adams-octoberfest',  "Samuel Adams Octoberfest",     "Samuel Adams",   '12 fl oz', 187, 1.8, 18.5, 0, 0, 0, 10, 0, 0),
-  rf('seed-beer-sam-adams-winter',       "Samuel Adams Winter Lager",    "Samuel Adams",   '12 fl oz', 200, 2.0, 20.0, 0, 0, 0, 10, 0, 0),
+  rf('seed-beer-sam-adams-lager',        "Samuel Adams Boston Lager",    "Samuel Adams",   '12 fl oz', 175, 2.0, 17.0, 0, 0, 0, 10, 0, 0, 0, 14.0),
+  rf('seed-beer-sam-adams-summer',       "Samuel Adams Summer Ale",      "Samuel Adams",   '12 fl oz', 165, 1.5, 18.0, 0, 0, 0, 10, 0, 0, 0, 14.9),
+  rf('seed-beer-sam-adams-octoberfest',  "Samuel Adams Octoberfest",     "Samuel Adams",   '12 fl oz', 187, 1.8, 18.5, 0, 0, 0, 10, 0, 0, 0, 14.9),
+  rf('seed-beer-sam-adams-winter',       "Samuel Adams Winter Lager",    "Samuel Adams",   '12 fl oz', 200, 2.0, 20.0, 0, 0, 0, 10, 0, 0, 0, 16.3),
 
   // ── Built Puff Protein Bars ──────────────────────────────────────
   rf('seed-built-puff-brownie-batter',    "Built Puff Brownie Batter",      "Built Bar", '1 bar (40g)',  140, 17, 14, 2.5, 2,   0,  90, 1, 6),
