@@ -52,6 +52,13 @@ export interface FoodItem {
   nutrition: NutritionInfo; // per serving
   source: 'off' | 'usda' | 'custom';
   barcode?: string;
+  category?: string;   // e.g. "Fruits", "Drinks", "Restaurants" — for browsing/filtering
+  aliases?: string[];  // extra search terms beyond name/brand (e.g. "turkey sandwich" for Turkey Tom)
+}
+
+export interface Favorite {
+  id: string;      // FoodItem.id
+  addedAt: string; // ISO
 }
 
 export interface MealEntry {

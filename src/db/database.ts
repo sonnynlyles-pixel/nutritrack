@@ -1,5 +1,5 @@
 import Dexie, { type Table } from 'dexie';
-import type { DailyLog, WeightEntry, FoodItem, QuickMeal, Recipe } from '../types';
+import type { DailyLog, WeightEntry, FoodItem, QuickMeal, Recipe, Favorite } from '../types';
 import { SEEDED_FOODS } from './seeds';
 
 export class NutriTrackDB extends Dexie {
@@ -9,6 +9,7 @@ export class NutriTrackDB extends Dexie {
   quickMeals!: Table<QuickMeal>;
   recipes!: Table<Recipe>;
   recentFoods!: Table<FoodItem & { usedAt: string }>;
+  favorites!: Table<Favorite>;
 
   constructor() {
     super('NutriTrackDB');
@@ -25,6 +26,9 @@ export class NutriTrackDB extends Dexie {
     });
     this.version(3).stores({
       customFoods: 'id, name, brand'
+    });
+    this.version(4).stores({
+      favorites: 'id'
     });
   }
 }
