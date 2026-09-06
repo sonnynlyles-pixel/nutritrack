@@ -126,4 +126,8 @@ export const SEEDS: FoodItem[] = [
   rf('seed-generic-tofu',          "Tofu",                'Protein', '1/2 cup, firm (126g)',     181,19.9, 4.3, 11,   1.6,  0,  17, 2.3, 0.6),
   rf('seed-generic-edamame',       "Edamame",             'Protein', '1 cup, cooked (155g)',     189,16.9, 15.8, 8.1, 0.9,  0,   9, 8.1, 3.4),
   rf('seed-generic-pumpkin-seeds', "Pumpkin Seeds",       'Protein', '1 oz, shelled (28g)',      151, 7,   5,   13,   2.3,  0,   5, 1.7, 0.4),
+
+  // ── Condiments ───────────────────────────────────────────────────
+  rf('seed-generic-ketchup',       "Ketchup",             'Condiments', '1 tbsp (17g)',           20, 0.2, 5,    0,   0,    0, 190, 0.1, 4),
+  rf('seed-generic-mustard',       "Yellow Mustard",      'Condiments', '1 tsp (5g)',              3, 0.2, 0.3,  0.2, 0,    0,  57, 0.1, 0.1),
 ];
