@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import type { MealEntry } from '../../types';
 import { JERSEY_MIKES_SUB_FAMILIES } from '../../data/jerseyMikesSubData';
+import { QUIKTRIP_SUB_FAMILIES } from '../../data/quiktripSubData';
 
 // Generic size-then-bread configurator for sub shops with these variation axes
 // (Jersey Mike's today; Jimmy John's, Subway, Firehouse Subs etc. could plug in
@@ -28,6 +29,7 @@ export interface SubFamily {
 
 export const SUB_FAMILIES: Record<string, SubFamily> = {
   ...JERSEY_MIKES_SUB_FAMILIES,
+  ...QUIKTRIP_SUB_FAMILIES,
 };
 
 /** Returns the sub-family key if this food has a matching size/bread configurator. */

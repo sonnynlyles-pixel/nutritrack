@@ -37,13 +37,7 @@ export const SEEDS: FoodItem[] = [
   rf('seed-sht-shmuffin-saus',        "Shmuffin Egg/Cheese/Sausage",         "Sheetz",        '1 sandwich', 520,  24, 36, 30, 11, 230, 1080, 2,  5),
   rf('seed-sht-roller-hotdog',        "Roller Grill Hot Dog",                "Sheetz",        '1 hot dog',  290,  11, 22, 18,  7,  40,  730, 1,  3),
 
-  // ── QuikTrip (QT) ───────────────────────────────────────────────
-  rf('seed-qt-hot-dog',               "QT Kitchens Hot Dog",                 "QuikTrip",      '1 hot dog',  370,  13, 26, 24,  9,  45,  870, 1,  4),
-  rf('seed-qt-taquito-chicken',       "QT Kitchens Taquito – Chicken",       "QuikTrip",      '1 taquito',  200,   9, 21,  9,  3,  25,  410, 1,  1),
-  rf('seed-qt-pizza-slice-pep',       "QT Kitchens Pizza Slice – Pepperoni", "QuikTrip",      '1 slice',    360,  15, 41, 15,  6,  30,  740, 2,  3),
-  rf('seed-qt-bkfst-burrito',         "QT Kitchens Breakfast Burrito",       "QuikTrip",      '1 burrito',  430,  20, 40, 21,  8, 185,  980, 2,  2),
-  rf('seed-qt-glazed-donut',          "QT Kitchens Glazed Donut",            "QuikTrip",      '1 donut',    320,   4, 44, 14,  6,  10,  260, 1, 20),
-  rf('seed-qt-blueberry-muffin',      "QT Kitchens Blueberry Muffin",        "QuikTrip",      '1 muffin',   430,   5, 63, 18,  3,  45,  400, 2, 34),
+  // ── QuikTrip: see src/db/seeds/quiktrip.ts for the full official menu ──
 
   // ── Stubborn Soda ───────────────────────────────────────────────
   rf('seed-stubborn-root-beer',       "Classic Root Beer",                   "Stubborn Soda",  '1 can (12 fl oz)', 150, 0, 39, 0, 0, 0,  70, 0, 39),

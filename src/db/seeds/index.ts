@@ -6,6 +6,7 @@ import { SEEDS as convenienceSeeds } from './convenience';
 import { SEEDS as beveragesSeeds } from './beverages';
 import { SEEDS as grocerySeeds } from './grocery';
 import { SEEDS as genericFoodsSeeds } from './generic-foods';
+import { SEEDS as quiktripSeeds } from './quiktrip';
 
 // Applies a default category to every food in a file's seed set, unless the
 // item already declares its own (e.g. generic-foods.ts items are pre-tagged
@@ -35,6 +36,7 @@ export const SEEDED_FOODS: FoodItem[] = withBrandOverrides([
   ...withDefaultCategory(texmexPizzaSeeds, 'Restaurants'),
   ...withDefaultCategory(breakfastCafeSeeds, 'Restaurants'),
   ...withDefaultCategory(convenienceSeeds, 'Restaurants'),
+  ...withDefaultCategory(quiktripSeeds, 'Restaurants'),
   ...withDefaultCategory(beveragesSeeds, 'Drinks'),
   ...withDefaultCategory(grocerySeeds, 'Snacks'),
   ...genericFoodsSeeds,
